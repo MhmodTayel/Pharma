@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({
+const medicineSchema = new mongoose.Schema({
     id:{
         type: Number,
         default: 0,
-
+        required: true
     },
     name:{
         type: String,
@@ -23,7 +23,7 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    sellingPrice:{
+    pharmPrice:{
         type: Number,
         required: true
     },
@@ -56,16 +56,13 @@ const productSchema = new mongoose.Schema({
         
     },
     size:{
-        type: String,
-        required: true
-        
+        type: String,      
     },
     concentration:{
         type: String,
-        required: true
-        
+              
     },
-    date:{
+    arriveDate:{
         type: Date,
         required: true
         
@@ -96,12 +93,13 @@ const productSchema = new mongoose.Schema({
     },
     limit:{
         type: Number,
+        default: 100,
         required: true
         
     },
 }, {timestamps: true});
 
-const Product = mongoose.model("Product", productSchema);
+const Medicine = mongoose.model("Medicine", medicineSchema);
 
-module.exports = Product;
+module.exports = Medicine;
 
