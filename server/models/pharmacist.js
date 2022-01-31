@@ -25,7 +25,7 @@ const pharmacistSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    Email: {
+    email: {
         type: String,
         // we can delete required because maybe not all pharmasis have email 
         required: true,
@@ -51,7 +51,7 @@ const pharmacistSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
-    userName: {
+    username: {
         type: String,
         required: true,
         minlength: 5,
