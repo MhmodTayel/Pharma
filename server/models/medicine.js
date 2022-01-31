@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const medicineSchema = new mongoose.Schema({
     id:{
         type: Number,
-        default: 0,
+        default: 1,
         required: true
     },
     name:{
