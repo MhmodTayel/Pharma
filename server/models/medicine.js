@@ -42,7 +42,7 @@ const medicineSchema = new mongoose.Schema({
     },
     image:{
         type: String,
-        required: true
+        // required: true
         
     },
     isAvailable:{
@@ -71,7 +71,7 @@ const medicineSchema = new mongoose.Schema({
         type: [
           {
             type: String,
-            minLength: 5,
+            minLength: 3,
             maxlength: 20,
           },
         ],
