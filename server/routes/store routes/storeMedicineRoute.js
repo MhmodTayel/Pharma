@@ -1,19 +1,14 @@
+const express = require('express');
+const { create } = require('../../controllers/store controllers/storeController');
+const router = express.Router();
 
-// Hello world
-// Don't make conflict
+router.post("/medicine/add", async(req, res, next)=>{
+    const body = req.body;
+    body.categories = body.categories.split(' ');
+    create(body)
+    .then((doc)=>res.json(doc))
+    .catch((e) => next(e));
+})
 
 
-// Hello world
-// test
-
-/**
- * 
- * test from mohmod tayel
- * 
- patch_med_route
- * agian
- * 
- */
-
- */
-
+module.exports = router;
