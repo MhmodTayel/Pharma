@@ -1,8 +1,7 @@
+const Medicine = require("../../models/medicine");
 
-const Medicine = require('../../models/medicine');
-
-const create = (medicine)=> Medicine.create(medicine);
-const update = (_id, medicine) => Medicine.updateOne({ _id }, medicine);
-
-module.exports = {create,update};
-
+const create = (medicine) => Medicine.create(medicine);
+const update = (id, medicine) => Medicine.updateOne({ id }, medicine);
+const updateQuantity = (id, quantity) =>
+  Medicine.updateOne({ id }, { $inc: { quantity } });
+module.exports = { create, update, updateQuantity };
