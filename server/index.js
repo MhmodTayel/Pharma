@@ -3,6 +3,7 @@ const express = require("express");
 var cors = require("cors");
 const mongoose = require("mongoose");
 const storeMedRoutes = require('./routes/store routes/storeMedicineRoute');
+const storeAdminRoutes = require('./routes/store routes/storeAdminRoute');
 const app = express();
 app.use(cors());
 
@@ -11,6 +12,7 @@ app.use(express.json());
 mongoose.connect(process.env.CONNECTION_STRING);
 
 app.use("/store", storeMedRoutes);
+app.use("/store", storeAdminRoutes);
 app.use("*", (req, res) => {
   res.status(404).end();
 });
