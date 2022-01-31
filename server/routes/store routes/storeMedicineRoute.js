@@ -1,6 +1,10 @@
-const express = require('express');
-const { create } = require('../../controllers/store controllers/storeController');
+const express = require("express");
 const router = express.Router();
+
+const {
+  create,
+  update,
+} = require("../../controllers/store controllers/storeMedController");
 
 router.post("/medicine/add", async(req, res, next)=>{
     const body = req.body;
@@ -10,5 +14,14 @@ router.post("/medicine/add", async(req, res, next)=>{
     .catch((e) => next(e));
 })
 
+router.patch("/medicine/:id", (req, res, next) => {
+  const medId = req.params.id;
+  const medicine = req.body;
+
+  update(medId, medicine)
+    .then((doc) => res.json(doc))
+    .catch((e) => next(e));
+});
 
 module.exports = router;
+
