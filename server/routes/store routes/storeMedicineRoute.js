@@ -5,6 +5,7 @@ const {
   create,
   update,
   updateQuantity,
+  deleteOne,
   getById
 } = require("../../controllers/store controllers/storeMedController");
 
@@ -30,6 +31,15 @@ router.patch("/medicine/:id", uploadS3.single("image"), (req, res, next) => {
   const medicine = req.body;
   medicine.image = req.file?.location;
   update(medId, medicine)
+    .then((doc) => res.json(doc))
+    .catch((e) => next(e));
+});
+
+router.delete("/medicine/delete/:id", (req, res, next) => {
+  const medId = req.params.id;
+  const medicine = req.body;
+
+  deleteOne(medId, medicine)
     .then((doc) => res.json(doc))
     .catch((e) => next(e));
 });
