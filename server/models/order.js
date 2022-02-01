@@ -17,7 +17,7 @@ const orderSchema = new mongoose.Schema({
     numberOfCat: Number,
     quantityOfCat:Number,
     inProgress : Boolean,
-    fulFilled : Boolean,
+    fulfilled : Boolean,
     discount : Boolean,
     medicines:{
         type: [
