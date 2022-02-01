@@ -5,6 +5,7 @@ const {
   create,
   update,
   updateQuantity,
+  getById
 } = require("../../controllers/store controllers/storeMedController");
 
 router.post("/medicine/add", async (req, res, next) => {
@@ -30,6 +31,14 @@ router.patch("/medicine/quantity/:id", (req, res, next) => {
   const medId = req.params.id;
   const medicineQuantity = req.body.quantity;
   updateQuantity(medId, medicineQuantity)
+    .then((doc) => res.json(doc))
+    .catch((e) => next(e));
+});
+
+router.get("/medicine/details/:id", (req, res, next) => {
+  const medId = req.params.id;
+  console.log(medId);
+  getById(medId)
     .then((doc) => res.json(doc))
     .catch((e) => next(e));
 });
