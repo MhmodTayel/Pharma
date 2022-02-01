@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const orderSchema = new mongoose.Schema({
     id: {
         type: Number,
-        default: 0,
+        default: 1,
         required: true
     },
     number: {
@@ -14,14 +14,17 @@ const orderSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
-    numberofcat: Number,
-    quantityofcat:Number,
-    inprogress : Boolean,
-    fulfilled : Boolean,
+    numberOfCat: Number,
+    quantityOfCat:Number,
+    inProgress : Boolean,
+    fulFilled : Boolean,
     discount : Boolean,
     medicines:{
-        type: String,
-        required: true,
+        type: [
+          {
+            type: String,
+          },
+        ],
     },
 
 
