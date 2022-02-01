@@ -27,7 +27,7 @@ router.patch("/medicine/:id", (req, res, next) => {
     .catch((e) => next(e));
 });
 
-router.delete("/medicine/:id", (req, res, next) => {
+router.delete("/medicine/delete/:id", (req, res, next) => {
   const medId = req.params.id;
   const medicine = req.body;
 
