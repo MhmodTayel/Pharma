@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const pharmacistSchema = new mongoose.Schema({
     id: {
         type: Number,
-        default: 0,
+        default: 1,
         required: true
     },
     name: {
@@ -42,7 +42,7 @@ const pharmacistSchema = new mongoose.Schema({
     },
     isVIP: {
         type: Boolean,
-        required: true
+        required: false
     },
 
     // i replace offer with disscount 
@@ -54,7 +54,7 @@ const pharmacistSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        minlength: 5,
+        minlength: 3,
         maxlength: 20,
         unique:true
 
