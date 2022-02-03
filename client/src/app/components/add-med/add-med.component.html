@@ -69,7 +69,7 @@
 
   <mat-form-field class="example-half-width mx-2" appearance="fill">
     <mat-label>Discount</mat-label>
-    <input matInput placeholder="" value="" formControlName="Discount" #inputDiscount [class.is-invalid]="formAddMedicine.controls['Discount'].errors && formAddMedicine.controls['Discount'].touched">
+    <input type="number" matInput placeholder="" value="" formControlName="Discount" #inputDiscount [class.is-invalid]="formAddMedicine.controls['Discount'].errors && formAddMedicine.controls['Discount'].touched">
   </mat-form-field>
 
   <mat-form-field class="example-half-width" appearance="fill">
@@ -115,7 +115,7 @@
 
     <mat-form-field class="example-half-width mx-2" appearance="fill">
       <mat-label>Limit</mat-label>
-      <input matInput placeholder="" value="" formControlName="Limit" #inputLimit [class.is-invalid]="formAddMedicine.controls['Limit'].errors && formAddMedicine.controls['Limit'].touched">
+      <input type="number" matInput placeholder="" value="" formControlName="Limit" #inputLimit [class.is-invalid]="formAddMedicine.controls['Limit'].errors && formAddMedicine.controls['Limit'].touched">
     </mat-form-field>
   </div>
   <div class="d-flex justify-content-center my-3">

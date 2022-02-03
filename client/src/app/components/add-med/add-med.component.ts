@@ -14,7 +14,7 @@ interface Concentration {
 }
 
 interface Boolean {
-  value: string;
+  value: boolean;
   viewValue: string;
 }
 
@@ -65,7 +65,7 @@ export class AddMedComponent implements OnInit {
         // alert(response.message)
       },
       (error) => { 
-        alert(error.message)
+        console.log(error)
       }
     );
 
@@ -144,8 +144,8 @@ export class AddMedComponent implements OnInit {
 
   ];
   booleans: Boolean[] = [
-    { value: 'true-0', viewValue: 'true' },
-    { value: 'false-1', viewValue: 'false' },
+    { value: true, viewValue: 'true' },
+    { value: false, viewValue: 'false' },
 
   ];
   sizes: Size[] = [
