@@ -6,7 +6,7 @@ const orderSchema = new mongoose.Schema({
         default: 1,
         required: true
     },
-    client: { _id: { type: mongoose.Schema.Types.ObjectId, ref: 'Pharmacist' } },
+    client: { type: mongoose.Schema.Types.ObjectId, ref: 'Pharmacist' },
 
     number: {
         type: String,
@@ -23,7 +23,7 @@ const orderSchema = new mongoose.Schema({
     discount: Boolean,
     medicines: [
         {
-            _id: { type: mongoose.Schema.Types.ObjectId, ref: 'Medicine' },
+            id: { type: mongoose.Schema.Types.ObjectId, ref: 'Medicine' },
             quantity: Number
         },
     ],
