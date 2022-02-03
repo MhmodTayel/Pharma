@@ -7,14 +7,14 @@ export class Medicine{
     quantity:number=0;
     pharmPrice:number=0;
     storePrice:number=0;
-    expDate:Data= new Date();
+    expDate:string= "";
     companyProvider:string="";
     image:string="";
     isAvailable:boolean=false;
     type:string="";
     size:string="";
     concentration:string="";
-    arriveDate:Data=new Date();
+    arriveDate:string="";
     categories:string[] = [""];
     discount:number=0;
     firmPrice:number=0;

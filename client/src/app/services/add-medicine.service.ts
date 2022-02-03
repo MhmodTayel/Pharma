@@ -10,6 +10,6 @@ export class AddMedicineService {
   constructor(private apiService :ApiService) { }
 
   addMedicine(medicine : Medicine ){
-    return this.apiService.post(`/medicine/add`, medicine)
+    return this.apiService.post(`/store/medicine/add`, medicine)
   }
 }
