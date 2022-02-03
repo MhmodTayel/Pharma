@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  AppUrl:"mongodb+srv://admin:MRchaos123@sandbox.5iaf8.mongodb.net/Pharma?retryWrites=true&w=majority"
 };
 
 /*
