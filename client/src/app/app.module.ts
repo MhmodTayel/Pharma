@@ -7,20 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddMedComponent } from './components/add-med/add-med.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient,HttpClientModule } from '@angular/common/http';
-import { OrdersPageComponent } from './modules/ordersModule/orders/orders-page/orders-page.component';
-import { ProductsPageComponent } from './modules/productsModule/products-page/products-page.component';
-import { ProfilePageComponent } from './modules/profileModule/profile-page/profile-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddMedComponent,
-    OrdersPageComponent,
-    ProductsPageComponent,
-    ProfilePageComponent,
-  
+    AddMedComponent,  
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,9 +22,7 @@ import { ProfilePageComponent } from './modules/profileModule/profile-page/profi
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-  
-    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
