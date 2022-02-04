@@ -6,7 +6,8 @@ const {
   update,
   updateQuantity,
   deleteOne,
-  getById
+  getById,
+  es
 } = require("../../controllers/store controllers/storeMedController");
 
 const uploadS3 = require("../../middlewares/imageMiddleware");
@@ -25,6 +26,13 @@ router.post(
       .catch((e) => next(e));
   }
 );
+
+router.get("/medicine/es/:qurey", (req, res, next) => {
+  const qurey = req.params.qurey;
+  es(qurey, res)
+    // .then((doc) => console.log(doc))
+    // .catch((e) => next(e));
+});
 
 router.patch("/medicine/:id", uploadS3.single("image"), (req, res, next) => {
   const medId = req.params.id;

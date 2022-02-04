@@ -1,16 +1,24 @@
 const mongoose = require('mongoose');
-
+const mongoosastic = require('mongoosastic')
 const medicineSchema = new mongoose.Schema({
     id:{
         type: Number,
         default: 1,
-        required: true
+        required: true,
+        es_indexed: true
     },
     name:{
         type: String,
         required: true,
         minlength: 5,
-        maxlength: 50
+        maxlength: 50,
+        es_indexed: true,
+        
+        
+        es_type: 'search_as_you_type',
+        // es_index_analyzer: 'simple',
+        // es_search_analyzer: 'simple',
+        // es_payloads: true
     },
     description:{
         type: String,
@@ -42,7 +50,7 @@ const medicineSchema = new mongoose.Schema({
     },
     image:{
         type: String,
-        required: true
+        // required: true
         
     },
     isAvailable:{
@@ -99,7 +107,31 @@ const medicineSchema = new mongoose.Schema({
     },
 }, {timestamps: true});
 
+medicineSchema.plugin(mongoosastic);
 const Medicine = mongoose.model("Medicine", medicineSchema);
+// Medicine.createMapping({
+//     properties: {
+//       name: {
+//         type: "search_as_you_type",
+//       },
+//     },
+//   });
 
+Medicine.createMapping({
+    "mappings" : {
+        "properties": {
+            "name": {
+              "type": "search_as_you_type"
+            }
+      }}
+},function(err, mapping) {
+    if (err) {
+        console.log('error creating mapping (you can safely ignore this)');
+        console.log(err);
+    } else {
+        console.log('mapping created!');
+        console.log(mapping);
+    }
+});
 module.exports = Medicine;
 
