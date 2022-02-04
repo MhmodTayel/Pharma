@@ -1,1 +1,44 @@
-<p>login works!</p>
+<div class="container h-100 d-flex align-items-center justify-content-center">
+    <div class="row w-100 ">
+        <div class="col-lg-6 mx-auto ">
+            <mat-card class="form-margin p-4">
+                <h2 class="fw-bold">User Sign In</h2>
+            <form [formGroup]="loginForm" *ngIf="loginForm">
+                <div class="mb-4">
+                  <mat-form-field class="w-100">
+                    <input matInput type="text" formControlName="username"
+                      [class.is-invalid]="loginForm.controls['username'].errors && loginForm.controls['username'].touched "
+                      placeholder="Username">
+                  </mat-form-field>
+                  <div *ngIf="loginForm.controls['username'].errors" class="invalid">
+                    <div *ngIf="loginForm.controls['username'].errors['required'] &&  loginForm.controls['username'].touched">Required Username
+                    </div>
+                    <div *ngIf="loginForm.controls['username'].errors[''] &&  loginForm.controls['username'].touched">Invalid Username
+                    </div>
+                    <div *ngIf="loginForm.controls['username'].errors['maxlength']">Max length is 20</div>
+                    <div *ngIf="loginForm.controls['username'].errors['minlength']">Min length is 6</div>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <mat-form-field class="w-100">
+                    <input matInput type="password" placeholder="Password" formControlName="password"
+                      [class.is-invalid]="loginForm.controls['password'].errors && loginForm.controls['password'].touched">
+                  </mat-form-field>
+                  <div *ngIf="loginForm.controls['password'].errors " class="invalid">
+                    <div *ngIf="loginForm.controls['password'].errors['required'] && loginForm.controls['password'].touched">Required
+                      Password</div>
+                    <div *ngIf="loginForm.controls['password'].errors['password']">Invalid Password</div>
+                    <div *ngIf="loginForm.controls['password'].errors['maxlength']">Max length is 20</div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <mat-checkbox>Remember Me</mat-checkbox>
+                </div>
+                <button color="warn" class="button-lg mb-3 px-5 py-1 sign-in-button" mat-raised-button [routerLink]="['/admin-panel/reports']"
+                  (click)="login()">Sign In</button>
+              </form>
+              </mat-card>
+
+        </div>
+    </div>
+</div>

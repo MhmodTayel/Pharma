@@ -21,7 +21,7 @@ const routes: Routes = [
     //import all the components needed for this module here
   ],
   imports: [
-    CommonModule , RouterModule.forChild(routes) , SharedModuleModule
+    CommonModule , RouterModule.forChild(routes), SharedModuleModule
   ]
 })
 export class ProductsModule { }
