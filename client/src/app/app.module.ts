@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddMedComponent } from './components/add-med/add-med.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient,HttpClientModule } from '@angular/common/http';
+import { OrdersStoreComponent } from './components/orders-store/orders-store.component';
 
 import { LayoutComponent } from './layout/layout/layout.component';
 import { LoginComponent } from './components/login/login.component';
@@ -17,9 +18,14 @@ import { LoginComponent } from './components/login/login.component';
   declarations: [
     AppComponent,
     AddMedComponent,
+
+    OrdersStoreComponent,
+  
+
     LayoutComponent,
 
     LoginComponent, 
+
 
   ],
   

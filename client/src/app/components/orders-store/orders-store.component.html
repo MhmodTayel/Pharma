@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-between forSearch  p-3">
+  <input matInput (keyup)="applyFilter($event)" placeholder="Search Here!" class="form-control w-auto " #input />
+</div>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8  p-3" (matSortChange)="sortData()">
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>id.</th>
+    <td mat-cell *matCellDef="let element">{{ element.code }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>date</th>
+    <td mat-cell *matCellDef="let element">{{ element.Desc_en }}</td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Desc_ar">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>desc_ar</th>
+    <td mat-cell *matCellDef="let element">{{ element.Desc_ar }}</td>
+  </ng-container>
+
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
