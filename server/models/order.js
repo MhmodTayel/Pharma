@@ -6,6 +6,7 @@ const orderSchema = new mongoose.Schema({
         required: true
     },
     client: { type: mongoose.Schema.Types.ObjectId, ref: 'Pharmacist' },
+
     number: {
         type: String,
         required: true,

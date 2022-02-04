@@ -14,7 +14,7 @@ interface Concentration {
 }
 
 interface Boolean {
-  value: string;
+  value: boolean;
   viewValue: string;
 }
 
@@ -36,8 +36,8 @@ export class AddMedComponent implements OnInit {
   formAddMedicine: FormGroup = new FormGroup({});
   serializedDate = new FormControl(new Date().toISOString());
 
-  add(name:string,description:string,companyProvider:string,type:string,concentration:string,
-    quantity:number,pharmprice:number,storeprice:number,discount:number,
+  add(name:string,description:string,companyProvider:string,type:string,concentration:string,EXP:string,
+    Arrive:string,quantity:number,pharmprice:number,storeprice:number,discount:number,
     firmprice:number,brand:string,isavaliable:boolean,size:string,categorie:string,limit:number) {
     let medicine = new Medicine();
     medicine.name=name;
@@ -45,8 +45,8 @@ export class AddMedComponent implements OnInit {
     medicine.companyProvider=companyProvider;
     medicine.type=type;
     medicine.concentration=concentration;
-    // medicine.expDate=EXP;
-    // medicine.arriveDate=Arrive;
+    medicine.expDate=EXP;
+    medicine.arriveDate=Arrive;
     medicine.quantity=quantity;
     medicine.pharmPrice=pharmprice;
     medicine.storePrice=storeprice;
@@ -62,10 +62,10 @@ export class AddMedComponent implements OnInit {
       (response: any) => {
         console.log(response);
         this.medicines.push(medicine);
-        alert(response.message)
+        // alert(response.message)
       },
       (error) => { 
-        alert(error.message)
+        console.log(error)
       }
     );
 
@@ -144,8 +144,8 @@ export class AddMedComponent implements OnInit {
 
   ];
   booleans: Boolean[] = [
-    { value: 'true-0', viewValue: 'true' },
-    { value: 'false-1', viewValue: 'false' },
+    { value: true, viewValue: 'true' },
+    { value: false, viewValue: 'false' },
 
   ];
   sizes: Size[] = [

@@ -18,9 +18,10 @@ router.post(
   async (req, res, next) => {
     const body = req.body;
     body.image = req.file?.location;
-    body.categories = body.categories.split(" ");
+    // body.categories = body.categories.split(" ");
     const medArr = await Medicine.find({});
     body.id = medArr.length + 1;
+    console.log(body)
     create(body)
       .then((doc) => res.json(doc))
       .catch((e) => next(e));
@@ -38,9 +39,7 @@ router.patch("/medicine/:id", uploadS3.single("image"), (req, res, next) => {
 
 router.delete("/medicine/delete/:id", (req, res, next) => {
   const medId = req.params.id;
-  const medicine = req.body;
-
-  deleteOne(medId, medicine)
+  deleteOne(medId)
     .then((doc) => res.json(doc))
     .catch((e) => next(e));
 });
