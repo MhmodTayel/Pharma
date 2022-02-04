@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddMedComponent } from './components/add-med/add-med.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient,HttpClientModule } from '@angular/common/http';
+import { OrdersStoreComponent } from './components/orders-store/orders-store.component';
 
 
 
@@ -14,6 +15,7 @@ import { HttpClient,HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     AddMedComponent,
+    OrdersStoreComponent,
   
   ],
   imports: [
