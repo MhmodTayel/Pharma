@@ -4,6 +4,7 @@ var cors = require("cors");
 const mongoose = require("mongoose");
 const storeMedRoutes = require("./routes/store routes/storeMedicineRoute");
 const storeAdminRoutes = require("./routes/store routes/storeAdminRoute");
+const storeOrdersRoutes = require('./routes/store routes/storeOrdersRoute')
 const adminAuth = require("./middlewares/store middleware/adminMiddleware");
 const app = express();
 app.use(cors());
@@ -15,6 +16,7 @@ mongoose.connect(process.env.CONNECTION_STRING);
 app.use("/store", storeAdminRoutes);
 // app.use(adminAuth);
 app.use("/store", storeMedRoutes);
+app.use("/store", storeOrdersRoutes);
 
 app.use("*", (req, res) => {
   res.status(404).end();
