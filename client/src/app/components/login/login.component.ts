@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { SessionService } from 'src/app/services/sessionServices/session.service';
 import { AdminUser } from 'src/app/models/adminModel'; 
 import { AdminService } from 'src/app/services/adminService/admin.service';
-// import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({

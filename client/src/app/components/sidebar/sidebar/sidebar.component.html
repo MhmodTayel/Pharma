@@ -1,0 +1,29 @@
+<mat-nav-list>
+    <div class="logo py-2 text-white text-left">
+      <h2>
+        <mat-icon>local_pharmacy</mat-icon> PharmaTec
+      </h2>
+    </div>
+    <mat-divider></mat-divider>
+  
+    <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/orders">
+      <h4>
+        <mat-icon>home</mat-icon> Orders
+      </h4>
+    </a>
+
+    <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/products/all-products">
+      <h4><mat-icon>list</mat-icon> Products</h4>
+    </a>
+
+    <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/products/add">
+    <h4>  <mat-icon>add</mat-icon> Add Product</h4>
+    </a>
+    <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/products/edit/:id">
+      <h4> <mat-icon>edit</mat-icon> Edite Medicene</h4>
+     </a>
+    <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/profile">
+    <h4><mat-icon>account_circle</mat-icon>profile</h4>
+    </a>
+
+  </mat-nav-list>
