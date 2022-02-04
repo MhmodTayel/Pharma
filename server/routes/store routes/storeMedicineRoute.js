@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Medicine = require("../../models/medicine");
+
 const {
   create,
   update,
@@ -38,9 +39,7 @@ router.patch("/medicine/:id", uploadS3.single("image"), (req, res, next) => {
 
 router.delete("/medicine/delete/:id", (req, res, next) => {
   const medId = req.params.id;
-  const medicine = req.body;
-
-  deleteOne(medId, medicine)
+  deleteOne(medId)
     .then((doc) => res.json(doc))
     .catch((e) => next(e));
 });
