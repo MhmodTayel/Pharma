@@ -1,3 +1,6 @@
+import { AddMedComponent } from './components/add-med/add-med.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
@@ -20,6 +23,7 @@ const routes: Routes = [
     component:LayoutComponent,
     loadChildren: () => import('./modules/profileModule/profile-module.module').then(m => m.ProfileModuleModule)
   },
+
 ];
 
 @NgModule({
