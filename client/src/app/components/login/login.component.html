@@ -2,7 +2,7 @@
     <div class="row w-100 ">
         <div class="col-lg-6 mx-auto ">
             <mat-card class="form-margin p-4">
-                <h2 class="fw-bold">User Sign In</h2>
+                <h2 class="fw-bold" >User Sign In</h2>
             <form [formGroup]="loginForm" *ngIf="loginForm">
                 <div class="mb-4">
                   <mat-form-field class="w-100">
@@ -21,9 +21,14 @@
                 </div>
                 <div class="mb-4">
                   <mat-form-field class="w-100">
-                    <input matInput type="password" placeholder="Password" formControlName="password"
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password"
                       [class.is-invalid]="loginForm.controls['password'].errors && loginForm.controls['password'].touched">
-                  </mat-form-field>
+                    
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon caption >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+
+                    </mat-form-field>
                   <div *ngIf="loginForm.controls['password'].errors " class="invalid">
                     <div *ngIf="loginForm.controls['password'].errors['required'] && loginForm.controls['password'].touched">Required
                       Password</div>

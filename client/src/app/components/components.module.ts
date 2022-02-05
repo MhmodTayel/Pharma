@@ -13,4 +13,4 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   exports:[OrdersStoreComponent ,ProfileDetailsComponent, AddMedComponent ]
 })
-export class ComponentsModule { }
+export class ComponentsModule {}
