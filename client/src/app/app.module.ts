@@ -12,7 +12,7 @@ import { LayoutComponent } from './layout/layout/layout.component';
 import { LoginComponent } from './components/login/login.component';
 import { SidebarComponent } from './components/sidebar/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header/header.component';
-
+import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 
 
 @NgModule({
@@ -24,6 +24,7 @@ import { HeaderComponent } from './components/header/header/header.component';
     LoginComponent,
     SidebarComponent,
     HeaderComponent, 
+    SnackBarComponent
   ],
   
   imports: [

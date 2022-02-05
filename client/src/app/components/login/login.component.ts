@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { SessionService } from 'src/app/services/sessionServices/session.service';
 import { AdminUser } from 'src/app/models/adminModel'; 
 import { AdminService } from 'src/app/services/adminService/admin.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { SnackBarService } from 'src/app/services/snackBarService/snack-bar.service';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +14,13 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class LoginComponent implements OnInit {
   loginResponse:any = "" ;
   loginForm:FormGroup  = new FormGroup ({});
+  hide:boolean = true;
 
   constructor( private _formBuilder:FormBuilder , 
     private _sessionService:SessionService ,
     private _router:Router,
     private _adminService : AdminService, 
-    private _mysnackbar: MatSnackBar
+    private _mysnackbar: SnackBarService
   ){}
 
   ngOnInit(): void {
@@ -40,14 +41,12 @@ export class LoginComponent implements OnInit {
       () => {
           if (this.loginResponse != null)
           {
-            // this._router.navigateByUrl('');
+            this._router.navigateByUrl('/orders');
             this._sessionService.login(this.loginResponse);
           }
           else 
           {
-            this._mysnackbar.open('wrong username or password', '', {
-              duration: 40000
-            })
+            this._mysnackbar.openSnackBar('Wrong username or password ','', 'Info')
           }
   
       }
