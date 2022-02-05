@@ -12,30 +12,31 @@ import { LayoutComponent } from './layout/layout/layout.component';
 
 
 
-// const routes: Routes = [
-//   {path:"orders" , component : OrdersStoreComponent},
-//   {path:"meds" , component : AddMedComponent},
-
 const routes: Routes = [
-  {path:'login' , component:LoginComponent},
-  {
-    path: 'products', 
-    component:LayoutComponent,
-    loadChildren: () => import('./modules/productsModule/products.module').then(m => m.ProductsModule)
-  },
-  {
-    path: 'orders', 
-    component: LayoutComponent,
-    loadChildren: () => import('./modules/ordersModule/orders/orders.module').then(m => m.OrdersModule)
-  },
-  {
-    path: 'profile', 
-    component:LayoutComponent,
-    loadChildren: () => import('./modules/profileModule/profile-module.module').then(m => m.ProfileModuleModule)
-  },
+  {path:"orders" , component : OrdersStoreComponent},
+  {path:"meds" , component : AddMedComponent},
+]
+
+// const routes: Routes = [
+//   {path:'login' , component:LoginComponent},
+//   {
+//     path: 'products', 
+//     component:LayoutComponent,
+//     loadChildren: () => import('./modules/productsModule/products.module').then(m => m.ProductsModule)
+//   },
+//   {
+//     path: 'orders', 
+//     component: LayoutComponent,
+//     loadChildren: () => import('./modules/ordersModule/orders/orders.module').then(m => m.OrdersModule)
+//   },
+//   {
+//     path: 'profile', 
+//     component:LayoutComponent,
+//     loadChildren: () => import('./modules/profileModule/profile-module.module').then(m => m.ProfileModuleModule)
+//   },
 
 
-];
+// ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
