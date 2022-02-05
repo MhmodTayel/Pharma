@@ -4,7 +4,9 @@ import { CommonModule } from '@angular/common';
 import { Routes , RouterModule } from '@angular/router';
 import { SharedModuleModule } from '../sharedModule/shared-module/shared-module.module';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:'',component:ProfilePageComponent}
+];
 @NgModule({
   declarations: [
     ProfilePageComponent

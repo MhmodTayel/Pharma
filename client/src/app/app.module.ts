@@ -8,9 +8,10 @@ import { AddMedComponent } from './components/add-med/add-med.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient,HttpClientModule } from '@angular/common/http';
 import { OrdersStoreComponent } from './components/orders-store/orders-store.component';
-
 import { LayoutComponent } from './layout/layout/layout.component';
 import { LoginComponent } from './components/login/login.component';
+import { SidebarComponent } from './components/sidebar/sidebar/sidebar.component';
+import { HeaderComponent } from './components/header/header/header.component';
 
 
 
@@ -18,15 +19,11 @@ import { LoginComponent } from './components/login/login.component';
   declarations: [
     AppComponent,
     AddMedComponent,
-
     OrdersStoreComponent,
-  
-
     LayoutComponent,
-
-    LoginComponent, 
-
-
+    LoginComponent,
+    SidebarComponent,
+    HeaderComponent, 
   ],
   
   imports: [
@@ -36,9 +33,7 @@ import { LoginComponent } from './components/login/login.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-
     HttpClientModule
-
   ],
   providers: [],
   bootstrap: [AppComponent]
