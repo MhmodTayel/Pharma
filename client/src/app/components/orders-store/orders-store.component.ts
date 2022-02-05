@@ -1,20 +1,9 @@
+import { Order } from './../../models/orderModel';
 import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-  test: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-
-];
 @Component({
   selector: 'app-orders-store',
   templateUrl: './orders-store.component.html',
@@ -27,97 +16,129 @@ export class OrdersStoreComponent implements OnInit {
   ngOnInit(): void {
   }
   fakedata=[
-    
       {
-        "code": "AD",
-        "Desc_en": "Andorra",
-        "Desc_ar": "أندورا"
+        "id": 1,
+        "client": "samir",
+        "date": "2/4/1854",
+        "status": "in test"
       },
       {
-        "code": "AE",
-        "Desc_en": "United Arab Emirates",
-        "Desc_ar": "الامارات العربية المتحدة"
+        "id": 2,
+        "client": "heba",
+        "date": "2/4/122154",
+        "status": "in progress"
       },
       {
-        "code": "AF",
-        "Desc_en": "Afghanistan",
-        "Desc_ar": "أفغانستان"
+        "id": 3,
+        "client": "tayel",
+        "date": "2/4/888",
+        "status": "delivering"
       },
       {
-        "code": "AF",
-        "Desc_en": "Afghanistan",
-        "Desc_ar": "أفغانستان"
+        "id": 4,
+        "client": "elham",
+        "date": "2/4/1854",
+        "status": "in progress"
       },
       {
-        "code": "AF",
-        "Desc_en": "Afghanistan",
-        "Desc_ar": "أفغانستان"
+        "id": 5,
+        "client": "sarah",
+        "date": "2/4/1884",
+        "status": "pending"
       },
       {
-        "code": "AF",
-        "Desc_en": "Afghanistan",
-        "Desc_ar": "أفغانستان"
+        "id": 1,
+        "client": "samir",
+        "date": "2/4/1854",
+        "status": "in test"
       },
       {
-        "code": "AD",
-        "Desc_en": "Andorra",
-        "Desc_ar": "أندورا"
-      },{
-        "code": "AD",
-        "Desc_en": "Andorra",
-        "Desc_ar": "أندورا"
-      },{
-        "code": "AD",
-        "Desc_en": "Andorra",
-        "Desc_ar": "أندورا"
-      },{
-        "code": "AD",
-        "Desc_en": "Andorra",
-        "Desc_ar": "أندورا"
+        "id": 2,
+        "client": "heba",
+        "date": "2/4/122154",
+        "status": "in progress"
       },
       {
-        "code": "AF",
-        "Desc_en": "Afghanistan",
-        "Desc_ar": "أفغانستان"
+        "id": 3,
+        "client": "tayel",
+        "date": "2/4/888",
+        "status": "delivering"
       },
       {
-        "code": "AF",
-        "Desc_en": "Afghanistan",
-        "Desc_ar": "أفغانستان"
+        "id": 4,
+        "client": "elham",
+        "date": "2/4/1854",
+        "status": "in progress"
       },
       {
-        "code": "AF",
-        "Desc_en": "Afghanistan",
-        "Desc_ar": "أفغانستان"
+        "id": 5,
+        "client": "sarah",
+        "date": "2/4/1884",
+        "status": "pending"
       },
       {
-        "code": "AF",
-        "Desc_en": "Afghanistan",
-        "Desc_ar": "أفغانستان"
+        "id": 1,
+        "client": "samir",
+        "date": "2/4/1854",
+        "status": "in test"
       },
       {
-        "code": "AF",
-        "Desc_en": "Afghanistan",
-        "Desc_ar": "أفغانستان"
+        "id": 2,
+        "client": "heba",
+        "date": "2/4/122154",
+        "status": "in progress"
       },
       {
-        "code": "AF",
-        "Desc_en": "Afghanistan",
-        "Desc_ar": "أفغانستان"
+        "id": 3,
+        "client": "tayel",
+        "date": "2/4/888",
+        "status": "delivering"
       },
       {
-        "code": "AF",
-        "Desc_en": "Afghanistan",
-        "Desc_ar": "أفغانستان"
+        "id": 4,
+        "client": "elham",
+        "date": "2/4/1854",
+        "status": "in progress"
       },
       {
-        "code": "AF",
-        "Desc_en": "Afghanistan",
-        "Desc_ar": "أفغانستان"
+        "id": 5,
+        "client": "sarah",
+        "date": "2/4/1884",
+        "status": "pending"
+      },
+      {
+        "id": 1,
+        "client": "samir",
+        "date": "2/4/1854",
+        "status": "in test"
+      },
+      {
+        "id": 2,
+        "client": "heba",
+        "date": "2/4/122154",
+        "status": "in progress"
+      },
+      {
+        "id": 3,
+        "client": "tayel",
+        "date": "2/4/888",
+        "status": "delivering"
+      },
+      {
+        "id": 4,
+        "client": "elham",
+        "date": "2/4/1854",
+        "status": "in progress"
+      },
+      {
+        "id": 5,
+        "client": "sarah",
+        "date": "2/4/1884",
+        "status": "pending"
       },
   ]
-  displayedColumns: string[] = ['id', 'date', 'Desc_ar'];
-  dataSource = new MatTableDataSource(this.fakedata);
+  displayedColumns: string[] = ['id', 'client', 'date','status','action']; //for table headers
+  dataSource = new MatTableDataSource(this.fakedata); 
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -132,21 +153,10 @@ export class OrdersStoreComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
- 
-code:any;
-Desc_en:any;
-Desc_ar:any;
-myObject = {};
 
-addField(){
-this.myObject = ` {
-  "code": "${this.code}",
-  "Desc_en": ${this.Desc_en},
-  "Desc_ar": ${this.Desc_ar}
-},`
 
-console.log(this.myObject)
+catchRow(e:Order){ // will use it to show order details in model.
+  console.log(e);
 }
-
 
 }
