@@ -3,18 +3,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes , RouterModule } from '@angular/router';
 import { SharedModuleModule } from '../sharedModule/shared-module/shared-module.module';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 const routes: Routes = [
   {path:'',component:ProfilePageComponent}
 ];
 @NgModule({
   declarations: [
-    ProfilePageComponent
-    //import all the components needed for this module here
-
+    ProfilePageComponent    
   ],
   imports: [
-    CommonModule , RouterModule.forChild(routes) , SharedModuleModule
+    CommonModule , RouterModule.forChild(routes) , SharedModuleModule , ComponentsModule
   ]
 })
 export class ProfileModuleModule { }

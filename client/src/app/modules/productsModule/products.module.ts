@@ -5,6 +5,8 @@ import { ProductsPageComponent } from './products-page/products-page.component';
 import { SharedModuleModule } from '../sharedModule/shared-module/shared-module.module';
 import { AddProductPageComponent } from './add-product-page/add-product-page.component';
 import { EditProductPageComponent } from './edit-product-page/edit-product-page.component';
+import { ComponentsModule } from 'src/app/components/components.module';
+
 
 const routes: Routes = [
   {path:'all-products',component:ProductsPageComponent},
@@ -18,10 +20,9 @@ const routes: Routes = [
     ProductsPageComponent,
     AddProductPageComponent,
     EditProductPageComponent
-    //import all the components needed for this module here
   ],
   imports: [
-    CommonModule , RouterModule.forChild(routes), SharedModuleModule
+    CommonModule , RouterModule.forChild(routes), SharedModuleModule ,ComponentsModule
   ]
 })
 export class ProductsModule { }
