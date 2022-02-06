@@ -11,10 +11,6 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    date: {
-        type: Date,
-        required: true,
-    },
     numberOfCat: Number,
     quantityOfCat: Number,
     inProgress: Boolean,
@@ -26,9 +22,8 @@ const orderSchema = new mongoose.Schema({
             quantity: Number
         },
     ],
+    date : { type : Date, default: Date.now }
 },
-
-
 )
 const Order = mongoose.model("Order", orderSchema);
 module.exports = Order;

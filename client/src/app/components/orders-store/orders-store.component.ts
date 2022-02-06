@@ -1,8 +1,15 @@
+import { OrdersServiceService } from './../../services/orderService/orders-service.service';
 import { Order } from './../../models/orderModel';
 import { MatTableDataSource } from '@angular/material/table';
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { HttpClient} from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+
+
 
 @Component({
   selector: 'app-orders-store',
@@ -11,141 +18,36 @@ import { MatSort } from '@angular/material/sort';
 })
 export class OrdersStoreComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http:HttpClient, private order:OrdersServiceService,public dialog: MatDialog ) { }
 
   ngOnInit(): void {
+    this.order.getOrders().subscribe((data:any) => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      console.log(data);
+    })
+
   }
-  fakedata=[
-      {
-        "id": 1,
-        "client": "samir",
-        "date": "2/4/1854",
-        "status": "in test"
-      },
-      {
-        "id": 2,
-        "client": "heba",
-        "date": "2/4/122154",
-        "status": "in progress"
-      },
-      {
-        "id": 3,
-        "client": "tayel",
-        "date": "2/4/888",
-        "status": "delivering"
-      },
-      {
-        "id": 4,
-        "client": "elham",
-        "date": "2/4/1854",
-        "status": "in progress"
-      },
-      {
-        "id": 5,
-        "client": "sarah",
-        "date": "2/4/1884",
-        "status": "pending"
-      },
-      {
-        "id": 1,
-        "client": "samir",
-        "date": "2/4/1854",
-        "status": "in test"
-      },
-      {
-        "id": 2,
-        "client": "heba",
-        "date": "2/4/122154",
-        "status": "in progress"
-      },
-      {
-        "id": 3,
-        "client": "tayel",
-        "date": "2/4/888",
-        "status": "delivering"
-      },
-      {
-        "id": 4,
-        "client": "elham",
-        "date": "2/4/1854",
-        "status": "in progress"
-      },
-      {
-        "id": 5,
-        "client": "sarah",
-        "date": "2/4/1884",
-        "status": "pending"
-      },
-      {
-        "id": 1,
-        "client": "samir",
-        "date": "2/4/1854",
-        "status": "in test"
-      },
-      {
-        "id": 2,
-        "client": "heba",
-        "date": "2/4/122154",
-        "status": "in progress"
-      },
-      {
-        "id": 3,
-        "client": "tayel",
-        "date": "2/4/888",
-        "status": "delivering"
-      },
-      {
-        "id": 4,
-        "client": "elham",
-        "date": "2/4/1854",
-        "status": "in progress"
-      },
-      {
-        "id": 5,
-        "client": "sarah",
-        "date": "2/4/1884",
-        "status": "pending"
-      },
-      {
-        "id": 1,
-        "client": "samir",
-        "date": "2/4/1854",
-        "status": "in test"
-      },
-      {
-        "id": 2,
-        "client": "heba",
-        "date": "2/4/122154",
-        "status": "in progress"
-      },
-      {
-        "id": 3,
-        "client": "tayel",
-        "date": "2/4/888",
-        "status": "delivering"
-      },
-      {
-        "id": 4,
-        "client": "elham",
-        "date": "2/4/1854",
-        "status": "in progress"
-      },
-      {
-        "id": 5,
-        "client": "sarah",
-        "date": "2/4/1884",
-        "status": "pending"
-      },
-  ]
-  displayedColumns: string[] = ['id', 'client', 'date','status','action']; //for table headers
-  dataSource = new MatTableDataSource(this.fakedata); 
+
+
+
+  openDialog() { 
+    const dialogRef = this.dialog.open(OrderDetailsComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  fakedata:any=[]
+  displayedColumns: string[] = ['id','client','date','status','action']; //for table headers
+  dataSource:any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+
   }
 
   sortData() {}
@@ -157,6 +59,10 @@ export class OrdersStoreComponent implements OnInit {
 
 catchRow(e:Order){ // will use it to show order details in model.
   console.log(e);
+}
+test(){
+  console.log(this.fakedata);
+  
 }
 
 }

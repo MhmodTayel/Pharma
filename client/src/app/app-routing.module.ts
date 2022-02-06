@@ -14,11 +14,6 @@ const routes: Routes = [
       canActivate : [AuthorizationGuard]
     },
     {
-      path: '', 
-      loadChildren: () => import('./modules/ordersModule/orders/orders.module').then(m => m.OrdersModule),
-      canActivate : [AuthorizationGuard]
-    },
-    {
       path: 'orders', 
       loadChildren: () => import('./modules/ordersModule/orders/orders.module').then(m => m.OrdersModule),
       canActivate : [AuthorizationGuard]
