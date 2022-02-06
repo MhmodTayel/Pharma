@@ -1,10 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
 :host {
   .mat-icon {
     vertical-align: middle;
     margin-right: 1rem;
   }
 }
-
+.logo{
+  font-family: 'Lobster', cursive;
+  font-size: 30px;
+}
+.menu__fonts{
+  font-family: 'Prompt', sans-serif !important;
+}
 .mat-divider {
   border-top-width: 2px;
   border-color: white !important;
@@ -47,4 +55,8 @@ a{
   font-size: 0.6rem;
   font-weight: 100;
   letter-spacing: 1px;
+}
+h4{
+  color: #f2f5f7 !important ;
+  font-size: 1.2rem;
 }
