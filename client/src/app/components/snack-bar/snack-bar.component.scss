@@ -1,0 +1,8 @@
+.mat-snack-bar-container{
+    background-color: #ff5722;
+}
+::ng-deep  .mat-snack-bar-container{
+    background-color: #ff5622d2 !important ;
+    color: #ffffff;
+    font-weight:500 ;
+}
