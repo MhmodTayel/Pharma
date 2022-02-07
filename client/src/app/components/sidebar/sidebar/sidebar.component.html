@@ -1,29 +1,39 @@
 <mat-nav-list>
-    <div class="logo py-2 text-white text-left">
-      <h2>
-        <mat-icon>local_pharmacy</mat-icon> PharmaTec
-      </h2>
-    </div>
-    <mat-divider></mat-divider>
+  <div class=" py-1 d-flex justify-content-center align-content-center text-white">
+    <!-- <mat-icon class="my-3 p-3">medical_services</mat-icon> -->
+    <h1 class=" logo m-auto mt-3 mb-5"><mat-icon>medical_services</mat-icon> PharmaTec</h1> 
+  </div>
+
   
-    <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/orders">
-      <h4>
-        <mat-icon>home</mat-icon> Orders
-      </h4>
+  <div class=" d-flex flex-column my-5 align-items-center justify-content-center text-white">
+
+    <a class="my-2" mat-list-item routerLinkActive="list-item-active" routerLink="/orders">
+      <h4 class="d-flex menu__fonts">
+        <mat-icon>shopping_cart</mat-icon> Orders
+      </h4> 
     </a>
 
     <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/products/all-products">
-      <h4><mat-icon>list</mat-icon> Products</h4>
+      <h4 class="d-flex menu__fonts">
+        <mat-icon>category</mat-icon> Products
+      </h4>
     </a>
 
     <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/products/add">
-    <h4>  <mat-icon>add</mat-icon> Add Product</h4>
+      <h4 class="d-flex menu__fonts">
+        <mat-icon>add</mat-icon> Add Product
+      </h4>
     </a>
     <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/products/edit/:id">
-      <h4> <mat-icon>edit</mat-icon> Edite Medicene</h4>
-     </a>
-    <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/profile">
-    <h4><mat-icon>account_circle</mat-icon>profile</h4>
+      <h4 class="d-flex menu__fonts">
+        <mat-icon>edit</mat-icon> Edite Medicene
+      </h4>
     </a>
+    <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/profile">
+      <h4 class="d-flex menu__fonts">
+        <mat-icon>account_circle</mat-icon>profile
+      </h4>
+    </a>
+  </div>
 
-  </mat-nav-list>
+</mat-nav-list>
