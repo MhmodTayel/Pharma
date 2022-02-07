@@ -1,5 +1,7 @@
+import { Order } from '../../../models/orderModel';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OrdersServiceService } from 'src/app/services/orderService/orders-service.service';
 
 @Component({
   selector: 'app-order-details',
@@ -8,20 +10,23 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class OrderDetailsComponent implements OnInit {
 
-  constructor(public route:ActivatedRoute) { }
+  constructor(public route:ActivatedRoute,private order:OrdersServiceService) { }
 
   orderId:any = 0
-
+  details:any[]=[];
     ngOnInit(): void {
       this.route.paramMap.subscribe((params) =>{
          this.orderId = params.get("id");
-         console.log("for test");
-       })
-   
-   
-   console.log(this.orderId);
-   
-   
+         this.order.getDetails('1').subscribe((response: any) => {
+          this.details = response;
+          console.log(this.details);
+        },
+        (error) => {
+          console.log(error);
+        }
+         )
+
+       }) 
    }
   
 

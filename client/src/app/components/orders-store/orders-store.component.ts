@@ -4,8 +4,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { HttpClient} from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 
@@ -18,14 +16,13 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 })
 export class OrdersStoreComponent implements OnInit {
 
-  constructor(private http:HttpClient, private order:OrdersServiceService,public dialog: MatDialog ) { }
+  constructor( private order:OrdersServiceService,public dialog: MatDialog ) { }
 
   ngOnInit(): void {
     this.order.getOrders().subscribe((data:any) => {
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      console.log(data);
     })
 
   }
@@ -36,7 +33,7 @@ export class OrdersStoreComponent implements OnInit {
     const dialogRef = this.dialog.open(OrderDetailsComponent, { disableClose: true });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
     });
   }
   fakedata:any=[]

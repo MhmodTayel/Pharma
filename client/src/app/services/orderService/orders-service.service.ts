@@ -20,4 +20,8 @@ export class OrdersServiceService {
   getOrders(){
     return this._api.get('/store/orders/all')
   }
+  
+  getDetails(id:any){
+    return this._api.get(`/store/orders/orderDetails/${id}`)
+  }
 }
