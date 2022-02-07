@@ -18,6 +18,9 @@ export class MedicinesStoreComponent implements OnInit {
     this._medService.getAllMedicines().subscribe((res: any)=>{
       this.medArr = res;
       console.log(this.medArr);
+      this.dataSource = new MatTableDataSource(res);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     })
   }
 
@@ -28,8 +31,8 @@ dataSource = new MatTableDataSource(this.medArr);
 @ViewChild(MatSort) sort!: MatSort;
 
 ngAfterViewInit() {
-  this.dataSource.paginator = this.paginator;
-  this.dataSource.sort = this.sort;
+  // this.dataSource.paginator = this.paginator;
+  // this.dataSource.sort = this.sort;
 }
 
 sortData() {}
