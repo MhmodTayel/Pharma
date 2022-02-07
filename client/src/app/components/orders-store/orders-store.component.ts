@@ -33,7 +33,7 @@ export class OrdersStoreComponent implements OnInit {
 
 
   openDialog() { 
-    const dialogRef = this.dialog.open(OrderDetailsComponent);
+    const dialogRef = this.dialog.open(OrderDetailsComponent, { disableClose: true });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

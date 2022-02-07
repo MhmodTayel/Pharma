@@ -11,7 +11,9 @@ import { SharedModuleModule } from '../../sharedModule/shared-module/shared-modu
 const routes: Routes = [
   {path:'' , component:OrdersStoreComponent,children:[
     {path:'details/:id' , component:OrderDetailsComponent}
-  ]}
+  ]},
+  
+
 ];
 
 @NgModule({
