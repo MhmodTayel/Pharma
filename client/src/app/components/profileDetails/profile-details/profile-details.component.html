@@ -1,1 +1,100 @@
-<p>profile-details works!</p>
+<div class="container-fluid d-flex align-items-center justify-content-center">
+   <div class="row w-100 ">
+      <div class="col-lg-12 my-3">
+         <div class="py-1">
+            <h4 class="fw-bolder">Hi Admin</h4>
+            <p class="text-muted">email@examlpe.com</p>
+         </div>
+         <mat-card class="details-form">
+            <div class="row">
+               <div class="col-md-8">
+                  <form [formGroup]="adminDetailsForm" *ngIf="adminDetailsForm">
+                     <div class="example-container">
+                        <mat-form-field class="w-100 ">
+                           <input matInput placeholder="Name" type="text" formControlName="name"
+                           [class.is-invalid]="adminDetailsForm.controls['name'].errors && adminDetailsForm.controls['name'].touched" [readonly]="disableForm==true" >
+                        </mat-form-field>
+                           <span *ngIf="adminDetailsForm.controls['name'].errors?.['required'] && adminDetailsForm.controls['name'].touched"> Name is required</span>
+                           <span *ngIf="adminDetailsForm.controls['name'].errors?.['maxlength']">Max length is 20</span>
+                           <span *ngIf="adminDetailsForm.controls['name'].errors?.['minlength']">Min length is 5</span>
+                         
+
+                        <mat-form-field class="w-100">
+                           <input matInput placeholder="Username" type="text" formControlName="username" [readonly]="disableForm==true" 
+                           [class.is-invalid]="adminDetailsForm.controls['username'].errors && adminDetailsForm.controls['username'].touched">
+                        </mat-form-field>
+
+                           <span *ngIf="adminDetailsForm.controls['username'].errors?.['required'] &&  adminDetailsForm.controls['username'].touched"> Username is required</span>
+                           <span *ngIf="adminDetailsForm.controls['username'].errors?.['maxlength']">Max length is 20</span>
+                           <span *ngIf="adminDetailsForm.controls['username'].errors?.['minlength']">Min length is 5</span>
+
+                        <mat-form-field class="w-100 ">
+                           <input matInput placeholder="Mobile Number" type="text" formControlName="phoneNumber" [readonly]="disableForm==true" 
+                           [class.is-invalid]="adminDetailsForm.controls['phoneNumber'].errors && adminDetailsForm.controls['phoneNumber'].touched">
+                        </mat-form-field>
+
+                           <span *ngIf="adminDetailsForm.controls['phoneNumber'].errors?.['required'] && adminDetailsForm.controls['phoneNumber'].touched">Mobile number required</span>
+                           <span *ngIf="adminDetailsForm.controls['phoneNumber'].errors?.['pattern']"> Inavlid Mobile number</span>                        
+                        
+                        <mat-form-field class="w-100">
+                           <input matInput type="email" placeholder="Email" formControlName="email"  [readonly]="disableForm==true" 
+                           [class.is-invalid]="adminDetailsForm.controls['email'].errors && adminDetailsForm.controls['email'].touched">
+                        </mat-form-field>
+
+                        <span *ngIf="adminDetailsForm.controls['email'].errors?.['required'] && adminDetailsForm.controls['email'].touched"> Email required </span>                        
+
+                        <mat-form-field class="w-100">
+                           <input matInput type="password" placeholder="Password" formControlName="password" [readonly]="disableForm==true" 
+                           [class.is-invalid]="adminDetailsForm.controls['password'].errors && adminDetailsForm.controls['password'].touched">
+                        </mat-form-field>
+                           <span *ngIf="adminDetailsForm.controls['password'].errors?.['required'] &&  adminDetailsForm.controls['password'].touched">Password required</span>     
+                        <div class="my-1">   
+                           <button mat-raised-button class="orange-btn me-2" [class.d-none]="disableForm==true" (click)="Update()">Save</button>
+                           <button mat-raised-button class="orange-btn" [class.d-none]="disableForm==false" (click)="enableFrom()">Edit</button>
+                        </div>
+                     
+                     </div>
+                  </form>
+               </div>
+               <div class="col-md-4 d-flex justify-content-center align-items-center">
+                  <div class="d-sm-none d-md-block">
+                     <img src="../../../../assets/user-edit.png" class="opacity-25 img-fluid">
+                  </div>
+               </div>
+            </div>
+         </mat-card>
+
+         <!-- 
+            <mat-card class="form-margin p-4 mt-2">
+                    <h5 class="fw-bold">Profile Information</h5>
+                    <div class="pt-3">
+                       <div class="proflie-field mb-3">
+                          <label>Name:</label>
+                          <span>John</span>
+                       </div>
+                       <div class="proflie-field mb-3">
+                          <label>Gender:</label>
+                          <span>Male</span>
+                       </div>
+                       <div class="proflie-field mb-3">
+                          <label>Phone Number:</label>
+                          <span>Jan,06,1979</span>
+                       </div>
+                       <div class="proflie-field mb-3">
+                          <label>Email</label>
+                          <span>+120 256 254 125</span>
+                       </div>
+                       <div class="proflie-field mb-3">
+                          <label>Username:</label>
+                          <span>New York</span>
+                       </div>
+                       <div class="proflie-field mb-3">
+                          <label>Password:</label>
+                          <span class="text-ellipse">johnDoe@doe.com</span>
+                       </div>
+                       <button mat-raised-button class="orange-btn">Edit</button>
+                    </div>              
+            </mat-card> -->
+
+      </div>
+   </div>

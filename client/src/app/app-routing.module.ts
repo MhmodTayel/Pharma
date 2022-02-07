@@ -14,21 +14,26 @@ const routes: Routes = [
       canActivate : [AuthorizationGuard]
     },
     {
-      path: '', 
-      loadChildren: () => import('./modules/ordersModule/orders/orders.module').then(m => m.OrdersModule),
-      canActivate : [AuthorizationGuard]
-    },
-    {
       path: 'orders', 
       loadChildren: () => import('./modules/ordersModule/orders/orders.module').then(m => m.OrdersModule),
       canActivate : [AuthorizationGuard]
     },
     {
+      path: '', 
+      loadChildren: () => import('./modules/ordersModule/orders/orders.module').then(m => m.OrdersModule),
+      canActivate : [AuthorizationGuard]
+    },
+    // {
+    //   path: '', 
+    //   loadChildren: () => import('./modules/profileModule/profile-module.module').then(m => m.ProfileModuleModule),
+    //   canActivate : [AuthorizationGuard]
+    // },
+    {
       path: 'profile', 
       loadChildren: () => import('./modules/profileModule/profile-module.module').then(m => m.ProfileModuleModule),
       canActivate : [AuthorizationGuard]
     }
-  ]},
+  ]}
  
 ];
 
