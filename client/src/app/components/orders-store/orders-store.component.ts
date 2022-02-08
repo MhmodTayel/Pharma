@@ -37,7 +37,7 @@ export class OrdersStoreComponent implements OnInit {
     });
   }
   fakedata:any=[]
-  displayedColumns: string[] = ['id','client','date','status','action']; //for table headers
+  displayedColumns: string[] = ['id','client','date','cost','status','action']; //for table headers
   dataSource:any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

@@ -11,6 +11,7 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    cost: Number,
     numberOfCat: Number,
     quantityOfCat: Number,
     inProgress: Boolean,
