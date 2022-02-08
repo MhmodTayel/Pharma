@@ -10,5 +10,8 @@ export class MedicineService {
   getAllMedicines(){
     return this._api.get('/store/medicine/getAll')
   }
+  addMedicine(medicine : any ){
+    return this._api.post(`/store/medicine/add`, medicine)
+  }
 
 }
