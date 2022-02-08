@@ -1,11 +1,12 @@
-<div class="d-flex justify-content-between forSearch  p-3">
-  <input matInput (keyup)="applyFilter($event)" placeholder="Search Here!" class="form-control w-auto " #input />
-</div>
 
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8  p-3" (matSortChange)="sortData()">
+<mat-form-field class="example-full-width p-2" >
+  <input matInput (keyup)="applyFilter($event)" placeholder="Find Order!" class="  w-auto " #input />
+</mat-form-field>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8  p-5" (matSortChange)="sortData()">
+
   <!-- id Column -->
   <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>id.</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Order id</th>
     <td mat-cell *matCellDef="let element">{{ element.id }}</td>
   </ng-container>
 
@@ -18,19 +19,29 @@
   <!-- date Column -->
   <ng-container matColumnDef="date">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>date</th>
-    <td mat-cell *matCellDef="let element">{{ element.date | date }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.date | date: "d/M/yy, h:mm a" }}</td>
+  </ng-container>
+
+  <!--cost column-->
+  <ng-container matColumnDef="cost">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>cost</th>
+    <td mat-cell *matCellDef="let element">{{ element.cost }}</td>
   </ng-container>
 
   <!-- status Column -->
   <ng-container matColumnDef="status">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>status</th>
-    <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+    <td mat-cell *matCellDef="let element">
+<span *ngIf="element.inProgress">{{element.inProgress}}</span>
+<span *ngIf="element.fulfilled">{{element.fulfilled}}</span>
+</td>
   </ng-container>
 
   <!-- action Column -->
   <ng-container matColumnDef="action">
-    <th mat-header-cell *matHeaderCellDef yy>action</th>
-    <td mat-cell *matCellDef="let element"><button (click)="catchRow(this.element)">show </button></td>
+    <th mat-header-cell *matHeaderCellDef yy>Order Details</th>
+    <td mat-cell *matCellDef="let element"><i routerLink="/orders/details/{{element.id}}" (click)="openDialog()" class="material-icons" >remove_red_eye</i></td>
+
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -38,3 +49,5 @@
 </table>
 <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
 </mat-paginator>
+
+
