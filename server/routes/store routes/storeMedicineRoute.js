@@ -3,6 +3,7 @@ const router = express.Router();
 const Medicine = require("../../models/medicine");
 
 const {
+  getAll,
   create,
   update,
   updateQuantity,
@@ -11,7 +12,11 @@ const {
 } = require("../../controllers/store controllers/storeMedController");
 
 const uploadS3 = require("../../middlewares/imageMiddleware");
-
+router.get("/medicine/getAll", async(req, res, next) =>{
+  getAll()
+  .then((doc) => res.json(doc))
+  .catch((e) => next(e));
+})
 router.post(
   "/medicine/add",
   uploadS3.single("image"),
