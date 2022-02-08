@@ -1,130 +1,283 @@
 <h3>Add medicine </h3>
-<form class="d-flex w-100 justify-content-center" [formGroup]="formAddMedicine" *ngIf="formAddMedicine">
-<div  class="mat-elevation-z8 example-form align-items-center col-6 "   >
-  <mat-form-field class="example-full-width " appearance="fill" >
-    <mat-label >Medicine Name</mat-label >
-    <input matInput   formControlName="Name" #inputName [class.is-invalid]="formAddMedicine.controls['Name'].errors && formAddMedicine.controls['Name'].touched" >  
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width " appearance="fill">
-    <mat-label>Description</mat-label>
-    <textarea matInput placeholder="write some details about Medicine..." formControlName="Description" #inputDescription [class.is-invalid]="formAddMedicine.controls['Description'].errors && formAddMedicine.controls['Description'].touched"></textarea>
-  </mat-form-field>
-
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Company Name</mat-label>
-    <input matInput placeholder="company name that Provide this medicine.." value="" formControlName="CompanyName" #inputCompanyName [class.is-invalid]="formAddMedicine.controls['CompanyName'].errors && formAddMedicine.controls['CompanyName'].touched">
-  </mat-form-field>
-
-  
-  <mat-form-field appearance="fill" class="example-half-width" >
-    <mat-label class="fw-bold ">Type</mat-label>
-    <mat-select formControlName="Type" #inputType [class.is-invalid]="formAddMedicine.controls['Type'].errors && formAddMedicine.controls['Type'].touched">
-      <mat-option *ngFor="let type of types" [value]="type.value" >
-        {{type.viewValue}}
-      </mat-option>
-    </mat-select>
-    
-  </mat-form-field>
-
-  <mat-form-field appearance="fill"  class="example-half-width mx-2" >
-    <mat-label class="fw-bold ">concentration</mat-label>
-    <mat-select formControlName="concentration" #inputConcentration [class.is-invalid]="formAddMedicine.controls['concentration'].errors && formAddMedicine.controls['concentration'].touched">
-      <mat-option *ngFor="let concentration of concentrations" [value]="concentration.value">
-        {{concentration.viewValue}}
-      </mat-option>
-    </mat-select>
-    
-  </mat-form-field>
-
-
-  <mat-form-field appearance="fill">
-    <mat-label class="fw-bold">Expiration Date</mat-label>
-    <input matInput   [matDatepicker]="picker2" formControlName="Expiration" #inputExpiration [class.is-invalid]="formAddMedicine.controls['Expiration'].errors && formAddMedicine.controls['Expiration'].touched">
-    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-    <mat-datepicker #picker2></mat-datepicker>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill" class="mx-2">
-    <mat-label class="fw-bold">Arrive Date</mat-label>
-    <input matInput [matDatepicker]="picker"  formControlName="ArriveDate" #inputArriveDate [class.is-invalid]="formAddMedicine.controls['ArriveDate'].errors && formAddMedicine.controls['ArriveDate'].touched">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-
-  <mat-form-field class="example-half-width" appearance="fill">
-    <mat-label>Quantity</mat-label>
-    <input matInput placeholder="" value=""formControlName="Quantity" #inputQuantity [class.is-invalid]="formAddMedicine.controls['Quantity'].errors && formAddMedicine.controls['Quantity'].touched">
-  </mat-form-field>
-
-  <mat-form-field class="example-half-width mx-2 " appearance="fill">
-    <mat-label>pharmPrice</mat-label>
-    <input matInput placeholder="" value="" formControlName="pharmPrice" #inputpharmPrice [class.is-invalid]="formAddMedicine.controls['pharmPrice'].errors && formAddMedicine.controls['pharmPrice'].touched">
-  </mat-form-field>
-
-  <mat-form-field class="example-half-width" appearance="fill">
-    <mat-label>storePrice</mat-label>
-    <input matInput placeholder="" value="" formControlName="storePrice" #inputstorePrice [class.is-invalid]="formAddMedicine.controls['storePrice'].errors && formAddMedicine.controls['storePrice'].touched">
-  </mat-form-field>
-
-  <mat-form-field class="example-half-width mx-2" appearance="fill">
-    <mat-label>Discount</mat-label>
-    <input matInput placeholder="" value="" formControlName="Discount" #inputDiscount [class.is-invalid]="formAddMedicine.controls['Discount'].errors && formAddMedicine.controls['Discount'].touched">
-  </mat-form-field>
-
-  <mat-form-field class="example-half-width" appearance="fill">
-    <mat-label>FirmPrice</mat-label>
-    <input matInput placeholder="" value="" formControlName="FirmPrice" #inputFirmPrice [class.is-invalid]="formAddMedicine.controls['FirmPrice'].errors && formAddMedicine.controls['FirmPrice'].touched">
-  </mat-form-field>
-
-  <mat-form-field class="example-half-width mx-2" appearance="fill">
-    <mat-label>Brand</mat-label>
-    <input matInput placeholder="" value="" formControlName="Brand" #inputBrand [class.is-invalid]="formAddMedicine.controls['Brand'].errors && formAddMedicine.controls['Brand'].touched">
-  </mat-form-field>
-
-</div>
-
-<div  class="mat-elevation-z8 example-form  col-6 mx-5 "  >
-
-<mat-card class="h-50 w-50 m-4 "> <img src=""></mat-card>
-<div class="d-flex justify-content-center my-3">
-<mat-form-field appearance="fill" class="example-half-width  ">
-  <mat-label class="fw-bold">isAvailable</mat-label>
-  <mat-select formControlName="isAvailable" #inputisAvailable [class.is-invalid]="formAddMedicine.controls['isAvailable'].errors && formAddMedicine.controls['isAvailable'].touched">
-    <mat-option *ngFor="let boolean of booleans" [value]="boolean.value" >
-      {{boolean.viewValue}}
-    </mat-option>
-  </mat-select>
-  </mat-form-field>
-
-  <mat-form-field appearance="fill" class="example-half-width mx-2">
-    <mat-label class="fw-bold">Size</mat-label>
-    <mat-select formControlName="Size" #inputSize [class.is-invalid]="formAddMedicine.controls['Size'].errors && formAddMedicine.controls['Size'].touched">
-      <mat-option *ngFor="let size of sizes" [value]="size.value" >
-        {{size.viewValue}}
-      </mat-option>
-    </mat-select>
+<form class="container" [formGroup]="formAddMedicine" *ngIf="formAddMedicine"
+  (ngSubmit)="onSubmit()" >
+  <div class="row gap-4 justify-content-end">
+  <div class="mat-elevation-z8 example-form align-items-center col-12 ">
+    <mat-form-field class="example-full-width  my-2" appearance="fill">
+      <mat-label>Medicine Name</mat-label>
+      <input matInput formControlName="name" type="text">
+      <mat-hint *ngIf="formAddMedicine.controls['name'].errors">
+        <mat-hint *ngIf="
+          formAddMedicine.controls['name'].errors['required'] &&
+          formAddMedicine.touched
+          ">required</mat-hint>
+        <mat-hint *ngIf="formAddMedicine.controls['name'].errors['minlength']">minimum length is 3</mat-hint>
+      </mat-hint>
     </mat-form-field>
-  </div>
 
-    <div class="d-flex justify-content-center my-3">
+
+    <mat-form-field class="example-full-width " appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="write some details about Medicine..." formControlName="description"
+        type="text"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Company Name</mat-label>
+      <input matInput placeholder="company name that Provide this medicine.." value="" formControlName="companyProvider"
+        type="text">
+      <mat-hint *ngIf="formAddMedicine.controls['companyProvider'].errors">
+        <mat-hint *ngIf="
+            formAddMedicine.controls['companyProvider'].errors['required'] &&
+            formAddMedicine.touched
+            ">required</mat-hint>
+        <mat-hint *ngIf="formAddMedicine.controls['companyProvider'].errors['minlength']">minimum length is 3</mat-hint>
+      </mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill" class="example-half-width">
+      <mat-label class="fw-bold ">Type</mat-label>
+      <mat-select formControlName="type" type="text">
+        <mat-option *ngFor="let type of types" [value]="type.value">
+          {{type.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-hint *ngIf="formAddMedicine.controls['type'].errors">
+        <mat-hint *ngIf="
+          formAddMedicine.controls['type'].errors['required'] &&
+          formAddMedicine.touched
+          ">required</mat-hint>
+
+      </mat-hint>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="example-half-width mx-2">
+      <mat-label class="fw-bold ">concentration</mat-label>
+      <mat-select formControlName="concentration" type="text">
+        <mat-option *ngFor="let concentration of concentrations" [value]="concentration.value">
+          {{concentration.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-hint *ngIf="formAddMedicine.controls['concentration'].errors">
+        <mat-hint *ngIf="
+          formAddMedicine.controls['concentration'].errors['required'] &&
+          formAddMedicine.touched
+          ">required</mat-hint>
+
+      </mat-hint>
+
+    </mat-form-field>
+
+
+    <mat-form-field  class="example-half-width" appearance="fill">
+      <mat-label class="fw-bold">Expiration Date</mat-label>
+      <input matInput [matDatepicker]="picker2" formControlName="expDate" type="text">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+      <mat-hint *ngIf="formAddMedicine.controls['expDate'].errors">
+        <mat-hint *ngIf="
+          formAddMedicine.controls['expDate'].errors['required'] &&
+          formAddMedicine.touched
+          ">required</mat-hint>
+
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill"  class="example-half-width mx-2">
+      <mat-label class="fw-bold">Arrive Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="arriveDate" type="text">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-hint *ngIf="formAddMedicine.controls['arriveDate'].errors">
+        <mat-hint *ngIf="
+          formAddMedicine.controls['arriveDate'].errors['required'] &&
+          formAddMedicine.touched
+          ">required</mat-hint>
+
+      </mat-hint>
+    </mat-form-field>
+
     <mat-form-field class="example-half-width" appearance="fill">
-      <mat-label>Categories</mat-label>
-      <input matInput placeholder="" value="" formControlName="Categories" #inputCategories [class.is-invalid]="formAddMedicine.controls['Categories'].errors && formAddMedicine.controls['Categories'].touched">
+      <mat-label>Quantity</mat-label>
+      <input matInput placeholder="" value="" formControlName="quantity" type="number">
+      <mat-hint *ngIf="formAddMedicine.controls['quantity'].errors">
+        <mat-hint *ngIf="
+          formAddMedicine.controls['quantity'].errors['required'] &&
+          formAddMedicine.touched
+          ">required</mat-hint>
+
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="example-half-width mx-2 " appearance="fill">
+      <mat-label>pharm Price</mat-label>
+      <input matInput placeholder="" value="" formControlName="pharmPrice" type="number">
+      <mat-hint *ngIf="formAddMedicine.controls['pharmPrice'].errors">
+        <mat-hint *ngIf="
+          formAddMedicine.controls['pharmPrice'].errors['required'] &&
+          formAddMedicine.touched
+          ">required</mat-hint>
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="example-half-width" appearance="fill">
+      <mat-label>store Price</mat-label>
+      <input matInput placeholder="" value="" formControlName="storePrice" type="number">
+
+      <mat-hint *ngIf="formAddMedicine.controls['storePrice'].errors">
+        <mat-hint *ngIf="
+          formAddMedicine.controls['storePrice'].errors['required'] &&
+          formAddMedicine.touched
+          ">required</mat-hint>
+      </mat-hint>
     </mat-form-field>
 
     <mat-form-field class="example-half-width mx-2" appearance="fill">
-      <mat-label>Limit</mat-label>
-      <input matInput placeholder="" value="" formControlName="Limit" #inputLimit [class.is-invalid]="formAddMedicine.controls['Limit'].errors && formAddMedicine.controls['Limit'].touched">
+      <mat-label>Discount</mat-label>
+      <input matInput placeholder="" value="" formControlName="discount" type="number">
+      <mat-hint *ngIf="formAddMedicine.controls['discount'].errors">
+        <mat-hint *ngIf="
+          formAddMedicine.controls['discount'].errors['required'] &&
+          formAddMedicine.touched
+          ">required</mat-hint>
+
+      </mat-hint>
     </mat-form-field>
+
+    <mat-form-field class="example-half-width  bg-transparent" appearance="fill">
+      <mat-label>Firm Price</mat-label>
+      <input matInput placeholder="" value="" formControlName="firmPrice" type="number">
+      <mat-hint *ngIf="formAddMedicine.controls['firmPrice'].errors">
+        <mat-hint *ngIf="
+          formAddMedicine.controls['firmPrice'].errors['required'] &&
+          formAddMedicine.touched
+          ">required</mat-hint>
+
+      </mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="example-half-width mx-2" appearance="fill">
+      <mat-label>Brand</mat-label>
+      <input matInput placeholder="" value="" formControlName="brand" type="text">
+      <mat-hint *ngIf="formAddMedicine.controls['brand'].errors">
+        <mat-hint *ngIf="
+            formAddMedicine.controls['brand'].errors['required'] &&
+            formAddMedicine.touched
+            ">required</mat-hint>
+        <mat-hint *ngIf="formAddMedicine.controls['brand'].errors['minlength']">minimum length is 3</mat-hint>
+      </mat-hint>
+    </mat-form-field>
+
   </div>
-  <div class="d-flex justify-content-center my-3">
-    <button mat-raised-button color="warn" class="button " type="submit" [disabled]="formAddMedicine.invalid" 
-     (click)="add(inputName.value ,inputDescription.value,inputCompanyName.value, inputType.value,inputConcentration.value,
-     +inputQuantity.value,+inputpharmPrice.value,+inputstorePrice.value,
-     +inputDiscount.value,+inputFirmPrice.value,inputBrand.value,inputisAvailable.value,inputSize.value,inputCategories.value,+inputLimit.value)" >Create</button>
-    <button mat-raised-button color="accent" class="button mx-2">Discard</button>
+
+  <div class="mat-elevation-z8 example-form  col-12 ">
+<!-- 
+    <button mat-stroked-button type="button" class="imageBtn" (click)="filePicker.click()">
+      Pick Image
+    </button> -->
+    <div class="d-flex w-100 justify-content-center"> 
+    <input type="file" #filePicker (change)="onImagePicked($event)" class="mx-2 my-5 " />
+  
+      <div class="image-preview" *ngIf="
+        imagePreview !== '' && imagePreview && formAddMedicine.get('image')">
+        <img [src]="imagePreview" [alt]="formAddMedicine.value.title" class="card m-2 "/>
+      </div>
+  </div>
+
+    <div class="d-flex justify-content-center my-3">
+      <mat-form-field appearance="fill" class="example-half-width  ">
+        <mat-label class="fw-bold">is Available?</mat-label>
+        <mat-select formControlName="isAvailable" type="boolean">
+          <mat-option *ngFor="let boolean of booleans" [value]="boolean.value">
+            {{boolean.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-hint *ngIf="formAddMedicine.controls['isAvailable'].errors">
+          <mat-hint *ngIf="
+            formAddMedicine.controls['isAvailable'].errors['required'] &&
+            formAddMedicine.touched
+            ">required</mat-hint>
+
+        </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="example-half-width mx-2">
+        <mat-label class="fw-bold">Size</mat-label>
+        <mat-select formControlName="size" type="text">
+          <mat-option *ngFor="let size of sizes" [value]="size.value">
+            {{size.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-hint *ngIf="formAddMedicine.controls['size'].errors">
+          <mat-hint *ngIf="
+            formAddMedicine.controls['size'].errors['required'] &&
+            formAddMedicine.touched
+            ">required</mat-hint>
+
+        </mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="d-flex justify-content-center my-3">
+      
+      <mat-form-field class="example-half-width" appearance="fill">
+        <mat-label>categories</mat-label>
+        <mat-chip-list #chipList aria-label="Fruit selection">
+          <mat-chip *ngFor="let categorie of categories" (removed)="remove(categorie)">
+            {{categorie.name}}
+            <button matChipRemove>
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip>
+          <input placeholder="New categorie..."
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="addOnBlur"
+                 (matChipInputTokenEnd)="add($event)"
+                 type="text"
+                 formControlName="categories" >
+        </mat-chip-list>
+        <mat-hint *ngIf="formAddMedicine.controls['categories'].errors">
+          <mat-hint *ngIf="
+              formAddMedicine.controls['categories'].errors['required'] &&
+              formAddMedicine.touched
+              ">required</mat-hint>
+          <mat-hint *ngIf="formAddMedicine.controls['categories'].errors['minlength']">minimum length is 3</mat-hint>
+        </mat-hint>
+      </mat-form-field>
+      
+
+      <!-- <mat-form-field class="example-half-width" appearance="fill">
+        <mat-label>Categories</mat-label>
+        <input matInput placeholder="" value="" formControlName="categories" type="text">
+        <mat-hint *ngIf="formAddMedicine.controls['categories'].errors">
+          <mat-hint *ngIf="
+              formAddMedicine.controls['categories'].errors['required'] &&
+              formAddMedicine.touched
+              ">required</mat-hint>
+          <mat-hint *ngIf="formAddMedicine.controls['categories'].errors['minlength']">minimum length is 5</mat-hint>
+        </mat-hint>
+      </mat-form-field> -->
+
+      <mat-form-field class="example-half-width mx-2" appearance="fill">
+        <mat-label>Limit</mat-label>
+        <input matInput placeholder="" value="" formControlName="limit" type="number">
+        <mat-hint *ngIf="formAddMedicine.controls['limit'].errors">
+          <mat-hint *ngIf="
+            formAddMedicine.controls['limit'].errors['required'] &&
+            formAddMedicine.touched
+            ">required</mat-hint>
+
+        </mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="d-flex justify-content-center my-3">
+      <button mat-raised-button color="warn" class="button " type="submit"
+        [disabled]="formAddMedicine.invalid">Create</button>
+      <button mat-raised-button color="warn" class="button mx-2" (click)="clearInput()">Discard</button>
+    </div>
   </div>
 </div>
-
 </form>

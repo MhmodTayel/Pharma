@@ -1,9 +1,11 @@
-import { AddMedicineService } from './../../services/add-medicine.service';
+import { AddMedicineService } from '../../services/addmedicineservice/add-medicine.service';
 import { Medicine } from './../../models/Medicine';
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material/chips';
 interface Type {
   value: string;
   viewValue: string;
@@ -14,7 +16,7 @@ interface Concentration {
 }
 
 interface Boolean {
-  value: string;
+  value: boolean;
   viewValue: string;
 }
 
@@ -23,6 +25,9 @@ interface Size {
   viewValue: string;
 }
 
+export interface Categorie {
+  name: string;
+}
 @Component({
   selector: 'app-add-med',
   templateUrl: './add-med.component.html',
@@ -35,61 +40,80 @@ export class AddMedComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private _router: Router ,private addMedicineService:AddMedicineService) { }
   formAddMedicine: FormGroup = new FormGroup({});
   serializedDate = new FormControl(new Date().toISOString());
+  imagePreview: string = '';
+  
+  onSubmit() {
+    if (this.formAddMedicine.valid) {
+      const postData = new FormData();
 
-  add(name:string,description:string,companyProvider:string,type:string,concentration:string,
-    quantity:number,pharmprice:number,storeprice:number,discount:number,
-    firmprice:number,brand:string,isavaliable:boolean,size:string,categorie:string,limit:number) {
-    let medicine = new Medicine();
-    medicine.name=name;
-    medicine.description=description;
-    medicine.companyProvider=companyProvider;
-    medicine.type=type;
-    medicine.concentration=concentration;
-    // medicine.expDate=EXP;
-    // medicine.arriveDate=Arrive;
-    medicine.quantity=quantity;
-    medicine.pharmPrice=pharmprice;
-    medicine.storePrice=storeprice;
-    medicine.discount=discount;
-    medicine.firmPrice=firmprice;
-    medicine.brand=brand;
-    medicine.isAvailable=isavaliable;
-    medicine.size=size;
-    medicine.categories=new Array(categorie);
-    medicine.limit=limit
+      postData.append('name', this.formAddMedicine.value.name);
+      postData.append('description', this.formAddMedicine.value.description);
+      postData.append('companyProvider', this.formAddMedicine.value.companyProvider);
+      postData.append('type', this.formAddMedicine.value.type);
+      postData.append('concentration', this.formAddMedicine.value.concentration);
+      postData.append('expDate', this.formAddMedicine.value.expDate);
+      postData.append('arriveDate', this.formAddMedicine.value.arriveDate);
+      postData.append('quantity', this.formAddMedicine.value.quantity);
+      postData.append('pharmPrice', this.formAddMedicine.value.pharmPrice);
+      postData.append('storePrice', this.formAddMedicine.value.storePrice);
+      postData.append('discount', this.formAddMedicine.value.discount);
+      postData.append('firmPrice', this.formAddMedicine.value.firmPrice);
+      postData.append('brand', this.formAddMedicine.value.brand);
+      postData.append('isAvailable', this.formAddMedicine.value.isAvailable);
+      postData.append('size', this.formAddMedicine.value.size);
+      postData.append('categories', this.formAddMedicine.value.categories);
+      postData.append('limit', this.formAddMedicine.value.limit);
+      postData.append('image',this.formAddMedicine.value.image,this.formAddMedicine.value.title
+      );
 
-    this.addMedicineService.addMedicine(medicine).subscribe(
+    this.addMedicineService.addMedicine(postData).subscribe(
       (response: any) => {
         console.log(response);
-        this.medicines.push(medicine);
         alert(response.message)
+        
       },
       (error) => { 
-        alert(error.message)
+        console.log(error)
       }
     );
 
+  }}
+
+  onImagePicked(event: any) {
+    
+    const file = event.target.files[0];
+    
+    this.formAddMedicine.patchValue({ image: file });
+    // this.formAddMedicine.get('image').updateValueAndValidity();
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imagePreview = reader.result as string;
+      
+    };
+    reader.readAsDataURL(file);
   }
 
   ngOnInit() {
     this.formAddMedicine = this._formBuilder.group({
-      Name: ['', Validators.required],
-      Description: ['', [Validators.required]],
-      CompanyName: ['', [Validators.required]],
-      Type: ['', [Validators.required]],
+      name: ['', [Validators.required ,Validators.minLength(3)]],
+      description: [''],
+      companyProvider: ['', [Validators.required ,Validators.minLength(3)]],
+      type: ['', [Validators.required]],
       concentration: ['', [Validators.required]],
-      Expiration: ['', [Validators.required]],
-      ArriveDate: ['', [Validators.required]],
-      Quantity: ['', [Validators.required]],
+      expDate: ['', [Validators.required]],
+      arriveDate: ['', [Validators.required]],
+      quantity: ['', [Validators.required]],
       pharmPrice: ['', [Validators.required]],
       storePrice: ['', [Validators.required]],
-      Discount: ['', [Validators.required]],
-      FirmPrice: ['', [Validators.required]],
-      Brand: ['', [Validators.required]],
+      discount: ['', [Validators.required]],
+      firmPrice: ['', [Validators.required]],
+      brand: ['', [Validators.required,Validators.minLength(3)]],
       isAvailable: ['', [Validators.required]],
-      Size: ['', [Validators.required]],
-      Categories: ['', [Validators.required]],
-      Limit: ['', [Validators.required]],
+      size: ['', [Validators.required]],
+      categories: ['', [Validators.required,Validators.minLength(3)]],
+      limit: ['', [Validators.required]],
+      image :['']
       
     });
   }
@@ -144,8 +168,8 @@ export class AddMedComponent implements OnInit {
 
   ];
   booleans: Boolean[] = [
-    { value: 'true-0', viewValue: 'true' },
-    { value: 'false-1', viewValue: 'false' },
+    { value: true, viewValue: 'true' },
+    { value: false, viewValue: 'false' },
 
   ];
   sizes: Size[] = [
@@ -183,5 +207,28 @@ export class AddMedComponent implements OnInit {
 
   ];
 
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  categories: Categorie[] = [{name: 'Antibiotics'}];
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    if (value) {
+      this.categories.push({name: value});
+    }
+    event.chipInput!.clear();
+  }
+
+  remove(categorie: Categorie): void {
+    const index = this.categories.indexOf(categorie);
+
+    if (index >= 0) {
+      this.categories.splice(index, 1);
+    }
+  }
+
+  clearInput()
+   { this.formAddMedicine.reset() }
 
 }
