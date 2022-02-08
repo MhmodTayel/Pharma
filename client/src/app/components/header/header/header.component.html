@@ -13,11 +13,12 @@
                 <li class="d-flex">
                     <div>
                         <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
-                            <img src="../../assets/144-1442578_flat-person-icon-download-dummy-man.png" alt=""
-                                class="user-image mr-1 p-1" />
-                            User Name
+                            <img src="../../assets/144-1442578_flat-person-icon-download-dummy-man.png" alt=""class="user-image mr-1 p-1" />
+                            {{currentUser}}
+                            
                             <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
                         </button>
+                        
                         <mat-menu #menu="matMenu">
                             <button mat-menu-item (click)="logout()">
                                 <mat-icon>exit_to_app</mat-icon>
