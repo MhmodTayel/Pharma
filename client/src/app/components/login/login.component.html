@@ -7,16 +7,14 @@
                 <div class="mb-4">
                   <mat-form-field class="w-100">
                     <input matInput type="text" formControlName="username"
-                      [class.is-invalid]="loginForm.controls['username'].errors && loginForm.controls['username'].touched "
+                      [class.is-invalid]="loginForm.controls['username'].errors && loginForm.controls['username'].touched"
                       placeholder="Username">
                   </mat-form-field>
                   <div *ngIf="loginForm.controls['username'].errors" class="invalid">
                     <div *ngIf="loginForm.controls['username'].errors['required'] &&  loginForm.controls['username'].touched">Required Username
                     </div>
-                    <div *ngIf="loginForm.controls['username'].errors[''] &&  loginForm.controls['username'].touched">Invalid Username
-                    </div>
                     <div *ngIf="loginForm.controls['username'].errors['maxlength']">Max length is 20</div>
-                    <div *ngIf="loginForm.controls['username'].errors['minlength']">Min length is 6</div>
+                    <div *ngIf="loginForm.controls['username'].errors['minlength']">Min length is 5</div>
                   </div>
                 </div>
                 <div class="mb-4">
@@ -29,10 +27,11 @@
                       </button>
 
                     </mat-form-field>
-                  <div *ngIf="loginForm.controls['password'].errors " class="invalid">
+                  <div *ngIf="loginForm.controls['password'].errors" class="invalid">
                     <div *ngIf="loginForm.controls['password'].errors['required'] && loginForm.controls['password'].touched">Required
                       Password</div>
                     <div *ngIf="loginForm.controls['password'].errors['password']">Invalid Password</div>
+                    <div *ngIf="loginForm.controls['password'].errors['minlength']">Min length is 5</div>
                     <div *ngIf="loginForm.controls['password'].errors['maxlength']">Max length is 20</div>
                   </div>
                 </div>

@@ -1,0 +1,23 @@
+.proflie-field span {
+	display: inline-block;
+	width: calc(100% - 180px);
+}
+.proflie-field label {
+	width: 150px;
+	display: inline-block;
+}
+.orange-btn{
+    background-color: #ff5722;
+    color: #FFF;
+    font-weight: 400;
+}
+::ng-deep .mat-form-field-label {
+  font-size: 14px !important;
+}
+::ng-deep .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background-color: rgb(0 0 0 / 21%) !important;
+}
+.details-form span{
+  color: #ff5722;
+  font-size: 12px !important;
+}
