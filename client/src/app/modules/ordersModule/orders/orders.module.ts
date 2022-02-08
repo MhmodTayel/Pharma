@@ -10,7 +10,7 @@ import { RouterModule , Routes} from '@angular/router';
 import { SharedModuleModule } from '../../sharedModule/shared-module/shared-module.module';
 const routes: Routes = [
   {path:'' , component:OrdersStoreComponent,children:[
-    {path:'details/:id' }
+    {path:'details/:id', component: OrderDetailsComponent  }
   ]},
   
 
@@ -19,7 +19,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     OrdersPageComponent ,
-    OrdersStoreComponent
+    OrdersStoreComponent,
+    
   ],
   imports: [
     CommonModule , RouterModule.forChild(routes) , SharedModuleModule ,ComponentsModule,MaterialModule
