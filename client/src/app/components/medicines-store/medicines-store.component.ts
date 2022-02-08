@@ -24,7 +24,7 @@ export class MedicinesStoreComponent implements OnInit {
     })
   }
 
-displayedColumns: string[] = ['ID', 'Image', 'Name','Quantity','Store Price', 'ExpDate', 'isAvailable', 'ArrivDate']; //for table headers
+displayedColumns: string[] = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate']; //for table headers
 dataSource = new MatTableDataSource(this.medArr); 
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;

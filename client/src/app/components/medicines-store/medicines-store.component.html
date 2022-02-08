@@ -1,5 +1,5 @@
 <mat-form-field class="example-full-width p-2" >
-  <input matInput (keyup)="applyFilter($event)" placeholder="Search Here!" class="  w-auto " #input />
+  <input matInput (keyup)="applyFilter($event)" placeholder="Find Medicine!" class="  w-auto " #input />
 </mat-form-field>
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8  p-5" (matSortChange)="sortData()">
     <!-- id Column -->
@@ -27,25 +27,26 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
       <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
     </ng-container>
-  
+    
+    <ng-container matColumnDef="isAvailable">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>In Stock</th>
+      <td mat-cell *matCellDef="let element">{{ element.isAvailable }}</td>
+    </ng-container>
     <!-- action Column -->
     <ng-container matColumnDef="Store Price">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Store Price</th>
-        <td mat-cell *matCellDef="let element">{{ element.storePrice }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.storePrice }} L.E</td>
       </ng-container>
 
       <ng-container matColumnDef="ExpDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>ExpDate</th>
-        <td mat-cell *matCellDef="let element">{{ element.expDate | date: "d/M/yy, h:mm a" }}</td>
-      </ng-container>
-      <ng-container matColumnDef="isAvailable">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>isAvailable</th>
-        <td mat-cell *matCellDef="let element">{{ element.isAvailable }}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Expiration Date</th>
+        <td mat-cell class="text-muted" *matCellDef="let element">{{ element.expDate | date: "d/M/yy, h:mm a" }}</td>
       </ng-container>
       
+      
       <ng-container matColumnDef="ArrivDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>ArrivDate</th>
-        <td mat-cell *matCellDef="let element">{{ element.arriveDate | date: "d/M/yy, h:mm a" }}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Arrived Date</th>
+        <td mat-cell class="text-muted" *matCellDef="let element">{{ element.arriveDate | date: "d/M/yy, h:mm a" }}</td>
       </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
