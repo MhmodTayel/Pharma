@@ -22,13 +22,33 @@
 }
 
 .image{
-width: 20vw;
-border: 1px solid black;
-height: 50vh;
+
+height: 15vh;
+margin-bottom: .5vh;
+
 
 }
 
-@media only screen and (min-width: 600px) {
- 
 
+.hideme {
+display: none;
+  visibility:hidden;
 }
+
+
+
+.mat-select-value,
+    .mat-option-text,
+    .mat-standard-chip,
+    .mat-input-element,
+    .mat-menu-item ,
+    mat-label {
+         color: black !important;
+         font-size: 13px !important;
+         background-color: transparent !important;
+
+     }
+
+     ::ng-deep havor{
+      background-color: transparent;
+     }

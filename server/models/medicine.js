@@ -45,11 +45,6 @@ const medicineSchema = new mongoose.Schema({
       
         
     },
-    isAvailable:{
-        type: Boolean,
-        required: true
-        
-    },
     type:{
         type: String,
         required: true

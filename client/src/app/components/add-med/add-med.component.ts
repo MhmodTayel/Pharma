@@ -59,7 +59,6 @@ export class AddMedComponent implements OnInit {
       postData.append('discount', this.formAddMedicine.value.discount);
       postData.append('firmPrice', this.formAddMedicine.value.firmPrice);
       postData.append('brand', this.formAddMedicine.value.brand);
-      postData.append('isAvailable', this.formAddMedicine.value.isAvailable);
       postData.append('size', this.formAddMedicine.value.size);
       postData.append('categories', this.formAddMedicine.value.categories);
       postData.append('limit', this.formAddMedicine.value.limit);
@@ -109,7 +108,6 @@ export class AddMedComponent implements OnInit {
       discount: ['', [Validators.required]],
       firmPrice: ['', [Validators.required]],
       brand: ['', [Validators.required,Validators.minLength(3)]],
-      isAvailable: ['', [Validators.required]],
       size: ['', [Validators.required]],
       categories: ['', [Validators.required,Validators.minLength(3)]],
       limit: ['', [Validators.required]],
@@ -230,5 +228,6 @@ export class AddMedComponent implements OnInit {
 
   clearInput()
    { this.formAddMedicine.reset() }
+
 
 }
