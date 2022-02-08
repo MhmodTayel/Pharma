@@ -206,9 +206,8 @@
         </mat-hint>
       </mat-form-field>
 
-      <div class="d-flex justify-content-center ">
 
-        <mat-form-field class="example-full-width w-100" appearance="fill">
+        <mat-form-field class="example-full-width " appearance="fill">
           <mat-label>categories</mat-label>
           <mat-chip-list #chipList aria-label="Fruit selection">
             <mat-chip *ngFor="let categorie of categories" (removed)="remove(categorie)">
@@ -231,10 +230,7 @@
         </mat-form-field>
 
 
-      </div>
-
-
-
+  
       <div class="d-flex w-100  justify-content-center image  ">
         <input type="file" #filePicker (change)="onImagePicked($event)"  class="hideme" />
 
