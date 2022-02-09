@@ -10,5 +10,8 @@ export class MedicineService {
   getAllMedicines(){
     return this._api.get('/store/medicine/getAll')
   }
+  deleteMed(id: any){
+    return this._api.delete(`/store/medicine/delete/${id}`);
+  }
 
 }
