@@ -2,25 +2,24 @@
    <div class="row w-100 ">
       <div class="col-lg-12 my-3">
          <div class="py-1">
-            <h4 class="fw-bolder">Hi Admin</h4>
-            <p class="text-muted">email@examlpe.com</p>
+            <h4 class="fw-bolder"> {{currentUser}}</h4>
          </div>
          <mat-card class="details-form">
             <div class="row">
                <div class="col-md-8">
-                  <form [formGroup]="adminDetailsForm" *ngIf="adminDetailsForm">
+                  <form [formGroup]="adminDetailsForm" *ngIf="adminDetailsForm" >
                      <div class="example-container">
                         <mat-form-field class="w-100 ">
-                           <input matInput placeholder="Name" type="text" formControlName="name"
-                           [class.is-invalid]="adminDetailsForm.controls['name'].errors && adminDetailsForm.controls['name'].touched" [readonly]="disableForm==true" >
+                           <input matInput placeholder="Name" type="text" value="{{adminDetails.name}}" formControlName="name" [(ngModel)]="adminDetails.name"
+                           [class.is-invalid]="adminDetailsForm.controls['name'].errors && adminDetailsForm.controls['name'].touched" >
                         </mat-form-field>
+                        
                            <span *ngIf="adminDetailsForm.controls['name'].errors?.['required'] && adminDetailsForm.controls['name'].touched"> Name is required</span>
                            <span *ngIf="adminDetailsForm.controls['name'].errors?.['maxlength']">Max length is 20</span>
                            <span *ngIf="adminDetailsForm.controls['name'].errors?.['minlength']">Min length is 5</span>
                          
-
                         <mat-form-field class="w-100">
-                           <input matInput placeholder="Username" type="text" formControlName="username" [readonly]="disableForm==true" 
+                           <input matInput placeholder="Username" type="text"  value="{{adminDetails.username}}" formControlName="username"  [(ngModel)]="adminDetails.username"
                            [class.is-invalid]="adminDetailsForm.controls['username'].errors && adminDetailsForm.controls['username'].touched">
                         </mat-form-field>
 
@@ -29,7 +28,7 @@
                            <span *ngIf="adminDetailsForm.controls['username'].errors?.['minlength']">Min length is 5</span>
 
                         <mat-form-field class="w-100 ">
-                           <input matInput placeholder="Mobile Number" type="text" formControlName="phoneNumber" [readonly]="disableForm==true" 
+                           <input matInput placeholder="Mobile Number" type="text"  value="{{adminDetails.phoneNumber}}" formControlName="phoneNumber" [(ngModel)]="adminDetails.phoneNumber"
                            [class.is-invalid]="adminDetailsForm.controls['phoneNumber'].errors && adminDetailsForm.controls['phoneNumber'].touched">
                         </mat-form-field>
 
@@ -37,20 +36,22 @@
                            <span *ngIf="adminDetailsForm.controls['phoneNumber'].errors?.['pattern']"> Inavlid Mobile number</span>                        
                         
                         <mat-form-field class="w-100">
-                           <input matInput type="email" placeholder="Email" formControlName="email"  [readonly]="disableForm==true" 
+                           <input matInput type="email" placeholder="Email"  value="{{adminDetails.email}}" formControlName="email" [(ngModel)]="adminDetails.email"
                            [class.is-invalid]="adminDetailsForm.controls['email'].errors && adminDetailsForm.controls['email'].touched">
                         </mat-form-field>
 
                         <span *ngIf="adminDetailsForm.controls['email'].errors?.['required'] && adminDetailsForm.controls['email'].touched"> Email required </span>                        
-
+<!-- 
                         <mat-form-field class="w-100">
-                           <input matInput type="password" placeholder="Password" formControlName="password" [readonly]="disableForm==true" 
+                           <input matInput type="password" placeholder="Password" formControlName="password"
                            [class.is-invalid]="adminDetailsForm.controls['password'].errors && adminDetailsForm.controls['password'].touched">
-                        </mat-form-field>
-                           <span *ngIf="adminDetailsForm.controls['password'].errors?.['required'] &&  adminDetailsForm.controls['password'].touched">Password required</span>     
+                        </mat-form-field> -->
+                           <!-- <span *ngIf="adminDetailsForm.controls['password'].errors?.['required'] &&  adminDetailsForm.controls['password'].touched">Password required</span>      -->
+                      
                         <div class="my-1">   
-                           <button mat-raised-button class="orange-btn me-2" [class.d-none]="disableForm==true" (click)="Update()">Save</button>
-                           <button mat-raised-button class="orange-btn" [class.d-none]="disableForm==false" (click)="enableFrom()">Edit</button>
+                           <button *ngIf="!adminDetailsForm.disabled" mat-raised-button class="orange-btn me-2" (click)="Update()">Save</button>
+                           <button *ngIf="!adminDetailsForm.disabled" mat-raised-button class="orange-btn me-2"(click)="adminDetailsForm.disable()" >Cancel</button>
+                           <button *ngIf="adminDetailsForm.disabled" mat-raised-button class="orange-btn"  (click)="enableFrom()">Edit Details</button>
                         </div>
                      
                      </div>
@@ -63,38 +64,5 @@
                </div>
             </div>
          </mat-card>
-
-         <!-- 
-            <mat-card class="form-margin p-4 mt-2">
-                    <h5 class="fw-bold">Profile Information</h5>
-                    <div class="pt-3">
-                       <div class="proflie-field mb-3">
-                          <label>Name:</label>
-                          <span>John</span>
-                       </div>
-                       <div class="proflie-field mb-3">
-                          <label>Gender:</label>
-                          <span>Male</span>
-                       </div>
-                       <div class="proflie-field mb-3">
-                          <label>Phone Number:</label>
-                          <span>Jan,06,1979</span>
-                       </div>
-                       <div class="proflie-field mb-3">
-                          <label>Email</label>
-                          <span>+120 256 254 125</span>
-                       </div>
-                       <div class="proflie-field mb-3">
-                          <label>Username:</label>
-                          <span>New York</span>
-                       </div>
-                       <div class="proflie-field mb-3">
-                          <label>Password:</label>
-                          <span class="text-ellipse">johnDoe@doe.com</span>
-                       </div>
-                       <button mat-raised-button class="orange-btn">Edit</button>
-                    </div>              
-            </mat-card> -->
-
       </div>
    </div>
