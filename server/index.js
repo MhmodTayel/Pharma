@@ -5,16 +5,18 @@ const mongoose = require("mongoose");
 const storeMedRoutes = require("./routes/store routes/storeMedicineRoute");
 const storeAdminRoutes = require("./routes/store routes/storeAdminRoute");
 const storeOrdersRoutes = require('./routes/store routes/storeOrdersRoute')
+const adminSettings = require("./routes/store routes/adminSettingsRoute")
 const adminAuth = require("./middlewares/store middleware/adminMiddleware");
+
 const app = express();
 app.use(cors());
 
 app.use(express.json());
 
 mongoose.connect(process.env.CONNECTION_STRING);
-
 app.use("/store", storeAdminRoutes);
-// app.use(adminAuth);
+app.use(adminAuth);
+app.use("/store", adminSettings);
 app.use("/store", storeMedRoutes);
 app.use("/store", storeOrdersRoutes);
 

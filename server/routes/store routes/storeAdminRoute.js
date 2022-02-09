@@ -3,7 +3,6 @@ const router = express.Router();
 const {create,login} = require('../../controllers/store controllers/adminController')
 
 
-
 router.post("/admin/register", (req, res, next) => {
   const user = req.body;
   create(user)
