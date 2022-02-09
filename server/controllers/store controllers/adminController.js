@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const create = (admin) => Admin.create(admin);
 const update = (id,detailsUpdate) => Admin.findOneAndUpdate({id}, detailsUpdate ,{new: true});
+
 const login = async ({ username, password }, next) => {
   const admin = await Admin.findOne({ username });
   console.log(admin);

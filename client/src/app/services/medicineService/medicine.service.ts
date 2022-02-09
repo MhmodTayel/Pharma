@@ -13,7 +13,7 @@ export class MedicineService {
 
   addMedicine(medicine : any ){
     return this._api.post(`/store/medicine/add`, medicine)
-
+  }
   deleteMed(id: any){
     return this._api.delete(`/store/medicine/delete/${id}`);
 
