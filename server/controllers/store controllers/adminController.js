@@ -3,7 +3,7 @@ const Admin = require("../../models/admin");
 const jwt = require("jsonwebtoken");
 
 const create = (admin) => Admin.create(admin);
-
+const update = (id,detailsUpdate) => Admin.findOneAndUpdate({id}, detailsUpdate ,{new: true});
 const login = async ({ username, password }, next) => {
   const admin = await Admin.findOne({ username });
   console.log(admin);
@@ -28,4 +28,4 @@ const login = async ({ username, password }, next) => {
   );
 };
 
-module.exports = { create, login };
+module.exports = { create, login ,update };
