@@ -13,16 +13,18 @@ const pharmacistSchema = new mongoose.Schema({
         maxlength: 50
     },
     photo: {
-        type: String,
-        required: true
-
+        type: String
+        // required: true
     },
+
     pharmacyPhoneNumber: {
-        type: Number,
+        // type: Number,
+        type: String,
         required: true
     },
     pharmacistPhonNumber: {
-        type: Number,
+        // type: Number,
+        type:String,
         required: true
     },
     email: {
@@ -36,21 +38,24 @@ const pharmacistSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+
     startingDate: {
         type: Date,
         required: true,
     },
-    isVIP: {
-        type: Boolean,
-        required: false
-    },
+
+    // isVIP: {
+    //     type: Boolean,
+    //     required: false
+    // },
 
     // i replace offer with disscount 
     //  هنخليها ترو او فولس والمخرن يبقي يحط له الخصم
-    isDiscount: {
-        type: Boolean,
-        required: true
-    },
+    // isDiscount: {
+    //     type: Boolean,
+    //     required: true
+    // },
+    
     username: {
         type: String,
         required: true,
@@ -65,11 +70,12 @@ const pharmacistSchema = new mongoose.Schema({
         minlength: 5,
         maxlength: 20
     },
-    refundPoints: {
-        type: Number,
-        default: 0,
-        required:true
-    }
+
+    // refundPoints: {
+    //     type: Number,
+    //     default: 0,
+    //     required:true
+    // }
 
 })
 const Pharmacist = mongoose.model("Pharmacist", pharmacistSchema);
