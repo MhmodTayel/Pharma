@@ -11,7 +11,7 @@ client/bazel-out
 
 # dependencies
 client/node_modules
-
+user/node_modules
 # profiling files
 client/chrome-profiler-events*.json
 
