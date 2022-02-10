@@ -19,7 +19,7 @@ app.use(express.json());
 
 mongoose.connect(process.env.CONNECTION_STRING);
 app.use("/store", storeAdminRoutes);
-app.use(adminAuth);
+// app.use(adminAuth);
 app.use("/store", adminSettings);
 app.use("/store", storeMedRoutes);
 
