@@ -7,6 +7,7 @@ import { AuthorizationGuard } from './gaurds/authorization.guard';
 
 const routes: Routes = [
   {path:'login' , component:LoginComponent},
+  {path:'' , component:LoginComponent},
   {path:'' , component:LayoutComponent , children:[
     {
       path: 'products', 
@@ -19,17 +20,6 @@ const routes: Routes = [
       loadChildren: () => import('./modules/ordersModule/orders/orders.module').then(m => m.OrdersModule),
       canActivate : [AuthorizationGuard]
     },
-    {
-      path: '', 
-
-      loadChildren: () => import('./modules/ordersModule/orders/orders.module').then(m => m.OrdersModule),
-      canActivate : [AuthorizationGuard]
-    },
-    // {
-    //   path: '', 
-    //   loadChildren: () => import('./modules/profileModule/profile-module.module').then(m => m.ProfileModuleModule),
-    //   canActivate : [AuthorizationGuard]
-    // },
     {
       path: 'profile', 
       loadChildren: () => import('./modules/profileModule/profile-module.module').then(m => m.ProfileModuleModule),

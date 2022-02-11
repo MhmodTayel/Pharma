@@ -11,7 +11,7 @@ export class ApiService {
   constructor(private _http: HttpClient, private _sessionService: SessionService) { }
   getHeaders(): HttpHeaders {
     return new HttpHeaders({
-      'token': this._sessionService.getToken()
+      'Authorization': this._sessionService.getToken()
     });
   }
   post(url: string, body: any) {
@@ -19,8 +19,9 @@ export class ApiService {
   }
 
   get(url: string) {
-    return this._http.get(`${environment.AppUrl}${url}`, { headers: this.getHeaders() });
+    return this._http.get(`${environment.AppUrl}${url}`, {headers: this.getHeaders()});
   }
+  
 
   postWthiHeaders(url: string, body: any) {
     return this._http.post(`${environment.AppUrl}${url}`, body, { headers: this.getHeaders() });

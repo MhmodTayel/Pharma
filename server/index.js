@@ -2,21 +2,21 @@ require("dotenv").config();
 const express = require("express");
 var cors = require("cors");
 const mongoose = require("mongoose");
-const storeMedRoutes = require("./routes/store routes/storeMedicineRoute");
-const storeAdminRoutes = require("./routes/store routes/storeAdminRoute");
-const storeOrdersRoutes = require('./routes/store routes/storeOrdersRoute')
-const adminAuth = require("./middlewares/store middleware/adminMiddleware");
+const authMiddleware = require('./middlewares/routerMiddleware')
+const { userMedicine, userOrder, userRoute } = require('./routes/user routes')
+const { storeAdminRoute, storeMedRoute, storeOrderRoute } = require('./routes/store routes')
 const app = express();
-app.use(cors());
 
+app.use(cors());
 app.use(express.json());
 
 mongoose.connect(process.env.CONNECTION_STRING);
 
-app.use("/store", storeAdminRoutes);
-// app.use(adminAuth);
-app.use("/store", storeMedRoutes);
-app.use("/store", storeOrdersRoutes);
+// app.use(authMiddleware)
+app.use('/users',[userRoute,userMedicine,userOrder])
+app.use('/store',[storeAdminRoute,storeMedRoute,storeOrderRoute])
+
+
 
 app.use("*", (req, res) => {
   res.status(404).end();

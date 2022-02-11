@@ -16,6 +16,7 @@ router.post("/orders/add", (req, res, next) => {
 });
 
 router.get("/orders/all", (req, res, next) => {
+    console.log('here');
     getAllOrders()
         .then((doc) => res.json(doc))
         .catch((e) => next(e));

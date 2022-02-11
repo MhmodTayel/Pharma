@@ -24,7 +24,7 @@ export class MedicinesStoreComponent implements OnInit {
     })
   }
 
-displayedColumns: string[] = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate']; //for table headers
+displayedColumns: string[] = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'edit', 'delete']; //for table headers
 dataSource = new MatTableDataSource(this.medArr); 
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -44,5 +44,15 @@ applyFilter(event: Event) {
 
 catchRow(e:Medicine){ // will use it to show medicine details in model.
 console.log(e);
+}
+deleteMedicine(id: any){
+  this._medService.deleteMed(id).subscribe((res: any)=>{
+    const idx = this.medArr.findIndex((item)=>item.id == id);
+      this.medArr.splice(idx, 1);
+      this.dataSource.filteredData.splice(idx, 1)
+      console.log(res);
+      console.log(this.medArr);
+      console.log(this.dataSource);
+  })
 }
 }
