@@ -20,11 +20,8 @@ async function connect() {
 async function createMedRedis(data) {
   await connect();
   const repo = new Repository(schema, client);
-
   const med = repo.createEntity(data);
-
   const id = await repo.save(med);
-
   return id;
 }
 
@@ -36,7 +33,6 @@ async function createIndex() {
 
 async function searchMeds(q) {
   await connect()
-
   const repo = new Repository(schema,client)
   console.log('from function',q);
   const meds = await repo.search()

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {Medicine, schema} = require("../../models/medicine");
+const {Medicine} = require("../../models/medicine");
 
 const {
   getAll,
@@ -69,10 +69,10 @@ router.get("/medicine/details/:id", (req, res, next) => {
     .then((doc) => res.json(doc))
     .catch((e) => next(e));
 });
+
+
 //Redis_Search_Routes
-
 //Use this route only once
-
 // router.get("/create-index", async (req, res, next) => {
 //   await createIndex()
 //   res.status(200).send( "ok")

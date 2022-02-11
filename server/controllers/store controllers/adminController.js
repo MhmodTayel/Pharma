@@ -7,7 +7,6 @@ const update = (id,detailsUpdate) => Admin.findOneAndUpdate({id}, detailsUpdate 
 
 const login = async ({ username, password }, next) => {
   const admin = await Admin.findOne({ username });
-  console.log(admin);
   if (!admin) {
     next(`invalid username`);
     return;
