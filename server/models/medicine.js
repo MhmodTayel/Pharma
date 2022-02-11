@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const { Client, Entity, Schema, Repository } = require("redis-om");
 const medicineSchema = new mongoose.Schema({
     id:{
         type: Number,
@@ -43,11 +43,6 @@ const medicineSchema = new mongoose.Schema({
     image:{
         type: String,
       
-        
-    },
-    isAvailable:{
-        type: Boolean,
-        required: true
         
     },
     type:{
@@ -101,5 +96,19 @@ const medicineSchema = new mongoose.Schema({
 
 const Medicine = mongoose.model("Medicine", medicineSchema);
 
-module.exports = Medicine;
+//Redis Schema
+class Med extends Entity {}
+
+let schema = new Schema(
+  Med,
+  {
+    id: { type: "number" },
+    name: { type: "string", textSearch: true },
+  },
+  {
+    dataStructure: "JSON",
+  }
+);
+
+module.exports = {Medicine, schema};
 
