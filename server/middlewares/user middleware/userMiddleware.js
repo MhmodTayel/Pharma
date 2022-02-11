@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken");
 const User = require("../../models/pharmacist");
 
 const userAuth = async (req, res, next) => {
-  console.log(req.url);
   if (req.method == "POST" && req.url == "/users/user/register") {
     next();
     return;

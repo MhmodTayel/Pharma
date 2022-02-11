@@ -17,7 +17,6 @@ async function connect() {
 }
 async function searchMeds(q) {
   await connect();
-  console.log("from search controller", q);
   const repo = new Repository(schema, client);
   const meds = await repo
     .search()
