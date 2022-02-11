@@ -1,0 +1,21 @@
+const express = require("express");
+const router = express.Router();
+const { findOne, updateQuantity } = require('../../controllers/user controllers/findSingleMed')
+
+
+router.get("/medicine/:id", (req, res, next) => {
+    const id = req.params.id
+    findOne(id)
+        .then((doc) => res.json(doc))
+        .catch((e) => next(e));
+});
+
+router.patch("/medicine/quantity/:id", (req, res, next) => {
+    const id = req.params.id;
+    const newQuantity = req.body.quantity;
+    updateQuantity(id, newQuantity)
+      .then((doc) => res.json(doc))
+      .catch((e) => next(e));
+  });
+
+module.exports = router;
