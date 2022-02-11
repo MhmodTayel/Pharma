@@ -4,13 +4,13 @@ var cors = require("cors");
 const mongoose = require("mongoose");
 const storeMedRoutes = require("./routes/store routes/storeMedicineRoute");
 const storeAdminRoutes = require("./routes/store routes/storeAdminRoute");
-const storeOrdersRoutes = require('./routes/store routes/storeOrdersRoute')
-const adminSettings = require("./routes/store routes/adminSettingsRoute")
+const storeOrdersRoutes = require("./routes/store routes/storeOrdersRoute");
+const adminSettings = require("./routes/store routes/adminSettingsRoute");
 const adminAuth = require("./middlewares/store middleware/adminMiddleware");
-const userRegisterRoute = require("./routes/user routes/userRegisterRoute")
-const  userAuth= require("./middlewares/user middleware/userMiddleware")
+const userRegisterRoute = require("./routes/user routes/userRegisterRoute");
+const userAuth = require("./middlewares/user middleware/userMiddleware");
 const userLoginRoute = require("./routes/user routes/userLoginRoute");
-
+const userMedicine = require("./routes/user routes/userMedicine");
 
 const app = express();
 app.use(cors());
@@ -22,11 +22,12 @@ app.use("/store", storeAdminRoutes);
 // app.use(adminAuth);
 app.use("/store", adminSettings);
 app.use("/store", storeMedRoutes);
+app.use("/store", storeOrdersRoutes);
 
 // app.use("/pharma", userRegisterRoute);
 // app.use(userAuth)
 // app.use("/pharma", userLoginRoute);
-
+app.use("/users", userMedicine);
 
 app.use("*", (req, res) => {
   res.status(404).end();
