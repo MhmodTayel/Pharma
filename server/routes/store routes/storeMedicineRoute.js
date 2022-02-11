@@ -29,7 +29,6 @@ router.post(
     // body.categories = body.categories.split(" ");
     const medArr = await Medicine.find({});
     body.id = medArr.length + 1;
-    console.log(body)
     create(body)
       .then((doc) => {
         createMedRedis({ id: body.id, name: body.name });
@@ -64,7 +63,6 @@ router.patch("/medicine/quantity/:id", (req, res, next) => {
 
 router.get("/medicine/details/:id", (req, res, next) => {
   const medId = req.params.id;
-  console.log(medId);
   getById(medId)
     .then((doc) => res.json(doc))
     .catch((e) => next(e));
@@ -79,7 +77,6 @@ router.get("/medicine/details/:id", (req, res, next) => {
 // });
 
 router.get('/search-redis/:q',(req,res,next)=> {
-  console.log(req.params.q);
   searchMeds(req.params.q)
   .then((doc) => res.json(doc))
   .catch((e) => next(e));

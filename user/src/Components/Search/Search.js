@@ -1,10 +1,13 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-// import styles from "./Search.module.scss";
+import styles from "./Search.module.scss";
 import { fullTextSearch, getMedById } from "../../services/userService";
+import { useDispatch } from "react-redux";
+import { addMedOrderAction } from "../../store/actions/orderAction";
 
 export default function Search() {
+  const dispatch = useDispatch();
   const [term, setTerm] = React.useState("");
   const [data, setData] = React.useState([]);
 
@@ -32,8 +35,9 @@ export default function Search() {
     const [med] = data.filter((med) => med.name == selectedName);
 
     getMedById(med.id).then((res) => {
-      console.log(res);
+      dispatch(addMedOrderAction(res.data));
     });
+
   };
 
   return (
@@ -48,7 +52,7 @@ export default function Search() {
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Search input"
+          label="Search"
           InputProps={{
             ...params.InputProps,
             type: "search",
@@ -58,4 +62,3 @@ export default function Search() {
     />
   );
 }
-
