@@ -34,7 +34,6 @@ async function createIndex() {
 async function searchMeds(q) {
   await connect()
   const repo = new Repository(schema,client)
-  console.log('from function',q);
   const meds = await repo.search()
   .where('name').matches(q)
   .return.all()
