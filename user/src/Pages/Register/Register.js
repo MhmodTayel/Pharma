@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from 'react'
 import styles from './Register.module.scss'
 import { Button, TextField } from '@mui/material';
@@ -10,6 +11,8 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LockIcon from '@mui/icons-material/Lock';
 import HomeIcon from '@mui/icons-material/Home';
+import { register } from "../../services/userService";
+
 
 const validationSchema = yup.object({
   name: yup
@@ -57,9 +60,18 @@ export default function Register() {
 
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: (values) => { 
+      register(values).then(
+
+        (res)=>{
+          console.log(res.values)
+        },
+        (err)=>{
+          console.log(err)
+        }
+      )
       alert(JSON.stringify(values, null, 7));
-    },
+    }
   });
 
   return (
