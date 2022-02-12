@@ -18,5 +18,13 @@ export class MedicineService {
     return this._api.delete(`/store/medicine/delete/${id}`);
 
   }
+  getDetails(id:string|null){
+    return this._api.get(`/store/medicine/details/${id}`);
+     
+   } 
+
+   update(id:string,medicine:FormData){
+    return this._api.patch(`/store/medicine/${id}`,medicine);
+   }
 
 }
