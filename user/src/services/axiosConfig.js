@@ -1,5 +1,5 @@
 import axios from "axios";
-const DEV_URL = "http://localhost:3000/users";
+const DEV_URL = "http://localhost:5000/users";
 const PROD_URL = "";
 const TOKEN = localStorage.getItem("token");
 
