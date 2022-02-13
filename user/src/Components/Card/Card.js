@@ -11,17 +11,19 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
-
+import moment from "moment";
 import { typography } from '@mui/system';
+import { useDispatch } from 'react-redux';
+import { removeMedOrderAction } from '../../store/actions/orderAction';
 
-export default function ImgMediaCard() {
+export default function MedCard({med}) {
   const [alignment, setAlignment] = React.useState('add');
 
 // const handleChange = (event, newAlignment) => {
 //   setAlignment(newAlignment);
 // };
   const [count, setCount] = React.useState(0);
-
+  const dispatch = useDispatch();
   const changeQuantity = (v) =>
     setCount( Math.max(0, count+ v));
 
@@ -29,16 +31,20 @@ export default function ImgMediaCard() {
 
     setCount(e.target.value)
     console.log(e.target)
-  }  
+  } 
+  
+  const handleDelete=()=>{
+    dispatch(removeMedOrderAction(med.id))
+  }
   return (
-    <Card sx={{ maxWidth: 400 }}>
+    <Card sx={{ maxWidth: 600 }} className="cardScale">
       
       <CardContent>
         <Typography className="d-flex justify-content-between align-items-center">
         <Typography gutterBottom variant="h5" component="div">
-          Melga
+        {med.name}
         </Typography>
-        <IconButton aria-label="delete">
+        <IconButton aria-label="delete" onClick={handleDelete}>
           <DeleteIcon color='error'/>
         </IconButton>
         </Typography>
@@ -64,12 +70,12 @@ export default function ImgMediaCard() {
           </ToggleButtonGroup>
         </div>
         <Typography className="d-flex justify-content-between align-items-center">
-          <Typography color="#2c456a" fontSize="medium" className='pt-3'>Pharmcy Price: <span className='text-muted fw-bold'>333$</span></Typography>
-          <Typography color="#2c456a" fontSize="medium" className='pt-3'>Price: <span className='text-muted fw-bold'>33$</span></Typography>
+          <Typography color="#2c456a" fontSize="medium" className='pt-3'>Pharmcy Price: <span className='text-muted fw-bold'>{med.storePrice}</span></Typography>
+          <Typography color="#2c456a" fontSize="medium" className='pt-3'>Price: <span className='text-muted fw-bold'>{med.pharmPrice}</span></Typography>
         </Typography>
         <hr />
-        <Typography color="#2c456a" fontSize="medium">Total: <span className='text-muted fw-bold'>0</span></Typography>
-        <Typography color="#2c456a"fontSize="medium">Expiration Date: <span className='text-muted fw-bold'>12/7</span></Typography>
+        <Typography color="#2c456a" fontSize="medium">Total: <span className='text-muted fw-bold'>{med.storePrice*count}</span></Typography>
+        <Typography color="#2c456a"fontSize="medium">Expiration Date: <span className='text-muted fw-bold'>{moment(med.expDate).format("MMM YYYY")}</span></Typography>
 
       </CardContent>
       
