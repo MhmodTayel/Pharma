@@ -1,0 +1,61 @@
+.sliderImage{
+    position: relative;
+    background-color: brown !important;
+}
+.offerDdetails{
+    position: absolute;
+    top: 0%;
+    z-index: 9999999999999;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.offerDiscount , .offerProducts{
+    font-family: "Nunito Sans" ;
+    color: #fff ;
+    font-weight: 700;
+    font-size: 4em;
+}
+.offerProducts{
+    color: black ;
+}
+.sliderButton{
+    background-color: #000 !important;
+}
+
+@media (min-width:0px) and (max-width:600px){
+    .offerDiscount ,
+    .offerProducts{
+        font-weight: 700;
+        font-size: 1.8em;
+    }
+    p{
+        font-weight: 200;
+        font-size: 15px;
+    }
+    .sliderButton{
+        font-size: 12px !important;
+        font-weight: 400 !important;
+        padding: 5px 10px !important;
+        
+    }
+   
+}
+
+@media (min-width:601px) and (max-width:850px){
+    .offerDiscount ,
+    .offerProducts{
+        font-weight: 700;
+        font-size: 2.5em;
+    }
+    p{
+        font-weight: 300;
+        font-size: 16px;
+    }
+    .sliderButton{
+        font-size: 12px !important;
+        font-weight: 400 !important;
+        padding: 8px 12px !important;
+    }
+}
