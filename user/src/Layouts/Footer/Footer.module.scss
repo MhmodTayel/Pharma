@@ -1,0 +1,41 @@
+.bgFooter{
+    padding: 50px;
+    background: #222;
+    background-image: url(../../Assets/Images/bgFooter.png);
+   background-size: contain;
+}
+.footerMenu{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.tag {
+   display: block;
+   float: left;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 2px 10px;
+    font-size: 13px;
+    text-decoration: none;
+    border: #6c757d solid 3px;
+   border-radius: 3px;
+   color: #6c757d;
+   transform: all .5s ;
+}
+.tag:hover{
+    color: #076cec;
+    border: #076cec solid 3px;
+}
+.lastFooter{
+    background-color: #1a1a1a;
+    padding:20px;
+}
+.iconSpan{
+    padding: 4px;
+    background-color: #076cec;
+    margin-left: 3px;
+}
+.iconSpan:hover{
+    background-color: #4ebbe9;
+    transition: all 1s;
+}
