@@ -15,5 +15,8 @@ function fullTextSearch(query) {
 function getMedById(id) {
   return axiosInstace.get(`/medicine/${id}`);
 }
+function getAllMed() {
+  return axiosInstace.get(`/medicine/all`);
+}
 
-export { login, register, fullTextSearch, getMedById };
+export { login, register, fullTextSearch, getMedById,getAllMed };

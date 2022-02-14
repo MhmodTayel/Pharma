@@ -57,12 +57,14 @@ export default function HomeSlider() {
             <div className={styles.offerDdetails}>
               <div className="container">
                 <div className="col-md-9 col-lg-6">
-                    <h2 className={styles.offerDiscount}>15% OFF ON</h2>
+                  <div className={styles.sliderContent}>
+                  <h2 className={styles.offerDiscount}>15% OFF ON</h2>
                     <h2 className={styles.offerProducts}>Medicine</h2>
                     <p className="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                       sed do eiusmod tempor incididunt. </p>
                       <Button variant="contained" className={styles.sliderButton}>Buy Now</Button>
                   </div>
+              </div>
               </div>
             </div>
           </div>
@@ -73,11 +75,14 @@ export default function HomeSlider() {
             <div className={styles.offerDdetails}>
               <div className="container">
                 <div className="col-md-9 col-lg-6">
-                    <h2 className={styles.offerDiscount}>15% OFF ON</h2>
+                <div className={styles.sliderContent}>
+                <h2 className={styles.offerDiscount}>15% OFF ON</h2>
                     <h2 className={styles.offerProducts}>Medicine</h2>
                     <p className="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                       sed do eiusmod tempor incididunt. </p>
                       <Button variant="contained" className={styles.sliderButton}>Buy Now</Button>
+                </div>
+                  
                   </div>
               </div>
             </div>
