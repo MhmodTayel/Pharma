@@ -11,7 +11,9 @@ const {
   getById,
   createMedRedis,
   createIndex,
-  searchMeds
+  searchMeds,
+  getIncomingToday,
+  getIncomingLastWeek
 } = require("../../controllers/store controllers/storeMedController");
 
 const uploadS3 = require("../../middlewares/imageMiddleware");
@@ -78,6 +80,18 @@ router.get("/medicine/details/:id", (req, res, next) => {
 
 router.get('/search-redis/:q',(req,res,next)=> {
   searchMeds(req.params.q)
+  .then((doc) => res.json(doc))
+  .catch((e) => next(e));
+})
+
+router.get('/today-incoming-medicine',(req,res,next)=> {
+  getIncomingToday()
+  .then((doc) => res.json(doc))
+  .catch((e) => next(e));
+})
+
+router.get('/weekly-incoming-medicine',(req,res,next)=> {
+  getIncomingLastWeek()
   .then((doc) => res.json(doc))
   .catch((e) => next(e));
 })
