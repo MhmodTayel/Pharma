@@ -8,7 +8,6 @@ const getById = (id) => Medicine.findOne({ id: id })
 const updateQuantity = (id, quantity) =>
   Medicine.updateOne({ id }, { $inc: { quantity } });
 
-
   //Redis Search
 
   const client = new Client();
@@ -42,14 +41,5 @@ async function searchMeds(q) {
   return meds
 }
 
-var start = new Date();
-start.setHours(0,0,0,0);
-var end = new Date();
-end.setHours(23,59,59,999);
-const getIncomingToday = ()=> Medicine.find({arriveDate: {$gte:start , $lte:end}})
-
-var weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
-const getIncomingLastWeek = ()=> Medicine.find({arriveDate: {$gte:weekAgo}})
-
-module.exports = { create, update, updateQuantity, getById, deleteOne,getAll, createMedRedis,  createIndex, searchMeds ,getIncomingToday,getIncomingLastWeek};
+module.exports = { create, update, updateQuantity, getById, deleteOne,getAll, createMedRedis,  createIndex, searchMeds};
 
