@@ -1,5 +1,5 @@
 .bgFooter{
-    padding: 50px;
+    padding:20px;
     background: #222;
     background-image: url(../../Assets/Images/bgFooter.png);
    background-size: contain;
@@ -8,6 +8,10 @@
     list-style: none;
     margin: 0;
     padding: 0;
+}
+.alltags{
+    color: gray;
+    clear: both;
 }
 .tag {
    display: block;
@@ -30,6 +34,9 @@
     background-color: #1a1a1a;
     padding:20px;
 }
+.allIcons{
+    display: flex;
+}
 .iconSpan{
     padding: 4px;
     background-color: #076cec;
@@ -39,3 +46,21 @@
     background-color: #4ebbe9;
     transition: all 1s;
 }
+@media only screen and (max-width: 700px) {
+    .bgFooter {
+     text-align: center; 
+     ul{
+         list-style: none;
+     }
+   }
+   .allIcons{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+   }
+   .alltags{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+   }
+  }
