@@ -60,3 +60,13 @@ h4{
   color: #f2f5f7 !important ;
   font-size: 1.2rem;
 }
+::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+  background-color: transparent;
+  width: 75% !important;
+  margin: 0px !important;
+}
+
+::ng-deep .mat-expansion-panel-header {
+  padding:  0px !important;
+}
