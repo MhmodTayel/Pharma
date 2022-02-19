@@ -1,9 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const { findOne, updateQuantity,searchMeds } = require('../../controllers/user controllers/userMedController')
+const { findOne, updateQuantity,searchMeds,getMedicinesByCat } = require('../../controllers/user controllers/userMedController')
 
 router.get('/medicine/search',(req,res,next)=> {
   searchMeds(req.query.query)
+  .then((doc) => res.json(doc))
+  .catch((e) => next(e));
+})
+
+router.get('/medicine/category/:cat',(req,res,next)=> {
+  const cat = req.params.cat
+  getMedicinesByCat(cat)
   .then((doc) => res.json(doc))
   .catch((e) => next(e));
 })
