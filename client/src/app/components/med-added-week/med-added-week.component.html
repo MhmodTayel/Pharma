@@ -4,8 +4,8 @@
             <mat-card class="example-card" matBadge="{{med.quantity}}">
                 <img mat-card-image src="{{med.image}}" alt="product image">
                 <mat-card-actions class="action-buttons">
-                    <a mat-button class="edit-icon"><mat-icon>edit</mat-icon> </a>
-                    <a mat-button ><mat-icon>delete</mat-icon> </a>
+                    <a mat-button class="edit-icon" routerLink="/products/edit/{{med.id}}"><mat-icon>edit</mat-icon> </a>
+                    <button mat-button (click)="deleteMedicine(med.id)"><mat-icon>delete</mat-icon> </button>
                   </mat-card-actions>
                 <mat-card-content >
                     <mat-card-title>{{med.name}}</mat-card-title>

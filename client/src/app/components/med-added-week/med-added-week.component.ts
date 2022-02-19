@@ -13,9 +13,13 @@ export class MedAddedWeekComponent implements OnInit {
   ngOnInit(): void {
     this._medicineService.weekIncomingMeds().subscribe((res:any)=>{
       this.IncomingMedicine = res;
-      console.log(res);
     },
     (error) => { console.log(error.message) })
   }
-
+  deleteMedicine(id: any){
+    this._medicineService.deleteMed(id).subscribe((res: any)=>{
+        const idx = this.IncomingMedicine.findIndex((item)=>item.id == id);
+        this.IncomingMedicine.splice(idx, 1);
+    })
+  }
 }

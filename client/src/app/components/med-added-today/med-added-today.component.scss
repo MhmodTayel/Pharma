@@ -32,7 +32,7 @@
   justify-content: end !important;
   padding-bottom: 10px !important;
 }
-::ng-deep .mat-card-actions a {
+::ng-deep .mat-card-actions a ,.mat-card-actions button{
   min-width: 38px;
   line-height: 30px;
   background-color: #ff5622fb;

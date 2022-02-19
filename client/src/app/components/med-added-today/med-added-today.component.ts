@@ -14,9 +14,18 @@ export class MedAddedTodayComponent implements OnInit {
   ngOnInit(): void {
     this._medicineService.todayIncomingMeds().subscribe((res:any)=>{
       this.IncomingMedicine = res;
-      console.log(res);
     },
     (error) => { console.log(error.message) })
   }
 
+  deleteMedicine(id: any){
+    this._medicineService.deleteMed(id).subscribe((res: any)=>{
+    },
+    (error) => { console.log(error.message)},
+    ()=> {
+      const idx = this.IncomingMedicine.findIndex((item)=>item.id == id);
+      this.IncomingMedicine.splice(idx, 1);
+      }
+    )
+  }
 }
