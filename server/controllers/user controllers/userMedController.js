@@ -2,6 +2,7 @@ const { Medicine, schema } = require("../../models/medicine");
 const { Client, Repository } = require("redis-om");
 
 const findOne = (id) => Medicine.findOne({ id: id });
+const findAll = () => Medicine.find();
 
 const updateQuantity = (id, newQuantity) =>
   Medicine.updateOne({ id }, { $inc: { quantity: +("-" + newQuantity) } });
@@ -27,4 +28,4 @@ async function searchMeds(q) {
     .return.all();
   return meds;
 }
-module.exports = { findOne, updateQuantity,searchMeds };
+module.exports = { findOne, updateQuantity,searchMeds,findAll };
