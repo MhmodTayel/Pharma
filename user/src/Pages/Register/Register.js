@@ -10,7 +10,6 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LockIcon from '@mui/icons-material/Lock';
 import HomeIcon from '@mui/icons-material/Home';
-
 const validationSchema = yup.object({
   name: yup
     .string('Enter your email')

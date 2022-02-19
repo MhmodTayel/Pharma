@@ -3,13 +3,14 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import styles from "./Search.module.scss";
 import { fullTextSearch, getMedById } from "../../services/userService";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addMedOrderAction } from "../../store/actions/orderAction";
 
 export default function Search() {
   const dispatch = useDispatch();
   const [term, setTerm] = React.useState("");
   const [data, setData] = React.useState([]);
+  const orderStore = useSelector((state) => state.order);
 
   React.useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -33,11 +34,15 @@ export default function Search() {
   const handleSelectMed = (e) => {
     const selectedName = e.target.innerText;
     const [med] = data.filter((med) => med.name == selectedName);
-
-    getMedById(med.id).then((res) => {
-      dispatch(addMedOrderAction(res.data));
-    });
-
+    const result = orderStore.some((medicine) => medicine.id == med.id);
+    if (!result)
+      getMedById(med.id).then((res) => {
+       
+        const medObj = res.data;
+        medObj.reqQuantity = 0;
+        console.log(medObj)
+        dispatch(addMedOrderAction(medObj));
+      });
   };
 
   return (
