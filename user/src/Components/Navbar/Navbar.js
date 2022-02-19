@@ -16,7 +16,7 @@ import MedicationSharpIcon from '@mui/icons-material/MedicationSharp';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 
-const pages = ['Products', 'Pricing', 'Blog' , <Box sx={{ display: 'flex'}}><SearchSharpIcon/></Box>];
+const pages = ['Products', 'Pricing', 'Blog' ,'Contact', <Box sx={{ display: 'flex'}}><SearchSharpIcon/></Box>];
 const settings = ['Profile', 'Account', 'Logout'];
 
 const Navbar = () => {

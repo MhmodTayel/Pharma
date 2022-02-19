@@ -1,8 +1,10 @@
 require("dotenv").config();
 const User = require("../../models/pharmacist");
 const jwt = require("jsonwebtoken");
+const Message = require("../../models/message")
 
 const create = (user) => User.create(user);
+const createMessage = (message) => Message.create(message);
 const login = async ({ username, password }, next) => {
   const user = await User.findOne({ username });
   if (!user) {
@@ -27,4 +29,4 @@ const login = async ({ username, password }, next) => {
 
 
 
-module.exports = { create, login };
+module.exports = { create, login ,createMessage };
