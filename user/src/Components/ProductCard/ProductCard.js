@@ -11,7 +11,7 @@ import lizard from '../../Assets/Images/contemplative-reptile.jpg'
 import ProductDialog from './../PorductDialog/ProductDialog'
 
 
-export default function ProductItemCard() {
+export default function ProductItemCard(props) {
   const [openDialog, setOpenDialog] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -27,18 +27,20 @@ export default function ProductItemCard() {
         component="img"
         alt="Product Image"
         height="140"
-        image={lizard}
+        image={props.medItem.image}
       />
       <CardContent sx={{ pt: 1 , pb:0}}>
-      <Typography variant="p" color="text.secondary" sx={{textTransform:'uppercase',fontWeight: 'medium'}}>
-          Lizards , widespread , reptiles
-        </Typography>
+      {props.medItem?.categories?.map((cat, indx) =>
+           <Typography variant="p" color="text.secondary" sx={{textTransform:'uppercase',fontWeight: 'medium'}}>{cat}.</Typography> 
+      )}
+
+      <Typography variant="p" color="text.secondary" sx={{textTransform:'uppercase',fontWeight: 'medium'}}></Typography>
 
         <Typography gutterBottom variant="h6" component="div" sx={{ mb:0 , py:1 }}>
-          Lizard
+          {props.medItem.name}
         </Typography>
         <Typography gutterBottom variant="h6" component="div" sx={{fontWeight: 'Bold' , color:'#4ebbe9'}}> 
-          $22
+          EPG {props.medItem.storePrice}
         </Typography>
 
       </CardContent>
@@ -47,6 +49,7 @@ export default function ProductItemCard() {
         Quick View
         </Button>
          <ProductDialog 
+         medItem={props.medItem}
          open={openDialog}  
          handleCloseDialog={() => handleClose(false)} 
          image={lizard}
