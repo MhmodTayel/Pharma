@@ -1,10 +1,13 @@
+
 import React, { useState, useEffect } from "react";
-import { Home, NewOrder } from "./Pages/index";
+import { Home, NewOrder,Contact } from "./Pages/index";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { PopupMessage } from "./Components";
 import { io } from "socket.io-client";
 
 const socket = io("ws://localhost:5000");
+
+
 
 function App() {
   const [message, setMessage] = useState("");
@@ -28,6 +31,10 @@ function App() {
   }, [message]);
 
   return (
+
+
+    
+
     <>
       {/* <BrowserRouter>
        <Switch>
@@ -36,8 +43,10 @@ function App() {
        </Switch>
      </BrowserRouter> */}
       <NewOrder />
+    //      <Contact/> 
       {popup}
     </>
+
   );
 }
 
