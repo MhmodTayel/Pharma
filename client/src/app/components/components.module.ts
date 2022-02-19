@@ -8,12 +8,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderDetailsComponent } from './orders-store/order-details/order-details.component';
 import { MedicinesStoreComponent } from './medicines-store/medicines-store.component';
 import { EditMedComponent } from './edit-med/edit-med.component';
+import { MedAddedTodayComponent } from './med-added-today/med-added-today.component';
+import { MedAddedWeekComponent } from './med-added-week/med-added-week.component';
 
 @NgModule({
-  declarations: [ ProfileDetailsComponent , AddMedComponent, OrderDetailsComponent, MedicinesStoreComponent, EditMedComponent ],
+  declarations: [ ProfileDetailsComponent , AddMedComponent, OrderDetailsComponent,
+     MedicinesStoreComponent, EditMedComponent, MedAddedTodayComponent, MedAddedWeekComponent ],
   imports: [
     CommonModule , MaterialModule , FormsModule, ReactiveFormsModule ,RouterModule
   ],
-  exports:[ ProfileDetailsComponent, AddMedComponent, OrderDetailsComponent, MedicinesStoreComponent ,EditMedComponent]
+  exports:[ ProfileDetailsComponent, AddMedComponent, OrderDetailsComponent, MedicinesStoreComponent ,
+    EditMedComponent, MedAddedTodayComponent, MedAddedWeekComponent]
 })
 export class ComponentsModule {}

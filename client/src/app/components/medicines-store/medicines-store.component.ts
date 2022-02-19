@@ -1,10 +1,10 @@
 import { Medicine } from './../../models/Medicine';
-
 import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MedicineService } from 'src/app/services/medicineService/medicine.service';
+
 @Component({
   selector: 'app-medicines-store',
   templateUrl: './medicines-store.component.html',
@@ -45,6 +45,7 @@ applyFilter(event: Event) {
 catchRow(e:Medicine){ // will use it to show medicine details in model.
 console.log(e);
 }
+
 deleteMedicine(id: any){
   this._medService.deleteMed(id).subscribe((res: any)=>{
     const idx = this.medArr.findIndex((item)=>item.id == id);
