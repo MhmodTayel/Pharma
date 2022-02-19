@@ -37,7 +37,11 @@ export default function Search() {
     const result = orderStore.some((medicine) => medicine.id == med.id);
     if (!result)
       getMedById(med.id).then((res) => {
-        dispatch(addMedOrderAction(res.data));
+       
+        const medObj = res.data;
+        medObj.reqQuantity = 0;
+        console.log(medObj)
+        dispatch(addMedOrderAction(medObj));
       });
   };
 

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {Medicine} = require("../../models/medicine");
+const { Medicine } = require("../../models/medicine");
 
 const {
   getAll,
@@ -11,15 +11,19 @@ const {
   getById,
   createMedRedis,
   createIndex,
-  searchMeds
+  searchMeds,
+
+  getIncomingToday,
+  getIncomingLastWeek
+
 } = require("../../controllers/store controllers/storeMedController");
 
 const uploadS3 = require("../../middlewares/imageMiddleware");
-router.get("/medicine/getAll", async(req, res, next) =>{
+router.get("/medicine/getAll", async (req, res, next) => {
   getAll()
-  .then((doc) => res.json(doc))
-  .catch((e) => next(e));
-})
+    .then((doc) => res.json(doc))
+    .catch((e) => next(e));
+});
 router.post(
   "/medicine/add",
   uploadS3.single("image"),
@@ -32,7 +36,10 @@ router.post(
     create(body)
       .then((doc) => {
         createMedRedis({ id: body.id, name: body.name });
-        res.json(doc)})
+        console.log(req.io);
+        req.io.emit("message",  req.body.name);
+        res.json(doc);
+      })
       .catch((e) => next(e));
   }
 );
@@ -68,7 +75,6 @@ router.get("/medicine/details/:id", (req, res, next) => {
     .catch((e) => next(e));
 });
 
-
 //Redis_Search_Routes
 //Use this route only once
 // router.get("/create-index", async (req, res, next) => {
@@ -76,8 +82,20 @@ router.get("/medicine/details/:id", (req, res, next) => {
 //   res.status(200).send( "ok")
 // });
 
-router.get('/search-redis/:q',(req,res,next)=> {
+router.get("/search-redis/:q", (req, res, next) => {
   searchMeds(req.params.q)
+    .then((doc) => res.json(doc))
+    .catch((e) => next(e));
+});
+
+router.get('/today-incoming-medicine',(req,res,next)=> {
+  getIncomingToday()
+  .then((doc) => res.json(doc))
+  .catch((e) => next(e));
+})
+
+router.get('/weekly-incoming-medicine',(req,res,next)=> {
+  getIncomingLastWeek()
   .then((doc) => res.json(doc))
   .catch((e) => next(e));
 })
