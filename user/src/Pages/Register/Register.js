@@ -135,6 +135,7 @@ export default function Register() {
               enable: true,
               opacity: 0.4,
               width: 1,
+              
             },
             collisions: {
               enable: true,
