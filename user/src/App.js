@@ -31,21 +31,12 @@ function App() {
   }, [message]);
 
   return (
-
-
-    
-
-    <>
-      {/* <BrowserRouter>
-       <Switch>
-         <Route path={"/home"} exact component={Home} />
-         <Route path={"/"} exact component={Home} />
-       </Switch>
-     </BrowserRouter> */}
-      <NewOrder />
-    //      <Contact/> 
-      {popup}
-    </>
+    <BrowserRouter>
+    <Switch>
+      <Route path={"/home"} exact component={Home} />
+      <Route path={"/"} exact component={Home} />
+    </Switch>
+  </BrowserRouter>
 
   );
 }
