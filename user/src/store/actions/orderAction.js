@@ -11,3 +11,10 @@ export const removeMedOrderAction = (payload) => {
     payload,
   };
 };
+
+export const editQuantityMedOrderAction = (payload) => {
+  return {
+    type: "EDIT_QUANTITY",
+    payload,
+  };
+};

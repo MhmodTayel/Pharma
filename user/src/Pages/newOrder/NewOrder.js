@@ -1,5 +1,5 @@
 import React from "react";
-import { Search, Card } from "../../Components";
+import { Search, Card, CheckoutButton } from "../../Components";
 import Grid from "@mui/material/Grid";
 import { useSelector, useDispatch } from "react-redux";
 import Paper from "@mui/material/Paper";
@@ -12,7 +12,9 @@ export default function NewOrder() {
   return (
     <div>
       <div className="container my-3">
+        
         <Search />
+        <CheckoutButton />
         <div className="row">
           {orderStore.map((medicine) => {
             return (
