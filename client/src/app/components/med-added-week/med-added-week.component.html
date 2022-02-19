@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="row pt-2">
+        <div *ngFor="let med of IncomingMedicine; let currentIndex=index" class="col-lg-3 col-md-6 my-3">
+            <mat-card class="example-card" matBadge="{{med.quantity}}">
+                <img mat-card-image src="{{med.image}}" alt="product image">
+                <mat-card-actions class="action-buttons">
+                    <a mat-button class="edit-icon" routerLink="/products/edit/{{med.id}}"><mat-icon>edit</mat-icon> </a>
+                    <button mat-button (click)="deleteMedicine(med.id)"><mat-icon>delete</mat-icon> </button>
+                  </mat-card-actions>
+                <mat-card-content >
+                    <mat-card-title>{{med.name}}</mat-card-title>
+                    <mat-card-subtitle>Arrived On : {{med.arriveDate | date: "d/M/yy, h:mm a" }} </mat-card-subtitle>
+                    <p class="price">EPG {{med.firmPrice}}</p>
+                </mat-card-content>
+              </mat-card>
+        </div>
+    </div>
+</div>
+

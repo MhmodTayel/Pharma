@@ -12,7 +12,6 @@
     align-items: center;
 }
 .offerDiscount , .offerProducts{
-    font-family: "Nunito Sans" ;
     color: #fff ;
     font-weight: 700;
     font-size: 4em;
@@ -25,14 +24,16 @@
 }
 
 @media (min-width:0px) and (max-width:600px){
+    .sliderContent{
+        margin: 0px 30px !important;
+    }
     .offerDiscount ,
     .offerProducts{
         font-weight: 700;
         font-size: 1.8em;
     }
     p{
-        font-weight: 200;
-        font-size: 15px;
+        display: none;
     }
     .sliderButton{
         font-size: 12px !important;
@@ -47,7 +48,7 @@
     .offerDiscount ,
     .offerProducts{
         font-weight: 700;
-        font-size: 2.5em;
+        font-size: 2.2em;
     }
     p{
         font-weight: 300;

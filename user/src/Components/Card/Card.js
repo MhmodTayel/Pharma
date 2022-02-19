@@ -14,7 +14,7 @@ import IconButton from "@mui/material/IconButton";
 import moment from "moment";
 import { typography } from "@mui/system";
 import { useDispatch } from "react-redux";
-import { removeMedOrderAction } from "../../store/actions/orderAction";
+import { removeMedOrderAction, editQuantityMedOrderAction } from "../../store/actions/orderAction";
 
 export default function MedCard({ med }) {
   const [alignment, setAlignment] = React.useState("add");
@@ -24,7 +24,9 @@ export default function MedCard({ med }) {
   // };
   const [count, setCount] = React.useState(0);
   const dispatch = useDispatch();
-  const changeQuantity = (v) => setCount(Math.max(0, count + v));
+  const changeQuantity = (v) => {
+    dispatch( editQuantityMedOrderAction ({quantity: v, id: med.id}) )
+    setCount(Math.max(0, count + v))};
 
   const handleNumChange = (e) => {
     setCount(e.target.value);
