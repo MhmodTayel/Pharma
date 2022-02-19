@@ -20,4 +20,8 @@ function getMedById(id) {
   return axiosInstace.get(`/medicine/${id}`);
 }
 
-export { login, register, fullTextSearch, getMedById ,createMessage };
+
+function checkout(body){
+  return axiosInstace.post(`/checkouts`, body)
+}
+export { login, register, fullTextSearch, getMedById, checkout ,createMessage };
