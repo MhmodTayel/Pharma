@@ -1,10 +1,12 @@
 require("dotenv").config();
-const User = require("../../models/pharmacist");
+const Pharmacist = require("../../models/pharmacist");
 const jwt = require("jsonwebtoken");
 
-const create = (user) => User.create(user);
+const create = (user) => Pharmacist.create(user);
 const login = async ({ username, password }, next) => {
-  const user = await User.findOne({ username });
+  const user = await Pharmacist.findOne({ username });
+  console.log( user , 'user con')
+  console.log(username)
   if (!user) {
     next(`wrong username`);
     return;

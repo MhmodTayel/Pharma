@@ -1,40 +1,51 @@
 import React from 'react'
 import styles from './Login.module.scss'
-import { Button, TextField, FormControlLabel, Checkbox   } from '@mui/material';
-import LoginIcon from '@mui/icons-material/Login';import 
-{ useFormik } from 'formik';
+import { Button, TextField, FormControlLabel, Checkbox } from '@mui/material';
+import LoginIcon from '@mui/icons-material/Login'; import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { login } from '../../services/userService';
+
 
 const validationSchema = yup.object({
-  email: yup
+
+  username: yup
     .string('Enter your email')
-    .email('Enter a valid email')
     .required('Email is required'),
   password: yup
-    .string('Enter your password')
-    .min(8, 'Password should be of minimum 8 characters length')
-    .required('Password is required'),
+    .string()
+    .required('password is required')
 });
 
-
 export default function Login() {
-
   const formik = useFormik({
     initialValues: {
-      email: '',
+      username: '',
       password: '',
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: (values, actions) => {
+      console.log(values , 'values')
+      login(values).then(
+        (res) => {
+          console.log(res , 'res')
+           localStorage.setItem("Token" , res.values.token);
+        },
+        (err) => {
+          console.log(err , 'err')
+        }
+      )
+      actions.resetForm();
       alert(JSON.stringify(values, null, 2));
+
     },
   });
 
+
   return (
+
     <div className={'container', styles.bg}>
       <div className='row w-100'>
         <div className={'col-md-6'}>
-          {/* <img src={require('../../Assets/Images/medbackground.png')} alt='medicen' className="w-75  vh-100 mx-5" /> */}
         </div>
         <div className={' col-lg-6 col-md-12 col-sm-12 my-5'}>
           <div className={styles.card}>
@@ -46,13 +57,13 @@ export default function Login() {
                   className="logintext-field my-3"
                   variant="standard"
                   fullWidth
-                  id="email"
-                  name="email"
-                  label="Email"
-                  value={formik.values.email}
+                  id="username"
+                  name="username"
+                  label="Username"
+                  value={formik.values.username}
                   onChange={formik.handleChange}
-                  error={formik.touched.email && Boolean(formik.errors.email)}
-                  helperText={formik.touched.email && formik.errors.email}
+                  error={formik.touched.username && Boolean(formik.errors.username)}
+                  helperText={formik.touched.username && formik.errors.username}
                 />
                 <TextField
                   className="logintext-field my-3 h3"
@@ -72,7 +83,7 @@ export default function Login() {
                   <a href='#'>forgot your password?</a>
                 </div>
                 <div className=' d-flex  justify-content-center'>
-                  <Button variant="contained" endIcon={<LoginIcon />}>
+                  <Button variant="contained" type='submit' endIcon={<LoginIcon />}>
                     Login
                   </Button>
                 </div>
@@ -80,7 +91,6 @@ export default function Login() {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   )
