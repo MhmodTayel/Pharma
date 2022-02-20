@@ -3,7 +3,8 @@
 :host {
   .mat-icon {
     vertical-align: middle;
-    margin-right: 1rem;
+    color: #f2f5f7 !important;
+    font-size: 20px !important;
   }
 }
 .logo{
@@ -25,14 +26,11 @@ a{
   color: #94a3b8 !important;
   font-size: 0.8rem;
   height: 46px !important;
-  // margin-bottom: 4px;
   &:hover {
     color: #f2f5f7 !important;
   }
   ::ng-deep {
     .mat-list-item-content {
-      // border-radius: 5px;
-      // margin: 0 8px;
       &:hover {
         background: #567e99 !important;
       }
@@ -58,7 +56,7 @@ a{
 }
 h4{
   color: #f2f5f7 !important ;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 0.5rem  !important;
 }
 
@@ -80,5 +78,5 @@ h4{
 }
 
 ::ng-deep  .mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
-  padding: 0px 22px !important;
+  padding: 0px 30px !important;
 }
