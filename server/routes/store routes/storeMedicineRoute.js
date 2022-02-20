@@ -30,11 +30,10 @@ router.post(
   async (req, res, next) => {
     const body = req.body;
     body.image = req.file?.location;
-    // body.categories = body.categories.split(" ");
+    body.categories = body.categories.split(",");
     const medArr = await Medicine.find({});
     body.id = medArr.length + 1;
-    create(body)
-      .then((doc) => {
+    create(body).then((doc) => {
         createMedRedis({ id: body.id, name: body.name });
         console.log(req.io);
         req.io.emit("message",  req.body.name);
