@@ -20,9 +20,12 @@ export class OrdersStoreComponent implements OnInit {
 
   ngOnInit(): void {
     this.order.getOrders().subscribe((data:any) => {
+      console.log(data);
+      
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      
     })
 
   }

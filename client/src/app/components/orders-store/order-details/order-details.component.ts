@@ -13,11 +13,12 @@ export class OrderDetailsComponent implements OnInit {
   constructor(public route:ActivatedRoute,private order:OrdersServiceService) { }
 
   orderId:any = 0
-  details:any[]=[];
+  details:any={};
     ngOnInit(): void {
-      this.route.paramMap.subscribe((params) =>{
-         this.orderId = params.get("id");
-         this.order.getDetails('1').subscribe((response: any) => {
+
+      this.orderId = window.location.href.split('/').pop();
+
+         this.order.getDetails(this.orderId).subscribe((response: any) => {
           this.details = response;
           console.log(this.details);
         },
@@ -25,8 +26,8 @@ export class OrderDetailsComponent implements OnInit {
           console.log(error);
         }
          )
-
-       }) 
+         console.log(this.details);
+         
    }
   
 
