@@ -24,13 +24,10 @@ function getOrders(sessionId) {
   return axiosInstace.get(`/payment/${sessionId}`);
 }
 
-
-
-
-
   function getAllMed() {
   return axiosInstace.get(`/medicine/all`);
 }
+
 function checkout(body){
   return axiosInstace.post(`/checkouts`, body)
 }
