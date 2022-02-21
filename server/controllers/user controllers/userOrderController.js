@@ -11,7 +11,7 @@ config();
 const createOrder=(order)=> Order.create(order);
 
 async function createStripeCheckoutSession(
-    line_items
+    body
   ) {
     // Example Item
     // {
@@ -27,7 +27,8 @@ async function createStripeCheckoutSession(
   
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items,
+      line_items:body.line_items,
+      metadata:body.metadata,
       success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${url}/failed`,
     });
@@ -43,6 +44,6 @@ async function createStripeCheckoutSession(
     // session_id retrive => paymentIntent
     // paymentIntent => order details 
    
-    return {paymentIntent,lineItems}
+    return {paymentIntent,lineItems,session}
   }
   module.exports = {createStripeCheckoutSession,payment, createOrder}

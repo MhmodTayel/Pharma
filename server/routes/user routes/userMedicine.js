@@ -37,8 +37,8 @@ router.get("/medicine/:id", (req, res, next) => {
     .catch((e) => next(e));
 });
 
-router.patch("/medicine/quantity/:id", (req, res, next) => {
-  const id = req.params.id;
+router.patch("/medicine/quantity", (req, res, next) => {
+  const id = req.body.id;
   const newQuantity = req.body.quantity;
   updateQuantity(id, newQuantity)
     .then((doc) => res.json(doc))
