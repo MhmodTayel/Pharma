@@ -35,7 +35,6 @@ router.post(
     body.id = medArr.length + 1;
     create(body).then((doc) => {
         createMedRedis({ id: body.id, name: body.name });
-        console.log(req.io);
         req.io.emit("message",  req.body.name);
         res.json(doc);
       })

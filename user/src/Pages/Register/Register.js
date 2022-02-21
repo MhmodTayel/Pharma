@@ -10,83 +10,191 @@ import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LockIcon from '@mui/icons-material/Lock';
 import HomeIcon from '@mui/icons-material/Home';
+import Particles from "react-tsparticles";
+import { register } from '../../services/userService';
+import { Redirect } from 'react-router-dom';
+
+
+const particlesInit = (main) => {
+  console.log(main);
+
+};
+
+const particlesLoaded = (container) => {
+  console.log(container);
+};
+
 const validationSchema = yup.object({
-  name: yup
+  pharmacyName: yup
     .string('Enter your email')
-    .matches(/^[a-zA-Z]{3,}/g, 'name should be more than 3 ')
+    .matches(/^[a-zA-Z]{3,}/g, 'pharmacyName should be more than 3 ')
     .required('Name is required'),
   email: yup
     .string('Enter your email')
+    .max(50)
     .email('Enter a valid email')
     .required('Email is required'),
   username: yup
-    .string('Enter your email')
+    .string('username your email')
+    .min(3)
+    .max(20)
     .matches(/^[a-zA-Z]{3,}[!@#$&()-`.+,"]/g, 'Username should have special character (!@#$&()-`.+,) ')
-    .required('Email is required'),
-  phone: yup
+    .required('username is required'),
+  pharmacistPhonNumber: yup
     .string()
     .matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, 'Phone number is not valid')
     .min(11, 'toshort')
-    .max(11, 'tolong')
-    .required('phone number is required'),
+    .max(12, 'tolong')
+    .required('pharmacistPhonNumber number is required'),
   address: yup
     .string()
+    .max(100)
     .required('adress number is required'),
-  Password: yup
+  password: yup
     .string()
-    .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/,"password must contain Uper,Lower case number")
-    .min(8, 'Password should be of minimum 8 characters length')
-    .required('Password is required'),
-  Repassword: yup
-    .string()
-    .oneOf([yup.ref('Password'), null], 'RePassword must match')
-    .required('repassword is required')
+    .max(20)
+    .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/, "password must contain Uper,Lower case number")
+    .min(8, 'password should be of minimum 8 characters length')
+    .required('password is required')
 });
-
 export default function Register() {
   const formik = useFormik({
     initialValues: {
-      name: '',
+      pharmacyName: '',
       email: '',
       username: '',
-      phone: '',
+      pharmacistPhonNumber: '',
       address: '',
-      Password: '',
-      Repassword: ''
+      password: '',
 
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 7));
+    onSubmit: (values, actions) => {
+      register(values).then(
+        (res) => {
+          console.log(res)
+        },
+        (err) => {
+          console.log(err)
+        })
+      alert(JSON.stringify(values, null, 6));
+      actions.resetForm();
+
     },
   });
 
-  return (
 
-    <div className={styles.bg}>
-      <div className='container-fluid'>
+  return (
+    <div>
+      <Particles
+        id="tsparticles"
+        init={particlesInit}
+        loaded={particlesLoaded}
+        options={{
+          background: {
+            color: {
+              value: "#1d243d",
+            },
+          },
+          fpsLimit: 100,
+          interactivity: {
+            events: {
+              onClick: {
+                enable: true,
+                mode: "push",
+              },
+              onHover: {
+                enable: true,
+                mode: "repulse",
+              },
+              resize: true,
+            },
+            modes: {
+              bubble: {
+                distance: 350,
+                duration: 2,
+                opacity: 0.6,
+                size: 30,
+              },
+              push: {
+                quantity: 3,
+              },
+              repulse: {
+                distance: 150,
+                duration: 0.3,
+              },
+            },
+          },
+          particles: {
+            color: {
+              value: "#ffffff",
+            },
+            links: {
+              color: "#ffffff",
+              distance: 120,
+              enable: true,
+              opacity: 0.4,
+              width: 1,
+              
+            },
+            collisions: {
+              enable: true,
+            },
+            move: {
+              direction: "none",
+              enable: true,
+              outMode: "bounce",
+              random: false,
+              speed: 1,
+              straight: false,
+            },
+            number: {
+              density: {
+                enable: true,
+                area: 700,
+              },
+              value: 70,
+            },
+            opacity: {
+              value: 0.5,
+            },
+            shape: {
+              type: "circle",
+            },
+            size: {
+              random: true,
+              value: 5,
+            },
+          },
+          detectRetina: true,
+        }}
+      />
+      <div className='container'>
         <div className='row'>
-          <div className=' ms-5 col-lg-5  col-md-6 col-sm-12  border-1 rounded-3 p-4 bg-light mt-5'>
-            <div className='mt-5'>
-              <h5 className='text-center text-primary my-3'> Register Now!!</h5>
+          <div className={styles.card}>
+            <div className='mt-4'>
+              <h4 className='text-center text-white'>Pharmatic</h4>
+              <h6 className='text-center text-white'>Register now to have an account</h6>
+              <h6 className='text-center text-white '>find your order faster</h6>
+
               <form onSubmit={formik.handleSubmit}>
-                {/* name */}
+                {/* pharmacyName */}
                 <TextField
-                  className='bg-light'
-                  variant="standard"
-                  className="my-2"
+                  className='bg-light text-white'
+                  // variant="standard"
+                  className="my-2 text-white"
                   fullWidth
-                  id="name"
-                  name="name"
-                  label="Name"
-                  value={formik.values.name}
+                  id="pharmacyName"
+                  pharmacyName="pharmacyName"
+                  label="Pharmacy Name"
+                  value={formik.values.pharmacyName}
                   onChange={formik.handleChange}
-                  error={formik.touched.name && Boolean(formik.errors.name)}
-                  helperText={formik.touched.name && formik.errors.name}
+                  error={formik.touched.pharmacyName && Boolean(formik.errors.pharmacyName)}
+                  helperText={formik.touched.pharmacyName && formik.errors.pharmacyName}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <AccountCircle />
+                        <AccountCircle className='text-white' />
                       </InputAdornment>
                     ),
                   }}
@@ -94,7 +202,7 @@ export default function Register() {
                 {/* username */}
                 <TextField
                   className="my-2"
-                  variant="standard"
+                  // variant="standard"
                   fullWidth
                   id="username"
                   name="username"
@@ -106,7 +214,7 @@ export default function Register() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <PersonAddAltIcon />
+                        <PersonAddAltIcon className='text-white' />
                       </InputAdornment>
                     ),
                   }}
@@ -114,7 +222,7 @@ export default function Register() {
                 {/* email */}
                 <TextField
                   className="my-2"
-                  variant="standard"
+                  // variant="standard"
                   fullWidth
                   id="email"
                   name="email"
@@ -126,27 +234,27 @@ export default function Register() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <EmailIcon />
+                        <EmailIcon className='text-white' />
                       </InputAdornment>
                     ),
                   }}
                 />
-                {/* phone */}
+                {/* pharmacistPhonNumber */}
                 <TextField
                   className="my-2"
-                  variant="standard"
+                  // variant="standard"
                   fullWidth
-                  id="phone"
-                  name="phone"
-                  label="phone"
-                  value={formik.values.phone}
+                  id="pharmacistPhonNumber"
+                  name="pharmacistPhonNumber"
+                  label="Phone Number"
+                  value={formik.values.pharmacistPhonNumber}
                   onChange={formik.handleChange}
-                  error={formik.touched.phone && Boolean(formik.errors.phone)}
-                  helperText={formik.touched.phone && formik.errors.phone}
+                  error={formik.touched.pharmacistPhonNumber && Boolean(formik.errors.pharmacistPhonNumber)}
+                  helperText={formik.touched.pharmacistPhonNumber && formik.errors.pharmacistPhonNumber}
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <PhoneIcon />
+                        <PhoneIcon className='text-white' />
                       </InputAdornment>
                     ),
                   }}
@@ -154,7 +262,7 @@ export default function Register() {
                 {/* address */}
                 <TextField
                   className="my-2"
-                  variant="standard"
+                  // variant="standard"
                   fullWidth
                   id="address"
                   name="address"
@@ -166,7 +274,7 @@ export default function Register() {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <HomeIcon />
+                        <HomeIcon className='text-white' />
                       </InputAdornment>
                     ),
                   }}
@@ -174,41 +282,21 @@ export default function Register() {
                 {/* password */}
                 <div className='w-100 d-flex'>
                   <TextField
-                    className="my-2 h3 w-50 me-2 "
-                    variant="standard"
+                    className="my-2 h3 w-100 me-2 "
+                    // variant="standard"
                     fullWidth
-                    id="Password"
-                    name="Password"
-                    label="Password"
-                    type="Password"
-                    value={formik.values.Password}
-                    onChange={formik.handleChange}
-                    error={formik.touched.Password && Boolean(formik.errors.Password)}
-                    helperText={formik.touched.Password && formik.errors.Password}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <LockIcon />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                  <TextField
-                    className={"my-2 h3 w-50"}
-                    variant="standard"
-                    fullWidth
-                    id="Repassword"
-                    name="Repassword"
-                    label="Repassword"
+                    id="password"
+                    name="password"
+                    label="password"
                     type="password"
-                    value={formik.values.Repassword}
+                    value={formik.values.password}
                     onChange={formik.handleChange}
-                    error={formik.touched.Repassword && Boolean(formik.errors.Repassword)}
-                    helperText={formik.touched.Repassword && formik.errors.Repassword}
+                    error={formik.touched.password && Boolean(formik.errors.password)}
+                    helperText={formik.touched.password && formik.errors.password}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">
-                          <LockIcon />
+                          <LockIcon className='text-white' />
                         </InputAdornment>
                       ),
                     }}
@@ -216,10 +304,9 @@ export default function Register() {
                 </div>
                 {/* button */}
                 <div className='butt d-flex  justify-content-center'>
-                  <Button className='w-25 my-5' variant="contained" fullWidth type="submit">
+                  <Button className={styles.btn}variant="contained" fullWidth type="submit">
                     Register
                   </Button>
-
                 </div>
               </form>
             </div>

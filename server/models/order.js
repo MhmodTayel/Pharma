@@ -7,24 +7,28 @@ const orderSchema = new mongoose.Schema({
     },
     client: { type: mongoose.Schema.Types.ObjectId, ref: 'Pharmacist' },
 
-    number: {
-        type: String,
-        required: true,
+    receipt_url:{
+        type:String
     },
+    billing_detail: {
+        type:Object
+    },
+    created:{
+        type:Number
+    },
+  
     cost: Number,
     numberOfCat: Number,
-    quantityOfCat: Number,
     inProgress: Boolean,
     fulfilled: Boolean,
     discount: Boolean,
     medicines: [
         {
-            id: { type: mongoose.Schema.Types.ObjectId, ref: 'Medicine' },
-            quantity: Number
+           type:Object
         },
-    ],
-    date : { type : Date, default: Date.now }
-},
+    ]
+    
+},{timestamps: true}
 )
 const Order = mongoose.model("Order", orderSchema);
 module.exports = Order;
