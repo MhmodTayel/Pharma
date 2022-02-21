@@ -4,8 +4,8 @@ const {createStripeCheckoutSession, payment, createOrder} = require('../../contr
 const Order = require("../../models/order");
 
 router.post("/checkouts/", ({body}, res, next)=>{
-    
-    createStripeCheckoutSession(body.line_items)
+    console.log(body)
+    createStripeCheckoutSession(body)
     .then((doc)=> res.json(doc))
     .catch((err)=>next(err))
 } );

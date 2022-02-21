@@ -35,6 +35,10 @@ function checkout(body){
 function createOrder(order){
   return axiosInstace.post(`/orders/newOrder`, order)
 }
-export { login, register, fullTextSearch, getMedById, checkout,getAllMed ,createMessage, getOrders ,createOrder};
+
+function reduceMedQuantity(med){
+  return axiosInstace.patch(`/medicine/quantity`, med)
+}
+export { login, register, fullTextSearch, getMedById, checkout,getAllMed ,createMessage, getOrders ,createOrder,reduceMedQuantity};
 
 

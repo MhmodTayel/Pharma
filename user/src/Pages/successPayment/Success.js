@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { createOrder, getOrders } from "../../services/userService";
+import { createOrder, getOrders,reduceMedQuantity } from "../../services/userService";
 
 export default function Success() {
   const [response, setResponse] = useState({});
@@ -8,6 +8,7 @@ export default function Success() {
     const urlParams = new URLSearchParams(queryString);
     const sessionId = urlParams.get("session_id");
     getOrders(sessionId).then((res) => {
+      console.log(res)
       setResponse(res.data);
       const lineItems = res.data.lineItems.data.map((item) => {
         return {
@@ -39,6 +40,13 @@ export default function Success() {
       };
       createOrder(order).then((res)=> {
         console.log(res)
+      })
+
+      const meds = JSON.parse(res.data.session.metadata.data)
+      meds.forEach(medicine=> {
+        reduceMedQuantity(medicine).then(res=> {
+          console.log(res)
+        })
       })
     });
   }, []);
