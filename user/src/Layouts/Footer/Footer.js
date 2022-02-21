@@ -31,7 +31,7 @@ export default function Footer() {
                   <LocalPhoneIcon className='me-2' />+1 (415)876-3250
                   <br /><EmailIcon className='me-2' /> pharmatec@gmail.com
                 </p>
-                <div className='d-flex'>
+                <div className={ styles.allIcons}>
                   <div className={styles.iconSpan}><FacebookSharpIcon /></div>
                   <div className={styles.iconSpan}>  <TwitterIcon /></div>
                   <div className={styles.iconSpan}><GoogleIcon /></div>
@@ -70,13 +70,10 @@ export default function Footer() {
               </div>
               <div className="col-md-3 text-white">
                 <h5 className="fw-bold my-4 ">Information</h5>
-                <div className="tag text-muted clearfix">
+                <div className={styles.alltags}>
                   <a href="#" className={styles.tag}>Maskes</a>
                   <a href="#" className={styles.tag}>medicen</a>
                   <a href="#" className={styles.tag}>stores</a>
-                  <a href="#" className={styles.tag}>World</a>
-                  <a href="#" className={styles.tag}>maskes</a>
-                  <a href="#" className={styles.tag}>medicen</a>
                   <a href="#" className={styles.tag}>doctors</a>
                   <a href="#" className={styles.tag}>medicen</a>
                 </div>

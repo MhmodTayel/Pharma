@@ -6,12 +6,15 @@ import { SharedModuleModule } from '../sharedModule/shared-module/shared-module.
 import { AddProductPageComponent } from './add-product-page/add-product-page.component';
 import { EditProductPageComponent } from './edit-product-page/edit-product-page.component';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { AddedTodayComponent } from './products-added-today-page/added-today/added-today.component';
+import { MaterialModule } from '../angular-material/angular-material.module';
 
 
 const routes: Routes = [
   {path:'all-products',component:ProductsPageComponent},
   {path:'add',component:AddProductPageComponent},
   {path:'edit/:id',component:EditProductPageComponent},
+  {path:'added-recently',component:AddedTodayComponent},
   {path:'',component:ProductsPageComponent}
 ];
 
@@ -19,10 +22,11 @@ const routes: Routes = [
   declarations: [
     ProductsPageComponent,
     AddProductPageComponent,
-    EditProductPageComponent
+    EditProductPageComponent,
+    AddedTodayComponent,
   ],
   imports: [
-    CommonModule , RouterModule.forChild(routes), SharedModuleModule ,ComponentsModule
+    CommonModule , RouterModule.forChild(routes), SharedModuleModule ,ComponentsModule,MaterialModule
   ]
 })
 export class ProductsModule { }

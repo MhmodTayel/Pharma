@@ -6,5 +6,13 @@ import PopularMedicine from "./PopularMedicine/PopularMedicine";
 import CustomizedDialogs from './PorductDialog/ProductDialog'
 import Search from "./Search/Search";
 import TextField from "./TextField/TextField";
-export { Button, Card, Search, Navbar, HomeSlider, PopularMedicine, CustomizedDialogs, TextField }
+import Categories from "./categories/categories";
+import CheckoutButton from "./checkoutButton/CheckoutButton";
+import PopupMessage from './Alert/PopupMessage';
+
+export {Button, Card,Search, Navbar, HomeSlider,PopularMedicine,CustomizedDialogs,PopupMessage,CheckoutButton,Categories,TextField}
+
+
+
+
 
