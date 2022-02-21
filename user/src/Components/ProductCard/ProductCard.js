@@ -22,7 +22,7 @@ export default function ProductItemCard(props) {
   };
 
   return (
-    <Card sx={{ maxWidth: 345 , my:3 }}>
+    <Card sx={{ maxWidth: 345 , my:2 }}>
       <CardMedia
         component="img"
         alt="Product Image"
@@ -31,7 +31,7 @@ export default function ProductItemCard(props) {
       />
       <CardContent sx={{ pt: 1 , pb:0}}>
       {props.medItem?.categories?.map((cat, indx) =>
-           <Typography variant="p" color="text.secondary" sx={{textTransform:'uppercase',fontWeight: 'medium'}}>{cat}.</Typography> 
+           <Typography  key={indx} variant="p" color="text.secondary" sx={{textTransform:'uppercase',fontWeight: 'medium'}}>{cat}.</Typography> 
       )}
 
       <Typography variant="p" color="text.secondary" sx={{textTransform:'uppercase',fontWeight: 'medium'}}></Typography>
@@ -52,9 +52,6 @@ export default function ProductItemCard(props) {
          medItem={props.medItem}
          open={openDialog}  
          handleCloseDialog={() => handleClose(false)} 
-         image={lizard}
-         name={"Medicine"}
-         price={"22$"}
          />
 
         <Button variant="contained" size="small" sx={{backgroundColor:'#4ebbe9'}}><ShoppingCartIcon sx={{mx:1 , fontSize:20}}/> Add to cart</Button>

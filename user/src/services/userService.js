@@ -20,11 +20,9 @@ function getMedById(id) {
   return axiosInstace.get(`/medicine/${id}`);
 }
 
-
-
-function checkout(body){
-  return axiosInstace.post(`/checkouts`, body)
-}
+// function checkout(body){
+//   return axiosInstace.post(`/checkouts`, body)
+// }
 
 
   function getAllMed() {

@@ -18,6 +18,6 @@ import { MedAddedWeekComponent } from './med-added-week/med-added-week.component
     CommonModule , MaterialModule , FormsModule, ReactiveFormsModule ,RouterModule
   ],
   exports:[ ProfileDetailsComponent, AddMedComponent, OrderDetailsComponent, MedicinesStoreComponent ,
-    EditMedComponent, MedAddedTodayComponent, MedAddedWeekComponent]
+    EditMedComponent, MedAddedTodayComponent, MedAddedWeekComponent ]
 })
 export class ComponentsModule {}
