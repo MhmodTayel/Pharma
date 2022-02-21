@@ -15,6 +15,7 @@ router.get("/medicine/search", (req, res, next) => {
     .catch((e) => next(e));
 });
 
+
 router.get("/medicine/category/:cat", (req, res, next) => {
   const cat = req.params.cat;
   getMedicinesByCat(cat)
@@ -27,6 +28,7 @@ router.get("/medicine/all", (req, res, next) => {
     .then((doc) => res.json(doc))
     .catch((e) => next(e));
 });
+
 
 router.get("/medicine/:id", (req, res, next) => {
   const id = req.params.id;
