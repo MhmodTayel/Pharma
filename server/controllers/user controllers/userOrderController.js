@@ -1,11 +1,14 @@
 const { config } = require("dotenv");
 const Stripe =require('stripe');
+const Order = require("../../models/order");
 
 config();
 
  const stripe = new Stripe(process.env.STRIPE_SECRET, {
     apiVersion: '2020-08-27'
 })
+
+const createOrder=(order)=> Order.create(order);
 
 async function createStripeCheckoutSession(
     line_items
@@ -32,4 +35,14 @@ async function createStripeCheckoutSession(
     return session;
   }
 
-  module.exports = {createStripeCheckoutSession}
+  const payment = async(session_id)=> {
+    const session = await stripe.checkout.sessions.retrieve(session_id)
+    const paymentIntent = await stripe.paymentIntents.retrieve(session.payment_intent)
+    const lineItems = await stripe.checkout.sessions.listLineItems(session_id);
+    // session_id listLineItems => line items
+    // session_id retrive => paymentIntent
+    // paymentIntent => order details 
+   
+    return {paymentIntent,lineItems}
+  }
+  module.exports = {createStripeCheckoutSession,payment, createOrder}

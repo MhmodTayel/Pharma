@@ -20,11 +20,12 @@ function getMedById(id) {
   return axiosInstace.get(`/medicine/${id}`);
 }
 
-
-
-function checkout(body){
-  return axiosInstace.post(`/checkouts`, body)
+function getOrders(sessionId) {
+  return axiosInstace.get(`/payment/${sessionId}`);
 }
+
+
+
 
 
   function getAllMed() {
@@ -33,5 +34,8 @@ function checkout(body){
 function checkout(body){
   return axiosInstace.post(`/checkouts`, body)
 }
-export { login, register, fullTextSearch, getMedById, checkout,getAllMed ,createMessage };
+function createOrder(order){
+  return axiosInstace.post(`/orders/newOrder`, order)
+}
+export { login, register, fullTextSearch, getMedById, checkout,getAllMed ,createMessage, getOrders ,createOrder};
 

@@ -14,7 +14,9 @@ router.get('/medicine/search',(req,res,next)=> {
 router.get('/medicine/category/:cat',(req,res,next)=> {
   const cat = req.params.cat
   getMedicinesByCat(cat)
-
+  .then((doc) => res.json(doc))
+  .catch((e) => next(e));
+})
 router.get('/medicine/all',(req,res,next)=> {
   findAll()
 
