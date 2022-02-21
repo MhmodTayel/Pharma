@@ -21,7 +21,7 @@ export class MedicineService {
   getDetails(id:string|null){
     return this._api.get(`/store/medicine/details/${id}`);
   } 
-  update(id:string,medicine:FormData){
+  update(id:string,medicine:any){
   return this._api.patch(`/store/medicine/${id}`,medicine);
   }
   todayIncomingMeds(){
