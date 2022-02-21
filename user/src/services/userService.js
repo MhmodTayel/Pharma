@@ -20,16 +20,19 @@ function getMedById(id) {
   return axiosInstace.get(`/medicine/${id}`);
 }
 
-
-
-function checkout(body){
-  return axiosInstace.post(`/checkouts`, body)
+function getOrders(sessionId) {
+  return axiosInstace.get(`/payment/${sessionId}`);
 }
-
 
   function getAllMed() {
   return axiosInstace.get(`/medicine/all`);
 }
 
-export { login, register, fullTextSearch, getMedById, checkout,getAllMed ,createMessage };
+function checkout(body){
+  return axiosInstace.post(`/checkouts`, body)
+}
+function createOrder(order){
+  return axiosInstace.post(`/orders/newOrder`, order)
+}
+export { login, register, fullTextSearch, getMedById, checkout,getAllMed ,createMessage, getOrders ,createOrder};
 

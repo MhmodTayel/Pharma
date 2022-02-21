@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Home, NewOrder,Contact,Register,Login } from "./Pages/index";
+
+import { Home, NewOrder,Contact,Register,Login,Success } from "./Pages/index";
+
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { PopupMessage } from "./Components";
 import { io } from "socket.io-client";
@@ -30,17 +32,15 @@ function App() {
 
   return (
     <BrowserRouter>
-
-
     <Switch>
       <Route path={"/home"} exact component={Home} />
       <Route path={"/"} exact component={Home} />
+      <Route path={"/success"} exact component={Success} />
+      <Route path={"/newOrder"} exact component={NewOrder} />
       <Route path={"/register"} exact component={Register} />
       <Route path={"/login"} exact component={Login} />
-
     </Switch>
   </BrowserRouter>
-
 
   );
 }
