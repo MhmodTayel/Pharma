@@ -26,7 +26,7 @@ export class OrderDetailsComponent implements OnInit {
           console.log(error);
         }
          )
-         console.log(this.orderId);
+         console.log(this.details);
          
    }
   
