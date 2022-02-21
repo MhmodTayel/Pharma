@@ -19,7 +19,7 @@ export default function Success() {
       });
       const totalCharge = res.data.paymentIntent.charges.data[0];
       const charge = {
-        billing_details: totalCharge.billing_details,
+        billing_detail: totalCharge.billing_details,
         created: totalCharge.created,
         receipt_url: totalCharge.receipt_url,
       };
