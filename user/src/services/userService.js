@@ -30,8 +30,6 @@ function checkout(body){
   function getAllMed() {
   return axiosInstace.get(`/medicine/all`);
 }
-function checkout(body){
-  return axiosInstace.post(`/checkouts`, body)
-}
+
 export { login, register, fullTextSearch, getMedById, checkout,getAllMed ,createMessage };
 
