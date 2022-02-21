@@ -18,9 +18,8 @@ router.post("/user/login", async (req, res, next) => {
 
 router.post("/user/register", async (req, res, next) => {
   const user = req.body;
-  console.log(user)
   const id = await Pharmacist.find({}).count();
-  user.id = id;
+  user.id = id+1;
   create(user)
     .then((doc) => res.json(doc))
     .catch((e) => next(e));

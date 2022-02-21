@@ -3,7 +3,10 @@ const Pharmacist = require("../../models/pharmacist");
 const jwt = require("jsonwebtoken");
 const Message = require("../../models/message")
 
-const create = (user) => Pharmacist.create(user);
+const create = (user) => {
+  console.log(user)
+  return Pharmacist.create(user)
+};
 const createMessage = (message) => Message.create(message);
 
 const login = async ({ username, password }, next) => {

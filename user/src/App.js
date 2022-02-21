@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import { Home, Login, NewOrder, Register } from './Pages/index'
-import { BrowserRouter, Switch, Route} from 'react-router-dom'
-=======
-
 import React, { useState, useEffect } from "react";
 import { Home, NewOrder,Contact,Register,Login } from "./Pages/index";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -12,8 +6,6 @@ import { io } from "socket.io-client";
 
 const socket = io("ws://localhost:5000");
 
-
->>>>>>> main
 
 function App() {
   const [message, setMessage] = useState("");

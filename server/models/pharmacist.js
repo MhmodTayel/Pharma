@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require("bcryptjs");
 
 const pharmacistSchema = new mongoose.Schema({
     id: {
