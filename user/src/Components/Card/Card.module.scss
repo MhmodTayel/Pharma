@@ -25,5 +25,11 @@ input[type="number"] {
 }
 
 .cardScale{
-  transform: scale(.7);
+  transform: scale(1);
+  transition: all ease 0.3s;
+  &:hover{
+    background-color: rgba(236, 250, 245, 0.877);
+    
+
+  }
 }
