@@ -1,44 +1,212 @@
 
-.card{
-    background-color: #212942!important;
-    box-shadow: inset !important;
-    margin:auto;
-    width: 40% !important;
-    background-color: aliceblue;
-    border-radius: 20px;
-    z-index: 99999999999;
-    margin-top: 50px !important;
-    color: #ffff !important;
-    position: relative;
-}
-.card:after{
-    position: absolute;
-    content: '';
-    width: 95%;
-    height: 10px;
-    background-color: #8bd17c !important;
-    border-radius: 10px;
-}
-.card:before{
-    position: absolute;
-    content: '';
-    width: 95%;
-    height: 10px;
-    background-color: #79a6fe !important;
-    border-radius: 10px;
-}
-.btn{
-    background-color: #7f5feb !important;
-    margin-top : 50px !important;
-    margin-bottom: 50px !important;
-    border-radius: 25px !important;
-    width: 50% !important ;
-    padding: 10px !important;
-    transition: all ease-in-out 1s;
-    font-size: 1rem !important;
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,900|Poppins:400,500');
+    .img {
+		max-width: 100%;
+	}
+    .app {
+		margin-top: 10px !important;
+        background-color: #fff;
+        width:600px;
+        min-height: 95vh;
+        margin: auto;
+        border-radius: 5px;
+        padding: 1em;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 6px 31px -2px rgba(0, 0, 0, .3);
+      }
+      .h2 {
+		font-weight: normal;
+		margin: 5px auto;
+        font-size: 40px;
+        color: #fff;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	}
 
-}
-.btn:hover{
-    background-color:#3e58a7 !important ;
-    transition: all ease-in-out 1s;
-}
+	.h3 {
+		color: #333;
+	}
+    .a {
+		text-decoration: none;
+		color: #257aa6;
+	}
+
+	.p {
+		font-size: 13px;
+		color: rgba(255, 255, 255, 0.609);
+		line-height: 1.5;
+        font-size: 25px;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+	}
+    .intro_viewer {
+		width: 100%;
+		height: 550px;
+		background: #2F55A4;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		text-align: center;
+		padding: 4em 3em;
+		transition: 0.45s ease all 0.1s !important;
+       transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.1s !important;
+	}
+    .active  {
+		height: 200px;
+	}
+    .imgdiv {
+        width: 100%;
+        height: 300px;
+        margin: 2em auto;
+    }
+    .btn {
+		position: absolute;
+		bottom: 6em;
+		left: 0;
+		right: 0;
+		margin: auto;
+		text-align: center;
+		background: #fff;
+		padding: 10px;
+		height: 70px;
+		width: 70px;
+		border-radius: 50%;
+		transition: 0.45s ease all 0.1s !important;
+		transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.1s !important;
+	}
+    .button {
+		height: 100%;
+		width: 100%;
+		border-radius: 50%;
+		cursor: pointer;
+		padding: 0.5em;
+		border: none;
+		background-color: #21D4FD;
+		background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+	}
+    .form {
+		width: 90%;
+		height: 450px;
+		background: #fff;
+		box-shadow: 0 6px 31px -2px rgba(0, 0, 0, .3);
+		position: absolute;
+		bottom: 15em;
+		left: 0;
+		right: 0;
+		padding: 1em;
+		margin: auto;
+		border-radius: 5px;  
+		transition: 0.45s ease all 0.1s;
+		  z-index: 0;
+		  -webkit-transform: translateY(30px) !important;
+		          transform: translateY(30px) !important;
+		  transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.1s !important;
+		  text-align: center;
+	}
+    .lastfooter {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		text-align: center;
+		transition: 0.45s ease all 0.1s !important;
+		  z-index: 0;
+	}
+    .pFooter {
+		color: #333;
+		font-size: 20px;
+	}
+	.aFooter {
+		font-size: 32px !important;
+		margin: 0 10px;
+		color: #7045af;
+		  -webkit-transform: translateY(30px);
+		          transform: translateY(30px);
+		  transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.1s;
+	}
+	.loginbtn{
+		padding: 5px;
+		margin-bottom: 10px;
+		color: #fff !important;
+		background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+		border-color: #21D4FD;
+		margin-left: 20px;
+		position: absolute;
+	}
+	
+	.h2hide{
+		position: absolute;
+		top: 10px;
+		left: 25%;
+		text-align: center !important;
+		font-weight: normal;
+        font-size:25px;
+        color: #fff;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	}
+	.butreg{
+		width: 25% !important;
+		background-color: #21D4FD;
+		background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+		margin-top: 15px !important;
+	}
+	.butreg:hover{
+		background-color:  #B721FF !important;
+	}
+    @media screen and (max-width: 640px) {
+        .app {
+            width: 100%;
+            height: 100vh;
+            border-radius: 0;
+        }
+        header {
+            width: 90%;
+            height: 250px;
+        }
+        .inputs {
+            margin: 0;
+        }
+        input, button {
+            padding: 18px 15px;
+        }
+    }
+    .open-login .form {
+        -webkit-transform: translateY(0px);
+              transform: translateY(0px);
+      opacity: 1;
+      transition-delay: 0.15s;
+      visibility: visible;
+    }
+
+    .open-login .intro_viewer {
+      height: 200px;
+      transition-delay: 0.25s;
+    }
+    .display {
+        opacity: 0;
+        visibility: hidden;
+        z-index: 0;
+        display: none;
+    }
+    .open-login .none {
+        opacity: 0;
+        visibility: hidden;
+        z-index: 0;
+    }
+    .open-login .display {
+        opacity: 1;
+        visibility: visible;
+        display: block;
+    }
+    .open-login .btn {
+        transform: rotate(90deg);
+      transition-delay: 0.35s;
+    }
+     .lastfooter {
+      opacity: 1 !important;
+      transition-delay: 0.50s !important;
+      visibility: visible !important;
+    }
