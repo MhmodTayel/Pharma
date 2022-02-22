@@ -34,7 +34,7 @@ export default function CheckoutButton() {
   };
 
   return (
-    <Button variant="contained" endIcon={<SendIcon />} onClick={handelCheckout}>
+    <Button variant="contained" endIcon={<SendIcon />} disabled= {!orderStore.length} onClick={handelCheckout}>
       Checkout
     </Button>
   );
