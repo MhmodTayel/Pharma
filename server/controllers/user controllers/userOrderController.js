@@ -40,6 +40,9 @@ async function createStripeCheckoutSession(
     const session = await stripe.checkout.sessions.retrieve(session_id)
     const paymentIntent = await stripe.paymentIntents.retrieve(session.payment_intent)
     const lineItems = await stripe.checkout.sessions.listLineItems(session_id);
+    JSON.parse(session.metadata.data).forEach((med,idx)=> {
+      lineItems.data[idx].image=med.image
+    })
     // session_id listLineItems => line items
     // session_id retrive => paymentIntent
     // paymentIntent => order details 

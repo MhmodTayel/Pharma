@@ -9,7 +9,8 @@ export default function CheckoutButton() {
   const orderStore = useSelector((state) => state.order);
   const meds= orderStore.map((med)=>{
     return {id:med.id,
-            quantity:med.reqQuantity}
+            quantity:med.reqQuantity,
+            image:med.image}
   })
   const order = orderStore.map((medicine) => {
     return {
@@ -17,9 +18,11 @@ export default function CheckoutButton() {
       quantity: medicine.reqQuantity,
       amount: medicine.storePrice * 100,
       currency: "EGP",
+      images: [medicine.image]
     
     };
   });
+  console.log(order)
 
   const handelCheckout = async () => {
     const res = await checkout({ line_items: order,metadata:{data:JSON.stringify(meds)} });
