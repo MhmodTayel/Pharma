@@ -7,7 +7,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import lizard from '../../Assets/Images/contemplative-reptile.jpg'
 import ProductDialog from './../PorductDialog/ProductDialog'
 
 

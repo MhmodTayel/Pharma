@@ -3,7 +3,6 @@ import { Search, Card, CheckoutButton } from "../../Components";
 import Grid from "@mui/material/Grid";
 import { useSelector, useDispatch } from "react-redux";
 import Paper from "@mui/material/Paper";
-
 import { styled } from "@mui/material/styles";
 
 export default function NewOrder() {
@@ -12,7 +11,6 @@ export default function NewOrder() {
   return (
     <div>
       <div className="container my-3">
-        
         <Search />
         <CheckoutButton />
         <div className="row">
