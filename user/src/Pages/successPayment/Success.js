@@ -18,12 +18,14 @@ export default function Success() {
     const sessionId = urlParams.get("session_id");
     getOrders(sessionId).then((res) => {
       setResponse(res.data);
+      console.log(res.data)
       const lineItems = res.data.lineItems.data.map((item) => {
         return {
           quantity: item.quantity,
           name: item.description,
           amount_total: item.amount_total,
           price: item.price.unit_amount,
+          image:item.image
         };
       });
       const totalCharge = res.data.paymentIntent.charges.data[0];
