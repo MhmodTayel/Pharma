@@ -28,12 +28,12 @@
           <div class="col-md-12">
             <mat-card *ngFor="let med of orderDetails?.medicines; let index=index ">
               <div class="row">
-                <div class="col-md-2  order-detail"><h4>{{index+1}}</h4></div>
-                <div class="col-md-2 col-sm-4 order-detail"><img src="../../../../assets//wireframe.jpg" class="product-img"></div>
-                <div class="col-md-2 col-sm-4 order-detail"><h4 class="fw-bold">{{med.name}}</h4></div>
-                <div class="col-md-2 col-sm-4 order-detail"><h4 class="fw-bold">x{{med.quantity}}</h4> </div>
-                <div class="col-md-2 col-sm-4 order-detail"><h4 class="fw-bold">EPG : {{med.price/1000}}</h4></div>
-                <div class="col-md-2 col-sm-4 order-detail"><h4 class="fw-bold">EPG : {{med.amount_total/1000}}</h4></div>
+                <div class="col-md-2 order-detail "><h4>{{index+1}}</h4></div>
+                <div class="col-md-2 col-4 order-detail"><img src="../../../../assets//wireframe.jpg" class="product-img"></div>
+                <div class="col-md-2 col-6 order-detail"><h4 class="fw-bold">{{med.name}}</h4></div>
+                <div class="col-md-2 col-2  order-detail"><h4 class="fw-bold">x{{med.quantity}}</h4> </div>
+                <div class="col-md-2 col-12  order-detail"><h4 class="fw-bold">Unit Price: {{med.price/1000}} EGP</h4></div>
+                <div class="col-md-2 col-12  order-detail"><h4 class="fw-bold">Total Price: {{med.amount_total/1000}} EGP</h4></div>
               </div>
             </mat-card>
           </div>
