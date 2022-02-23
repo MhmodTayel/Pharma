@@ -40,12 +40,12 @@ export default function ProductItemCard(props) {
 
   return (
     <StyledBadge badgeContent={`${props.medItem.discount}% OFF`} className={styles.discount}>
-    <Card sx={{ minWidth: 265 , my:2 , textAlign:'left'}}>
+    <Card sx={{ maxWidth: 265 , my:2 , textAlign:'left'}}>
             <div className={styles.imageContainer} > 
               <CardMedia 
                 component="img"
                 alt="Product Image"
-                sx={{ width:'70%'}}
+                sx={{ maxHeight:200 , width:'auto'}}
                 image={props.medItem.image}
               />
             </div>
