@@ -5,13 +5,16 @@ import HomeSlider from "./Home-Slider/Home-Slider";
 import PopularMedicine from "./PopularMedicine/PopularMedicine";
 import CustomizedDialogs from './PorductDialog/ProductDialog'
 import Search from "./Search/Search";
+import TextField from "./TextField/TextField";
 import Categories from "./categories/categories";
 
 // export {Button, Card,Search, Navbar, HomeSlider,PopularMedicine,CustomizedDialogs }
+
 import CheckoutButton from "./checkoutButton/CheckoutButton";
 import PopupMessage from './Alert/PopupMessage';
 
-export {Button, Card,Search, Navbar, HomeSlider,PopularMedicine,CustomizedDialogs,PopupMessage,CheckoutButton,Categories}
+export {Button, Card,Search, Navbar, HomeSlider,PopularMedicine,CustomizedDialogs,PopupMessage,CheckoutButton,Categories,TextField}
+
 
 
 

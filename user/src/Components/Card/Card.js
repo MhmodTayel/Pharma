@@ -13,7 +13,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import IconButton from "@mui/material/IconButton";
 import moment from "moment";
 import { typography } from "@mui/system";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeMedOrderAction, editQuantityMedOrderAction } from "../../store/actions/orderAction";
 
 export default function MedCard({ med }) {
@@ -26,6 +26,7 @@ export default function MedCard({ med }) {
   const dispatch = useDispatch();
   const changeQuantity = (v) => {
     dispatch( editQuantityMedOrderAction ({quantity: v, id: med.id}) )
+
     setCount(Math.max(0, count + v))};
 
   const handleNumChange = (e) => {
@@ -37,7 +38,7 @@ export default function MedCard({ med }) {
     dispatch(removeMedOrderAction(med.id));
   };
   return (
-    <Card sx={{ maxWidth: 600 }} className="cardScale">
+    <Card sx={{ maxWidth: 600 }} className={styles.cardScale}>
       <CardContent>
         <div className="d-flex justify-content-between align-items-center">
           <Typography gutterBottom variant="h5" component="div">
@@ -59,7 +60,7 @@ export default function MedCard({ med }) {
             // onChange={handleChange}
             className={styles.groupSize}
           >
-            <ToggleButton value="add" onClick={() => changeQuantity(1)}>
+            <ToggleButton value="add" disabled={med.reqQuantity>=med.quantity} onClick={() => changeQuantity(1)}>
               <AddIcon />
             </ToggleButton>
             <TextField
@@ -84,16 +85,16 @@ export default function MedCard({ med }) {
         <div className="d-flex justify-content-between align-items-center">
           <Typography color="#2c456a" fontSize="medium" className="pt-3">
             Pharmcy Price:{" "}
-            <span className="text-muted fw-bold">{med.storePrice}</span>
+            <span className="text-muted fw-bold">{med.storePrice} EGP</span>
           </Typography>
           <Typography color="#2c456a" fontSize="medium" className="pt-3">
-            Price: <span className="text-muted fw-bold">{med.pharmPrice}</span>
+            Price: <span className="text-muted fw-bold">{med.pharmPrice} EGP</span>
           </Typography>
         </div>
         <hr />
         <Typography color="#2c456a" fontSize="medium">
           Total:{" "}
-          <span className="text-muted fw-bold">{med.storePrice * count}</span>
+          <span className="text-muted fw-bold">{med.storePrice * count} EGP</span>
         </Typography>
         <Typography color="#2c456a" fontSize="medium">
           Expiration Date:{" "}
