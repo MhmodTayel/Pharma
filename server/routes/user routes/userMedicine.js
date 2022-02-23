@@ -20,9 +20,9 @@ router.get('/medicine/all',(req,res,next)=> {
   .catch((e) => next(e));
 });
 
-router.get('/medicine/incoming', (req,res,err)=>{
+router.post('/medicine/incoming', (req,res,err)=>{
   let date = new Date(req.body.date)
-  console.log(date)
+  console.log(req.body.date)
   getIncomingMed(date)
   .then((doc) => res.json(doc))
   .catch((e) => res.json(e))

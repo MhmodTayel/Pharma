@@ -20,16 +20,14 @@ function getMedById(id) {
   return axiosInstace.get(`/medicine/${id}`);
 }
 
-// function checkout(body){
-//   return axiosInstace.post(`/checkouts`, body)
-// }
-
-
   function getAllMed() {
   return axiosInstace.get(`/medicine/all`);
 }
-function checkout(body){
-  return axiosInstace.post(`/checkouts`, body)
+function getIncomingMed(body) {
+  return axiosInstace.post(`/medicine/incoming`,body);
 }
-export { login, register, fullTextSearch, getMedById, checkout,getAllMed ,createMessage };
+function checkout(body){
+  return axiosInstace.post(`/checkouts`,body)
+}
+export { login, register, fullTextSearch, getMedById, checkout,getAllMed ,createMessage,getIncomingMed };
 

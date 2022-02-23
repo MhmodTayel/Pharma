@@ -15,9 +15,13 @@ import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 import MedicationSharpIcon from '@mui/icons-material/MedicationSharp';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
-{/* <Box sx={{ display: 'flex'}}><SearchSharpIcon/></Box> */}
 
-const pages = [{page:'Home', path:'/home'},{page:'New Order',path:'/new-order'},{page:'Categories'},{page:'Contact',path:'/contact-us'}];
+const pages = [{page:'Home', path:'/home'}
+              ,{page:'Recently Added' , path:'/recently-added'} 
+              ,{page:'New Order',path:'/new-order'}
+              ,{page:'Contact Us',path:'/contact-us'}
+            
+              ];
 
 const settings = ['Profile', 'Account', 'Logout'];
 
