@@ -5,7 +5,7 @@ import Home from "./Home/Home";
 import Contact from "./Contact/Contact" ;
 import NewOrder from "./newOrder/NewOrder"
 import Success from "./successPayment/Success";
-
-export { AboutUs, Login, Register, NewOrder,Home ,Contact, Success };
+import Orders from "./Orders/Orders";
+export { AboutUs, Login, Register, NewOrder,Home ,Contact, Success,Orders };
 
 

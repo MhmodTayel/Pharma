@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { Home, NewOrder,Contact,Register,Login,Success } from "./Pages/index";
+import { Home, NewOrder,Contact,Register,Login,Success,Orders } from "./Pages/index";
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { PopupMessage } from "./Components";
@@ -41,6 +41,7 @@ function App() {
       <Route path={"/newOrder"} exact component={NewOrder} />
       <Route path={"/register"} exact component={Register} />
       <Route path={"/login"} exact component={Login} />
+      <Route path={"/orders"} exact component={Orders} />
     </Switch>
   </BrowserRouter>
     /* <Contact/> */
