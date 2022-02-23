@@ -1,0 +1,171 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  position: absolute;
+  width: 600px;
+  height: 400px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  img {
+    margin-bottom: 50px;
+    width: 80px;
+    height: 80px;
+  }
+
+  p {
+    max-width: 90%;
+  }
+
+  a {
+    background-color: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    color: #ffffffe8;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+    outline: none;
+  }
+}
+
+.btnOrders {
+  color: #ffffffe8 !important;
+  background-color: #0ebb59 !important;
+  transition: 0.2s;
+
+  &:hover {
+    background-color: #0aa74e !important;
+  }
+}
+
+.action {
+  margin-top: 10px;
+}
+
+.btnReceipt {
+  color: #222 !important;
+
+  transition: 0.2s;
+  &:hover {
+    background-color: #eee;
+  }
+}
+
+.dummy-positioning {
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+// The icon specifics
+// Variables
+$green: #4cc93f;
+$icon-base-size: 20px;
+
+// Structure
+.success_icon {
+  display: inline-block;
+  width: 8em;
+  height: 8em;
+  font-size: $icon-base-size;
+  border-radius: 50%;
+  border: 4px solid lighten($green, 20%) !important;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+  transform-origin: center;
+  animation: showSuccess 180ms ease-in-out;
+  transform: scale(1);
+}
+
+// Elements
+.success_icon {
+  &__tip,
+  &__long {
+    display: block;
+    position: absolute;
+    height: 4px;
+    background-color: lighten($green, 20%);
+    border-radius: 10px;
+  }
+
+  &__tip {
+    width: 2.4em;
+    top: 4.3em;
+    left: 1.4em;
+    transform: rotate(45deg);
+    animation: tipInPlace 300ms ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 180ms;
+    visibility: hidden;
+  }
+
+  &__long {
+    width: 4em;
+    transform: rotate(-45deg);
+    top: 3.7em;
+    left: 2.75em;
+    animation: longInPlace 140ms ease-in-out;
+    animation-fill-mode: forwards;
+    visibility: hidden;
+    animation-delay: 300ms + 140ms;
+  }
+}
+
+@keyframes showSuccess {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes tipInPlace {
+  from {
+    width: 0em;
+    top: 0em;
+    left: -1.6em;
+  }
+  to {
+    width: 2.4em;
+    top: 4.3em;
+    left: 1.4em;
+    visibility: visible;
+  }
+}
+
+@keyframes longInPlace {
+  from {
+    width: 0em;
+    top: 5.1em;
+    left: 3.2em;
+  }
+  to {
+    width: 4em;
+    top: 3.7em;
+    left: 2.75em;
+    visibility: visible;
+  }
+}
+
+
+.icon {
+  transform: scale(0.6);
+  margin-top: -50px;
+  
+}

@@ -1,56 +1,298 @@
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-    font-weight: bold;
+// .example-form {
+//     min-width: 150px;
+//     max-width: 500px;
+//     width: 100%;
+//     font-weight: bold;
    
-  }
+//   }
   
-  .example-full-width {
-    width: 95%;
-    font-weight: bold;
-    color: black;
-  }
-  .example-half-width {
-    width: 47%;
-    font-weight: bold;
+//   .example-full-width {
+//     width: 95%;
+//     font-weight: bold;
+//     color: black;
+//   }
+//   .example-half-width {
+//     width: 47%;
+//     font-weight: bold;
    
-  }
+//   }
   
-  .button{
-    font-size: .75rem;
-    margin-bottom: .5vh;
-  }
+//   .button{
+//     font-size: .75rem;
+//     margin-bottom: .5vh;
+//   }
   
-  .image{
+//   .image{
   
-  height: 14vh;
-  margin-bottom: .5vh;
-  
-  
-  }
+//   height: 14vh;
+//   margin-bottom: .5vh;
   
   
-  .hideme {
-  display: none;
-    visibility:hidden;
-  }
+//   }
+  
+  
+//   .hideme {
+//   display: none;
+//     visibility:hidden;
+//   }
   
   
   
-  .mat-select-value,
-      .mat-option-text,
-      .mat-standard-chip,
-      .mat-input-element,
-      .mat-menu-item ,
-      mat-label {
-           color: black !important;
-           font-size: 13px !important;
-           background-color: transparent !important;
+//   .mat-select-value,
+//       .mat-option-text,
+//       .mat-standard-chip,
+//       .mat-input-element,
+//       .mat-menu-item ,
+//       mat-label {
+//            color: black !important;
+//            font-size: 13px !important;
+//            background-color: transparent !important;
   
-       }
+//        }
   
      
+//        ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+//         background-color:#F0F3F4;
+//       }
+
+///////////////////////////////////////////////////////////////////////
+
+
+@import url(https://fonts.googleapis.com/css?family=Audiowide);
+//colors 
+$blue: #1d42b9;
+$blue-dark: #085078;
+$blue-light: #ffffff;
+
+//mixins
+@mixin bp($bp, $min-max: min-width) {
+    $em: $bp/16;
+    @media(#{$min-max}: #{$em}em) {
+        @content;
+    }
+}
+//bug fix for general sibling.
+body { -webkit-animation: bugfix infinite 1s; } 
+@-webkit-keyframes bugfix { from { padding: 0; } to { padding: 0; } }
+
+body {
+    background: radial-gradient(ellipse farthest-side at 100% 100%, $blue-light 1%, $blue 30%, $blue-dark 120%);
+    background-attachment: fixed;
+    padding-top: 2em; 
+    overflow-y: scroll;
+}
+
+
+.wrap {
+    display: block;
+    max-width: 1024px;
+    margin:  0 auto 2em; 
+    padding: 0 1em;
+    width: 100%;
+    
+    @include bp(700) {
+        padding: 3em; 
+    }
+}
+
+p { 
+    color: #555; 
+    text-shadow: 1px 1px 1px #fff;
+}
+
+a, a:visited {
+    color: darken($blue, 15%);
+    text-decoration: none;
+}
+
+//questions styles
+.question-section {
+    background: lighten($blue-light, 5%); 
+    box-shadow: 0 2px 5px rgba(rgb(5, 5, 5), .4);
+    display: inline-block;
+    font-size: 1rem;
+    margin-bottom: 1em; 
+    padding: 1em;
+    position: relative;
+    vertical-align: top;
+    width: 100%;
+    @include bp(800) {
+        font-size: 1rem;
+        padding: 1em 1.5em; 
+    }
+    
+    @include bp(1000) {
+        font-size: .8rem;
+    }
+    
+    h1 {
+        font-family: "Audiowide", cursive; 
+        color: $blue-dark;
+        font-size: 1.25em;
+        font-size: 5.5vw;
+        font-weight: 700;
+        margin-bottom: .25em;
+        @include bp(516) {
+            font-size: 2.25em;
+            font-size: 4.9vw;
+        }
+        
+        @include bp(1080) {
+            font-size: 3.25em;
+        }
+    }
+    
+    & > p,
+    & > h1 { text-align: center; }
+    
+    & > p { 
+        font-size: 0.667em;
+        font-size: 2.8vw;
+        margin-bottom: 1em;
+        
+        @include bp(355) {
+            font-size: 0.667em;
+        }
+
+        @include bp(500) {
+            font-size: 1em;
+        }
+
+        @include bp(1300) {
+            font-size: 1.15em;
+        }
+    }
+}
+
+
+
+
+
+//tabs
+div[class^="cat"] {
+    width: 100%;
+    //tabs lables
+    & > label {
+        background: darken($blue, 5%);
+        color: #fff; 
+        cursor: pointer;
+        display: block;
+        font-weight: bold;
+        line-height: 1.4;
+        margin-bottom: 0.5em;
+        padding: 0.75em 0.5em; 
+        transition: all 0.55s ;
+        &:hover { background: $blue; }
+        @include bp(800) {
+            font-size: 1.25em;
+        }
+    }
+    //hide catagory radios
+    & > input { 
+        position: absolute;
+        z-index: -999;
+        &:focus + label { 
+            background: darken($blue, 15%);
+            letter-spacing: 1px; 
+        }
+    }
+    //hide questions till tab is picked 
+    .question-wrap {
+        height: 100%;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all .75s cubic-bezier(0.19, 1, 0.22, 1);
+        width: 100%; 
+    }
+    //open accordian style
+    & > input:checked ~ .question-wrap { 
+        max-height: 1000px;
+        opacity: 1;
+        transition: all 1.95s cubic-bezier(0.19, 1, 0.22, 1) ;
+    }
+    
+    
+    
+    ///////////////////////////////
+    //question accordian styles //
+    /////////////////////////////
+    
+    @at-root {
+        
+        .question-wrap {
+            .question {
+                margin: 1em 0; 
+            }
+            
+            label {
+                color: lighten(#085078, 5%); 
+                cursor: pointer;
+                display: block;
+                font-weight: bold;
+                margin-bottom: 0.5em;
+
+                @include bp(800) {
+                    font-size: 1.25em;
+                }
+            }
+            
+            input { 
+                // position: absolute;
+                z-index: -999;
+                top: -10000px;
+                &:focus + label { 
+                    color: darken($blue-dark, 5%);
+                } 
+            }
+            
+            input:not(:checked) ~ p {
+                height: 100%;
+                max-height: 0;
+                opacity: 0;
+                overflow: hidden;
+                transition: all .75s cubic-bezier(0.19, 1, 0.22, 1); 
+            }
+            
+            //open accordian style
+           input:checked ~ p { 
+                max-height: 500px;
+                opacity: 1;
+                transition: all 1.95s cubic-bezier(0.19, 1, 0.22, 1);
+            }
+            
+        }
+    }
+}
+
+
+input:focus {
+ 
+    background: rgb(255, 255, 255);
+}
+
+a:focus { 
+    color: $blue-dark;
+    font-weight: bold;
+    outline: none;
+}
+
+
+
+
        ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-        background-color:#F0F3F4;
+        background-color:#ffffff;
       }
+
+      .btn {
+          color: #ffffff;
+      background-color: #920303;
+
+      }
+
+      
+.hideme {
+    display: none;
+      visibility:hidden;
+    }
+

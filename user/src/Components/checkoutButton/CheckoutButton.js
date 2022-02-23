@@ -7,17 +7,25 @@ import { useStripe } from "@stripe/react-stripe-js";
 export default function CheckoutButton() {
   const stripe = useStripe();
   const orderStore = useSelector((state) => state.order);
+  const meds= orderStore.map((med)=>{
+    return {id:med.id,
+            quantity:med.reqQuantity,
+            image:med.image}
+  })
   const order = orderStore.map((medicine) => {
     return {
       name: medicine.name,
       quantity: medicine.reqQuantity,
       amount: medicine.storePrice * 100,
       currency: "EGP",
+      images: [medicine.image]
+    
     };
   });
-  // console.log(order)
+  console.log(order)
+
   const handelCheckout = async () => {
-    const res = await checkout({ line_items: order });
+    const res = await checkout({ line_items: order,metadata:{data:JSON.stringify(meds)} });
     const { id: sessionId } = res.data;
     const { error } = await stripe.redirectToCheckout({
       sessionId,
@@ -29,7 +37,7 @@ export default function CheckoutButton() {
   };
 
   return (
-    <Button variant="contained" endIcon={<SendIcon />} onClick={handelCheckout}>
+    <Button variant="contained" endIcon={<SendIcon />} disabled= {!orderStore.length} onClick={handelCheckout}>
       Checkout
     </Button>
   );
