@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Home, NewOrder,Contact } from "./Pages/index";
+import { Home, NewOrder,Contact, Category } from "./Pages/index";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { PopupMessage } from "./Components";
 import { io } from "socket.io-client";
@@ -35,6 +35,7 @@ function App() {
     <Switch>
       <Route path={"/home"} exact component={Home} />
       <Route path={"/"} exact component={Home} />
+      <Route path={"/category/:cat"} exact component={Category} />
     </Switch>
   </BrowserRouter>
 
