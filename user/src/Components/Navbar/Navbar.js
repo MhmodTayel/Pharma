@@ -14,9 +14,11 @@ import MenuItem from '@mui/material/MenuItem';
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 import MedicationSharpIcon from '@mui/icons-material/MedicationSharp';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Link } from 'react-router-dom';
+{/* <Box sx={{ display: 'flex'}}><SearchSharpIcon/></Box> */}
 
+const pages = [{page:'Home', path:'/home'},{page:'New Order',path:'/new-order'},{page:'Categories'},{page:'Contact',path:'/contact-us'}];
 
-const pages = ['Products', 'Pricing', 'Blog' ,'Contact', <Box sx={{ display: 'flex'}}><SearchSharpIcon/></Box>];
 const settings = ['Profile', 'Account', 'Logout'];
 
 const Navbar = () => {
@@ -49,7 +51,6 @@ const Navbar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' ,alignItems: 'center', fontWeight: 700 } }}
           >
-
             <MedicationSharpIcon sx={{m:1}}/> 
              PHARMA TECH
           </Typography>
@@ -83,9 +84,9 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              {pages.map((page,indx) => (
+                <MenuItem key={indx} onClick={handleCloseNavMenu}>
+                  <Link style={{ color:'#4ebbe9', textDecoration:'none'}} to={page.path}>{page.page}</Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -100,13 +101,13 @@ const Navbar = () => {
             PHARMA TECH
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {pages.map((page,indx) => (
               <Button
-                key={page}
+                key={indx}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, display: 'block' }}
               >
-                {page}
+                <Link to={page.path} style={{ color:'white', textDecoration:'none'}}>{page.page}</Link>
               </Button>
             ))}
           </Box>

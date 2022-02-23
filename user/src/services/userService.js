@@ -20,7 +20,6 @@ function getMedById(id) {
   return axiosInstace.get(`/medicine/${id}`);
 }
 
-
 function getOrders(sessionId) {
   return axiosInstace.get(`/payment/${sessionId}`);
 }

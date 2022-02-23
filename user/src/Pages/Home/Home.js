@@ -11,8 +11,6 @@ export default function Home() {
         <PopularMedicine/>
         <Categories/>
         <Footer/>
-        
-        
     </div>
   )
 }

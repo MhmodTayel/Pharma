@@ -20,10 +20,10 @@ function PopularMedicine() {
     return ( 
     <div className='container py-3'>
         <div className='row text-center'>
-            <h3 className='fw-bold py-2'> Popular Products </h3>
+            <h3 className='fw-bold py-3'> Popular Products </h3>
             {popularMedicine.map((med, index) => {
                 return (
-                    <div className='col-md-4 mx-auto'>
+                    <div key={index} className='col-md-3 d-flex align-items-center justify-content-center'>
                         <ProductItemCard medItem={med}/>
                     </div>
                     )

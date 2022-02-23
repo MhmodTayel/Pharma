@@ -8,7 +8,6 @@ import { io } from "socket.io-client";
 
 const socket = io("ws://localhost:5000");
 
-
 function App() {
   const [message, setMessage] = useState("");
   const [popup, setPopup] = useState("");
@@ -34,6 +33,8 @@ function App() {
     <BrowserRouter>
     <Switch>
       <Route path={"/home"} exact component={Home} />
+      <Route path={"/new-order"} exact component={NewOrder} />
+      <Route path={"/contact-us"} exact component={Contact} />
       <Route path={"/"} exact component={Home} />
       <Route path={"/success"} exact component={Success} />
       <Route path={"/newOrder"} exact component={NewOrder} />

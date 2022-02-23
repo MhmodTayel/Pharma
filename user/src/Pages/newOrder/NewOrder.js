@@ -11,18 +11,9 @@ export default function NewOrder() {
 
   return (
     <div>
-      <div className="container my-5">
-        <div className="d-flex justify-content-center align-items-end">
-          <div className="w-50">
-            <Search className={styles.searchBar}/>
-          </div>
-          
-          <div className="mx-5">
-            <CheckoutButton />
-
-          </div>
-        </div>
-        
+      <div className="container my-3">
+        <Search />
+        <CheckoutButton />
         <div className="row">
           {orderStore.map((medicine) => {
             return (
