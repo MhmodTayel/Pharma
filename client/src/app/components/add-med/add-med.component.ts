@@ -113,7 +113,6 @@ export class AddMedComponent implements OnInit {
       firmPrice: ['', [Validators.required]],
       brand: ['', [Validators.required,Validators.minLength(3)]],
       size: ['', [Validators.required]],
-      // categories: ['', [Validators.required,Validators.minLength(3)]],
       limit: ['', [Validators.required]],
       image :[''],
       categories: this._formBuilder.array([this._formBuilder.control('', [Validators.required,Validators.minLength(3)])])

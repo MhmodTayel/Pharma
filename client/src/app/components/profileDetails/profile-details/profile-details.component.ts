@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EditAdmin } from 'src/app/models/editAdminModel';
 import { SnackBarService } from 'src/app/services/snackBarService/snack-bar.service';
 
+
 @Component({
   selector: 'app-profile-details',
   templateUrl: './profile-details.component.html',
@@ -15,7 +16,9 @@ export class ProfileDetailsComponent implements OnInit {
   adminDetails:EditAdmin = new EditAdmin();
   currentUser:string="";
   
-  constructor(private _formBuilder:FormBuilder , private _adminService:AdminService ,  private _mysnackbar: SnackBarService) { }
+  constructor(private _formBuilder:FormBuilder , private _adminService:AdminService ,  private _mysnackbar: SnackBarService) { 
+  
+  }
 
   // phoneRegex :RegExp = /^(002)?01[0125][0-9]{8}$/;
   ngOnInit(): void {

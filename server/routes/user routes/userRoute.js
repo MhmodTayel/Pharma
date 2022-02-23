@@ -33,6 +33,7 @@ router.post("/contactUs", async (req, res, next) => {
   createMessage(message)
     .then((doc) => res.json(doc))
     .catch((e) => next(e));
+    // req.io.emit("message",  req.body.message);
 });
 
 module.exports = router;
