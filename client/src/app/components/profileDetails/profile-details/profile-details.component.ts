@@ -17,7 +17,7 @@ export class ProfileDetailsComponent implements OnInit {
   
   constructor(private _formBuilder:FormBuilder , private _adminService:AdminService ,  private _mysnackbar: SnackBarService) { }
 
-  // phoneRegex :RegExp = /^(002)?01[0125][0-9]{8}$/;
+      // phoneRegex :RegExp = /^(002)?01[0125][0-9]{8}$/;
   ngOnInit(): void {
     this.adminDetailsForm = this._formBuilder.group({
       name:['',[Validators.required,Validators.minLength(5),Validators.maxLength(20)]],      
