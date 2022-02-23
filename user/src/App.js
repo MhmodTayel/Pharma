@@ -16,6 +16,7 @@ function App() {
   socket.on("message", (msg) => {
     setMessage(msg);
   });
+  
   useEffect(() => {
     if (message != "")
       setPopup(
@@ -37,7 +38,7 @@ function App() {
       <Route path={"/"} exact component={Home} />
     </Switch>
   </BrowserRouter>
-
+{/* <Contact/> */}
   );
 }
 
