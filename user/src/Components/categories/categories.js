@@ -13,9 +13,7 @@ export default function Categories() {
                     {/* first row  */}
                     <div className="col-md-4 d-flex flex-column">
 
-                        <div className="my-4">
                         <div className={styles.imgDiv}>
-
                             <div className=" position-relative">
                                 <div className="w-100  position-relative">
                                     <img src={require('../../Assets/Images/womwn-care.jpg')} className={styles.imgImg} alt='women-care' />
