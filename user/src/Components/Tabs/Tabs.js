@@ -51,21 +51,28 @@ export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
   const [todayMedicine, setTodayMedicine] = React.useState([]);
   const [weeklyMedicine, setWeeklyMedicine] = React.useState([]);
+  const tabStyles = {
+    background: "#00e2fa" ,
+    opacity:'0.5',
+    padding: "24px 40px",
+    borderRadius: "25px 25px 0px 0px",
+    boxShadow:'3px 3px 4px 4px rgba(0,0,0,0.5)'
+  }
 
-  // React.useEffect(()=>{
-  //     getIncomingMed(today).then(
-  //       (res)=>{
-  //         setTodayMedicine(res.data);
-  //     },
-  //     (err)=> console.log(err)) 
-  // },[]) 
+  React.useEffect(()=>{
+      getIncomingMed(today).then(
+        (res)=>{
+          setTodayMedicine(res.data);
+      },
+      (err)=> console.log(err)) 
+  },[]) 
   
   const getWeeklyMed =  () => {
-  //       getIncomingMed(weekAgo).then(
-  //         (res)=>{
-  //           setWeeklyMedicine(res.data);
-  //       },
-  //       (err)=> console.log(err)) 
+        getIncomingMed(weekAgo).then(
+          (res)=>{
+            setWeeklyMedicine(res.data);
+        },
+        (err)=> console.log(err)) 
   }
 
   const handleChange = (event, newValue) => {
@@ -76,17 +83,17 @@ export default function BasicTabs() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Added Today"  />
-          <Tab label="Added This Week"  />
+      <Box sx={{ borderBottom: 3, borderColor: '#00e2fa'}}>
+        <Tabs value={value} onChange={handleChange} TabIndicatorProps={{ style: tabStyles }} sx={{px:2}}>
+          <Tab label="Added Today" sx={{ marginLeft:"5px"}} className={styles.tabStyle} />
+          <Tab onClick={getWeeklyMed} label="Added This Week" className={styles.tabStyle}/>
         </Tabs>
       </Box>
       <TabPanel value={value} index={0} >
         <IncomingMed meds={todayMedicine} />
       </TabPanel>
 
-      <TabPanel value={value} index={1} onClick={getWeeklyMed()}>
+      <TabPanel value={value} index={1}>
         <IncomingMed meds={weeklyMedicine} />
       </TabPanel>
     </Box>
