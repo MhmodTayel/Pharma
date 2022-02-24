@@ -10,16 +10,16 @@ import { Notification } from 'src/app/models/notification';
 })
 export class AddNotificationsComponent implements OnInit {
 
-  notifications :[]=[];
+  items:any[]=[];
   constructor(private addNotificationService: AddNotificationService) { }
 
   ngOnInit(): void {
     
     this.addNotificationService.getNotification().subscribe(
       (response:any)=>{
-        this.notifications = response;
+        this.items = response;
         console.log(response)
-        console.log(this.notifications)
+        console.log(this.items)
    
       },
 
