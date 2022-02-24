@@ -43,7 +43,7 @@ function App() {
       <Route path={"/login"} exact component={Login} />
     </Switch>
   </BrowserRouter>
-    /* <Contact/> */
+    
   );
 }
 
