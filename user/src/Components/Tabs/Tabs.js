@@ -1,13 +1,13 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import styles from './Tabs.module.scss'
-import {getIncomingMed} from '../../services/userService'
-import IncomingMed from './../IncomingMedicine/IncomingMed'
- 
+import * as React from "react";
+import PropTypes from "prop-types";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import styles from "./Tabs.module.scss";
+import { getIncomingMed } from "../../services/userService";
+import IncomingMed from "./../IncomingMedicine/IncomingMed";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -37,15 +37,15 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
-const d = new Date()
-const today = {date:d.toISOString().split('T')[0]}
+const d = new Date();
+const today = { date: d.toISOString().split("T")[0] };
 
-var w = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
-const weekAgo = {date:w.toISOString().split('T')[0]}
+var w = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+const weekAgo = { date: w.toISOString().split("T")[0] };
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
@@ -77,9 +77,14 @@ export default function BasicTabs() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    console.log("Change")
+    if (newValue == 1)
+      getIncomingMed(weekAgo).then(
+        (res) => {
+          setWeeklyMedicine(res.data);
+        },
+        (err) => console.log(err)
+      );
   };
-
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -89,7 +94,7 @@ export default function BasicTabs() {
           <Tab onClick={getWeeklyMed} label="Added This Week" className={styles.tabStyle}/>
         </Tabs>
       </Box>
-      <TabPanel value={value} index={0} >
+      <TabPanel value={value} index={0}>
         <IncomingMed meds={todayMedicine} />
       </TabPanel>
 
