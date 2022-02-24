@@ -1,5 +1,7 @@
-// .alert {
-//   position: fixed;
-//   bottom: 20px;
-//   left: 20px;
-// }
+.alert {
+  position: fixed;
+  top: 85vh;
+  left: 20px;
+  min-width: 300px;
+  z-index: 10000;
+}

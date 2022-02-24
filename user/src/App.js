@@ -28,7 +28,7 @@ useEffect(() => {
   });
 
     socket.on("lowQuantity", (msg) => {
-    const qnt = new AlertMsg("lowQuantity", "warning", `${msg.name} Low in Stock`,msg.date)
+    const qnt = new AlertMsg("Low quantity", "warning", `${msg.name} Low in Stock`,msg.date)
     console.log(qnt)
     setMessage(qnt);
   });
