@@ -8,7 +8,7 @@ const getMedicinesByCat = ( cat ) => Medicine.find({ categories: { "$in" : [cat]
 
 
 const updateQuantity = (id, newQuantity) =>
-  Medicine.updateOne({ id }, { $inc: { quantity: +("-" + newQuantity) } });
+  Medicine.findOneAndUpdate({ id }, { $inc: { quantity: +("-" + newQuantity) } }, {returnDocument: 'after'});
 
 
 //------------ Search ------------//
