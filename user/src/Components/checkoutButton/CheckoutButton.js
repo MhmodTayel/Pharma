@@ -19,7 +19,7 @@ export default function CheckoutButton() {
       amount: medicine.storePrice * 100,
       currency: "EGP",
       images: [medicine.image]
-    
+
     };
   });
   console.log(order)
