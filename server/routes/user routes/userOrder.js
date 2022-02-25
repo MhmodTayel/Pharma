@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const {createStripeCheckoutSession, payment, createOrder} = require('../../controllers/user controllers/userOrderController');
+const {createStripeCheckoutSession, payment, createOrder,saveOrder,deleteSavedOrder} = require('../../controllers/user controllers/userOrderController');
 const Order = require("../../models/order");
+const SavedOrder = require("../../models/savedOrder");
 
 router.post("/checkouts/", ({body}, res, next)=>{
     console.log(body.line_items[0].images)
@@ -23,5 +24,23 @@ router.post("/orders/newOrder", async({body}, res, next)=>{
     .then((doc)=> res.json(doc))
     .catch((err)=>next(err))
 } );
+
+router.post("/orders/saveOrder", async({body}, res, next)=>{
+    const id = await SavedOrder.find({}).count();
+    body.id = id+1;
+    saveOrder(body)
+    .then((doc)=> res.json(doc))
+    .catch((err)=>next(err))
+} );
+
+router.delete("/orders/savedOrder/:id", async(req, res, next)=>{
+
+ 
+    deleteSavedOrder(req.params.id)
+    .then((doc)=> res.json(doc))
+    .catch((err)=>next(err))
+} );
+
+
 
 module.exports = router
