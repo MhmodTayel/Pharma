@@ -67,13 +67,13 @@ export default function BasicTabs() {
       (err)=> console.log(err)) 
   },[]) 
   
-  const getWeeklyMed =  () => {
-        getIncomingMed(weekAgo).then(
-          (res)=>{
-            setWeeklyMedicine(res.data);
-        },
-        (err)=> console.log(err)) 
-  }
+  // const getWeeklyMed =  () => {
+  //       getIncomingMed(weekAgo).then(
+  //         (res)=>{
+  //           setWeeklyMedicine(res.data);
+  //       },
+  //       (err)=> console.log(err)) 
+  // }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -91,7 +91,7 @@ export default function BasicTabs() {
       <Box sx={{ borderBottom: 3, borderColor: '#00e2fa'}}>
         <Tabs value={value} onChange={handleChange} TabIndicatorProps={{ style: tabStyles }} sx={{px:2}}>
           <Tab label="Added Today" sx={{ marginLeft:"5px"}} className={styles.tabStyle} />
-          <Tab onClick={getWeeklyMed} label="Added This Week" className={styles.tabStyle}/>
+          <Tab label="Added This Week" className={styles.tabStyle}/>
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>

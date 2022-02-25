@@ -11,21 +11,20 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 import MedicationSharpIcon from '@mui/icons-material/MedicationSharp';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
-
-const pages = [{page:'Home', path:'/home'}
-              ,{page:'Recently Added' , path:'/recently-added'} 
-              ,{page:'New Order',path:'/new-order'}
-              ,{page:'Contact Us',path:'/contact-us'}
-            
-              ];
+import { newProductsContext } from '../../context/newProductsContext';
 
 const settings = ['Profile', 'Account', 'Logout'];
 
 const Navbar = () => {
+  const {productsContext} = React.useContext(newProductsContext)
+  const pages = [{page:'Home', path:'/home'}
+  ,{page:`Recently Added ` , path:'/recently-added'} 
+  ,{page:'New Order',path:'/new-order'}
+  ,{page:'Contact Us',path:'/contact-us'}
+  ];
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
