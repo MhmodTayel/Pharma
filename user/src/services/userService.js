@@ -32,18 +32,37 @@ function getAllMed() {
   return axiosInstace.get(`/medicine/all`);
 }
 
-function checkout(body){
-  return axiosInstace.post(`/checkouts`, body)
+function checkout(body) {
+  return axiosInstace.post(`/checkouts`, body);
 }
 
-function createOrder(order){
-  return axiosInstace.post(`/orders/newOrder`, order)
+function createOrder(order) {
+  return axiosInstace.post(`/orders/newOrder`, order);
 }
 
-function reduceMedQuantity(med){
-  return axiosInstace.patch(`/medicine/quantity`, med)
+function reduceMedQuantity(med) {
+  return axiosInstace.patch(`/medicine/quantity`, med);
 }
-export { login, register, fullTextSearch, getMedById, checkout,getAllMed ,createMessage, getOrders ,createOrder,reduceMedQuantity,getMedByCat};
 
+function saveOrder(order) {
+  return axiosInstace.post(`/orders/saveOrder`, order);
+}
 
-
+function deleteSavedOrder(id) {
+  return axiosInstace.post(`/orders/savedOrder/${id}`);
+}
+export {
+  login,
+  register,
+  fullTextSearch,
+  getMedById,
+  checkout,
+  getAllMed,
+  createMessage,
+  getOrders,
+  createOrder,
+  reduceMedQuantity,
+  getMedByCat,
+  saveOrder,
+  deleteSavedOrder,
+};
