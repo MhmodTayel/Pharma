@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import { Home, NewOrder,Contact,Register,Login,Success } from "./Pages/index";
+
+import { Home, NewOrder,Contact,Register,Login,Success,Category } from "./Pages/index";
+
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { PopupMessage } from "./Components";
@@ -37,10 +39,12 @@ function App() {
       <Route path={"/new-order"} exact component={NewOrder} />
       <Route path={"/contact-us"} exact component={Contact} />
       <Route path={"/"} exact component={Home} />
+      <Route path={"/category/:cat"} exact component={Category} />
       <Route path={"/success"} exact component={Success} />
       <Route path={"/newOrder"} exact component={NewOrder} />
       <Route path={"/register"} exact component={Register} />
       <Route path={"/login"} exact component={Login} />
+
     </Switch>
   </BrowserRouter>
     
