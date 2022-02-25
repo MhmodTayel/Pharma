@@ -12,7 +12,6 @@ const login = async ({ username, password }, next) => {
     return;
   }
   const isValid = await admin.comparePassword(password);
-
   if (!isValid) {
     next(`invalid password`);
     return;

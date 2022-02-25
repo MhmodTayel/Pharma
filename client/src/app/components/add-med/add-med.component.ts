@@ -1,11 +1,12 @@
 import { MedicineService } from './../../services/medicineService/medicine.service';
 import { Medicine } from './../../models/Medicine';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, FormArray } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
+
 interface Type {
   value: string;
   viewValue: string;
@@ -60,16 +61,18 @@ export class AddMedComponent implements OnInit {
       postData.append('firmPrice', this.formAddMedicine.value.firmPrice);
       postData.append('brand', this.formAddMedicine.value.brand);
       postData.append('size', this.formAddMedicine.value.size);
+
       postData.append('categories', this.formAddMedicine.value.categories);
       postData.append('limit', this.formAddMedicine.value.limit);
-      postData.append('image',this.formAddMedicine.value.image,this.formAddMedicine.value.title
-      );
+      if(this.formAddMedicine.value.image){
+      postData.append('image',this.formAddMedicine.value.image,this.formAddMedicine.value.title);
+      }
 
+    
     this.addMedicineService.addMedicine(postData).subscribe(
       (response: any) => {
         console.log(response);
-        alert(response.message)
-        
+        // alert(response.message) 
       },
       (error) => { 
         console.log(error)
@@ -77,6 +80,7 @@ export class AddMedComponent implements OnInit {
     );
 
   }}
+
 
   onImagePicked(event: any) {
     
@@ -109,12 +113,23 @@ export class AddMedComponent implements OnInit {
       firmPrice: ['', [Validators.required]],
       brand: ['', [Validators.required,Validators.minLength(3)]],
       size: ['', [Validators.required]],
-      categories: ['', [Validators.required,Validators.minLength(3)]],
       limit: ['', [Validators.required]],
-      image :['']
+      image :[''],
+      categories: this._formBuilder.array([this._formBuilder.control('', [Validators.required,Validators.minLength(3)])])
+     
       
     });
   }
+  // addSong() {
+  //   this.categories.push(this._formBuilder.control(''));
+  // }
+  
+  get categories() {
+      return this.formAddMedicine.get("categories") as FormArray;
+  }
+//   removeSong(index: number) {
+//     this.categories.removeAt(index);
+// }
 
   types: Type[] = [
     { value: 'Capsule-0', viewValue: 'Capsule' },
@@ -205,26 +220,26 @@ export class AddMedComponent implements OnInit {
 
   ];
 
-  addOnBlur = true;
-  readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  categories: Categorie[] = [{name: 'Antibiotics'}];
+  // addOnBlur = true;
+  // readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  // categories: Categorie[] = [{name: 'Antibiotics'}];
 
-  add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
+  // add(event: MatChipInputEvent): void {
+  //   const value = (event.value || '').trim();
 
-    if (value) {
-      this.categories.push({name: value});
-    }
-    event.chipInput!.clear();
-  }
+  //   if (value) {
+  //     this.categories.push({name: value});
+  //   }
+  //   event.chipInput!.clear();
+  // }
 
-  remove(categorie: Categorie): void {
-    const index = this.categories.indexOf(categorie);
+  // remove(categorie: Categorie): void {
+  //   const index = this.categories.indexOf(categorie);
 
-    if (index >= 0) {
-      this.categories.splice(index, 1);
-    }
-  }
+  //   if (index >= 0) {
+  //     this.categories.splice(index, 1);
+  //   }
+  // }
 
   clearInput()
    { this.formAddMedicine.reset() }

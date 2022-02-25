@@ -1,51 +1,55 @@
-<mat-nav-list>
-  <div class=" py-1 d-flex justify-content-center align-content-center text-white">
-    <h1 class=" logo m-auto mt-3 mb-5">
-      <mat-icon>medical_services</mat-icon> PharmaTec
-    </h1>
-  </div>
-  <div class=" d-flex flex-column mt-2 align-items-center justify-content-center text-white">
-    <a class="my-2" mat-list-item routerLinkActive="list-item-active" routerLink="/orders">
-      <h4 class="d-flex menu__fonts">
-        <mat-icon>shopping_cart</mat-icon> Orders
-      </h4>
-    </a>
+  <mat-nav-list>
+    <div class=" py-1 d-flex justify-content-center align-content-center text-white">
+      <h1 class=" logo m-auto mt-3 mb-5">
+        <mat-icon>medical_services</mat-icon> PharmaTec
+      </h1>
+    </div>
+    <div class=" d-flex flex-column mt-2 align-items-center justify-content-center text-white">
+      <a class="my-2" mat-list-item routerLinkActive="list-item-active" routerLink="/orders">
+        <mat-icon>shopping_cart</mat-icon>
+        <h4 class="d-flex menu__fonts">
+           Orders
+        </h4>
+      </a>
+  
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header >
+          <a class="" mat-list-item routerLinkActive="list-item-active" >
+            <mat-icon>category</mat-icon>
+            <h4 class="d-flex menu__fonts">
+              Products
+            </h4>
+          </a>
+      </mat-expansion-panel-header>
+      <a class="" mat-list-item routerLinkActive="list-item-active" routerLink="/products/all-products">
+        <h4 class="d-flex menu__fonts expansion-item ">
+          All Products
+        </h4>
+      </a>
+      <a class="" mat-list-item routerLinkActive="list-item-active" routerLink="/products/added-recently">
+        <h4 class="d-flex menu__fonts expansion-item ">
+          Newly Added 
+        </h4>
+      </a>
+      <a class=" " mat-list-item routerLinkActive="list-item-active" routerLink="/products/add">
+        <h4 class="d-flex menu__fonts expansion-item">
+          Add Medicine
+        </h4>
+      </a>
+    </mat-expansion-panel>
 
-  <mat-expansion-panel hideToggle>
-    <mat-expansion-panel-header >
-        <a class="" mat-list-item routerLinkActive="list-item-active" >
-          <h4 class="d-flex menu__fonts">
-            <mat-icon>category</mat-icon> Products
-          </h4>
-        </a>
-    </mat-expansion-panel-header>
-    <a class="" mat-list-item routerLinkActive="list-item-active" routerLink="/products/all-products">
-      <h4 class="d-flex menu__fonts expansion-item ">
-        All Products
-      </h4>
-    </a>
-    <a class="" mat-list-item routerLinkActive="list-item-active" routerLink="/products/added-recently">
-      <h4 class="d-flex menu__fonts expansion-item ">
-        Newely Added 
-      </h4>
-    </a>
-    <a class=" " mat-list-item routerLinkActive="list-item-active" routerLink="/products/add">
-      <h4 class="d-flex menu__fonts expansion-item">
-        <!-- <mat-icon>add</mat-icon> -->
-         Add Medicine
-      </h4>
-    </a>
-  </mat-expansion-panel>
+      <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/profile">
+        <mat-icon>account_circle</mat-icon>
+        <h4 class="d-flex menu__fonts">
+          profile
+        </h4>
+      </a>
 
-
-
-    
-
-    <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/profile">
-      <h4 class="d-flex menu__fonts">
-        <mat-icon>account_circle</mat-icon>profile
-      </h4>
-    </a>
-  </div>
-
-</mat-nav-list>
+      <a class="my-2 " mat-list-item routerLinkActive="list-item-active" routerLink="/products/Notifications">
+        <mat-icon>account_circle</mat-icon>
+        <h4 class="d-flex menu__fonts">
+          Notifications
+        </h4>
+      </a>
+    </div>
+  </mat-nav-list> 

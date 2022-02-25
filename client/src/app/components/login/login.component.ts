@@ -37,25 +37,20 @@ export class LoginComponent implements OnInit {
       (response:any) => {
         this.loginResponse = response ;
       },
-      (error) => { console.log(error.message) },
+      (error) => { 
+        this._mysnackbar.openSnackBar(`${error.error}`,'', 'Info') 
+      },
       () => {
-          if (this.loginResponse != null)
-          {
             this._router.navigateByUrl('/orders');
             this._sessionService.login(this.loginResponse);
-          }
-          else 
-          {
-            this._mysnackbar.openSnackBar('Wrong username or password ','', 'Info') 
-          }
       }
     ) 
 
    }
 
-  isValidControl(name:string):boolean
-  {
-    return this.loginForm.controls[name].valid;
+  // isValidControl(name:string):boolean
+  // {
+  //   return this.loginForm.controls[name].valid;
   
-  }
+  // }
 }

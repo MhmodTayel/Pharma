@@ -11,7 +11,7 @@
 }
 
 .contact .heading h2 span {
-  color: #ff9100;
+  color: #1a79f5;
 }
 
 .contact .heading p {
@@ -34,10 +34,11 @@
 
 .contact button.btn {
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 15px;
-  background: #ff9100;
+  background: #1a79f5;
   color: #ffffff;
+  
 }
 
 .contact .title h3 {

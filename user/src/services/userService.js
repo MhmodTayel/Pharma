@@ -24,15 +24,26 @@ function getMedByCat(cat) {
   return axiosInstace.get(`/medicine/category/${cat}`);
 }
 
+function getOrders(sessionId) {
+  return axiosInstace.get(`/payment/${sessionId}`);
+}
 
-
-
-
-  function getAllMed() {
+function getAllMed() {
   return axiosInstace.get(`/medicine/all`);
 }
+
 function checkout(body){
   return axiosInstace.post(`/checkouts`, body)
 }
-export { login, register, fullTextSearch, getMedById, checkout,getMedByCat,getAllMed ,createMessage };
+
+function createOrder(order){
+  return axiosInstace.post(`/orders/newOrder`, order)
+}
+
+function reduceMedQuantity(med){
+  return axiosInstace.patch(`/medicine/quantity`, med)
+}
+export { login, register, fullTextSearch, getMedById, checkout,getAllMed ,createMessage, getOrders ,createOrder,reduceMedQuantity,getMedByCat};
+
+
 

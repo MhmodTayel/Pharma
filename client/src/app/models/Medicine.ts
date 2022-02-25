@@ -1,7 +1,7 @@
 import { Data } from "@angular/router";
 
 export class Medicine{
-    ID:number=0;
+    id:number=0;
     name:string="";
     description:string="";
     quantity:number=0;
@@ -10,7 +10,6 @@ export class Medicine{
     expDate:string= "";
     companyProvider:string="";
     image:string="";
-    isAvailable:boolean=false;
     type:string="";
     size:string="";
     concentration:string="";
