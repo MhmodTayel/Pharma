@@ -25,6 +25,13 @@ router.get("/payment/:id", async (req, res, next) => {
   res.json(response);
 });
 
+
+router.get("/orders/savedOrders", async (req, res, next) => {
+    getSavedOrders()
+      .then((doc) => res.json(doc))
+      .catch((err) => next(err));
+  });
+
 router.post("/orders/newOrder", async ({ body }, res, next) => {
   const id = await Order.find({}).count();
   body.id = id + 1;
@@ -54,10 +61,5 @@ router.delete("/orders/savedOrder/:id", async (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.get("/orders/savedOrders", async (req, res, next) => {
-  getSavedOrders()
-    .then((doc) => res.json(doc))
-    .catch((err) => next(err));
-});
 
 module.exports = router;

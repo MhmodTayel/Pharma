@@ -20,7 +20,7 @@ export default function BasicCard({ order }) {
   return (
     <>
       {open && <OrderDetails state={{open,handleClose}} order={order}/>}
-      <Card sx={{ minWidth: 275, maxWidth: 400 }}>
+      <Card sx={{ minWidth: 360, maxWidth: 650 }}>
         <CardContent>
           <div className="row">
             <Typography
@@ -78,27 +78,29 @@ export default function BasicCard({ order }) {
               {order.numberOfCat}
             </Typography>
           </div>
-          <div className="row">
-            <Typography
-              className="col"
-              variant="h6"
-              component="div"
-              sx={{ fontSize: 15, color: "#2c456a" }}
-            >
-              Status
-            </Typography>
-            <Typography
-              className="col"
-              variant="h6"
-              component="div"
-              sx={{
-                fontSize: 14,
-                color: order.inProgress ? "#FED653" : "green",
-              }}
-            >
-              {order.inProgress ? "In progress" : "Confirmed"}
-            </Typography>
-          </div>
+          {('inProgress' in order) &&
+                     <div className="row">
+                     <Typography
+                       className="col"
+                       variant="h6"
+                       component="div"
+                       sx={{ fontSize: 15, color: "#2c456a" }}
+                     >
+                       Status
+                     </Typography>
+                     <Typography
+                       className="col"
+                       variant="h6"
+                       component="div"
+                       sx={{
+                         fontSize: 14,
+                         color: order.inProgress ? "#FED653" : "green",
+                       }}
+                     >
+                       {order.inProgress ? "In progress" : "Confirmed"}
+                     </Typography>
+                   </div> 
+          }
         </CardContent>
         <CardActions>
           <Button size="small" onClick={handleClickOpen}>
