@@ -14,6 +14,14 @@ export class LayoutComponent implements OnInit {
   }
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
+    const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if (width > 1000) {
+      return true;
+    } else {
+      return false;
+    }
+
   }
+ 
 
 }

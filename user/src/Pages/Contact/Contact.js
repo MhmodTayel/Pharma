@@ -1,42 +1,43 @@
 import { Navbar } from '../../Components/index'
 import './Contact.css'
 import * as React from 'react';
-import {createMessage} from '../../services/userService';
+import { createMessage } from '../../services/userService';
 import { useFormik } from 'formik';
+import Footer from '../../Layouts/Footer/Footer';
 
 
 export default function Contact() {
 
     const formik = useFormik({
         initialValues: {
-          email: "",
-          name: "",
-          userName:"",
-          message:""
+            email: "",
+            name: "",
+            userName: "",
+            message: ""
         },
-      
+
         validate() {
-          const errors = {};
-          if (formik.touched.email && !formik.values.email) {
-            errors.email = "Required";
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formik.values.email)
-          ) {
-            errors.email = "Invalid email address";
-          }
-          if (formik.touched.name && !formik.values.name) {
-            errors.name = "Required";
-          } else if (formik.values.name.length <= 4) {
-            errors.name = "min length is 3";
-          }
-          return errors;
+            const errors = {};
+            if (formik.touched.email && !formik.values.email) {
+                errors.email = "Required";
+            } else if (
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formik.values.email)
+            ) {
+                errors.email = "Invalid email address";
+            }
+            if (formik.touched.name && !formik.values.name) {
+                errors.name = "Required";
+            } else if (formik.values.name.length <= 4) {
+                errors.name = "min length is 3";
+            }
+            return errors;
         },
         onSubmit(values) {
-         console.log(values)
-         createMessage(values)
-        
+            console.log(values)
+            createMessage(values)
+
         }
-      });
+    });
 
     return (
         <>
@@ -85,28 +86,28 @@ export default function Contact() {
                                 <div className="row">
                                     <div className="col-sm-6">
                                         <input type="text" className="form-control" placeholder="Name"
-                                         name="name" 
-                                         onChange={formik.handleChange}
-                                         value={formik.values.name} />
+                                            name="name"
+                                            onChange={formik.handleChange}
+                                            value={formik.values.name} />
                                     </div>
                                     <div className="col-sm-6">
-                                        <input type="text" className="form-control" placeholder="UserName" 
-                                        name="userName" 
-                                        onChange={formik.handleChange}
-                                        value={formik.values.userName}  />
+                                        <input type="text" className="form-control" placeholder="UserName"
+                                            name="userName"
+                                            onChange={formik.handleChange}
+                                            value={formik.values.userName} />
                                     </div>
                                     <div className="col-sm-12">
-                                        <input type="email" className="form-control" placeholder="Email" 
-                                        name="email"  
-                                        onChange={formik.handleChange}
-                                        value={formik.values.email}  />
+                                        <input type="email" className="form-control" placeholder="Email"
+                                            name="email"
+                                            onChange={formik.handleChange}
+                                            value={formik.values.email} />
                                     </div>
                                 </div>
                                 <div className="form-group">
                                     <textarea className="form-control" rows="5" id="comment" placeholder="Message"
-                                     name="message" 
-                                     onChange={formik.handleChange}
-                                     value={formik.values.message} ></textarea>
+                                        name="message"
+                                        onChange={formik.handleChange}
+                                        value={formik.values.message} ></textarea>
                                 </div>
                                 <button className="btn btn-block" type="submit">Send Now</button>
                             </form>
@@ -114,6 +115,7 @@ export default function Contact() {
                     </div>
                 </div>
             </section>
+            <Footer/>
         </>
     )
 

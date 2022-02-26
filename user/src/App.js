@@ -27,6 +27,7 @@ function App() {
       setPopup("");
     }, 5000);
   }, [message]);
+  
 
   return (
     <BrowserRouter>
@@ -34,7 +35,7 @@ function App() {
       <Route path={"/home"} exact component={Home} />
       <Route path={"/new-order"} exact component={NewOrder} />
       <Route path={"/contact-us"} exact component={Contact} />
-      <Route path={"/"} exact component={Home} />
+      <Route path={"/"} exact component={Register} />
       <Route path={"/category/:cat"} exact component={Category} />
       <Route path={"/success"} exact component={Success} />
       <Route path={"/newOrder"} exact component={NewOrder} />

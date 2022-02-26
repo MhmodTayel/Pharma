@@ -107,7 +107,7 @@
 	}
     .lastfooter {
 		position: absolute;
-		bottom: 0;
+		bottom: 40px;
 		left: 0;
 		right: 0;
 		margin: auto;
@@ -119,24 +119,6 @@
 		color: #333;
 		font-size: 20px;
 	}
-	.aFooter {
-		font-size: 32px !important;
-		margin: 0 10px;
-		color: #7045af;
-		  -webkit-transform: translateY(30px);
-		          transform: translateY(30px);
-		  transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.1s;
-	}
-	.loginbtn{
-		padding: 5px;
-		margin-bottom: 10px;
-		color: #fff !important;
-		background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
-		border-color: #21D4FD;
-		margin-left: 20px;
-		position: absolute;
-	}
-	
 	.h2hide{
 		position: absolute;
 		top: 10px;
