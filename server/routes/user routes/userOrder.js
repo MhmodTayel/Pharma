@@ -33,10 +33,12 @@ router.post("/orders/newOrder", async ({ body }, res, next) => {
     .catch((err) => next(err));
 });
 
-
 router.get("/orders/:id", async (req, res, next) => {
   const id = req.params.id;
   getOrdersById(id)
+    .then((doc) => res.json(doc))
+    .catch((err) => next(err));
+});
 
 router.post("/orders/saveOrder", async ({ body }, res, next) => {
   const id = await SavedOrder.find({}).count();
@@ -54,7 +56,6 @@ router.delete("/orders/savedOrder/:id", async (req, res, next) => {
 
 router.get("/orders/savedOrders", async (req, res, next) => {
   getSavedOrders()
-
     .then((doc) => res.json(doc))
     .catch((err) => next(err));
 });

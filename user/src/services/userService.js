@@ -49,14 +49,6 @@ function getOrdersByUserId(id) {
 
 }
 
-function createOrder(order) {
-  return axiosInstace.post(`/orders/newOrder`, order);
-}
-
-function reduceMedQuantity(med) {
-  return axiosInstace.patch(`/medicine/quantity`, med);
-}
-
 function saveOrder(order) {
   return axiosInstace.post(`/orders/saveOrder`, order);
 }
