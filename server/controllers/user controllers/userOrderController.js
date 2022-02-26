@@ -53,10 +53,12 @@ const payment = async (session_id) => {
 
 const saveOrder = (order) => SavedOrder.create(order);
 const deleteSavedOrder = (id) => SavedOrder.deleteOne({id})
+const getSavedOrders = ()=> SavedOrder.find({})
 module.exports = {
   createStripeCheckoutSession,
   payment,
   createOrder,
   saveOrder,
-  deleteSavedOrder
+  deleteSavedOrder,
+  getSavedOrders
 };

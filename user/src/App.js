@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 
-import { Home, NewOrder,Contact,Register,Login,Success,Category } from "./Pages/index";
+import { Home, NewOrder,Contact,Register,Login,Success,Category,SavedOrders } from "./Pages/index";
 
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -44,6 +44,7 @@ function App() {
       <Route path={"/newOrder"} exact component={NewOrder} />
       <Route path={"/register"} exact component={Register} />
       <Route path={"/login"} exact component={Login} />
+      <Route path={"/saved-orders"} exact component={SavedOrders} />
 
     </Switch>
   </BrowserRouter>
