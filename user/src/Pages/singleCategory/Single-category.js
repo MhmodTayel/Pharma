@@ -16,9 +16,9 @@ export default function SingleCategory() {
     
 
     React.useEffect(()=>{
-        getMedByCat(cat)
+        getMedByCat("test")
         .then((res) => {setDetails(res.data)
-        console.log(res.data,'test for response direct');})
+        console.log(res,'test for response direct');})
         .catch((err) => console.log(err));
         console.log(setDetails , 'test for setDetails');
 }, []);
