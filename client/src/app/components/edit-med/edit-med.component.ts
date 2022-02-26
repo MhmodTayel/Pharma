@@ -110,38 +110,41 @@ export class EditMedComponent implements OnInit {
     };
     reader.readAsDataURL(file);
   }
-
+  
   ngOnInit() {
+
+    this._ativatedRoute.paramMap.subscribe(params=>{
+      this.addMedicineService.getDetails(params.get('id')).subscribe(
+        (response:any)=>{
+               this.medicines=response;    
+      });
+ 
+     });
+
+
     this.formEditMed = this._formBuilder.group({
-      name: ['', [Validators.required ,Validators.minLength(3)]],
-      description: [''],
-      companyProvider: ['', [Validators.required ,Validators.minLength(3)]],
-      type: ['', [Validators.required]],
-      concentration: ['', [Validators.required]],
-      expDate: ['', [Validators.required]],
-      arriveDate: ['', [Validators.required]],
-      quantity: ['', [Validators.required]],
-      pharmPrice: ['', [Validators.required]],
-      storePrice: ['', [Validators.required]],
-      discount: ['', [Validators.required]],
-      firmPrice: ['', [Validators.required]],
-      brand: ['', [Validators.required,Validators.minLength(3)]],
-      size: [''],
-      limit: ['', [Validators.required]],
+      name: [this.medicines.name, [Validators.required ,Validators.minLength(3)]],
+      description: [this.medicines.description],
+      companyProvider: [this.medicines.companyProvider, [Validators.required ,Validators.minLength(3)]],
+      type: [this.medicines.type, [Validators.required]],
+      concentration: [this.medicines.concentration, [Validators.required]],
+      expDate: [this.medicines.expDate, [Validators.required]],
+      arriveDate: [this.medicines.arriveDate, [Validators.required]],
+      quantity: [this.medicines.quantity, [Validators.required]],
+      pharmPrice: [this.medicines.pharmPrice, [Validators.required]],
+      storePrice: [this.medicines.storePrice, [Validators.required]],
+      discount: [this.medicines.discount, [Validators.required]],
+      firmPrice: [this.medicines.firmPrice, [Validators.required]],
+      brand: [this.medicines.brand, [Validators.required,Validators.minLength(3)]],
+      size: [this.medicines.size],
+      limit: [this.medicines.limit, [Validators.required]],
       image :[''],
       categories: this._formBuilder.array([this._formBuilder.control('', [Validators.required,Validators.minLength(3)])])
      
       
     });
     
-    this._ativatedRoute.paramMap.subscribe(params=>{
-      this.addMedicineService.getDetails(params.get('id')).subscribe(
-        (response:any)=>{
-               this.medicines=response;    
-              console.log(this.medicines)    
-      });
- 
-     });
+   
   }
 
   types: Type[] = [
