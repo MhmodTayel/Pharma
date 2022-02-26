@@ -12,6 +12,9 @@ import { SidebarComponent } from './components/sidebar/sidebar/sidebar.component
 import { HeaderComponent } from './components/header/header/header.component';
 import { SharedModuleModule } from './modules/sharedModule/shared-module/shared-module.module';
 import { ResponsiveSidebarComponent } from './components/responsive-sidebar/responsive-sidebar.component';
+import { AddNotificationsComponent } from './modules/productsModule/add-product-page/add-notifications/add-notifications.component';
+
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,8 @@ import { ResponsiveSidebarComponent } from './components/responsive-sidebar/resp
     LoginComponent,
     SidebarComponent,
     HeaderComponent, 
-    ResponsiveSidebarComponent
+    ResponsiveSidebarComponent, AddNotificationsComponent,
+   
   ],
   
   imports: [
@@ -31,7 +35,8 @@ import { ResponsiveSidebarComponent } from './components/responsive-sidebar/resp
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModuleModule
+    SharedModuleModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

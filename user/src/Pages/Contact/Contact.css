@@ -35,10 +35,11 @@
 
 .contact button.btn {
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   font-size: 15px;
   background: #136cfd;
   color: #ffffff;
+  
 }
 
 .contact .title h3 {
