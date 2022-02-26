@@ -34,6 +34,19 @@ function getAllMed() {
 
 function checkout(body) {
   return axiosInstace.post(`/checkouts`, body);
+
+}
+function createOrder(order) {
+  return axiosInstace.post(`/orders/newOrder`, order);
+}
+
+function reduceMedQuantity(med) {
+  return axiosInstace.patch(`/medicine/quantity`, med);
+}
+
+function getOrdersByUserId(id) {
+  return axiosInstace.get(`/orders/${id}`);
+
 }
 
 function createOrder(order) {
@@ -51,8 +64,6 @@ function getSavedOrders() {
   return axiosInstace.get(`/orders/savedOrders`);
 }
 
-
-
 function deleteSavedOrder(id) {
   return axiosInstace.post(`/orders/savedOrder/${id}`);
 }
@@ -67,6 +78,7 @@ export {
   getOrders,
   createOrder,
   reduceMedQuantity,
+  getOrdersByUserId,
   getMedByCat,
   saveOrder,
   deleteSavedOrder,

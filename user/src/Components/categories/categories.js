@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import styles from './categories.module.scss';
 import { Link } from "react-router-dom";
 
@@ -182,3 +183,4 @@ export default function Categories() {
                 </div>
                 );
 }
+
