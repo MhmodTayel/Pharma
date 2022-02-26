@@ -5,8 +5,12 @@ const {
   payment,
   createOrder,
   getOrdersById,
+  saveOrder,
+  deleteSavedOrder,
+  getSavedOrders,
 } = require("../../controllers/user controllers/userOrderController");
 const Order = require("../../models/order");
+const SavedOrder = require("../../models/savedOrder");
 
 router.post("/checkouts/", ({ body }, res, next) => {
   console.log(body.line_items[0].images);
@@ -29,9 +33,28 @@ router.post("/orders/newOrder", async ({ body }, res, next) => {
     .catch((err) => next(err));
 });
 
+
 router.get("/orders/:id", async (req, res, next) => {
   const id = req.params.id;
   getOrdersById(id)
+
+router.post("/orders/saveOrder", async ({ body }, res, next) => {
+  const id = await SavedOrder.find({}).count();
+  body.id = id + 1;
+  saveOrder(body)
+    .then((doc) => res.json(doc))
+    .catch((err) => next(err));
+});
+
+router.delete("/orders/savedOrder/:id", async (req, res, next) => {
+  deleteSavedOrder(req.params.id)
+    .then((doc) => res.json(doc))
+    .catch((err) => next(err));
+});
+
+router.get("/orders/savedOrders", async (req, res, next) => {
+  getSavedOrders()
+
     .then((doc) => res.json(doc))
     .catch((err) => next(err));
 });

@@ -12,7 +12,7 @@ import PopupMessage from "./Alert/PopupMessage";
 import CustomTable from "./Table/Table";
 import BasicCard from "./SimpleCard/BasicCard";
 import OrderDetails from "./OrderDetails/OrderDetails";
-
+import SaveOrderButton from "./SaveOrderButton/SaveOrderButton";
 
 export {
   Button,
@@ -29,4 +29,5 @@ export {
   CustomTable,
   BasicCard,
   OrderDetails,
+  SaveOrderButton,
 };

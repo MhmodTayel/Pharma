@@ -1,6 +1,7 @@
 const { config } = require("dotenv");
 const Stripe = require("stripe");
 const Order = require("../../models/order");
+const SavedOrder = require("../../models/savedOrder");
 
 config();
 
@@ -50,10 +51,18 @@ const payment = async (session_id) => {
   return { paymentIntent, lineItems, session };
 };
 
+
 const getOrdersById = (id) => Order.find({ client: id });
+const saveOrder = (order) => SavedOrder.create(order);
+const deleteSavedOrder = (id) => SavedOrder.deleteOne({id})
+const getSavedOrders = ()=> SavedOrder.find({})
+
 module.exports = {
   createStripeCheckoutSession,
   payment,
   createOrder,
   getOrdersById,
+  saveOrder,
+  deleteSavedOrder,
+  getSavedOrders
 };

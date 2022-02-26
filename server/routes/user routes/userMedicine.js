@@ -22,6 +22,7 @@ router.get("/medicine/category/:cat", (req, res, next) => {
 })
 
 router.get("/medicine/all", (req, res, next) => {
+
   findAll()
   .then((doc) => res.json(doc))
   .catch((e) => next(e));

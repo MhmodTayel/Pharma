@@ -25,6 +25,7 @@ const routes: Routes = [
       loadChildren: () => import('./modules/profileModule/profile-module.module').then(m => m.ProfileModuleModule),
       canActivate : [AuthorizationGuard]
     }
+  
   ]}
  
 ];

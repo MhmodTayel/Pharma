@@ -20,6 +20,10 @@ function getMedById(id) {
   return axiosInstace.get(`/medicine/${id}`);
 }
 
+function getMedByCat(cat) {
+  return axiosInstace.get(`/medicine/category/${cat}`);
+}
+
 function getOrders(sessionId) {
   return axiosInstace.get(`/payment/${sessionId}`);
 }
@@ -30,6 +34,7 @@ function getAllMed() {
 
 function checkout(body) {
   return axiosInstace.post(`/checkouts`, body);
+
 }
 function createOrder(order) {
   return axiosInstace.post(`/orders/newOrder`, order);
@@ -41,6 +46,26 @@ function reduceMedQuantity(med) {
 
 function getOrdersByUserId(id) {
   return axiosInstace.get(`/orders/${id}`);
+
+}
+
+function createOrder(order) {
+  return axiosInstace.post(`/orders/newOrder`, order);
+}
+
+function reduceMedQuantity(med) {
+  return axiosInstace.patch(`/medicine/quantity`, med);
+}
+
+function saveOrder(order) {
+  return axiosInstace.post(`/orders/saveOrder`, order);
+}
+function getSavedOrders() {
+  return axiosInstace.get(`/orders/savedOrders`);
+}
+
+function deleteSavedOrder(id) {
+  return axiosInstace.post(`/orders/savedOrder/${id}`);
 }
 export {
   login,
@@ -54,4 +79,8 @@ export {
   createOrder,
   reduceMedQuantity,
   getOrdersByUserId,
+  getMedByCat,
+  saveOrder,
+  deleteSavedOrder,
+  getSavedOrders
 };
