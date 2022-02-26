@@ -22,8 +22,6 @@ const validationSchema = yup.object({
 });
 
 export default function Login() {
-  const isAuth = !localStorage.getItem("token");
-  console.log(isAuth);
   const history = useHistory();
 
   const formik = useFormik({
@@ -36,19 +34,18 @@ export default function Login() {
       console.log(values, 'values')
       login(values).then(
         (res) => {
-          console.log(res, 'res')
-          localStorage.setItem("token", res.data);
+          if (res.data) {
+            localStorage.setItem("token", res.data);
+            history.push('/home')
+          }else{
+            alert('try agin')
+          }
         },
         (err) => {
           console.log(err, 'err')
         }
       )
       actions.resetForm();
-      if (isAuth) {
-        return alert("you have to register");
-      } else {
-        history.push('/')
-      };
     },
   });
   return (
