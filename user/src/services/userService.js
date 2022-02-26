@@ -26,8 +26,11 @@ function getMedById(id) {
 function getIncomingMed(body) {
   return axiosInstace.post(`/medicine/incoming`,body);
 }
+function getIncomingMedNumber() {
+  return axiosInstace.get(`/medicine/incomingMedsNumber`);
+}
 function checkout(body){
   return axiosInstace.post(`/checkouts`,body)
 }
-export { login, register, fullTextSearch, getMedById, checkout,getAllMed ,createMessage,getIncomingMed };
+export { login, register, fullTextSearch, getMedById, checkout,getAllMed ,createMessage,getIncomingMed,getIncomingMedNumber };
 

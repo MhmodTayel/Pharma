@@ -1,7 +1,13 @@
 const express = require("express");
 const router = express.Router();
 
-const { findOne, updateQuantity,searchMeds,getMedicinesByCat,findAll,getIncomingMed } = require('../../controllers/user controllers/userMedController')
+const { findOne,
+      updateQuantity,
+      searchMeds,
+      getMedicinesByCat,
+      findAll,
+      getIncomingMed,
+      getIncomingMedNumber } = require('../../controllers/user controllers/userMedController')
 
 
 router.get('/medicine/search',(req,res,next)=> {
@@ -25,6 +31,13 @@ router.post('/medicine/incoming', (req,res,err)=>{
   console.log(req.body.date)
   getIncomingMed(date)
   .then((doc) => res.json(doc))
+  .catch((e) => res.json(e))
+})
+
+let weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+router.get('/medicine/incomingMedsNumber', (req,res,err)=>{
+  getIncomingMedNumber(weekAgo)
+  .then((count) => res.json(count))
   .catch((e) => res.json(e))
 })
 

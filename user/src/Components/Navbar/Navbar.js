@@ -15,16 +15,22 @@ import MedicationSharpIcon from '@mui/icons-material/MedicationSharp';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
 import { newProductsContext } from '../../context/newProductsContext';
-
-const settings = ['Profile', 'Account', 'Logout'];
+import { getIncomingMedNumber } from '../../services/userService';
+import styles from './Navbar.module.scss'
 
 const Navbar = () => {
+  const [incomingNumber, setIncomingNumber] = React.useState('');
+  React.useEffect(()=>{
+    getIncomingMedNumber().then(
+      (res) => {
+        setIncomingNumber(res.data)
+      },
+      (err) => console.log(err) 
+    )
+  },[])
+
+
   const {productsContext} = React.useContext(newProductsContext)
-  const pages = [{page:'Home', path:'/home'}
-  ,{page:`Recently Added ` , path:'/recently-added'} 
-  ,{page:'New Order',path:'/new-order'}
-  ,{page:'Contact Us',path:'/contact-us'}
-  ];
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -87,11 +93,20 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page,indx) => (
-                <MenuItem key={indx} onClick={handleCloseNavMenu}>
-                  <Link style={{ color:'#4ebbe9', textDecoration:'none'}} to={page.path}>{page.page}</Link>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link className={styles.link} to='/home'>Home</Link>
                 </MenuItem>
-              ))}
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link className={styles.link} to='/recently-added'>Recently Added 
+                  <span className={styles.numberBadge}>+{incomingNumber} </span>
+                  </Link>
+                </MenuItem>    
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link className={styles.link} to='/new-order'>New Order</Link>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link className={styles.link} to='/contact-us'>Contact Us</Link>
+                </MenuItem>
             </Menu>
           </Box>
           <Typography
@@ -104,15 +119,20 @@ const Navbar = () => {
             PHARMA TECH
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page,indx) => (
-              <Button
-                key={indx}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, display: 'block' }}
-              >
-                <Link to={page.path} style={{ color:'white', textDecoration:'none'}}>{page.page}</Link>
-              </Button>
-            ))}
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
+              <Link to='/home' className={styles.navBtn}>Home</Link>
+            </Button>
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
+              <Link to='/recently-added' className={styles.navBtn}>Recently Added
+               <span className={styles.numberBadge}>+{incomingNumber} </span>
+               </Link>
+            </Button>
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
+              <Link to='/new-order' className={styles.navBtn}>New Order</Link>
+            </Button>
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
+              <Link to='/contact-us' className={styles.navBtn}>Contact Us</Link>
+            </Button>
           </Box>
         
           <MenuItem>
@@ -143,11 +163,14 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Typography className={styles.settingsLink}>Profile</Typography>
+            </MenuItem>
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Typography className={styles.settingsLink}>Account</Typography>
+            </MenuItem><MenuItem onClick={handleCloseUserMenu}>
+              <Typography  className={styles.settingsLink}>Logout</Typography>
+            </MenuItem>
             </Menu>
           </Box>
           

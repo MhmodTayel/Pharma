@@ -5,15 +5,12 @@ const findOne = (id) => Medicine.findOne({ id: id });
 const findAll = () => Medicine.find();
 
 const getMedicinesByCat = ( cat ) => Orders.find({ categories: { "$in" : [cat]} } )
-
-// var end = new Date();
-// end.setHours(23,59,59,999);
-const getIncomingMed = (date)=> Medicine.find({arriveDate: {$gte:date}})
+const getIncomingMed = (date) => Medicine.find({arriveDate: {$gte:date}})
+const getIncomingMedNumber = (date)=> Medicine.countDocuments({arriveDate: {$gte:date}})
 
 
 const updateQuantity = (id, newQuantity) =>
   Medicine.updateOne({ id }, { $inc: { quantity: +("-" + newQuantity) } });
-
 
 //------------ Search ------------//
 const client = new Client();
@@ -36,5 +33,5 @@ async function searchMeds(q) {
   return meds;
 }
 
-module.exports = { findOne, updateQuantity,searchMeds,findAll,getMedicinesByCat ,getIncomingMed};
+module.exports = { findOne, updateQuantity,searchMeds,findAll,getMedicinesByCat ,getIncomingMed,getIncomingMedNumber};
 
