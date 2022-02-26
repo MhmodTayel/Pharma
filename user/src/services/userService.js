@@ -47,6 +47,11 @@ function reduceMedQuantity(med) {
 function saveOrder(order) {
   return axiosInstace.post(`/orders/saveOrder`, order);
 }
+function getSavedOrders() {
+  return axiosInstace.get(`/orders/savedOrders`);
+}
+
+
 
 function deleteSavedOrder(id) {
   return axiosInstace.post(`/orders/savedOrder/${id}`);
@@ -65,4 +70,5 @@ export {
   getMedByCat,
   saveOrder,
   deleteSavedOrder,
+  getSavedOrders
 };
