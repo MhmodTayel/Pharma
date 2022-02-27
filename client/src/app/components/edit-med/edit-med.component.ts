@@ -138,7 +138,27 @@ export class EditMedComponent implements OnInit {
       this.addMedicineService.getDetails(params.get('id')).subscribe(
         (response:any)=>{
                this.medicines=response;    
-              console.log(this.medicines)    
+              console.log(this.medicines);
+              this.formEditMed.patchValue({
+                name : response.name,
+                description : response.description,
+                companyProvider : response.companyProvider,
+                type : response.type,
+                concentration : response.concentration,
+                expDate : response.expDate,
+                arriveDate : response.arriveDate,
+                quantity : response.quantity,
+                pharmPrice : response.pharmPrice,
+                storePrice : response.storePrice,
+                discount : response.discount,
+                firmPrice : response.firmPrice,
+                brand : response.brand,
+                size : response.size,
+                limit : response.limit,
+                image : response.image,
+                categories : response.categories
+
+              })
       });
  
      });
