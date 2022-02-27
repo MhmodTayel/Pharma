@@ -12,6 +12,7 @@ import { MedAddedTodayComponent } from './med-added-today/med-added-today.compon
 import { MedAddedWeekComponent } from './med-added-week/med-added-week.component';
 import { AddQuantityComponent } from './medicines-store/add-quantity/add-quantity.component';
 
+
 @NgModule({
   declarations: [ ProfileDetailsComponent , AddMedComponent, OrderDetailsComponent,
      MedicinesStoreComponent, EditMedComponent, MedAddedTodayComponent, MedAddedWeekComponent, AddQuantityComponent ],
@@ -20,5 +21,6 @@ import { AddQuantityComponent } from './medicines-store/add-quantity/add-quantit
   ],
   exports:[ ProfileDetailsComponent, AddMedComponent, OrderDetailsComponent, MedicinesStoreComponent ,
     EditMedComponent, MedAddedTodayComponent, MedAddedWeekComponent, AddQuantityComponent]
+
 })
 export class ComponentsModule {}

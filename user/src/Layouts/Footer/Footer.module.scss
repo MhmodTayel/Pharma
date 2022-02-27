@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@200&display=swap');
+body{
+    margin: 0px;
+    font-family: 'Roboto Serif', sans-serif !important; 
+}
 .bgFooter{
     padding:20px;
     background: #222;
@@ -21,14 +26,14 @@
     padding: 2px 10px;
     font-size: 13px;
     text-decoration: none;
-    border: #6c757d solid 3px;
+    border: #6c757d solid 1px;
    border-radius: 3px;
    color: #6c757d;
    transform: all .5s ;
 }
 .tag:hover{
     color: #076cec;
-    border: #076cec solid 3px;
+    border: #076cec solid 1px;
 }
 .lastFooter{
     background-color: #1a1a1a;
@@ -37,14 +42,36 @@
 .allIcons{
     display: flex;
 }
-.iconSpan{
-    padding: 4px;
-    background-color: #076cec;
-    margin-left: 3px;
+.lastFooterP{
+    color: white;
+    text-align: center;
+    font-size: 18px;
+
 }
-.iconSpan:hover{
-    background-color: #4ebbe9;
-    transition: all 1s;
+.iconSpanFac , .iconSpantw , .iconSpanGo , .iconSpanin {
+    padding: 5px !important;
+    color: rgb(255, 255, 255);
+    margin-left: 5px !important;
+    cursor: pointer;
+}
+.iconSpanFac:hover{
+    color: rgba(71, 71, 214, 0.767);
+    transition: all 1s ease-in;
+}
+.iconSpantw:hover{
+    color: rgb(24, 113, 214);
+    transition: all 1s ease-in;
+
+}
+.iconSpanGo:hover{
+    color: rgb(177, 12, 12);
+    transition: all 1s ease-in;
+
+}
+.iconSpanin:hover{
+    color: #f14141;
+    transition: all .4s ease-in;
+
 }
 @media only screen and (max-width: 700px) {
     .bgFooter {
@@ -62,5 +89,8 @@
        display: flex;
        justify-content: center;
        align-items: center;
+   }
+   .lastFooterP{
+       text-align: center;
    }
   }

@@ -1,0 +1,23 @@
+.link{
+    font-size: 1rem;
+    padding: 6px 10px;
+    transition: all .5s ease;
+
+}
+.activeHome{
+    padding: 6px 10px;
+    background-color: rgba(254, 254, 255, 0.335);
+    border-radius: 20px;
+    transition: all .5s ease;
+
+}
+.link:hover{
+    padding: 6px 10px;
+    background-color: rgba(254, 254, 255, 0.335);
+    border-radius: 20px;
+    transition: all .5s ease;
+}
+.box{
+    display: flex;
+    justify-content: center;
+}

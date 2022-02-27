@@ -45,10 +45,12 @@ router.post(
 router.patch("/medicine/:id", uploadS3.single("image"), (req, res, next) => {
   const medId = req.params.id;
   const medicine = req.body;
+  medicine.categories = medicine.categories.split(",");
   medicine.image = req.file?.location;
   update(medId, medicine)
     .then((doc) => res.json(doc))
     .catch((e) => next(e));
+    console.log(medicine)
 });
 
 router.delete("/medicine/delete/:id", (req, res, next) => {

@@ -11,17 +11,28 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 import MedicationSharpIcon from '@mui/icons-material/MedicationSharp';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
-
-const pages = ['Products', 'Pricing', 'Blog' ,'Contact', <Box sx={{ display: 'flex'}}><SearchSharpIcon/></Box>];
-const settings = ['Profile', 'Account', 'Logout'];
+import { Link, useHistory } from 'react-router-dom';
+import styles from './Navbar.module.scss'
+// import { newProductsContext } from '../../context/newProductsContext';
 
 const Navbar = () => {
+  // const {productsContext} = React.useContext(newProductsContext)
+  const pages = [{ page: 'Home', path: '/home' }
+    , { page: `Recently Added `, path: '/recently-added' }
+    , { page: 'New Order', path: '/new-order' }
+    , { page: 'Contact Us', path: '/contact-us' }
+  ];
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  let user = localStorage.getItem('token');
+  const history = useHistory();
+  function Logout() {
+    localStorage.clear();
+    history.push('/login')
+
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -39,19 +50,18 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static"  sx={{ backgroundColor:'#4ebbe9' }}
+    <AppBar position="static" sx={{ backgroundColor: '#4ebbe9' }}
     >
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{p:1}}>
+        <Toolbar disableGutters sx={{ p: 1 }}>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' ,alignItems: 'center', fontWeight: 700 } }}
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex', alignItems: 'center', fontWeight: 700, fontSize: '1.3rem' } }}
           >
-
-            <MedicationSharpIcon sx={{m:1}}/> 
-             PHARMA TECH
+            <MedicationSharpIcon sx={{ m: 1 }} />
+            PHARMA TECH
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -83,38 +93,47 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link style={{ color: '#4ebbe9', textDecoration: 'none' }} to='/home'>Home</Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link style={{ color: '#4ebbe9', textDecoration: 'none' }} to='/recently-added'>Recently Added</Link>
+              </MenuItem>    <MenuItem onClick={handleCloseNavMenu}>
+                <Link style={{ color: '#4ebbe9', textDecoration: 'none' }} to='/new-order'>New Order</Link>
+              </MenuItem>    <MenuItem onClick={handleCloseNavMenu}>
+                <Link style={{ color: '#4ebbe9', textDecoration: 'none' }} to='/contact-us'>Contact Us</Link>
+              </MenuItem>
             </Menu>
           </Box>
+          
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } , alignItems: 'center',fontWeight: 700 }}
+            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, alignItems: 'center', fontWeight: 700 }}
           >
-            <MedicationSharpIcon mb={5}/> 
+            <MedicationSharpIcon mb={5} />
             PHARMA TECH
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+          <Box className={styles.box} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
+              <Link to='/home' className={styles.activeHome} style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
+            </Button>
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
+              <Link className={styles.link} to='/recently-added' style={{ color: 'white', textDecoration: 'none' }}>Recently Added</Link>
+            </Button>
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
+              <Link className={styles.link} to='/new-order' style={{ color: 'white', textDecoration: 'none' }}>New Order</Link>
+            </Button>
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
+              <Link className={styles.link} to='/contact-us' style={{ color: 'white', textDecoration: 'none' }}>Contact Us</Link>
+            </Button>
           </Box>
-        
+
           <MenuItem>
-                  <Typography textAlign="center" sx={{mr:3}}>
-                    <ShoppingCartIcon/>
-                  </Typography>
+            <Typography textAlign="center" sx={{ mr: 3 }}>
+              <ShoppingCartIcon />
+            </Typography>
           </MenuItem>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -139,14 +158,17 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography textAlign="center" sx={{ display: 'flex' }}>Profile</Typography>
+              </MenuItem>
+              <MenuItem onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">Account</Typography>
+              </MenuItem><MenuItem onClick={handleCloseUserMenu}>
+                <Typography textAlign="center" onClick={Logout} >Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
-          
+
         </Toolbar>
       </Container>
     </AppBar>

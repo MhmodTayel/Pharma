@@ -1,5 +1,5 @@
  <mat-drawer-container>
-    <mat-drawer mode="side" [opened]="sideBarOpen">
+    <mat-drawer [mode]="sideBarToggler() ? 'side' : 'over'" [opened]="!this.sideBarOpen">
        <app-sidebar></app-sidebar>
     </mat-drawer>
     <mat-drawer-content>
@@ -7,8 +7,7 @@
         <div class="p-3">
             <router-outlet></router-outlet>
         </div>
-
-
     </mat-drawer-content>
-
 </mat-drawer-container> 
+
+<!-- <app-responsive-sidebar></app-responsive-sidebar> -->

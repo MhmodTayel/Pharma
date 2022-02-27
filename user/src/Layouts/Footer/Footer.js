@@ -32,24 +32,24 @@ export default function Footer() {
                   <br /><EmailIcon className='me-2' /> pharmatec@gmail.com
                 </p>
                 <div className={ styles.allIcons}>
-                  <div className={styles.iconSpan}><FacebookSharpIcon /></div>
-                  <div className={styles.iconSpan}>  <TwitterIcon /></div>
-                  <div className={styles.iconSpan}><GoogleIcon /></div>
-                  <div className={styles.iconSpan}> <InstagramIcon /></div>
+                  <div className={styles.iconSpanFac}><FacebookSharpIcon /></div>
+                  <div className={styles.iconSpantw}>  <TwitterIcon /></div>
+                  <div className={styles.iconSpanGo}><GoogleIcon /></div>
+                  <div className={styles.iconSpanin}> <InstagramIcon /></div>
                 </div>
               </div>
               <div className="col-md-3 text-white">
                 <h5 className="fw-bold my-4 ">Help </h5>
                 <ul className={styles.footerMenu}>
-                  <li className="footer-menu-li"><a className=" text-decoration-none text-muted"
+                  <li className="footer-menu-li"><a className=" text-decoration-none my-2 text-muted"
                     href="#">Support</a></li>
-                  <li className="footer-menu-li"><a className="text-decoration-none text-muted" href="#">Privacy
+                  <li className="footer-menu-li"><a className="text-decoration-none my-2 text-muted" href="#">Privacy
                     Policy</a></li>
-                  <li className="footer-menu-li"><a className="text-decoration-none text-muted" href="#">Terms
+                  <li className="footer-menu-li"><a className="text-decoration-none my-2 text-muted" href="#">Terms
                     &amp; Conditions</a></li>
-                  <li className="footer-menu-li"><a className="text-decoration-none text-muted" href="#">Affiliate
+                  <li className="footer-menu-li"><a className="text-decoration-none my-2 text-muted" href="#">Affiliate
                     Program</a></li>
-                  <li className="footer-menu-li"><a className="text-decoration-none text-muted"
+                  <li className="footer-menu-li"><a className="text-decoration-none my-2 text-muted"
                     href="#">Careers</a></li>
                 </ul>
               </div>
@@ -88,7 +88,7 @@ export default function Footer() {
         <div className="container">
           <div className="row">
             <div className="col-md-6 m-auto">
-              <p className=" text-muted fs-5">Copyright © 2022 <span className="ho-sp"> <a href="#"
+              <p className={styles.lastFooterP}>Copyright © 2022 <span className="ho-sp"> <a href="#"
                 className="a-ho fs-5 fw-bold text-decoration-none  text-primary"> PharmaTec</a></span></p>
             </div>
           </div>

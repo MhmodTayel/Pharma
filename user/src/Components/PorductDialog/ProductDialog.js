@@ -86,7 +86,7 @@ export default function CustomizedDialogs(props) {
                   <div>  
                       <span className={styles.property}>Categories : </span> 
                         {props.medItem?.categories?.map((cat, indx) =>
-                        <span className={styles.description}>{cat}</span>
+                        <span key={indx} className={styles.description}>{cat}</span>
                       )}
                   </div>
                </div>
