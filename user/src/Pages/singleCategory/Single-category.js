@@ -13,14 +13,6 @@ export default function SingleCategory() {
         window.history.back();
     };
 
-    //   React.useEffect(() => {
-    //     getMedByCat("test")
-    //       .then((res) => {
-    //         setData(res.data);
-    //       })
-    //       .catch((err) => console.log(err));
-    //   }, []);
-
     React.useEffect(() => {
         getMedByCat("test").then(
             (res) => {
