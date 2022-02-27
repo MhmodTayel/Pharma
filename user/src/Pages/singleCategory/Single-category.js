@@ -6,7 +6,7 @@ import ProductItemCard from '../../Components/ProductCard/ProductCard'
 
 
 export default function SingleCategory() {
-    const [data, setData] = useState({});
+    const [data, setData] = useState([]);
     const { cat } = useParams();
 
     const back = () => {
