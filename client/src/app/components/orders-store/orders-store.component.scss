@@ -5,13 +5,10 @@ table {
     background-color: white;
   }
 }
-
-
 .forSearch{
   background-color: rgb(243, 241, 241);
   box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
 }
-
 .example-full-width {
   width: 20%;
 }
@@ -19,4 +16,20 @@ table {
 i{
   cursor: pointer;
   color: rgb(4, 4, 170);
+}
+.mat-column-Client {
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 28% !important;
+  width: 20% !important;
+  background-color: aqua;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  word-break: break-word;
+
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
