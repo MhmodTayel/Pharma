@@ -31,5 +31,9 @@ export class MedicineService {
     return this._api.get(`/store/weekly-incoming-medicine`);
   }
 
+  updateQuantity(id:string, quantity:any){
+    return this._api.patch(`/store/medicine/quantity/${id}`, quantity);
+    }
+
       
 }
