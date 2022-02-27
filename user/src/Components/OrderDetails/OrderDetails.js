@@ -38,9 +38,11 @@ export default function OrderDetails({ state, order }) {
                 <span>Order Date : </span>
                 {moment(order.createdAt).format("lll")}
               </p>
-              <p>
-                <span>Total :</span> {order.cost / 1000} EGP
-              </p>
+              {"cost" in order && (
+                <p>
+                  <span>Total :</span> {order.cost / 1000} EGP
+                </p>
+              )}
             </div>
           </div>
         </DialogContent>
