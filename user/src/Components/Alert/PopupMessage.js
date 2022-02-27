@@ -6,7 +6,7 @@ export default function PopupMessage({ title, body, severity }) {
   return (
     <Alert severity={severity}>
       <AlertTitle>{title}</AlertTitle>
-      {body} has arrived to store — <strong>check it out!</strong>
+      {body} 
     </Alert>
   );
 }

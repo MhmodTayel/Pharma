@@ -4,6 +4,9 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MedicineService } from 'src/app/services/medicineService/medicine.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddQuantityComponent } from './add-quantity/add-quantity.component';
+
 
 @Component({
   selector: 'app-medicines-store',
@@ -12,7 +15,7 @@ import { MedicineService } from 'src/app/services/medicineService/medicine.servi
 })
 export class MedicinesStoreComponent implements OnInit {
   medArr: any [] = [];
-  constructor(private _medService: MedicineService) { }
+  constructor(private _medService: MedicineService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this._medService.getAllMedicines().subscribe((res: any)=>{
@@ -22,6 +25,14 @@ export class MedicinesStoreComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
+  }
+
+  openDialog() { 
+    const dialogRef = this.dialog.open(AddQuantityComponent, { disableClose: true });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // console.log(`Dialog result: ${result}`);
+    });
   }
 
 displayedColumns: string[] = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'edit', 'delete']; //for table headers

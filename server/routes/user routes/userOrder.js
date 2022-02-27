@@ -12,6 +12,15 @@ const {
 const Order = require("../../models/order");
 const SavedOrder = require("../../models/savedOrder");
 
+router.post("/orders/newOrder", async({body}, res, next)=>{
+    const id = await Order.find({}).count();
+    body.id = id+1;
+    createOrder(body)
+    .then((doc)=>{
+        req.io.emit("newOrder",  doc);     
+        res.json(doc)})
+    .catch((err)=>next(err))
+} );
 router.post("/checkouts/", ({ body }, res, next) => {
   console.log(body.line_items[0].images);
   createStripeCheckoutSession(body)
@@ -32,13 +41,6 @@ router.get("/orders/savedOrders", async (req, res, next) => {
       .catch((err) => next(err));
   });
 
-router.post("/orders/newOrder", async ({ body }, res, next) => {
-  const id = await Order.find({}).count();
-  body.id = id + 1;
-  createOrder(body)
-    .then((doc) => res.json(doc))
-    .catch((err) => next(err));
-});
 
 router.get("/orders/:id", async (req, res, next) => {
   const id = req.params.id;

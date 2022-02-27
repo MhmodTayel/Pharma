@@ -40,7 +40,12 @@ router.patch("/medicine/quantity", (req, res, next) => {
   const id = req.body.id;
   const newQuantity = req.body.quantity;
   updateQuantity(id, newQuantity)
-    .then((doc) => res.json(doc))
+    .then((doc) => {
+      if(doc.quantity <= 10){
+        req.io.emit("lowQuantity",{ name:doc.name,date:doc.updatedAt})
+        
+      }
+      res.json(doc)})
     .catch((e) => next(e));
 });
 

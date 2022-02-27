@@ -35,7 +35,7 @@ router.post(
     body.id = medArr.length + 1;
     create(body).then((doc) => {
         createMedRedis({ id: body.id, name: body.name });
-        req.io.emit("message",  req.body.name);
+        req.io.emit("message", { name:doc.name,date:doc.updatedAt});
         res.json(doc);
       })
       .catch((e) => next(e));
@@ -63,6 +63,8 @@ router.delete("/medicine/delete/:id", (req, res, next) => {
 router.patch("/medicine/quantity/:id", (req, res, next) => {
   const medId = req.params.id;
   const medicineQuantity = req.body.quantity;
+  console.log(medId,medicineQuantity)
+
   updateQuantity(medId, medicineQuantity)
     .then((doc) => res.json(doc))
     .catch((e) => next(e));
