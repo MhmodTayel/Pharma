@@ -9,8 +9,11 @@ import Category from "./singleCategory/Single-category";
 import Success from "./successPayment/Success";
 import Orders from "./Orders/Orders";
 import SavedOrders from "./SavedOrders/SavedOrders";
+import notFound from "./not-Found/notFound";
 
-export { AboutUs, Login, Register, NewOrder,Home ,Contact, Success,Category,SavedOrders,Orders,RecenltyAdded };
+
+export { AboutUs, Login, Register, NewOrder,Home ,Contact, Success,Category,SavedOrders,Orders,RecenltyAdded,notFound };
+
 
 
 

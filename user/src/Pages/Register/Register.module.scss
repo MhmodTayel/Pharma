@@ -73,9 +73,13 @@
 		height: 70px;
 		width: 70px;
 		border-radius: 50%;
-		transition: 0.45s ease all 0.1s !important;
-		transition: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) all 0.1s !important;
+		transition: all .5s ease !important;
 	}
+	.btn:hover{
+		transform: rotate(90deg) !important;
+		transition: all .5s ease !important;
+	}
+	// Protected Routes
     .button {
 		height: 100%;
 		width: 100%;
