@@ -6,6 +6,8 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Medicine} from "../../models/Medicine";
+import { SnackBarService } from 'src/app/services/snackBarService/snack-bar.service';
+
 
 interface Type {
   value: string;
@@ -38,6 +40,7 @@ export interface Categorie {
   styleUrls: ['./edit-med.component.scss']
 })
 export class EditMedComponent implements OnInit {
+   Id:any=''
 
   date = new FormControl(new Date());
   medicines : Medicine = new Medicine();
@@ -45,7 +48,7 @@ export class EditMedComponent implements OnInit {
     private _formBuilder: FormBuilder, 
     private _router: Router ,
     private addMedicineService:MedicineService,
-    private _ativatedRoute:ActivatedRoute) { }
+    private _ativatedRoute:ActivatedRoute,private _mysnackbar: SnackBarService) { }
 
   formEditMed: FormGroup = new FormGroup({});
   serializedDate = new FormControl(new Date().toISOString());
@@ -65,6 +68,7 @@ export class EditMedComponent implements OnInit {
       const medData = new FormData();
 
       medData.append('name', this.formEditMed.value.name);
+      medData.append('id', this.Id);
       medData.append('description', this.formEditMed.value.description);
       medData.append('companyProvider', this.formEditMed.value.companyProvider);
       medData.append('type', this.formEditMed.value.type);
@@ -85,10 +89,11 @@ export class EditMedComponent implements OnInit {
       );
       }
 
-    this.addMedicineService.update(this.medicines.id,medData).subscribe(
+    this.addMedicineService.update(this.Id,medData).subscribe(
       (response: any) => {
-        console.log(response);
-        alert(response.message)
+        
+        this._mysnackbar.openSnackBar(`${response.name} has been updated`,'blue-snackbar', 'Success') 
+
         
       },
       (error) => { 
@@ -135,9 +140,11 @@ export class EditMedComponent implements OnInit {
     });
     
     this._ativatedRoute.paramMap.subscribe(params=>{
+      this.Id=params.get('id')
       this.addMedicineService.getDetails(params.get('id')).subscribe(
         (response:any)=>{
-               this.medicines=response;    
+          this.medicines =response
+          this.formEditMed.patchValue(response)    
               console.log(this.medicines)    
       });
  
