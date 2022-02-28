@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+
 import {
   createOrder,
   getOrders,
@@ -19,14 +21,14 @@ export default function Success() {
     const sessionId = urlParams.get("session_id");
     getOrders(sessionId).then((res) => {
       setResponse(res.data);
-      console.log(res.data)
+      console.log(res.data);
       const lineItems = res.data.lineItems.data.map((item) => {
         return {
           quantity: item.quantity,
           name: item.description,
           amount_total: item.amount_total,
           price: item.price.unit_amount,
-          image:item.image
+          image: item.image,
         };
       });
       const totalCharge = res.data.paymentIntent.charges.data[0];
@@ -64,10 +66,10 @@ export default function Success() {
         <div className={styles.card}>
           {/* <img src={require("../../Assets/Images/accept.png")} alt="" /> */}
           <div className={styles.icon}>
-          <div className={styles.success_icon}>
-            <div className={styles.success_icon__tip}></div>
-            <div className={styles.success_icon__long}></div>
-          </div>
+            <div className={styles.success_icon}>
+              <div className={styles.success_icon__tip}></div>
+              <div className={styles.success_icon__long}></div>
+            </div>
           </div>
           <h5>Thanks {loggedUser.username}, for your order</h5>
           <p>
@@ -75,9 +77,12 @@ export default function Success() {
             as soon as possible
           </p>
           <div className={styles.action}>
-            <a target="_blank" className={styles.btnOrders}>
-              View my orders
-            </a>
+            <Link to="/orders">
+              {" "}
+              <a target="_blank" className={styles.btnOrders} href="">
+                View my orders
+              </a>
+            </Link>
             <a
               target="_blank"
               href={response?.paymentIntent?.charges?.data[0].receipt_url}

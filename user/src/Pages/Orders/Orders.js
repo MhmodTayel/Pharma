@@ -21,7 +21,7 @@ export default function Orders() {
       <div className="row">
         {orders.map((order) => {
           return (
-            <div key={order.id} className="col-lg-3 col-md-4 col-sm-12 my-3">
+            <div key={order.id} className="col-lg-4 col-md-4 col-sm-12 my-3">
               <BasicCard order={order} />
             </div>
           );

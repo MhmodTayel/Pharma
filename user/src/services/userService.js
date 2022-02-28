@@ -20,6 +20,13 @@ function getMedById(id) {
   return axiosInstace.get(`/medicine/${id}`);
 }
 
+function getIncomingMed(body) {
+  return axiosInstace.post(`/medicine/incoming`,body);
+}
+function getIncomingMedNumber() {
+  return axiosInstace.get(`/medicine/incomingMedsNumber`);
+}
+
 function getMedByCat(cat) {
   return axiosInstace.get(`/medicine/category/${cat}`);
 }
@@ -74,5 +81,7 @@ export {
   getMedByCat,
   saveOrder,
   deleteSavedOrder,
-  getSavedOrders
+  getSavedOrders,
+  getIncomingMed,
+  getIncomingMedNumber
 };
