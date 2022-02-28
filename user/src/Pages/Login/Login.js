@@ -22,7 +22,6 @@ const validationSchema = yup.object({
 });
 
 export default function Login() {
-  const isAuth = !localStorage.getItem('token')
   const history = useHistory();
 
   const formik = useFormik({

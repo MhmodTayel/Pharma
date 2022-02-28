@@ -60,20 +60,17 @@ function App() {
         <Switch>
           <Route path={"/register"} exact component={Register} />
           <Route path={"/login"} exact component={Login} />
-
-          <ProtectedRoute path="/home" exact component={Home} />
-          <ProtectedRoute path="/"  component={Home} />
-          <ProtectedRoute path="/new-order" exact component={NewOrder} />
-          <ProtectedRoute path="/contact-us" exact component={Contact} />
-          <ProtectedRoute path="/category/:cat" exact component={Category} />
-          <ProtectedRoute path="/success" exact component={Success} />
-          <ProtectedRoute path="/newOrder" exact component={NewOrder} />
+          <ProtectedRoute path={"/contact-us"} exact component={Contact} />
+          <ProtectedRoute path={"/new-order"} exact component={NewOrder} />
           <ProtectedRoute path={"/recently-added"} exact component={RecenltyAdded} />
-          <ProtectedRoute path="/newOrder" exact component={NewOrder} />
-          <ProtectedRoute path="/orders" exact component={Orders} />
-          <ProtectedRoute path="/saved-orders" exact component={SavedOrders} />
+          <ProtectedRoute path={"/success"} exact component={Success} />
+          <ProtectedRoute path={"/home"} exact component={Home} />
+          <ProtectedRoute path={"/" } component={Home} />
+          <ProtectedRoute path={"/category/:cat"} exact component={Category} />
+          <ProtectedRoute path={"/newOrder"} exact component={NewOrder} />
+          <ProtectedRoute path={"/orders"} exact component={Orders} />
+          <ProtectedRoute path={"/saved-orders"} exact component={SavedOrders} />
           <ProtectedRoute path="*" exact component={notFound} />
-
         </Switch>
       </BrowserRouter>
     </>

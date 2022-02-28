@@ -174,7 +174,7 @@ const Navbar = () => {
             <MenuItem onClick={handleCloseUserMenu}>
               <Typography className={styles.settingsLink}>Account</Typography>
             </MenuItem><MenuItem onClick={handleCloseUserMenu}>
-              <Typography  className={styles.settingsLink}>Logout</Typography>
+              <Typography onClick={Logout} className={styles.settingsLink}>Logout</Typography>
             </MenuItem>
 
             </Menu>
