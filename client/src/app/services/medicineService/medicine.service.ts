@@ -21,15 +21,20 @@ export class MedicineService {
   getDetails(id:string|null){
     return this._api.get(`/store/medicine/details/${id}`);
   } 
-  update(id:string,medicine:FormData){
+  update(id:any,medicine:any){
   return this._api.patch(`/store/medicine/${id}`,medicine);
   }
+
   todayIncomingMeds(){
     return this._api.get(`/store/today-incoming-medicine`);
   }
   weekIncomingMeds(){
     return this._api.get(`/store/weekly-incoming-medicine`);
   }
+
+  updateQuantity(id:string, quantity:any){
+    return this._api.patch(`/store/medicine/quantity/${id}`, quantity);
+    }
 
       
 }

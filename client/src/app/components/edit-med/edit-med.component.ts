@@ -1,11 +1,13 @@
 import { MedicineService } from './../../services/medicineService/medicine.service';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators ,FormArray } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Medicine} from "../../models/Medicine";
+import { SnackBarService } from 'src/app/services/snackBarService/snack-bar.service';
+
 
 interface Type {
   value: string;
@@ -29,12 +31,16 @@ interface Size {
 export interface Categorie {
   name: string;
 }
+
+
+
 @Component({
   selector: 'app-edit-med',
   templateUrl: './edit-med.component.html',
   styleUrls: ['./edit-med.component.scss']
 })
 export class EditMedComponent implements OnInit {
+   Id:any=''
 
   date = new FormControl(new Date());
   medicines : Medicine = new Medicine();
@@ -42,43 +48,52 @@ export class EditMedComponent implements OnInit {
     private _formBuilder: FormBuilder, 
     private _router: Router ,
     private addMedicineService:MedicineService,
-    private _ativatedRoute:ActivatedRoute) { }
+    private _ativatedRoute:ActivatedRoute,private _mysnackbar: SnackBarService) { }
 
-  formAddMedicine: FormGroup = new FormGroup({});
+  formEditMed: FormGroup = new FormGroup({});
   serializedDate = new FormControl(new Date().toISOString());
   imagePreview: string = '';
-  receviedImg:string=''
-  ID:number=0
-  _id:string=''
+  receviedImg:string='';
+  ID:number=0;
+  
+  check:any=true;
+
+  toggelCheck(val:boolean){
+   this.check=val;
+
+  }
   
   onSubmit() {
-    if (this.formAddMedicine.valid) {
+    if (this.formEditMed.valid) {
       const medData = new FormData();
 
-      medData.append('name', this.formAddMedicine.value.name);
-      medData.append('description', this.formAddMedicine.value.description);
-      medData.append('companyProvider', this.formAddMedicine.value.companyProvider);
-      medData.append('type', this.formAddMedicine.value.type);
-      medData.append('concentration', this.formAddMedicine.value.concentration);
-      medData.append('expDate', this.formAddMedicine.value.expDate);
-      medData.append('arriveDate', this.formAddMedicine.value.arriveDate);
-      medData.append('quantity', this.formAddMedicine.value.quantity);
-      medData.append('pharmPrice', this.formAddMedicine.value.pharmPrice);
-      medData.append('storePrice', this.formAddMedicine.value.storePrice);
-      medData.append('discount', this.formAddMedicine.value.discount);
-      medData.append('firmPrice', this.formAddMedicine.value.firmPrice);
-      medData.append('brand', this.formAddMedicine.value.brand);
-      medData.append('isAvailable', this.formAddMedicine.value.isAvailable);
-      medData.append('size', this.formAddMedicine.value.size);
-      medData.append('categories', this.formAddMedicine.value.categories);
-      medData.append('limit', this.formAddMedicine.value.limit);
-      medData.append('image',this.formAddMedicine.value.image,this.formAddMedicine.value.title
+      medData.append('name', this.formEditMed.value.name);
+      medData.append('id', this.Id);
+      medData.append('description', this.formEditMed.value.description);
+      medData.append('companyProvider', this.formEditMed.value.companyProvider);
+      medData.append('type', this.formEditMed.value.type);
+      medData.append('concentration', this.formEditMed.value.concentration);
+      medData.append('expDate', this.formEditMed.value.expDate);
+      medData.append('arriveDate', this.formEditMed.value.arriveDate);
+      medData.append('quantity', this.formEditMed.value.quantity);
+      medData.append('pharmPrice', this.formEditMed.value.pharmPrice);
+      medData.append('storePrice', this.formEditMed.value.storePrice);
+      medData.append('discount', this.formEditMed.value.discount);
+      medData.append('firmPrice', this.formEditMed.value.firmPrice);
+      medData.append('brand', this.formEditMed.value.brand);
+      medData.append('size', this.formEditMed.value.size);
+      medData.append('categories', this.formEditMed.value.categories);
+      medData.append('limit', this.formEditMed.value.limit);
+      if(this.formEditMed.value.image){
+      medData.append('image',this.formEditMed.value.image,this.formEditMed.value.title
       );
+      }
 
-    this.addMedicineService.update(this._id,medData).subscribe(
+    this.addMedicineService.update(this.Id,medData).subscribe(
       (response: any) => {
-        console.log(response);
-        alert(response.message)
+        
+        this._mysnackbar.openSnackBar(`${response.name} has been updated`,'blue-snackbar', 'Success') 
+
         
       },
       (error) => { 
@@ -92,9 +107,7 @@ export class EditMedComponent implements OnInit {
     
     const file = event.target.files[0];
     
-    this.formAddMedicine.patchValue({ image: file });
-    // this.formAddMedicine.get('image').updateValueAndValidity();
-
+    this.formEditMed.patchValue({ image: file });
     const reader = new FileReader();
     reader.onload = () => {
       this.imagePreview = reader.result as string;
@@ -104,7 +117,7 @@ export class EditMedComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.formAddMedicine = this._formBuilder.group({
+    this.formEditMed = this._formBuilder.group({
       name: ['', [Validators.required ,Validators.minLength(3)]],
       description: [''],
       companyProvider: ['', [Validators.required ,Validators.minLength(3)]],
@@ -118,22 +131,21 @@ export class EditMedComponent implements OnInit {
       discount: ['', [Validators.required]],
       firmPrice: ['', [Validators.required]],
       brand: ['', [Validators.required,Validators.minLength(3)]],
-      isAvailable: ['', [Validators.required]],
-      size: ['', [Validators.required]],
-      categories: ['', [Validators.required,Validators.minLength(3)]],
+      size: [''],
       limit: ['', [Validators.required]],
-      image :['']
+      image :[''],
+      categories: this._formBuilder.array([this._formBuilder.control('', [Validators.required,Validators.minLength(3)])])
+     
       
     });
     
     this._ativatedRoute.paramMap.subscribe(params=>{
+      this.Id=params.get('id')
       this.addMedicineService.getDetails(params.get('id')).subscribe(
         (response:any)=>{
-               this.medicines=response;    
-                  this.receviedImg = `http://localhost:3000/${response.image}`
-                  this._id = response._id
-                   this.ID = response.id
-                    console.log(this.medicines)    
+          this.medicines =response
+          this.formEditMed.patchValue(response)    
+              console.log(this.medicines)    
       });
  
      });
@@ -228,29 +240,23 @@ export class EditMedComponent implements OnInit {
 
   ];
 
-  addOnBlur = true;
-  readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  categories: Categorie[] = [{name: 'Antibiotics'}];
-
-  add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
-
-    if (value) {
-      this.categories.push({name: value});
-    }
-    event.chipInput!.clear();
-  }
-
-  remove(categorie: Categorie): void {
-    const index = this.categories.indexOf(categorie);
-
-    if (index >= 0) {
-      this.categories.splice(index, 1);
-    }
-  }
+  get categories() {
+    return this.formEditMed.get("categories") as FormArray;
+}
+  
 
   clearInput()
-   { this.formAddMedicine.reset() }
+   { this.formEditMed.reset() }
+  
 
 
-}
+  }
+
+
+
+
+
+
+
+
+

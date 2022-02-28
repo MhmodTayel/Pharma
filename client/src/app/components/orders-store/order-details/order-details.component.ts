@@ -11,13 +11,14 @@ import { OrdersServiceService } from 'src/app/services/orderService/orders-servi
 export class OrderDetailsComponent implements OnInit {
 
   constructor(public route:ActivatedRoute,private order:OrdersServiceService) { }
+
   orderId:any = 0;
   param :any = ''
   orderDetails:any = null;
     ngOnInit(): void {
+
         this.orderId = window.location.href.split('/').pop();
-        console.log(window.location.href.split('/').pop())
-        this.order.getDetails(this.orderId).subscribe((response: any) => {
+         this.order.getDetails(this.orderId).subscribe((response: any) => {
           this.orderDetails = response;
           console.log(this.orderDetails);
         },
@@ -25,6 +26,4 @@ export class OrderDetailsComponent implements OnInit {
           console.log(error);
        }) 
    }
-  
-
 }

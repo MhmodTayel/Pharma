@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com');
 @import url("https://fonts.gstatic.com");
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@200&display=swap');
 
-body{
+body {
     margin: 0px;
-    font-family: 'Poppins', sans-serif !important;   
+    padding: 0px;
+    font-family: 'Roboto Serif', sans-serif !important; 
+}
+::selection{
+    background-color: #4ebbe9;
 }

@@ -30,14 +30,12 @@ router.post(
   async (req, res, next) => {
     const body = req.body;
     body.image = req.file?.location;
-    // body.categories = body.categories.split(" ");
+    body.categories = body.categories.split(",");
     const medArr = await Medicine.find({});
     body.id = medArr.length + 1;
-    create(body)
-      .then((doc) => {
+    create(body).then((doc) => {
         createMedRedis({ id: body.id, name: body.name });
-        console.log(req.io);
-        req.io.emit("message",  req.body.name);
+        req.io.emit("message", { name:doc.name,date:doc.updatedAt});
         res.json(doc);
       })
       .catch((e) => next(e));
@@ -47,6 +45,7 @@ router.post(
 router.patch("/medicine/:id", uploadS3.single("image"), (req, res, next) => {
   const medId = req.params.id;
   const medicine = req.body;
+  medicine.categories = medicine.categories.split(",");
   medicine.image = req.file?.location;
   update(medId, medicine)
     .then((doc) => res.json(doc))
@@ -63,6 +62,8 @@ router.delete("/medicine/delete/:id", (req, res, next) => {
 router.patch("/medicine/quantity/:id", (req, res, next) => {
   const medId = req.params.id;
   const medicineQuantity = req.body.quantity;
+  console.log(medId,medicineQuantity)
+
   updateQuantity(medId, medicineQuantity)
     .then((doc) => res.json(doc))
     .catch((e) => next(e));

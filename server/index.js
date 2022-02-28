@@ -24,9 +24,12 @@ app.use(express.json());
 
 mongoose.connect(process.env.CONNECTION_STRING);
 
+
+
 // app.use(authMiddleware)
-app.use("/users", [userRoute, userMedicine, userOrder]);
-app.use("/store", [storeAdminRoute, storeMedRoute, storeOrderRoute]);
+app.use('/users',[userRoute,userMedicine,userOrder])
+app.use('/store',[storeAdminRoute,storeMedRoute,storeOrderRoute])
+
 
 app.use("*", (req, res) => {
   res.status(404).end();

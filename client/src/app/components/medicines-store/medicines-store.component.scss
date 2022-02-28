@@ -56,3 +56,17 @@ th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:la
     padding-right: 0px;
 }
 }
+
+    color: #f44336;
+    cursor: pointer;
+  }
+  .qnt{
+    position: relative;
+  }
+  .plus{
+    position: absolute;
+    cursor: pointer;
+    color: #293692;
+    // top: 10%;
+  
+  }

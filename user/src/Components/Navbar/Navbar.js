@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MedicationSharpIcon from '@mui/icons-material/MedicationSharp';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Link } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
 import { newProductsContext } from '../../context/newProductsContext';
 import { getIncomingMedNumber } from '../../services/userService';
 import styles from './Navbar.module.scss'
@@ -28,11 +28,15 @@ const Navbar = () => {
       (err) => console.log(err) 
     )
   },[])
-
-
-  const {productsContext} = React.useContext(newProductsContext)
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  let user = localStorage.getItem('token');
+  const history = useHistory();
+  function Logout() {
+    localStorage.clear();
+    history.push('/login')
+
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -50,18 +54,18 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static"  sx={{ backgroundColor:'#4ebbe9' }}
+    <AppBar position="static" sx={{ backgroundColor: '#4ebbe9' }}
     >
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{p:1}}>
+        <Toolbar disableGutters sx={{ p: 1 }}>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' ,alignItems: 'center', fontWeight: 700 } }}
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex', alignItems: 'center', fontWeight: 700, fontSize: '1.3rem' } }}
           >
-            <MedicationSharpIcon sx={{m:1}}/> 
-             PHARMA TECH
+            <MedicationSharpIcon sx={{ m: 1 }} />
+            PHARMA TECH
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -109,13 +113,14 @@ const Navbar = () => {
                 </MenuItem>
             </Menu>
           </Box>
+          
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } , alignItems: 'center',fontWeight: 700 }}
+            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, alignItems: 'center', fontWeight: 700 }}
           >
-            <MedicationSharpIcon mb={5}/> 
+            <MedicationSharpIcon mb={5} />
             PHARMA TECH
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -134,11 +139,11 @@ const Navbar = () => {
               <Link to='/contact-us' className={styles.navBtn}>Contact Us</Link>
             </Button>
           </Box>
-        
+
           <MenuItem>
-                  <Typography textAlign="center" sx={{mr:3}}>
-                    <ShoppingCartIcon/>
-                  </Typography>
+            <Typography textAlign="center" sx={{ mr: 3 }}>
+              <ShoppingCartIcon />
+            </Typography>
           </MenuItem>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -171,9 +176,10 @@ const Navbar = () => {
             </MenuItem><MenuItem onClick={handleCloseUserMenu}>
               <Typography  className={styles.settingsLink}>Logout</Typography>
             </MenuItem>
+
             </Menu>
           </Box>
-          
+
         </Toolbar>
       </Container>
     </AppBar>

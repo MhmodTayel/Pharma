@@ -25,7 +25,10 @@
     <!-- status Column -->
     <ng-container matColumnDef="Quantity">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
-      <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+      <td class ="qnt" mat-cell *matCellDef="let element">{{ element.quantity }}
+        <i routerLink="/products/all-products/addQuantity/{{element.id}}" (click)="openDialog()"
+        class="material-icons plus">add</i>
+      </td>
     </ng-container>
     
     <ng-container matColumnDef="isAvailable">

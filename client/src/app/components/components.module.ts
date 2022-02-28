@@ -11,15 +11,17 @@ import { EditMedComponent } from './edit-med/edit-med.component';
 import { MedAddedTodayComponent } from './med-added-today/med-added-today.component';
 import { MedAddedWeekComponent } from './med-added-week/med-added-week.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { AddQuantityComponent } from './medicines-store/add-quantity/add-quantity.component';
 
 
 @NgModule({
   declarations: [ ProfileDetailsComponent , AddMedComponent, OrderDetailsComponent,
-     MedicinesStoreComponent, EditMedComponent, MedAddedTodayComponent, MedAddedWeekComponent ],
+     MedicinesStoreComponent, EditMedComponent, MedAddedTodayComponent, MedAddedWeekComponent, AddQuantityComponent ],
   imports: [
     CommonModule , MaterialModule , FormsModule, ReactiveFormsModule ,RouterModule,LayoutModule
   ],
   exports:[ ProfileDetailsComponent, AddMedComponent, OrderDetailsComponent, MedicinesStoreComponent ,
-    EditMedComponent, MedAddedTodayComponent, MedAddedWeekComponent ]
+    EditMedComponent, MedAddedTodayComponent, MedAddedWeekComponent, AddQuantityComponent]
+
 })
 export class ComponentsModule {}

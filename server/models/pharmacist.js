@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
+const bcrypt = require("bcryptjs");
 
 const pharmacistSchema = new mongoose.Schema({
     id: {
         type: Number,
         default: 1,
-        required: true
+        // required: true
     },
-    name: {
+    pharmacyName: {
         type: String,
         required: true,
-        minlength: 5,
+        minlength: 3,
         maxlength: 50
     },
     photo: {
@@ -19,12 +20,13 @@ const pharmacistSchema = new mongoose.Schema({
 
     pharmacyPhoneNumber: { 
         type: String,
-        required: true,
+        // required: true,
         maxlength: 12
     },
     pharmacistPhonNumber: {
         type:String,
         required: true,
+        minlength:11,
         maxlength: 12
     },
     email: {
@@ -66,7 +68,7 @@ const pharmacistSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        minlength: 5,
+        minlength: 8,
         maxlength: 20
     },
 
@@ -75,7 +77,26 @@ const pharmacistSchema = new mongoose.Schema({
         default: 0,
     }
 
-})
+},
+{
+    toJSON: {
+      transform: (doc, ret, opts) => {
+        delete ret.password;
+        delete ret.__v;
+        return ret;
+      },
+    },
+  }
+)
+
+pharmacistSchema.methods.comparePassword = function (password) {
+    return bcrypt.compareSync(password, this.password);
+  };
+  
+  pharmacistSchema.pre("save", function () {
+    const hash = bcrypt.hashSync(this.password, 10);
+    this.password = hash;
+  });
 const Pharmacist = mongoose.model("Pharmacist", pharmacistSchema);
 
 module.exports = Pharmacist;

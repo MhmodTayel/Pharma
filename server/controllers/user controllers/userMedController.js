@@ -9,8 +9,9 @@ const getIncomingMed = (date) => Medicine.find({arriveDate: {$gte:date}})
 const getIncomingMedNumber = (date)=> Medicine.countDocuments({arriveDate: {$gte:date}})
 
 
+
 const updateQuantity = (id, newQuantity) =>
-  Medicine.updateOne({ id }, { $inc: { quantity: +("-" + newQuantity) } });
+  Medicine.findOneAndUpdate({ id }, { $inc: { quantity: +("-" + newQuantity) } }, {returnDocument: 'after'});
 
 //------------ Search ------------//
 const client = new Client();

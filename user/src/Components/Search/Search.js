@@ -58,6 +58,7 @@ export default function Search() {
         <TextField
           {...params}
           label="Search"
+          variant="standard"
           InputProps={{
             ...params.InputProps,
             type: "search",

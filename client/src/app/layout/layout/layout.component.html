@@ -1,5 +1,5 @@
  <mat-drawer-container>
-    <mat-drawer mode="side" [opened]="sideBarOpen">
+    <mat-drawer [mode]="sideBarToggler() ? 'side' : 'over'" [opened]="!this.sideBarOpen">
        <app-sidebar></app-sidebar>
     </mat-drawer>
     <mat-drawer-content>
