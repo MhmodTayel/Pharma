@@ -22,6 +22,7 @@ const validationSchema = yup.object({
 });
 
 export default function Login() {
+  const isAuth = !localStorage.getItem('token')
   const history = useHistory();
 
   const formik = useFormik({
@@ -36,13 +37,13 @@ export default function Login() {
         (res) => {
           if (res.data) {
             localStorage.setItem("token", res.data);
+            console.log(res.data , '')
             history.push('/home')
-          }else{
-            alert('try agin')
           }
         },
         (err) => {
           console.log(err, 'err')
+          alert('try')
         }
       )
       actions.resetForm();
