@@ -57,7 +57,7 @@ function getSavedOrders() {
 }
 
 function deleteSavedOrder(id) {
-  return axiosInstace.post(`/orders/savedOrder/${id}`);
+  return axiosInstace.delete(`/orders/savedOrder/${id}`);
 }
 export {
   login,

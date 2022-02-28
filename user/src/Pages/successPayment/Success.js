@@ -3,6 +3,7 @@ import {
   createOrder,
   getOrders,
   reduceMedQuantity,
+  deleteSavedOrder
 } from "../../services/userService";
 import styles from "./Success.module.scss";
 
@@ -48,6 +49,9 @@ export default function Success() {
       createOrder(order).then((res) => {});
 
       const meds = JSON.parse(res.data.session.metadata.data);
+      deleteSavedOrder(res.data.session.metadata.savedOrderId).then(res=> {
+        console.log(res)
+      })
       meds.forEach((medicine) => {
         reduceMedQuantity(medicine).then((res) => {});
       });

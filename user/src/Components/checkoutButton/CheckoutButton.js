@@ -4,9 +4,10 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import { checkout } from "../../services/userService";
 import { useStripe } from "@stripe/react-stripe-js";
-export default function CheckoutButton() {
+export default function CheckoutButton({newOrder,savedOrderId}) {
   const stripe = useStripe();
-  const orderStore = useSelector((state) => state.order);
+  const orderStore =newOrder;
+  console.log(newOrder)
   const meds= orderStore.map((med)=>{
     return {id:med.id,
             quantity:med.reqQuantity,
@@ -22,10 +23,11 @@ export default function CheckoutButton() {
     
     };
   });
-  console.log(order)
+
 
   const handelCheckout = async () => {
-    const res = await checkout({ line_items: order,metadata:{data:JSON.stringify(meds)} });
+    console.log(order,meds)
+    const res = await checkout({ line_items: order,metadata:{data:JSON.stringify(meds),savedOrderId} });
     const { id: sessionId } = res.data;
     const { error } = await stripe.redirectToCheckout({
       sessionId,
@@ -37,7 +39,7 @@ export default function CheckoutButton() {
   };
 
   return (
-    <Button variant="contained" endIcon={<SendIcon />} disabled= {!orderStore.length} onClick={handelCheckout}>
+    <Button color="success" disabled= {!orderStore.length} onClick={handelCheckout}>
       Checkout
     </Button>
   );

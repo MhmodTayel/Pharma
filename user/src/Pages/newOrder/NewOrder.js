@@ -23,7 +23,7 @@ export default function NewOrder() {
           <Search />
           {orderStore.length != 0 && (
             <div className="actions">
-              <CheckoutButton />
+              <CheckoutButton newOrder={orderStore} />
               <SaveOrderButton />
             </div>
           )}
