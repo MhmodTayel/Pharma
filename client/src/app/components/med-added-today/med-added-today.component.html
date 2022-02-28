@@ -4,7 +4,7 @@
                 <h6 class="text-muted pt-5">No Medicine Added Today</h6>
         </div>
         <div *ngFor="let med of IncomingMedicine; let currentIndex=index" class="col-lg-3 col-md-6 my-3">
-            <mat-card class="example-card" matBadge="{{med.quantity}}">
+            <mat-card class="example-card" matBadge="In Stock: {{med.quantity}}">
                 <img mat-card-image src="{{med.image}}" alt="product image">
                 <mat-card-actions class="action-buttons">
                     <a mat-button class="edit-icon" routerLink="/products/edit/{{med.id}}"><mat-icon >edit</mat-icon></a>

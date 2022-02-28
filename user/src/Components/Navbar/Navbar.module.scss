@@ -1,0 +1,20 @@
+.link{
+  color:'#4ebbe9';
+  text-decoration:none;
+}
+.navBtn{
+    color:#fff;
+    text-decoration:none;
+  }
+.settingsLink{
+    display: flex;
+    align-items: center;
+}
+.numberBadge{
+    background-image: linear-gradient(to right , #000 ,#010a16d6) !important;;
+    padding: 3px 5px;
+    text-align: center;
+    border-radius: 450%;
+    margin-left: 6px !important;
+    font-size: 12px;
+}

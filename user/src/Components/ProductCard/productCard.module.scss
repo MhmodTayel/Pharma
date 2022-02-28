@@ -1,0 +1,40 @@
+div{
+    padding: 0px;
+    margin: 0px;
+}
+.title {
+   padding: 0px;
+   margin: 0px !important;
+   letter-spacing: 2px !important;
+   text-transform: uppercase;
+   font-weight: 600 !important;
+   color: #323232;
+}
+.category {
+    color: grey;
+    font-size: 15px;
+}
+.price{
+    color: #52A0FD ;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+}
+.imageContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.button{
+    background-image: linear-gradient(to right , #52A0FD ,#00e2fa) !important;
+    transition: all 0.5 ease !important;
+    box-shadow: none !important;
+}
+.button:hover {
+    background-image: linear-gradient(to right , #32e7ff 0%, #32e7ff 60% ,#4ebbe9 100% ) !important;
+}
+.icon
+{
+    margin: 5px;
+    font-size: 18px !important;
+}

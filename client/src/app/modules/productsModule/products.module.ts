@@ -8,12 +8,13 @@ import { EditProductPageComponent } from './edit-product-page/edit-product-page.
 import { ComponentsModule } from 'src/app/components/components.module';
 import { AddedTodayComponent } from './products-added-today-page/added-today/added-today.component';
 import { MaterialModule } from '../angular-material/angular-material.module';
+import { AddQuantityComponent } from 'src/app/components/medicines-store/add-quantity/add-quantity.component';
 import { AddNotificationsComponent } from './add-product-page/add-notifications/add-notifications.component';
 
 
-
 const routes: Routes = [
-  {path:'all-products',component:ProductsPageComponent},
+  {path:'all-products',component:ProductsPageComponent, children:[
+    {path:'addQuantity/:id' }]},
   {path:'add',component:AddProductPageComponent},
   {path:'edit/:id',component:EditProductPageComponent},
   {path:'added-recently',component:AddedTodayComponent},

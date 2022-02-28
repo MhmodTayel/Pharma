@@ -1,49 +1,82 @@
 import React, { useState, useEffect } from "react";
-
-import { Home, NewOrder,Contact,Register,Login,Success } from "./Pages/index";
-
+import styles from './App.module.scss'
+import { Home, NewOrder,Contact,Register,Login,Success,Category,SavedOrders,Orders,RecenltyAdded,notFound } from "./Pages/index";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { PopupMessage } from "./Components";
 import { io } from "socket.io-client";
+import ProtectedRoute from './ProtectedRoutes'
+
 
 const socket = io("ws://localhost:5000");
 
+function AlertMsg(title, severity, body, date) {
+  this.title = title
+  this.severity = severity
+  this.body = body
+  this.date = date
+}
+
 function App() {
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState({});
   const [popup, setPopup] = useState("");
-  
-  socket.on("message", (msg) => {
-    setMessage(msg);
-  });
-  
   useEffect(() => {
-    if (message != "")
+    socket.on("message", (msg) => {
+
+      console.log(msg)
+      const obj = new AlertMsg('New medicine', 'success', `${msg.name} has arrived to store`, msg.date)
+      setMessage(obj);
+    });
+
+    socket.on("lowQuantity", (msg) => {
+      const qnt = new AlertMsg("Low quantity", "warning", `${msg.name} Low in Stock`, msg.date)
+      console.log(qnt)
+      setMessage(qnt);
+    });
+
+    // return () => {
+    //   cleanup
+    // };
+  }, []);
+
+  useEffect(() => {
+    if (Object.keys(message).length !== 0)
       setPopup(
         <PopupMessage
-          severity={"success"}
-          title={"New medicine"}
-          body={message}
+          severity={message.severity}
+          title={message.title}
+          body={message.body}
         />
       );
     setTimeout(() => {
       setPopup("");
+      setMessage({})
     }, 5000);
-  }, [message]);
+  }, [message.body]);
 
   return (
-    <BrowserRouter>
-    <Switch>
-      <Route path={"/home"} exact component={Home} />
-      <Route path={"/new-order"} exact component={NewOrder} />
-      <Route path={"/contact-us"} exact component={Contact} />
-      <Route path={"/"} exact component={Home} />
-      <Route path={"/success"} exact component={Success} />
-      <Route path={"/newOrder"} exact component={NewOrder} />
-      <Route path={"/register"} exact component={Register} />
-      <Route path={"/login"} exact component={Login} />
-    </Switch>
-  </BrowserRouter>
-    
+    <>
+      <div className={styles.alert}>{popup}</div>
+      <BrowserRouter>
+        <Switch>
+          <Route path={"/register"} exact component={Register} />
+          <Route path={"/login"} exact component={Login} />
+
+          <ProtectedRoute path="/home" exact component={Home} />
+          <ProtectedRoute path="/"  component={Home} />
+          <ProtectedRoute path="/new-order" exact component={NewOrder} />
+          <ProtectedRoute path="/contact-us" exact component={Contact} />
+          <ProtectedRoute path="/category/:cat" exact component={Category} />
+          <ProtectedRoute path="/success" exact component={Success} />
+          <ProtectedRoute path="/newOrder" exact component={NewOrder} />
+          <ProtectedRoute path={"/recently-added"} exact component={RecenltyAdded} />
+          <ProtectedRoute path="/newOrder" exact component={NewOrder} />
+          <ProtectedRoute path="/orders" exact component={Orders} />
+          <ProtectedRoute path="/saved-orders" exact component={SavedOrders} />
+          <ProtectedRoute path="*" exact component={notFound} />
+
+        </Switch>
+      </BrowserRouter>
+    </>
   );
 }
 

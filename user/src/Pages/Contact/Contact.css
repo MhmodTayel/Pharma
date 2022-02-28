@@ -1,5 +1,6 @@
 .contact {
   padding: 130px 0;
+  background-color: rgba(223, 243, 248, 0.287);
 }
 
 .contact .heading h2 {
@@ -11,7 +12,7 @@
 }
 
 .contact .heading h2 span {
-  color: #1a79f5;
+  color: #136cfd;
 }
 
 .contact .heading p {
@@ -28,7 +29,7 @@
   font-size: 13px;
   margin-bottom: 10px;
   background: #f9f9f9;
-  border: 0;
+  border: 1px solid rgba(0, 0, 0, 0.075) ;
   border-radius: 10px;
 }
 
@@ -36,7 +37,7 @@
   padding: 10px;
   border-radius: 5px;
   font-size: 15px;
-  background: #1a79f5;
+  background: #136cfd;
   color: #ffffff;
   
 }

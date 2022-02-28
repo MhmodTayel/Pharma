@@ -5,14 +5,13 @@ import styles from './categories.module.scss'
 export default function Categories() {
 
     return (
-        <div className="my-3">
-            <h1 className="text-center my-2">Categories</h1>
+        <div className="my-5">
+            <h1 className="text-center my-2">categories</h1>
             <div className="container d-flex w-100  justify-content-center">
                 <div className="row">
 
                     {/* first row  */}
                     <div className="col-md-4 d-flex flex-column">
-
                         <div className={styles.imgDiv}>
                             <div className=" position-relative">
                                 <div className="w-100  position-relative">
@@ -155,6 +154,5 @@ export default function Categories() {
                 </div>
             </div >
         </div >
-        </div>
     );
 }

@@ -11,19 +11,32 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 import MedicationSharpIcon from '@mui/icons-material/MedicationSharp';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Link } from 'react-router-dom';
-{/* <Box sx={{ display: 'flex'}}><SearchSharpIcon/></Box> */}
-
-const pages = [{page:'Home', path:'/home'},{page:'New Order',path:'/new-order'},{page:'Categories'},{page:'Contact',path:'/contact-us'}];
-
-const settings = ['Profile', 'Account', 'Logout'];
+import { Link,useHistory } from 'react-router-dom';
+import { newProductsContext } from '../../context/newProductsContext';
+import { getIncomingMedNumber } from '../../services/userService';
+import styles from './Navbar.module.scss'
 
 const Navbar = () => {
+  const [incomingNumber, setIncomingNumber] = React.useState('');
+  React.useEffect(()=>{
+    getIncomingMedNumber().then(
+      (res) => {
+        setIncomingNumber(res.data)
+      },
+      (err) => console.log(err) 
+    )
+  },[])
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  let user = localStorage.getItem('token');
+  const history = useHistory();
+  function Logout() {
+    localStorage.clear();
+    history.push('/login')
+
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -41,18 +54,18 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static"  sx={{ backgroundColor:'#4ebbe9' }}
+    <AppBar position="static" sx={{ backgroundColor: '#4ebbe9' }}
     >
       <Container maxWidth="xl">
-        <Toolbar disableGutters sx={{p:1}}>
+        <Toolbar disableGutters sx={{ p: 1 }}>
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' ,alignItems: 'center', fontWeight: 700 } }}
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex', alignItems: 'center', fontWeight: 700, fontSize: '1.3rem' } }}
           >
-            <MedicationSharpIcon sx={{m:1}}/> 
-             PHARMA TECH
+            <MedicationSharpIcon sx={{ m: 1 }} />
+            PHARMA TECH
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -84,38 +97,53 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page,indx) => (
-                <MenuItem key={indx} onClick={handleCloseNavMenu}>
-                  <Link style={{ color:'#4ebbe9', textDecoration:'none'}} to={page.path}>{page.page}</Link>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link className={styles.link} to='/home'>Home</Link>
                 </MenuItem>
-              ))}
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link className={styles.link} to='/recently-added'>Recently Added 
+                  <span className={styles.numberBadge}>+{incomingNumber} </span>
+                  </Link>
+                </MenuItem>    
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link className={styles.link} to='/new-order'>New Order</Link>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link className={styles.link} to='/contact-us'>Contact Us</Link>
+                </MenuItem>
             </Menu>
           </Box>
+          
           <Typography
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } , alignItems: 'center',fontWeight: 700 }}
+            sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, alignItems: 'center', fontWeight: 700 }}
           >
-            <MedicationSharpIcon mb={5}/> 
+            <MedicationSharpIcon mb={5} />
             PHARMA TECH
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page,indx) => (
-              <Button
-                key={indx}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, display: 'block' }}
-              >
-                <Link to={page.path} style={{ color:'white', textDecoration:'none'}}>{page.page}</Link>
-              </Button>
-            ))}
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
+              <Link to='/home' className={styles.navBtn}>Home</Link>
+            </Button>
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
+              <Link to='/recently-added' className={styles.navBtn}>Recently Added
+               <span className={styles.numberBadge}>+{incomingNumber} </span>
+               </Link>
+            </Button>
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
+              <Link to='/new-order' className={styles.navBtn}>New Order</Link>
+            </Button>
+            <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
+              <Link to='/contact-us' className={styles.navBtn}>Contact Us</Link>
+            </Button>
           </Box>
-        
+
           <MenuItem>
-                  <Typography textAlign="center" sx={{mr:3}}>
-                    <ShoppingCartIcon/>
-                  </Typography>
+            <Typography textAlign="center" sx={{ mr: 3 }}>
+              <ShoppingCartIcon />
+            </Typography>
           </MenuItem>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -140,14 +168,18 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Typography className={styles.settingsLink}>Profile</Typography>
+            </MenuItem>
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Typography className={styles.settingsLink}>Account</Typography>
+            </MenuItem><MenuItem onClick={handleCloseUserMenu}>
+              <Typography  className={styles.settingsLink}>Logout</Typography>
+            </MenuItem>
+
             </Menu>
           </Box>
-          
+
         </Toolbar>
       </Container>
     </AppBar>

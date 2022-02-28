@@ -1,0 +1,18 @@
+
+<form class="example-form" [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Add Quantity</mat-label>
+      <input matInput placeholder="Enter quantity" formControlName="quantity">
+      
+    </mat-form-field>
+
+    <mat-dialog-actions align="end">
+        <button mat-button type="submit" color="primary">Add Quantity</button>
+        <button #cancelBtn mat-button mat-dialog-close routerLink="products/all-products">Cancel</button>
+    </mat-dialog-actions>
+</form>
+
+
+
+
+
