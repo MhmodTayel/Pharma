@@ -4,6 +4,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MedicineService } from 'src/app/services/medicineService/medicine.service';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-medicines-store',
@@ -12,9 +13,21 @@ import { MedicineService } from 'src/app/services/medicineService/medicine.servi
 })
 export class MedicinesStoreComponent implements OnInit {
   medArr: any [] = [];
-  constructor(private _medService: MedicineService) { }
+  displayedColumns: string[] = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'edit', 'delete']; //for table headers
 
+  constructor(private _medService: MedicineService,private _breakpointObserver: BreakpointObserver) {}
   ngOnInit(): void {
+    this._breakpointObserver
+    .observe(['(min-width: 650px)'])
+    .subscribe((state: BreakpointState) => {
+      if (state.matches) {
+        this.displayedColumns = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'edit', 'delete'];
+      } else {
+        this.displayedColumns = ['ID','Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'edit', 'delete'];
+
+      }
+    });
+
     this._medService.getAllMedicines().subscribe((res: any)=>{
       this.medArr = res;
       console.log(this.medArr);
@@ -24,7 +37,6 @@ export class MedicinesStoreComponent implements OnInit {
     })
   }
 
-displayedColumns: string[] = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'edit', 'delete']; //for table headers
 dataSource = new MatTableDataSource(this.medArr); 
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
