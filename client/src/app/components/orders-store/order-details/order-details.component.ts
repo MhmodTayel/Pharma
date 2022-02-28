@@ -16,7 +16,7 @@ export class OrderDetailsComponent implements OnInit {
   param :any = ''
   orderDetails:any = null;
     ngOnInit(): void {
-    
+
         this.orderId = window.location.href.split('/').pop();
          this.order.getDetails(this.orderId).subscribe((response: any) => {
           this.orderDetails = response;

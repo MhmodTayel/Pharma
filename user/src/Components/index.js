@@ -7,12 +7,14 @@ import CustomizedDialogs from "./PorductDialog/ProductDialog";
 import Search from "./Search/Search";
 import TextField from "./TextField/TextField";
 import Categories from "./categories/categories";
+import TabPanel from './Tabs/Tabs';
 import CheckoutButton from "./checkoutButton/CheckoutButton";
 import PopupMessage from "./Alert/PopupMessage";
 import CustomTable from "./Table/Table";
 import BasicCard from "./SimpleCard/BasicCard";
 import OrderDetails from "./OrderDetails/OrderDetails";
 import SaveOrderButton from "./SaveOrderButton/SaveOrderButton";
+
 
 export {
   Button,
@@ -30,4 +32,5 @@ export {
   BasicCard,
   OrderDetails,
   SaveOrderButton,
+  TabPanel
 };

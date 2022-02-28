@@ -13,17 +13,21 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MedicationSharpIcon from '@mui/icons-material/MedicationSharp';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Link, useHistory } from 'react-router-dom';
+import { Link,useHistory } from 'react-router-dom';
+import { newProductsContext } from '../../context/newProductsContext';
+import { getIncomingMedNumber } from '../../services/userService';
 import styles from './Navbar.module.scss'
-// import { newProductsContext } from '../../context/newProductsContext';
 
 const Navbar = () => {
-  // const {productsContext} = React.useContext(newProductsContext)
-  const pages = [{ page: 'Home', path: '/home' }
-    , { page: `Recently Added `, path: '/recently-added' }
-    , { page: 'New Order', path: '/new-order' }
-    , { page: 'Contact Us', path: '/contact-us' }
-  ];
+  const [incomingNumber, setIncomingNumber] = React.useState('');
+  React.useEffect(()=>{
+    getIncomingMedNumber().then(
+      (res) => {
+        setIncomingNumber(res.data)
+      },
+      (err) => console.log(err) 
+    )
+  },[])
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   let user = localStorage.getItem('token');
@@ -93,16 +97,20 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link style={{ color: '#4ebbe9', textDecoration: 'none' }} to='/home'>Home</Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link style={{ color: '#4ebbe9', textDecoration: 'none' }} to='/recently-added'>Recently Added</Link>
-              </MenuItem>    <MenuItem onClick={handleCloseNavMenu}>
-                <Link style={{ color: '#4ebbe9', textDecoration: 'none' }} to='/new-order'>New Order</Link>
-              </MenuItem>    <MenuItem onClick={handleCloseNavMenu}>
-                <Link style={{ color: '#4ebbe9', textDecoration: 'none' }} to='/contact-us'>Contact Us</Link>
-              </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link className={styles.link} to='/home'>Home</Link>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link className={styles.link} to='/recently-added'>Recently Added 
+                  <span className={styles.numberBadge}>+{incomingNumber} </span>
+                  </Link>
+                </MenuItem>    
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link className={styles.link} to='/new-order'>New Order</Link>
+                </MenuItem>
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Link className={styles.link} to='/contact-us'>Contact Us</Link>
+                </MenuItem>
             </Menu>
           </Box>
           
@@ -115,18 +123,20 @@ const Navbar = () => {
             <MedicationSharpIcon mb={5} />
             PHARMA TECH
           </Typography>
-          <Box className={styles.box} sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
-              <Link to='/home' className={styles.activeHome} style={{ color: 'white', textDecoration: 'none' }}>Home</Link>
+              <Link to='/home' className={styles.navBtn}>Home</Link>
             </Button>
             <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
-              <Link className={styles.link} to='/recently-added' style={{ color: 'white', textDecoration: 'none' }}>Recently Added</Link>
+              <Link to='/recently-added' className={styles.navBtn}>Recently Added
+               <span className={styles.numberBadge}>+{incomingNumber} </span>
+               </Link>
             </Button>
             <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
-              <Link className={styles.link} to='/new-order' style={{ color: 'white', textDecoration: 'none' }}>New Order</Link>
+              <Link to='/new-order' className={styles.navBtn}>New Order</Link>
             </Button>
             <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
-              <Link className={styles.link} to='/contact-us' style={{ color: 'white', textDecoration: 'none' }}>Contact Us</Link>
+              <Link to='/contact-us' className={styles.navBtn}>Contact Us</Link>
             </Button>
           </Box>
 
@@ -158,14 +168,15 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center" sx={{ display: 'flex' }}>Profile</Typography>
-              </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Account</Typography>
-              </MenuItem><MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center" onClick={Logout} >Logout</Typography>
-              </MenuItem>
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Typography className={styles.settingsLink}>Profile</Typography>
+            </MenuItem>
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Typography className={styles.settingsLink}>Account</Typography>
+            </MenuItem><MenuItem onClick={handleCloseUserMenu}>
+              <Typography  className={styles.settingsLink}>Logout</Typography>
+            </MenuItem>
+
             </Menu>
           </Box>
 

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+
 import styles from './App.module.scss'
-import { Home, NewOrder,Contact,Register,Login,Success,Category,SavedOrders,Orders } from "./Pages/index";
+import { Home, NewOrder,Contact,Register,Login,Success,Category,SavedOrders,Orders,RecenltyAdded } from "./Pages/index";
+
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { PopupMessage } from "./Components";
 import { io } from "socket.io-client";
@@ -60,6 +62,7 @@ useEffect(() => {
       <Route path={"/home"} exact component={Home} />
       <Route path={"/new-order"} exact component={NewOrder} />
       <Route path={"/contact-us"} exact component={Contact} />
+      <Route path={"/recently-added"} exact component={RecenltyAdded} />
       <Route path={"/"} exact component={Register} />
       <Route path={"/category/:cat"} exact component={Category} />
       <Route path={"/success"} exact component={Success} />
