@@ -50,16 +50,17 @@ export default function OrderDetails({ state, order }) {
                 </p>
               )}
             </div>
-            <div className="order-details">
+            <div className="order-details-class">
               <h5>Order Details</h5>
 
               <div>
                 {order.medicines.map((medicine, index) => {
                   return (
-                    <div className="item" key={medicine.id}>
+                    <div className="order-details-item" key={medicine.id}>
                       <div className="mx-2">{index + 1}</div>
                       <div className="imgWrapper">
                         <img
+                          className="order-details-img"
                           src={require("../../Assets/Images/wireframe.jpg")}
                         />
                       </div>
@@ -77,12 +78,10 @@ export default function OrderDetails({ state, order }) {
                       )}
 
                       {location.pathname == "/saved-orders" ? (
-                        <div>{medicine.pharmPrice*medicine.reqQuantity}</div>
+                        <div>{medicine.pharmPrice * medicine.reqQuantity}</div>
                       ) : (
                         <div>{medicine.amount_total}</div>
                       )}
-
-                      
                     </div>
                   );
                 })}
@@ -96,7 +95,10 @@ export default function OrderDetails({ state, order }) {
               <Button color="secondary" onClick={state.handleClose}>
                 Update
               </Button>
-              <CheckoutButton newOrder={order.medicines} savedOrderId={order.id} />
+              <CheckoutButton
+                newOrder={order.medicines}
+                savedOrderId={order.id}
+              />
             </>
           )}
 
