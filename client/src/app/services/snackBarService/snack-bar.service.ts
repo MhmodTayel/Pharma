@@ -15,6 +15,7 @@ export class SnackBarService {
       duration: 3000,
       horizontalPosition: 'center',
       verticalPosition: 'top',
+      panelClass: [action],
       data: { message: message, snackType: _snackType }
     });
   }

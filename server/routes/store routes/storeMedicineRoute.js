@@ -50,7 +50,6 @@ router.patch("/medicine/:id", uploadS3.single("image"), (req, res, next) => {
   update(medId, medicine)
     .then((doc) => res.json(doc))
     .catch((e) => next(e));
-    console.log(medicine)
 });
 
 router.delete("/medicine/delete/:id", (req, res, next) => {

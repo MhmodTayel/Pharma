@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from './App.module.scss'
-import { Home, NewOrder, Contact, Register, Login, Success, Category, SavedOrders, Orders, notFound } from "./Pages/index";
+import { Home, NewOrder,Contact,Register,Login,Success,Category,SavedOrders,Orders,RecenltyAdded,notFound } from "./Pages/index";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { PopupMessage } from "./Components";
 import { io } from "socket.io-client";
@@ -65,10 +65,10 @@ function App() {
           <ProtectedRoute path="/"  component={Home} />
           <ProtectedRoute path="/new-order" exact component={NewOrder} />
           <ProtectedRoute path="/contact-us" exact component={Contact} />
-          {/* <ProtectedRoute path="/" component={Home} /> */}
           <ProtectedRoute path="/category/:cat" exact component={Category} />
           <ProtectedRoute path="/success" exact component={Success} />
           <ProtectedRoute path="/newOrder" exact component={NewOrder} />
+          <ProtectedRoute path={"/recently-added"} exact component={RecenltyAdded} />
           <ProtectedRoute path="/newOrder" exact component={NewOrder} />
           <ProtectedRoute path="/orders" exact component={Orders} />
           <ProtectedRoute path="/saved-orders" exact component={SavedOrders} />
@@ -77,7 +77,6 @@ function App() {
         </Switch>
       </BrowserRouter>
     </>
-
   );
 }
 

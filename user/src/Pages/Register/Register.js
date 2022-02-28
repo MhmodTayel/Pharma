@@ -81,7 +81,7 @@ export default function Register() {
     <div className={styles.app}>
       <div className={styles.intro_viewer}>
         {/* {hide ? <h2 className={styles.h2hide}>Welcome to PharmaTic</h2> : null} */}
-        {show ? <h2 className={styles.h2}>Welcome to PharmaTic</h2> : null}
+        {show ? <h2 className={styles.h2}>Welcome to Pharma</h2> : null}
         {show ? <p className={styles.p}>place you can order yor medicen,start your order now from stores </p> : null}
         {show ? <div className={styles.imgdiv, styles.none}>
           <img className={styles.img} src='https://www.campusreel.org/assets/Admission%20Officers.svg' />
