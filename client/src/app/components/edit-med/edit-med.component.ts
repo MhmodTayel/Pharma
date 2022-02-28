@@ -63,7 +63,6 @@ export class EditMedComponent implements OnInit {
   onSubmit() {
     if (this.formEditMed.valid) {
       const medData = new FormData();
-
       medData.append('name', this.formEditMed.value.name);
       medData.append('description', this.formEditMed.value.description);
       medData.append('companyProvider', this.formEditMed.value.companyProvider);
