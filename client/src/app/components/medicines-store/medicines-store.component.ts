@@ -8,7 +8,7 @@ import { MedicineService } from 'src/app/services/medicineService/medicine.servi
 @Component({
   selector: 'app-medicines-store',
   templateUrl: './medicines-store.component.html',
-  styleUrls: ['./medicines-store.component.scss']
+  styleUrls: ['./medicines-store.component.scss','./../orders-store/orders-store.component.scss']
 })
 export class MedicinesStoreComponent implements OnInit {
   medArr: any [] = [];

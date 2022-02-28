@@ -6,7 +6,7 @@ const getOrderById = (id) => Orders.findOne({ id: id })
 
 const getAllOrders = () => Orders.find()
 .populate({ path: 'medicines.id', select:'name -_id' })
-.populate({path:'client' , select:'pharmacyName -_id'});
+.populate({path:'client' , select:'pharmacyName pharmacistPhonNumber -_id'});
 
 // get all orders by user id 
 const getOrdersByUserId = ( _id ) => Orders.find({ client: _id })
