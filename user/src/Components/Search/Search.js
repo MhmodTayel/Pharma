@@ -39,8 +39,8 @@ export default function Search() {
       getMedById(med.id).then((res) => {
        
         const medObj = res.data;
-        medObj.reqQuantity = 0;
-        console.log(medObj)
+        medObj.reqQuantity = 1;
+        
         dispatch(addMedOrderAction(medObj));
       });
   };
