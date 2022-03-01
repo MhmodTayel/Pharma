@@ -108,6 +108,7 @@ const Navbar = () => {
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Link className={styles.link} to='/new-order'>New Order</Link>
                 </MenuItem>
+  
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Link className={styles.link} to='/contact-us'>Contact Us</Link>
                 </MenuItem>
@@ -133,7 +134,39 @@ const Navbar = () => {
                </Link>
             </Button>
             <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
-              <Link to='/new-order' className={styles.navBtn}>New Order</Link>
+              <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <Button onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                order
+                              </Button>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Typography className={styles.settingsLink}>Profile</Typography>
+            </MenuItem>
+            <MenuItem onClick={handleCloseUserMenu}>
+              <Typography className={styles.settingsLink}>Account</Typography>
+            </MenuItem><MenuItem onClick={handleCloseUserMenu}>
+              <Typography onClick={Logout} className={styles.settingsLink}>Logout</Typography>
+            </MenuItem>
+
+            </Menu>
+          </Box>
             </Button>
             <Button onClick={handleCloseNavMenu} sx={{ my: 2, display: 'block' }}>
               <Link to='/contact-us' className={styles.navBtn}>Contact Us</Link>
