@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
-import {Navbar , HomeSlider , PopularMedicine , Categories }  from '../../Components/index'
+import {Navbar , HomeSlider , PopularMedicine , Categories, Newsletter }  from '../../Components/index'
 import Footer from '../../Layouts/Footer/Footer'
 import './Home.module.scss'
 import {newProductsContext} from '../../context/newProductsContext'
+
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
         <HomeSlider/>
         <PopularMedicine/>
         <Categories/>
+        <Newsletter />
         <Footer/>
       </newProductsContext.Provider>
     </div>
