@@ -13,7 +13,6 @@ function CheckoutCarousel() {
             infinite: true,
             speed: 500,
             slidesToShow: 5,
-            slidesToScroll: 2,
             nextArrow: <SampleNextArrow />,
             prevArrow: <SamplePrevArrow />,
             responsive: [
@@ -21,7 +20,7 @@ function CheckoutCarousel() {
                   breakpoint: 1024,
                   settings: {
                     slidesToShow: 3,
-                    slidesToScroll: 3,
+                    slidesToScroll: 1,
                     infinite: true,
                   }
                 },
@@ -29,7 +28,7 @@ function CheckoutCarousel() {
                   breakpoint: 600,
                   settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2,
+                    slidesToScroll: 1,
                     initialSlide: 2
                   }
                 },
@@ -73,8 +72,8 @@ function CheckoutCarousel() {
     React.useEffect(()=>{
         getAllMed().then(
             (res) => {
-                setMedicine(res.data.splice(0,9))
-                console.log("Checkout")
+                setMedicine(res.data.slice(Math.max(res.data.length - 15, 1)));
+                console.log(Medicine)
             },
             (err) => {
                 console.log(err)

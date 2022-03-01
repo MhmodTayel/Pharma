@@ -14,6 +14,8 @@ import styles from "./newOrder.module.scss";
 import { styled } from "@mui/material/styles";
 import Footer from "../../Layouts/Footer/Footer";
 import style from '../../index.module.scss'
+import LocalPharmacyIcon from '@mui/icons-material/LocalPharmacy';
+import MedicationIcon from '@mui/icons-material/Medication';
 
 
 export default function NewOrder() {
@@ -22,17 +24,27 @@ export default function NewOrder() {
   return (
     <>
       <Navbar />
+      <div className={styles.searchBar}>
+        <Search />
+      </div>
       <div>
         <div className="container my-3">
-          <Search />
           {orderStore.length != 0 && (
             <div className="actions">
               <CheckoutButton newOrder={orderStore} />
               <SaveOrderButton />
             </div>
           )}
-          <div className="row">
-            {orderStore.map((medicine) => {
+          <div className="row pt-5">
+            {orderStore.length==0 ?  
+   
+            <div className="col-md-12 d-flex justify-content-center align-items-center">
+            <div className="text-center py-5">
+              <MedicationIcon className={styles.icon}/>
+              <p className={styles.text}>Your cart is empty start searching for peoducts and add them to cart to complete your order</p>
+            </div>
+            </div>            
+            : orderStore.map((medicine) => {
               return (
                 <div
                   key={medicine.id}
@@ -42,6 +54,7 @@ export default function NewOrder() {
                 </div>
               );
             })}
+
           </div>
           <div className="row py-5">
             <h3 className={style.heading}><span className='fw-bold py-3 ms-3'>New Arrivals </span></h3>

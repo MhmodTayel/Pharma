@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com');
+@import url("https://fonts.gstatic.com");
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+
+a{
+  font-family:'Heebo','sans-serif' !important; 
+}
 .link{
   color:'#4ebbe9';
   text-decoration:none;
+  font-weight: 500;
 }
 .navBtn{
     color:rgba(255, 255, 255, 0.9);
