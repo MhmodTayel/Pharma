@@ -14,7 +14,7 @@ import CustomTable from "./Table/Table";
 import BasicCard from "./SimpleCard/BasicCard";
 import OrderDetails from "./OrderDetails/OrderDetails";
 import SaveOrderButton from "./SaveOrderButton/SaveOrderButton";
-
+import CheckoutCarousel from "./CheckoutCarousel/CheckoutCarousel";
 
 export {
   Button,
@@ -32,5 +32,6 @@ export {
   BasicCard,
   OrderDetails,
   SaveOrderButton,
-  TabPanel
+  TabPanel,
+  CheckoutCarousel
 };

@@ -1,12 +1,25 @@
 @import url('https://fonts.googleapis.com');
 @import url("https://fonts.gstatic.com");
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
 
 body {
     margin: 0px;
     padding: 0px;
-    font-family: 'Roboto Serif', sans-serif !important; 
+    font-family:'Heebo','sans-serif' !important; 
 }
 ::selection{
     background-color: #4ebbe9;
+}
+.heading{
+    position: relative;
+}
+.heading::before {
+    content: "";
+    position: absolute;
+    width: 3px;
+    top: 0px;
+    bottom: 0px;
+    left: 15px;
+    border-radius: 1px;
+    background-image: linear-gradient(to bottom , #38d0f2 0%, #38d0f2 60% ,#1b8ef2 100% ) !important;
 }

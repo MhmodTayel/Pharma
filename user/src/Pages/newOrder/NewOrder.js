@@ -5,6 +5,7 @@ import {
   CheckoutButton,
   Navbar,
   SaveOrderButton,
+  CheckoutCarousel
 } from "../../Components";
 import Grid from "@mui/material/Grid";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,6 +13,9 @@ import Paper from "@mui/material/Paper";
 import styles from "./newOrder.module.scss";
 import { styled } from "@mui/material/styles";
 import Footer from "../../Layouts/Footer/Footer";
+import style from '../../index.module.scss'
+
+
 export default function NewOrder() {
   const orderStore = useSelector((state) => state.order);
 
@@ -38,6 +42,10 @@ export default function NewOrder() {
                 </div>
               );
             })}
+          </div>
+          <div className="row py-5">
+            <h3 className={style.heading}><span className='fw-bold py-3 ms-3'>New Arrivals </span></h3>
+            <CheckoutCarousel/>
           </div>
         </div>
       </div>

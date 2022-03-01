@@ -60,10 +60,12 @@ export default function CustomizedDialogs(props) {
         </BootstrapDialogTitle>
         <div className='container'>
           <div className='row pb-3'>
-            <div className='col-md-6'>
-              <img src={props.medItem.image} className='img-fluid w-100' />
+            <div className='col-md-5'>
+              <div className='h-100 d-flex justify-content-center align-items-center' >
+                <img src={props.medItem.image} className='img-fluid w-100' /> 
+              </div>
             </div>
-            <div className='col-md-6'>
+            <div className='col-md-7'>
               <div className='dialogContent'>
                 <h4 className='fw-bolder text-capitalize'>{props.medItem.name} </h4>
                 <h6 className='border-bottom pb-3 text-muted text-capitalize'>From: {props.medItem.companyProvider} </h6>
@@ -90,7 +92,7 @@ export default function CustomizedDialogs(props) {
                       )}
                   </div>
                </div>
-               <Button variant="contained" sx={{ backgroundColor: '#4ebbe9' , width:'100%'}}><ShoppingCartIcon sx={{ mx: 1, fontSize: 20 }} /> Add to cart</Button>
+               <Button variant="contained" className={styles.cardBtn}><ShoppingCartIcon sx={{ mx: 1, fontSize: 20 }} /> Add to cart</Button>
 
               </div>
             </div>
