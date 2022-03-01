@@ -1,72 +1,100 @@
 table {
   width: 100% !important;
-  .mat-elevation-z8{
+  .mat-elevation-z8 {
     width: 100% !important;
     background-color: white;
   }
 }
-.forSearch{
+.forSearch {
   background-color: rgb(243, 241, 241);
-  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%),
+    0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
 }
 .example-full-width {
   width: 20%;
 }
-.med-img{
+.med-img {
   width: 50px;
-  
 }
-.edit-icon{
+.edit-icon {
   color: #293692;
   cursor: pointer;
 }
-.delete-icon{
+.delete-icon {
   color: #f44336;
   cursor: pointer;
 }
-.mat-column-Quantity{
+.mat-column-Quantity {
   width: 10% !important;
 }
-.mat-column-Name{
-  width: 15% ;
+.mat-column-Name {
+  width: 15%;
 }
-th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
+th.mat-header-cell:last-of-type,
+td.mat-cell:last-of-type,
+td.mat-footer-cell:last-of-type {
   padding-right: 0px;
 }
 /////////////////////////////////////////////////////////////
-@media (min-width:0px) and (max-width:550px) {
-  th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+@media (min-width: 0px) and (max-width: 550px) {
+  th.mat-header-cell,
+  td.mat-cell,
+  td.mat-footer-cell {
     padding: 12px 2px;
   }
-  ::ng-deep .mat-column-ID{
+  ::ng-deep .mat-column-ID {
     width: 10% !important;
     text-align: center;
   }
-  ::ng-deep .mat-column-Quantity{
-    width: 10% !important;
+  ::ng-deep .mat-column-Quantity {
+    // width: 10% !important;
     text-align: center;
   }
-  .delete-icon{
+  .delete-icon {
     padding: 0px !important;
   }
-  .edit-icon{
-    padding: 0px ;
+  .edit-icon {
+    padding: 0px;
   }
-  th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
+  th.mat-header-cell:last-of-type,
+  td.mat-cell:last-of-type,
+  td.mat-footer-cell:last-of-type {
     padding-right: 0px;
-}
+  }
 }
 
-  //   color: #f44336;
-  //   cursor: pointer;
-  // }
-  .qnt{
-    position: relative;
+//   color: #f44336;
+//   cursor: pointer;
+// }
+.qnt {
+  position: relative;
+}
+.plus {
+  position: absolute;
+  cursor: pointer;
+  color: #293692;
+  right: 70px;
+  // top: 10%;
+}
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hidePaginator {
+  animation: animate 2s;
+}
+
+@keyframes animate {
+  0% {
+    visibility: hidden;
   }
-  .plus{
-    position: absolute;
-    cursor: pointer;
-    color: #293692;
-    // top: 10%;
-  
+  99% {
+    visibility: hidden;
   }
+  100% {
+    visibility: visible;
+  }
+}

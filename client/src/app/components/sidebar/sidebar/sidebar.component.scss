@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap");
 :host {
   .mat-icon {
     vertical-align: middle;
@@ -7,19 +7,18 @@
     font-size: 20px !important;
   }
 }
-.logo{
-  font-family: 'Lobster', cursive;
+.logo {
+  font-family: "Lobster", cursive;
   font-size: 30px;
 }
-.menu__fonts{
-  font-family: 'Prompt', sans-serif !important;
+.menu__fonts {
+  font-family: "Prompt", sans-serif !important;
 }
 .mat-divider {
   border-top-width: 2px;
   border-color: white !important;
-
 }
-a{
+a {
   color: #f2f5f7 !important;
 }
 .mat-list-item {
@@ -54,37 +53,38 @@ a{
   font-weight: 100;
   letter-spacing: 1px;
 }
-h4{
+h4 {
   color: #f2f5f7 !important ;
   font-size: 1.1rem;
-  margin: 0.5rem  !important;
+  margin: 0.5rem !important;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
-::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
+::ng-deep .mat-expansion-panel:not([class*="mat-elevation-z"]) {
   box-shadow: none;
   background-color: transparent;
   margin: 0px !important;
 }
 
 ::ng-deep .mat-expansion-panel-header {
-  padding:  0px !important;
+  padding: 0px !important;
 }
 ::ng-deep .mat-expansion-panel-body {
-   padding:0px !important; 
+  padding: 0px !important;
 }
-.expansion-item{
-  padding-left: 35px;
+.expansion-item {
+  padding-left: 10px;
 }
 
-::ng-deep .mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
+::ng-deep .mat-list-base .mat-list-item .mat-list-item-content,
+.mat-list-base .mat-list-option .mat-list-item-content {
   padding: 0px 30px !important;
 }
 
-:host mat-select ::ng-deep .mat-select-arrow{
-transform: rotate(-90deg);
+:host mat-select ::ng-deep .mat-select-arrow {
+  transform: rotate(-90deg);
 }
 
-::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow{
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
   transform: rotate(0deg);
 }

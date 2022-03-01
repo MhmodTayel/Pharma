@@ -1,54 +1,91 @@
-<div *ngIf="orderDetails===null" class="w-100 h-100 d-flex justify-content-center">
-  <mat-spinner ></mat-spinner>
+<div
+  *ngIf="orderDetails === null"
+  class="w-100 h-100 d-flex justify-content-center"
+>
+  <mat-spinner></mat-spinner>
 </div>
 
 <mat-dialog-content class="mat-typography">
-    <div *ngIf="orderDetails != null" class="container order-details ">
-      <div class="row bg-light rounded">
-        <h2 class="pt-2">Order Summary</h2>
-        <div class="col-md-6">
-          <h4><span> ID: </span> {{orderDetails?.id}}</h4>
-          <h4><span>Order Date: </span>{{orderDetails?.date | date: "d/M/yy , h:mm a" }}</h4>
-          <h4><span>Total:</span>  {{orderDetails?.cost/1000}}</h4>
-        </div>
-        <div class="col-md-6">
-          <h4> <span> Shipped To </span></h4>
-          <h4> {{orderDetails?.client.pharmacyName}}</h4>
-          <h4> {{orderDetails?.client.pharmacistPhonNumber}}</h4>
-
-          <h4>{{orderDetails?.billing_detail.address.postal_code}} , 
-              {{orderDetails?.billing_detail.address.line1}} - 
-              {{orderDetails?.billing_detail.address.line2}} - 
-              {{orderDetails?.billing_detail.address.city}} -  
-              {{orderDetails?.billing_detail.address.country}}</h4>
-        </div>
+  <div *ngIf="orderDetails != null" class="container order-details">
+    <div class="row bg-light rounded">
+      <h2 class="pt-2">Order Summary</h2>
+      <div class="col-md-6">
+        <h4><span> ID: </span> {{ orderDetails?.id }}</h4>
+        <h4>
+          <span>Order Date: </span
+          >{{ orderDetails?.date | date: "d/M/yy , h:mm a" }}
+        </h4>
+        <h4><span>Total: </span> {{ orderDetails?.cost / 100 }} EGP</h4>
       </div>
-      <div class="row pt-3">
-        <h2 class="pt-2">Order Details</h2>
-          <div class="col-md-12">
-            <mat-card *ngFor="let med of orderDetails?.medicines; let index=index ">
-              <div class="row">
-                <div class="col-md-2 order-detail "><h4>{{index+1}}</h4></div>
-                <div class="col-md-2 col-4 order-detail" *ngIf="med.images===undefined"><img src="../../../../assets//wireframe.jpg" class="product-img"></div>
-                <div class="col-md-2 col-4 order-detail" *ngIf="med.images!=undefined"><img src="{{med.images}}" class="product-img"></div>              
-                <div class="col-md-2 col-6 order-detail"><h4 class="fw-bold">{{med.name}}</h4></div>
-                <div class="col-md-2 col-2 order-detail"><h4 class="fw-bold">x{{med.quantity}}</h4> </div>
-                <div class="col-md-2 col-12 order-detail"><h4 class="fw-bold">Unit Price: {{med.price/1000}} EGP</h4></div>
-                <div class="col-md-2 col-12 order-detail"><h4 class="fw-bold">Total Price: {{med.amount_total/1000}} EGP</h4></div>
-              </div>
-            </mat-card>
-          </div>
-      </div>
+      <div class="col-md-6">
+        <h4><span> Shipped To </span></h4>
+        <h4>{{ orderDetails?.client?.pharmacyName }}</h4>
+        <h4>{{ orderDetails?.client?.pharmacistPhonNumber }}</h4>
 
-      <div class="row pt-3 ">
-        <div class="d-flex justify-content-between align-items-center">
-          <h2 class="fw-bolder pt-2">Total</h2>
-          <h2 class="fw-bolder pt-2">EPG : {{orderDetails.cost/1000}}</h2>
-        </div>
+        <h4>
+          {{ orderDetails?.billing_detail?.address?.postal_code }} ,
+          {{ orderDetails?.billing_detail?.address?.line1 }} -
+          {{ orderDetails?.billing_detail?.address?.line2 }} -
+          {{ orderDetails?.billing_detail?.address?.city }} -
+          {{ orderDetails?.billing_detail?.address?.country }}
+        </h4>
       </div>
     </div>
-  </mat-dialog-content>
-  <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close routerLink="/orders">Go to Orders</button>
-    <!-- <button mat-button mat-dialog-close routerLink="{{orderDetails.receipt_url}}">View Invoice</button> -->
-  </mat-dialog-actions>
+    <div class="row pt-3">
+      <h2 class="pt-2">Order Details</h2>
+      <div class="col-md-12">
+        <mat-card
+          *ngFor="let med of orderDetails?.medicines; let index = index"
+        >
+          <div class="row">
+            <div class="col-md-2 order-detail">
+              <h4>{{ index + 1 }}</h4>
+            </div>
+            <div
+              class="col-md-2 col-4 order-detail"
+              *ngIf="med.images === undefined"
+            >
+              <img
+                src="../../../../assets//wireframe.jpg"
+                class="product-img"
+              />
+            </div>
+            <div
+              class="col-md-2 col-4 order-detail"
+              *ngIf="med.images != undefined"
+            >
+              <img src="{{ med.images }}" class="product-img" />
+            </div>
+            <div class="col-md-2 col-6 order-detail">
+              <h4 class="fw-bold">{{ med?.name }}</h4>
+            </div>
+            <div class="col-md-2 col-2 order-detail">
+              <h4 class="fw-bold">x{{ med?.quantity }}</h4>
+            </div>
+            <div class="col-md-2 col-12 order-detail">
+              <h4 class="fw-bold">Unit Price: {{ med?.price / 100 }} EGP</h4>
+            </div>
+            <div class="col-md-2 col-12 order-detail">
+              <h4 class="fw-bold">
+                Total Price: {{ med?.amount_total / 100 }} EGP
+              </h4>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="row pt-3">
+      <div class="d-flex ">
+        <h2 class="fw-bolder pt-2">Total: </h2>
+        <h2 class="fw-bolder pt-2"> {{ orderDetails?.cost / 100 }} EGP</h2>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button>
+    <a target="_blank" href="{{ orderDetails?.receipt_url }}"> View Invoice</a>
+  </button>
+  <button mat-button mat-dialog-close routerLink="/orders">Close</button>
+</mat-dialog-actions>

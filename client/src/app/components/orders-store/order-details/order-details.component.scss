@@ -1,49 +1,57 @@
-::ng-deep .mat-progress-spinner svg{
-    width: 50px !important;
-    height: 50px !important;
+::ng-deep .mat-progress-spinner svg {
+  width: 50px !important;
+  height: 50px !important;
 }
-.order-details h3{
-    font-weight: 800;
+.order-details h3 {
+  font-weight: 800;
 }
-.order-details span{
-    font-weight: 600;
+.order-details span {
+  font-weight: 600;
 }
-.mat-typography h4{
-    margin: 0 0 8px !important;
+.mat-typography h4 {
+  margin: 0 0 8px !important;
 }
-.order-detail{
+.order-detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media screen and (max-width: 768px) {
+  .order-detail {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+  }
 }
-@media screen and (max-width:768px) {
-    .order-detail{
-        display: flex;
-        align-items: center;
-        justify-content: start;
-    }
-}
-.product-img{
-    max-width: 40px;
+.product-img {
+  max-width: 40px;
 }
 ::ng-deep .cdk-overlay-pane {
-    min-width: 70vw ;
+  min-width: 70vw;
 }
 .mat-card {
-    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-    display: block;
-    position: relative;
-    padding: 10px;
-    border-radius: 8px;
-    border-left: 8px #ff5722 solid;
-    margin-bottom: 2px;
+  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  position: relative;
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 8px #ff5722 solid;
+  margin-bottom: 2px;
 }
-.mat-card:not([class*=mat-elevation-z]) {
-    box-shadow: 0px 0px 1px 1px rgb(0 0 0 / 10%);
+.mat-card:not([class*="mat-elevation-z"]) {
+  box-shadow: 0px 0px 1px 1px rgb(0 0 0 / 10%);
 }
-.mat-button{
-    background-color:#ff5722 !important;
-    color: #ffff !important;
-    font-family: 600;
-    padding: 5px 30px;
+.mat-button {
+  background-color: #ff5722 !important;
+  color: #ffff !important;
+  font-family: 600;
+  padding: 5px 30px;
+}
+
+button a {
+  color: #ffff;
+  text-decoration: none;
+}
+.mat-sort-header-content {
+  font-size: 14px !important;
 }

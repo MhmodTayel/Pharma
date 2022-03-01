@@ -1,43 +1,50 @@
 <mat-toolbar class="py-1 shadow-sm">
-    <mat-toolbar-row class="justify-content-between">
-        <div class=" menu__icon">
-        <button mat-icon-button (click)="toggleSidebar()">
-            <mat-icon class="h3 m-auto text-white">menu</mat-icon>
-        </button>
+  <mat-toolbar-row class="justify-content-between">
+    <div class="menu__icon">
+      <button mat-icon-button (click)="toggleSidebar()">
+        <mat-icon class="h3 m-auto text-white">menu</mat-icon>
+      </button>
     </div>
 
-        <div class="row mr-2 ml-auto d-flex">
+    <div class="row mr-2 ml-auto d-flex">
+      <ul class="row m-0 align-items-center">
+        <li class="d-flex">
+          <div>
+            <button
+              mat-button
+              [matMenuTriggerFor]="menu"
+              class="user mt-2 d-flex align-items-center"
+            >
+              <img
+                src="../../assets/man.png"
+                alt=""
+                class="user-image mr-1 p-1"
+              />
+              {{ currentUser }}
 
-            <ul class="row m-0  align-items-center ">
+              <mat-icon class="user-image-icon ml-1"
+                >keyboard_arrow_down</mat-icon
+              >
+            </button>
 
-                <li class="d-flex">
-                    <div>
-                        <button mat-button [matMenuTriggerFor]="menu" class="user mt-2 d-flex align-items-center">
-                            <img src="../../assets/144-1442578_flat-person-icon-download-dummy-man.png" alt=""class="user-image mr-1 p-1" />
-                            {{currentUser}}
-                            
-                            <mat-icon class="user-image-icon ml-1">keyboard_arrow_down</mat-icon>
-                        </button>
-                        
-                        <mat-menu #menu="matMenu">
-                            <button mat-menu-item (click)="logout()">
-                                <mat-icon>exit_to_app</mat-icon>
-                                Logout
-                            </button>
-                        </mat-menu>
-                    </div>
-                    <div class="my-3">
-                        <button mat-button [matMenuTriggerFor]="menulanguage">
-                            <mat-icon>language</mat-icon>
-                        </button>
-                        <mat-menu #menulanguage="matMenu">
-                            <button mat-menu-item>Arabic</button>
-                            <button mat-menu-item>English</button>
-                        </mat-menu>
-                    </div>
-                </li>
-
-            </ul>
-        </div>
-    </mat-toolbar-row>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                Logout
+              </button>
+            </mat-menu>
+          </div>
+          <div class="my-3">
+            <button mat-button [matMenuTriggerFor]="menulanguage">
+              <mat-icon>language</mat-icon>
+            </button>
+            <mat-menu #menulanguage="matMenu">
+              <button mat-menu-item>Arabic</button>
+              <button mat-menu-item>English</button>
+            </mat-menu>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>
