@@ -31,7 +31,7 @@ export default function Footer() {
                   <LocalPhoneIcon className='me-2' />+1 (415)876-3250
                   <br /><EmailIcon className='me-2' /> pharmatec@gmail.com
                 </p>
-                <div className={ styles.allIcons}>
+                <div className={styles.allIcons}>
                   <div className={styles.iconSpanFac}><FacebookSharpIcon /></div>
                   <div className={styles.iconSpantw}>  <TwitterIcon /></div>
                   <div className={styles.iconSpanGo}><GoogleIcon /></div>
@@ -41,42 +41,42 @@ export default function Footer() {
               <div className="col-md-3 text-white">
                 <h5 className="fw-bold my-4 ">Help </h5>
                 <ul className={styles.footerMenu}>
-                  <li className="footer-menu-li"><a className=" text-decoration-none my-2 text-muted"
+                  <li className="footer-menu-li"><a className=" text-decoration-none my-2 text-white"
                     href="#">Support</a></li>
-                  <li className="footer-menu-li"><a className="text-decoration-none my-2 text-muted" href="#">Privacy
+                  <li className="footer-menu-li"><a className="text-decoration-none my-2 text-white" href="#">Privacy
                     Policy</a></li>
-                  <li className="footer-menu-li"><a className="text-decoration-none my-2 text-muted" href="#">Terms
+                  <li className="footer-menu-li"><a className="text-decoration-none my-2 text-white" href="#">Terms
                     &amp; Conditions</a></li>
-                  <li className="footer-menu-li"><a className="text-decoration-none my-2 text-muted" href="#">Affiliate
+                  <li className="footer-menu-li"><a className="text-decoration-none my-2 text-white" href="#">Affiliate
                     Program</a></li>
-                  <li className="footer-menu-li"><a className="text-decoration-none my-2 text-muted"
+                  <li className="footer-menu-li"><a className="text-decoration-none my-2 text-white"
                     href="#">Careers</a></li>
                 </ul>
               </div>
               <div className="col-md-3 text-white">
-                <h5 className="fw-bold my-4 ">Support</h5>
-                <ul className="footer-menu">
-                  <li><a className="text-decoration-none text-muted" href="blog-post.html">Sunset in
-                    Venice</a></li>
-                  <li><a className="text-decoration-none text-muted" href="blog-post.html">Aerial View of
-                    Village</a></li>
-                  <li><a className="text-decoration-none text-muted" href="blog-post.html">Lighted Concrete
-                    City</a></li>
-                  <li><a className="text-decoration-none text-muted" href="blog-post.html">The Little
-                    Ghost</a></li>
-                  <li><a className="text-decoration-none text-muted" href="blog-post.html">Royal Oats ft.
-                    Waldo</a></li>
+                <h5 className="fw-bold my-4 ">Products</h5>
+                <ul className="footer-menu list-unstyled">
+                  <li><a className="text-decoration-none text-white" href="blog-post.html">Medicines
+                    </a></li>
+                  <li><a className="text-decoration-none text-white" href="blog-post.html">Vitamins&Supplements</a></li>
+                  <li><a className="text-decoration-none text-white" href="blog-post.html">All Products
+                   </a></li>
+                  <li><a className="text-decoration-none text-white" href="blog-post.html">Doctor Equipment
+                    </a></li>
+                  <li><a className="text-decoration-none text-white" href="blog-post.html">Doctor Equipment
+                    </a></li>
                 </ul>
               </div>
               <div className="col-md-3 text-white">
-                <h5 className="fw-bold my-4 ">Information</h5>
+                <h5 className="fw-bold my-4 ">Payments</h5>
                 <div className={styles.alltags}>
-                  <a href="#" className={styles.tag}>Maskes</a>
-                  <a href="#" className={styles.tag}>medicen</a>
-                  <a href="#" className={styles.tag}>stores</a>
-                  <a href="#" className={styles.tag}>doctors</a>
-                  <a href="#" className={styles.tag}>medicen</a>
+                  <p className='text-white'>Secure Payments</p>
+                  <img src={require('../../Assets/Images/visa.png')} alt='women-care' />
+                  <img src={require('../../Assets/Images/card_3.png')} className="ms-2" alt='women-care' />
+                  <img src={require('../../Assets/Images/card_4.png')} className="ms-2" alt='women-care' />
+                  <img src={require('../../Assets/Images/card_5.png')} className="ms-2" alt='women-care' />
                 </div>
+                <h6 className='my-2'>Powred by <span className='text-primary'> stripe</span></h6>
               </div>
             </div>
           </div>
@@ -89,7 +89,7 @@ export default function Footer() {
           <div className="row">
             <div className="col-md-6 m-auto">
               <p className={styles.lastFooterP}>Copyright © 2022 <span className="ho-sp"> <a href="#"
-                className="a-ho fs-5 fw-bold text-decoration-none  text-primary"> PharmaTec</a></span></p>
+                className=" fw-bold text-decoration-none text-primary"> PharmaTec</a></span></p>
             </div>
           </div>
         </div>
