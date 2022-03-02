@@ -22,7 +22,7 @@ export default function MedCard({ med }) {
   // const handleChange = (event, newAlignment) => {
   //   setAlignment(newAlignment);
   // };
-  const [count, setCount] = React.useState(1);
+  const [count, setCount] = React.useState(med.reqQuantity || 1);
   const dispatch = useDispatch();
   const changeQuantity = (v) => {
     dispatch( editQuantityMedOrderAction ({quantity: v, id: med.id}) )
@@ -31,7 +31,6 @@ export default function MedCard({ med }) {
 
   const handleNumChange = (e) => {
     setCount(e.target.value);
-    console.log(e.target);
   };
 
   const handleDelete = () => {
