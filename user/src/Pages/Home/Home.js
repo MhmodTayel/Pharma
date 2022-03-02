@@ -14,8 +14,8 @@ export default function Home() {
         <Navbar/>
         <HomeSlider/>
         <PopularMedicine/>
-        <CountDown/>
         <Categories/>
+        <CountDown/>
         <Newsletter />
         <Footer/>
       </newProductsContext.Provider>

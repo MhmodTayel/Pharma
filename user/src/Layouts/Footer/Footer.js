@@ -26,10 +26,10 @@ export default function Footer() {
             </div>
             <div className="row ">
               <div className="col-md-3 text-white">
-                <h4 className="h2 text-primary my-4 ">PharmaTec </h4>
+                <h4 className="h2 text-primary my-4 ">Pharma </h4>
                 <p className="text-muted"> <HomeIcon className='me-2' />1650 Lombard Street,<br />San Francisco, CA 94123<br />
                   <LocalPhoneIcon className='me-2' />+1 (415)876-3250
-                  <br /><EmailIcon className='me-2' /> pharmatec@gmail.com
+                  <br /><EmailIcon className='me-2' /> pharma@gmail.com
                 </p>
                 <div className={styles.allIcons}>
                   <div className={styles.iconSpanFac}><FacebookSharpIcon /></div>
@@ -89,7 +89,7 @@ export default function Footer() {
           <div className="row">
             <div className="col-md-6 m-auto">
               <p className={styles.lastFooterP}>Copyright © 2022 <span className="ho-sp"> <a href="#"
-                className=" fw-bold text-decoration-none text-primary"> PharmaTec</a></span></p>
+                className=" fw-bold text-decoration-none text-primary"> Pharma</a></span></p>
             </div>
           </div>
         </div>

@@ -17,7 +17,7 @@ export default function Newsletter() {
         <FormGroup>
           <div className="d-flex my-4">
             <input type="mail" placeholder="Enter your mail" className={styles.newsInput} />
-            <Button variant="contained" className={styles.btnSubscribe}>
+            <Button variant="contained" >
               Subscribe
             </Button>
           </div>

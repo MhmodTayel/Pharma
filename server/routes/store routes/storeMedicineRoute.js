@@ -12,10 +12,9 @@ const {
   createMedRedis,
   createIndex,
   searchMeds,
-
+  removeMedRedis,
   getIncomingToday,
-  getIncomingLastWeek
-
+  getIncomingLastWeek,
 } = require("../../controllers/store controllers/storeMedController");
 
 const uploadS3 = require("../../middlewares/imageMiddleware");
@@ -29,13 +28,16 @@ router.post(
   uploadS3.single("image"),
   async (req, res, next) => {
     const body = req.body;
-    body.image = req.file?.location;
+    body.image =
+      req.file?.location ||
+      "https://pharma-store.s3.us-west-2.amazonaws.com/default.jpeg";
     body.categories = body.categories.split(",");
     const medArr = await Medicine.find({});
     body.id = medArr.length + 1;
-    create(body).then((doc) => {
+    create(body)
+      .then((doc) => {
         createMedRedis({ id: body.id, name: body.name });
-        req.io.emit("message", { name:doc.name,date:doc.updatedAt});
+        req.io.emit("message", { name: doc.name, date: doc.updatedAt });
         res.json(doc);
       })
       .catch((e) => next(e));
@@ -52,10 +54,13 @@ router.patch("/medicine/:id", uploadS3.single("image"), (req, res, next) => {
     .catch((e) => next(e));
 });
 
-router.delete("/medicine/delete/:id", (req, res, next) => {
+router.delete("/medicine/delete/:id", async (req, res, next) => {
   const medId = req.params.id;
   deleteOne(medId)
-    .then((doc) => res.json(doc))
+    .then((doc) => {
+      //  removeMedRedis(`Med:${doc._id.toString()}`)
+      res.json(doc);
+    })
     .catch((e) => next(e));
 });
 
@@ -87,16 +92,16 @@ router.get("/search-redis/:q", (req, res, next) => {
     .catch((e) => next(e));
 });
 
-router.get('/today-incoming-medicine',(req,res,next)=> {
+router.get("/today-incoming-medicine", (req, res, next) => {
   getIncomingToday()
-  .then((doc) => res.json(doc))
-  .catch((e) => next(e));
-})
+    .then((doc) => res.json(doc))
+    .catch((e) => next(e));
+});
 
-router.get('/weekly-incoming-medicine',(req,res,next)=> {
+router.get("/weekly-incoming-medicine", (req, res, next) => {
   getIncomingLastWeek()
-  .then((doc) => res.json(doc))
-  .catch((e) => next(e));
-})
+    .then((doc) => res.json(doc))
+    .catch((e) => next(e));
+});
 
 module.exports = router;

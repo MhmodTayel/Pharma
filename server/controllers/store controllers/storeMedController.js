@@ -4,7 +4,7 @@ const getAll = () => Medicine.find({});
 const create = (medicine) => Medicine.create(medicine);
 const update = (id, medicine) =>
   Medicine.findOneAndUpdate({ id }, medicine, { returnDocument: "after" });
-const deleteOne = (id) => Medicine.deleteOne({ id: id });
+const deleteOne = (id) => Medicine.findOneAndDelete({ id: id });
 const getById = (id) => Medicine.findOne({ id: id });
 const updateQuantity = (id, quantity) =>
   Medicine.updateOne({ id }, { $inc: { quantity } });
@@ -23,6 +23,13 @@ async function createMedRedis(data) {
   const repo = new Repository(schema, client);
   const med = repo.createEntity(data);
   const id = await repo.save(med);
+
+  return id;
+}
+async function removeMedRedis(key) {
+  await connect();
+  const repo = new Repository(schema, client);
+  const id = await repo.remove(key);
   return id;
 }
 
@@ -59,6 +66,7 @@ module.exports = {
   deleteOne,
   getAll,
   createMedRedis,
+  removeMedRedis,
   createIndex,
   searchMeds,
   getIncomingToday,

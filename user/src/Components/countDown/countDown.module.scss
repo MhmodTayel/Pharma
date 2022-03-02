@@ -41,3 +41,18 @@ padding-bottom: 21px
     }
 
 }
+
+.decoration_image1{
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: -131px;
+    max-width: 264px;
+    transform: translateY(-50%);
+
+    img {
+        height: auto;
+    max-width: 100%;
+    }
+}
+
