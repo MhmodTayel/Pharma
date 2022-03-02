@@ -382,27 +382,19 @@
       </div>
 
       <div class="d-flex justify-content-center">
-        <button mat-raised-button color="warn" class="button" type="submit">
+        <button mat-stroked-button color="primary" class="button" type="submit">
           Create
         </button>
+
         <button
-          mat-raised-button
-          color="warn"
-          class="button mx-2"
-          (click)="clearInput()"
-        >
-          Discard
-        </button>
-        <button
-          mat-raised-button
-          color="warn"
-<!-- >>>>>>> main -->
-          type="button"
-          class="mx-2"
-          (click)="filePicker.click()"
-        >
-          Pick Image
-        </button>
+        mat-stroked-button
+        color="basic"
+        type="button"
+        class="mx-2"
+        (click)="filePicker.click()"
+      >
+        Pick Image
+      </button>
         <button
           mat-stroked-button
           color="warn"
