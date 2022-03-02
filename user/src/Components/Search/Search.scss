@@ -1,0 +1,29 @@
+.css-2cv4h-MuiAutocomplete-root {
+    padding: 10px 16px;
+    background-color: #fff !important;
+    border-radius: 5px;
+    height: 80%;
+}
+.css-ghsjzk-MuiInputBase-root-MuiInput-root:before {
+    border-bottom: none !important; 
+}
+.serach-Icon{
+    color: #1b8ef2;
+    margin-bottom: 5px;
+}
+.css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+    color: rgb(0 0 0 / 40%) !important;
+    font-weight: 500 !important;
+    font-size: 0.95rem;
+    line-height: 1em !important;
+    letter-spacing: 0.00938em;
+}
+.css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+   color: #1b8ef2 !important; 
+}
+.MuiInput-underline::after
+ { 
+    border-bottom-color: #1b8ef2 !important;
+    margin-right:20px;
+ }
+

@@ -1,10 +1,11 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import styles from "./Search.module.scss";
+import styles from "./Search.scss";
 import { fullTextSearch, getMedById } from "../../services/userService";
 import { useDispatch, useSelector } from "react-redux";
 import { addMedOrderAction } from "../../store/actions/orderAction";
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function Search() {
   const dispatch = useDispatch();
@@ -47,6 +48,8 @@ export default function Search() {
 
   return (
     <Autocomplete
+    
+    sx={{px:2}}
       freeSolo
       id="free-solo-2-demo"
       disableClearable
@@ -57,12 +60,18 @@ export default function Search() {
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Search"
+          label="Search Your Products"
           variant="standard"
           InputProps={{
             ...params.InputProps,
             type: "search",
+            endAdornment: (
+              <React.Fragment>
+                  <SearchIcon className="serach-Icon"/>
+              </React.Fragment>
+            ),
           }}
+        
         />
       )}
     />

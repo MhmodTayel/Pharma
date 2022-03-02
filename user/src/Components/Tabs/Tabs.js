@@ -67,14 +67,6 @@ export default function BasicTabs() {
       (err)=> console.log(err)) 
   },[]) 
   
-  // const getWeeklyMed =  () => {
-  //       getIncomingMed(weekAgo).then(
-  //         (res)=>{
-  //           setWeeklyMedicine(res.data);
-  //       },
-  //       (err)=> console.log(err)) 
-  // }
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
     if (newValue == 1)

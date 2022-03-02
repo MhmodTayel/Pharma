@@ -21,8 +21,8 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     height:'50px',
     textAlign:'center',
     fontWieght:'400',
-    backgroundImage: 'linear-gradient(to right top, red , tomato)',
-    boxShadow: '0 5px 15px 0 rgba(0,0,0,0.4) !important' , 
+    backgroundImage: 'linear-gradient(to right top, #F2A71B , #ffeb00)',
+    boxShadow: '0 2px 6px 0 rgba(0,0,0,0.4) !important' , 
     fontSize:'12px',
     color:'#f5ffff',
     borderRadius: '50%'

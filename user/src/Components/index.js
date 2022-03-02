@@ -14,6 +14,7 @@ import CustomTable from "./Table/Table";
 import BasicCard from "./SimpleCard/BasicCard";
 import OrderDetails from "./OrderDetails/OrderDetails";
 import SaveOrderButton from "./SaveOrderButton/SaveOrderButton";
+import CheckoutCarousel from "./CheckoutCarousel/CheckoutCarousel";
 import Newsletter from "./Newsletter/Newsletter";
 import CountDown from "./countDown/countDown";
 export {
@@ -33,6 +34,7 @@ export {
   OrderDetails,
   SaveOrderButton,
   TabPanel,
+  CheckoutCarousel,
   Newsletter,
   CountDown
 };

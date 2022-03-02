@@ -68,4 +68,13 @@
 .edit-icon{
   margin-right: 5px !important;
 }
-
+.card-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.mat-card-image{
+  height: 200px;
+  width: auto;
+}

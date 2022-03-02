@@ -1,19 +1,18 @@
 import * as React from "react";
 import styles from './categories.module.scss'
-
+import style from "./../../index.module.scss";
 
 export default function Categories() {
 
     return (
-        <div className="my-5">
-            <h1 className="text-center my-2">categories</h1>
-            <div className="container d-flex w-100  justify-content-center">
+        <div className="py-3">
+            <div className="container py-2 d-flex w-100  justify-content-center">
                 <div className="row">
-
+                <h3 className={style.heading}><span className='fw-bold py-5 ps-3'>Categories</span></h3>
                     {/* first row  */}
                     <div className="col-md-4 d-flex flex-column">
                         <div className={styles.imgDiv}>
-                            <div className=" position-relative">
+                            <div className="position-relative">
                                 <div className="w-100  position-relative">
                                     <img src={require('../../Assets/Images/womwn-care.jpg')} className={styles.imgImg} alt='women-care' />
                                 </div>

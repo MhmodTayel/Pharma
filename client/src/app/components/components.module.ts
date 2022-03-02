@@ -12,11 +12,12 @@ import { MedAddedTodayComponent } from './med-added-today/med-added-today.compon
 import { MedAddedWeekComponent } from './med-added-week/med-added-week.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AddQuantityComponent } from './medicines-store/add-quantity/add-quantity.component';
+import { MedicineDetailComponent } from './medicines-store/medicine-details/medicine-detail/medicine-detail.component';
 
 
 @NgModule({
   declarations: [ ProfileDetailsComponent , AddMedComponent, OrderDetailsComponent,
-     MedicinesStoreComponent, EditMedComponent, MedAddedTodayComponent, MedAddedWeekComponent, AddQuantityComponent ],
+     MedicinesStoreComponent, EditMedComponent, MedAddedTodayComponent, MedAddedWeekComponent, AddQuantityComponent, MedicineDetailComponent ],
   imports: [
     CommonModule , MaterialModule , FormsModule, ReactiveFormsModule ,RouterModule,LayoutModule
   ],

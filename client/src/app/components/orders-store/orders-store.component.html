@@ -70,13 +70,9 @@
   <!-- action Column -->
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef yy>Order Details</th>
+
     <td mat-cell *matCellDef="let element">
-      <!-- <i
-        routerLink="/orders/details/{{ element.id }}"
-        (click)="openDialog()"
-        class="material-icons"
-        >remove_red_eye</i
-      > -->
+
       <button mat-icon-button  aria-label="Example icon button with a open in new tab icon" routerLink="/orders/details/{{ element.id }}"
       (click)="openDialog()">
         <mat-icon>open_in_new</mat-icon>

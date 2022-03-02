@@ -57,6 +57,9 @@ th.mat-header-cell {
   td.mat-footer-cell {
     padding: 12px 2px;
   }
+  td.mat-cell {
+    font-size: 14px !important;
+  }
   ::ng-deep .mat-column-id {
     width: 10% !important;
     text-align: center;
