@@ -15,13 +15,13 @@ export class MedAddedTodayComponent implements OnInit {
     this._medicineService.todayIncomingMeds().subscribe((res:any)=>{
       this.IncomingMedicine = res;
     },
-    (error) => { console.log(error.message) })
+    (error) => { })
   }
 
   deleteMedicine(id: any){
     this._medicineService.deleteMed(id).subscribe((res: any)=>{
     },
-    (error) => { console.log(error.message)},
+    (error) => {},
     ()=> {
       const idx = this.IncomingMedicine.findIndex((item)=>item.id == id);
       this.IncomingMedicine.splice(idx, 1);

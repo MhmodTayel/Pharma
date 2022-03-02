@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import { register } from '../../services/userService';
 import { Link, useHistory } from 'react-router-dom';
+import Stack from '@mui/material/Stack';
+
 
 const validationSchema = yup.object({
   pharmacyName: yup
@@ -215,25 +217,31 @@ export default function Register() {
             }}
           />
           <div className='butt d-flex  justify-content-center'>
-            <Button className={styles.butreg} variant="contained" fullWidth type="submit">
-              Register
-            </Button>
+          <Button variant="contained" type='submit'>register</Button>
           </div>
         </form> : null}
 
+        <div>
+          <div className={styles.btn}>
+            <button title='register' onClick={() => setShow(!show) & setHide(!hide)} id='btnnnn' className={styles.button}>
+              <svg xmlnsdc='http://purl.org/dc/elements/1.1/' xmlnscc='http://creativecommons.org/ns#' xmlnsrdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' xmlnssvg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlnssodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlnsinkscape="http://www.inkscape.org/namespaces/inkscape" version='1.1' x='0px' y='0px' viewBox="0 0 100 125">
+                <g transform="translate(0,-952.36218)">
+                  <path style={{ fontSize: 'medium', fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', textIndent: '0', textAlign: 'start', textDecoration: 'none', lineHeight: 'normal', letterSpacing: 'normal', wordSpacing: 'normal', textTransform: 'none', direction: 'ltr', blockprogression: 'tb', writingMode: 'lr-tb', textAnchor: 'start', baselineShift: 'baseline', opacity: '1', color: '#fff', fill: '#fff', fillOpacity: '1', fillRule: 'nonzero', stroke: 'none', strokeWidth: '4', marker: 'none', visibility: 'visible', display: 'inline', overflow: 'visible', enableBackground: 'accumulate', fontFamily: 'Sans-inkscape-font-specification:Sans' }} d="M 67.90625 25.96875 A 2.0002 2.0002 0 0 0 66.65625 29.46875 L 86.84375 48 L 8 48 L 7.8125 48 C 6.7651593 48.049 5.8571564 49.04635 5.90625 50.09375 C 5.955344 51.14105 6.9526789 52.0493 8 52 L 86.84375 52 L 66.65625 70.5 A 2.0022756 2.0022756 0 1 0 69.34375 73.46875 L 93.34375 51.46875 A 2.0002 2.0002 0 0 0 93.34375 48.5 L 69.34375 26.5 A 2.0002 2.0002 0 0 0 67.90625 25.96875 z " transform="translate(0,952.36218)" />
+                </g>
+              </svg>
+            </button>
+           {show? <div className='d-flex my-4 me-5' style={{ marginLeft: '-60px' }}>
+              <Stack spacing={2} direction="row">
+                <Button  className='text-white text-decoration-none' variant="contained"><Link className='text-white text-decoration-none' to={'/login'}>login</Link></Button>
+                <Button onClick={() => setShow(!show) &setHide(!hide)} className='text-white text-decoration-none' variant="outlined"><Link className='text-primary text-decoration-none'  to={'/register'}>register</Link></Button>
+              </Stack>
+            </div>:null}
+          </div>
 
-        <div className={styles.btn}>
-         <button onClick={() => setShow(!show) & setHide(!hide)} id='btnnnn' className={styles.button}>
-            <svg xmlnsdc='http://purl.org/dc/elements/1.1/' xmlnscc='http://creativecommons.org/ns#' xmlnsrdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' xmlnssvg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlnssodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlnsinkscape="http://www.inkscape.org/namespaces/inkscape" version='1.1' x='0px' y='0px' viewBox="0 0 100 125">
-              <g transform="translate(0,-952.36218)">
-                <path style={{ fontSize: 'medium', fontStyle: 'normal', fontVariant: 'normal', fontWeight: 'normal', fontStretch: 'normal', textIndent: '0', textAlign: 'start', textDecoration: 'none', lineHeight: 'normal', letterSpacing: 'normal', wordSpacing: 'normal', textTransform: 'none', direction: 'ltr', blockprogression: 'tb', writingMode: 'lr-tb', textAnchor: 'start', baselineShift: 'baseline', opacity: '1', color: '#fff', fill: '#fff', fillOpacity: '1', fillRule: 'nonzero', stroke: 'none', strokeWidth: '4', marker: 'none', visibility: 'visible', display: 'inline', overflow: 'visible', enableBackground: 'accumulate', fontFamily: 'Sans-inkscape-font-specification:Sans' }} d="M 67.90625 25.96875 A 2.0002 2.0002 0 0 0 66.65625 29.46875 L 86.84375 48 L 8 48 L 7.8125 48 C 6.7651593 48.049 5.8571564 49.04635 5.90625 50.09375 C 5.955344 51.14105 6.9526789 52.0493 8 52 L 86.84375 52 L 66.65625 70.5 A 2.0022756 2.0022756 0 1 0 69.34375 73.46875 L 93.34375 51.46875 A 2.0002 2.0002 0 0 0 93.34375 48.5 L 69.34375 26.5 A 2.0002 2.0002 0 0 0 67.90625 25.96875 z " transform="translate(0,952.36218)" />
-              </g>
-            </svg>
-          </button>
         </div>
         {hide ? <footer className={styles.lastfooter}>
           <div className='d-flex align-content-center justify-content-center'>
-            <p className={styles.pFooter}> <Link className=' text-decoration-none' to='/login'>Have An Account</Link></p>
+            <p className={styles.pFooter}> <Link className=' text-decoration-none' to='/login'>Already Have An Account</Link></p>
           </div>
 
         </footer> : null}

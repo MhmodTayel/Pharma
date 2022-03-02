@@ -18,13 +18,12 @@ export class AddNotificationsComponent implements OnInit {
     this.addNotificationService.getNotification().subscribe(
       (response:any)=>{
         this.items = response;
-        console.log(response)
-        console.log(this.items)
+     
    
       },
 
       (error) => { 
-        console.log(error)
+     
       }
     )
   

@@ -11,7 +11,8 @@ import ProductDialog from './../PorductDialog/ProductDialog'
 import styles from './productCard.module.scss'
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
-
+import { useDispatch, useSelector } from "react-redux";
+import { addMedOrderAction } from "../../store/actions/orderAction";
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     right: 33,
@@ -30,6 +31,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 export default function ProductItemCard(props) {
   const [openDialog, setOpenDialog] = React.useState(false);
+  const dispatch = useDispatch();
 
   const handleClickOpen = () => {
     setOpenDialog(true);
@@ -37,6 +39,12 @@ export default function ProductItemCard(props) {
   const handleClose = () => {
     setOpenDialog(false);
   };
+
+  const handleCart = ()=>{
+    const medObj = props.medItem
+    medObj.reqQuantity = 1;
+    dispatch(addMedOrderAction(medObj));
+  }
 
   return (
     <StyledBadge badgeContent={`${props.medItem.discount}% OFF`} className={styles.discount}>
@@ -70,7 +78,7 @@ export default function ProductItemCard(props) {
           open={openDialog}  
           handleCloseDialog={() => handleClose(false)} 
           />
-          <Button variant="contained" size="small" className={styles.button}><ShoppingCartIcon className={styles.icon}/></Button>
+          <Button variant="contained" size="small" onClick={handleCart} className={styles.button}><ShoppingCartIcon className={styles.icon}/></Button>
         </CardActions>
       </Card>  
      </StyledBadge>

@@ -35,7 +35,7 @@ export class ProfileDetailsComponent implements OnInit {
       (response:any) => {
         this.adminDetails = response ;
       },
-      (error) => { console.log(error.message) },
+      (error) => { },
     )
     const token: any = localStorage.getItem('token')
     if (token) {
@@ -51,12 +51,12 @@ export class ProfileDetailsComponent implements OnInit {
     this._adminService.editDetails(this.adminDetailsForm.value).subscribe(
       (response:any) => {
         this.adminDetails = response ;
-        console.log(response)
+        this._mysnackbar.openSnackBar('You data is updated successfully','blue-snackbar', 'Success')
       },
-      (error) => { console.log(error.message) },
+      (error) => { },
       () => { 
         this.adminDetailsForm.disable(); 
-        this._mysnackbar.openSnackBar('You data is updated successfully','', 'Success')
+   
       }
     )
   }

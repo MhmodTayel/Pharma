@@ -21,8 +21,6 @@ function App() {
   const [popup, setPopup] = useState("");
   useEffect(() => {
     socket.on("message", (msg) => {
-
-      console.log(msg)
       const obj = new AlertMsg('New medicine', 'success', `${msg.name} has arrived to store`, msg.date)
       setMessage(obj);
     });
@@ -62,14 +60,13 @@ function App() {
           <Route path={"/login"} exact component={Login} />
           <ProtectedRoute path={"/contact-us"} exact component={Contact} />
           <ProtectedRoute path={"/new-order"} exact component={NewOrder} />
+          <ProtectedRoute path={"/orders"} exact component={Orders} />
+          <ProtectedRoute path={"/saved-orders"} exact component={SavedOrders} />
           <ProtectedRoute path={"/recently-added"} exact component={RecenltyAdded} />
           <ProtectedRoute path={"/success"} exact component={Success} />
           <ProtectedRoute path={"/home"} exact component={Home} />
-          <ProtectedRoute path={"/" } component={Home} />
           <ProtectedRoute path={"/category/:cat"} exact component={Category} />
-          <ProtectedRoute path={"/newOrder"} exact component={NewOrder} />
-          <ProtectedRoute path={"/orders"} exact component={Orders} />
-          <ProtectedRoute path={"/saved-orders"} exact component={SavedOrders} />
+          <ProtectedRoute path={"/" } component={Home} />
           <ProtectedRoute path="*" exact component={notFound} />
         </Switch>
       </BrowserRouter>

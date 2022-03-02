@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         this.loginResponse = response ;
       },
       (error) => { 
-        this._mysnackbar.openSnackBar(`${error.error}`,'', 'Info') 
+        this._mysnackbar.openSnackBar(`${error.error}`,'danger-snackbar', 'Error') 
       },
       () => {
             this._router.navigateByUrl('/orders');

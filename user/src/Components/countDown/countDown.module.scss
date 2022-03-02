@@ -1,0 +1,58 @@
+
+.borderCount{
+    width: 80px;
+    padding: 15px 10px;
+    text-align: center;
+    margin-right: 20px;
+    background-color: #ffffff;
+    border: 2px dashed #00c9a7;
+}
+.btnCount{
+padding: 22px 30px;
+padding-bottom: 21px
+}
+.iconItem{
+    width:85px;
+    height: 60px;
+    color: #5f6680;
+    margin: 14px 0px;
+    line-height: 62px;
+    margin-right: 30px;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px dashed #00c9a7;
+}
+.iconCount{
+    font-size: 30px;
+}
+@media only screen and (max-width: 700px) {
+    .iconItem{
+        width:40px; 
+        margin-top: 0px ;
+        height: 40px;
+        line-height: 10px;
+    }
+    .iconCount{
+        font-size: 20px;
+        margin-top: 4px;
+    }
+    .imgOffer{
+        display: none;
+    }
+
+}
+
+.decoration_image1{
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: -131px;
+    max-width: 264px;
+    transform: translateY(-50%);
+
+    img {
+        height: auto;
+    max-width: 100%;
+    }
+}
+

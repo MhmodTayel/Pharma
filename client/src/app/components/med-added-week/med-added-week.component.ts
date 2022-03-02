@@ -14,7 +14,7 @@ export class MedAddedWeekComponent implements OnInit {
     this._medicineService.weekIncomingMeds().subscribe((res:any)=>{
       this.IncomingMedicine = res;
     },
-    (error) => { console.log(error.message) })
+    (error) => {  })
   }
   deleteMedicine(id: any){
     this._medicineService.deleteMed(id).subscribe((res: any)=>{

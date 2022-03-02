@@ -26,7 +26,7 @@ export class AddQuantityComponent implements OnInit {
     
     
     this._medService.updateQuantity(this.id, this.addForm.value).subscribe((res: any)=>{
-      console.log(res)
+      
       setTimeout(()=>{
         this._router.navigate(['products/all-products']);
       }, 2000);

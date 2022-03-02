@@ -97,7 +97,7 @@ export class EditMedComponent implements OnInit {
         
       },
       (error) => { 
-        console.log(error)
+       
       }
     );
 
@@ -145,7 +145,7 @@ export class EditMedComponent implements OnInit {
         (response:any)=>{
           this.medicines =response
           this.formEditMed.patchValue(response)    
-              console.log(this.medicines)    
+                  
       });
  
      });

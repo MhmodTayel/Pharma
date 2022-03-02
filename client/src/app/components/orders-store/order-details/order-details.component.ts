@@ -19,9 +19,10 @@ export class OrderDetailsComponent implements OnInit {
         this.orderId = window.location.href.split('/').pop();
          this.order.getDetails(this.orderId).subscribe((response: any) => {
           this.orderDetails = response;
+
         },
         (error) => {
-          console.log(error);
+          
        }) 
    }
 }

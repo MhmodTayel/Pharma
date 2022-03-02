@@ -3,8 +3,6 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import moment from "moment";
 import useMediaQuery from "@mui/material/useMediaQuery";
@@ -12,15 +10,30 @@ import { useTheme } from "@mui/material/styles";
 import { useLocation } from "react-router-dom";
 import CheckoutButton from "../checkoutButton/CheckoutButton";
 import "./OrderDetails.scss";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addMedOrderAction } from "../../store/actions/orderAction";
+import { deleteSavedOrder } from "../../services/userService";
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function OrderDetails({ state, order }) {
+  const orderStore = useSelector((state) => state.order);
   const location = useLocation();
   console.log(order);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const dispatch = useDispatch();
+
+  const handleUpdateOrder = () => {
+    deleteSavedOrder(order.id).then((res) => {});
+    order.medicines.forEach((med) => {
+      if (!orderStore.some((medicine) => med._id == medicine._id))
+        dispatch(addMedOrderAction(med));
+    });
+  };
   return (
     <div>
       <Dialog
@@ -92,8 +105,10 @@ export default function OrderDetails({ state, order }) {
         <DialogActions>
           {location.pathname == "/saved-orders" && (
             <>
-              <Button color="secondary" onClick={state.handleClose}>
-                Update
+              <Button color="secondary" onClick={handleUpdateOrder}>
+                <Link className="order-details-link" to="/new-order">
+                  Update
+                </Link>
               </Button>
               <CheckoutButton
                 newOrder={order.medicines}

@@ -9,6 +9,9 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import styles from './productDialog.module.scss'
+import { useDispatch, useSelector } from "react-redux";
+import { addMedOrderAction } from "../../store/actions/orderAction";
+
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -49,6 +52,12 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CustomizedDialogs(props) {
+const dispatch = useDispatch();
+const handleCart = ()=>{
+  const medObj = props.medItem
+  medObj.reqQuantity = 1;
+  dispatch(addMedOrderAction(medObj));
+}
   return (
     <div>
       <BootstrapDialog
@@ -92,7 +101,7 @@ export default function CustomizedDialogs(props) {
                       )}
                   </div>
                </div>
-               <Button variant="contained" className={styles.cardBtn}><ShoppingCartIcon sx={{ mx: 1, fontSize: 20 }} /> Add to cart</Button>
+               <Button variant="contained" onClick={handleCart} className={styles.cardBtn}><ShoppingCartIcon sx={{ mx: 1, fontSize: 20 }} /> Add to cart</Button>
 
               </div>
             </div>
