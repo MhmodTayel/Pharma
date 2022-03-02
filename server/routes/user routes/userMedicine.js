@@ -33,7 +33,6 @@ router.get("/medicine/all", (req, res, next) => {
 
 router.post('/medicine/incoming', (req,res,err)=>{
   let date = new Date(req.body.date)
-  console.log(req.body.date)
   getIncomingMed(date)
   .then((doc) => res.json(doc))
   .catch((e) => res.json(e))

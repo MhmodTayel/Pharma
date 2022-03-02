@@ -5,7 +5,7 @@ const Message = require("../../models/message");
 const Notification=require("../../models/notification");
 
 const create = (user) => {
-  console.log(user)
+  
   return Pharmacist.create(user)
 };
 
@@ -15,8 +15,7 @@ const findNotification = (q) => Notification.find({});
 
 const login = async ({ username, password }, next) => {
   const user = await Pharmacist.findOne({ username });
-  console.log( user , 'user con')
-  console.log(username)
+ 
   if (!user) {
     next(`wrong username`);
     return;

@@ -19,6 +19,7 @@ import { SnackBarService } from 'src/app/services/snackBarService/snack-bar.serv
 export class MedicinesStoreComponent implements OnInit {
   medArr: any [] = [];
   displayedColumns: string[] = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'edit', 'delete']; //for table headers
+  loading:boolean = true
 
   constructor(private _medService: MedicineService, public dialog: MatDialog,private _mysnackbar: SnackBarService,private _breakpointObserver: BreakpointObserver) { }
 
@@ -39,6 +40,8 @@ export class MedicinesStoreComponent implements OnInit {
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.loading = false
+
     })
   }
 
@@ -47,11 +50,10 @@ export class MedicinesStoreComponent implements OnInit {
     const dialogRef = this.dialog.open(AddQuantityComponent, { disableClose: true });
 
     dialogRef.afterClosed().subscribe(result => {
-      // console.log(`Dialog result: ${result}`);
+      
     });
   }
 
-//displayedColumns: string[] = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'edit', 'delete']; //for table headers
 
 dataSource = new MatTableDataSource(this.medArr); 
 
@@ -71,7 +73,7 @@ applyFilter(event: Event) {
 
 
 catchRow(e:Medicine){ // will use it to show medicine details in model.
-console.log(e);
+
 }
 
 

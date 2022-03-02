@@ -45,11 +45,11 @@ start.setHours(0, 0, 0, 0);
 var end = new Date();
 end.setHours(23, 59, 59, 999);
 const getIncomingToday = () =>
-  Medicine.find({ arriveDate: { $gte: start, $lte: end } });
+  Medicine.find({ createdAt: { $gte: start, $lte: end } });
 
 var weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
 const getIncomingLastWeek = () =>
-  Medicine.find({ arriveDate: { $gte: weekAgo } });
+  Medicine.find({ createdAt: { $gte: weekAgo } });
 
 module.exports = {
   create,

@@ -22,7 +22,6 @@ router.post("/orders/newOrder", async({body}, res, next)=>{
     .catch((err)=>next(err))
 } );
 router.post("/checkouts/", ({ body }, res, next) => {
-  console.log(body.line_items[0].images);
   createStripeCheckoutSession(body)
     .then((doc) => res.json(doc))
     .catch((err) => next(err));

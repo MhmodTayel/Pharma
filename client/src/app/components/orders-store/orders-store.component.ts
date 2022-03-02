@@ -16,7 +16,7 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 export class OrdersStoreComponent implements OnInit {  
   displayedColumns: string[] = []; //for table headers
   constructor( private order:OrdersServiceService,public dialog: MatDialog,private _breakpointObserver: BreakpointObserver) {}
-
+  loading:boolean = true
   ngOnInit(): void {
     this._breakpointObserver
       .observe(['(min-width: 650px)'])
@@ -30,12 +30,12 @@ export class OrdersStoreComponent implements OnInit {
       });
 
     this.order.getOrders().subscribe((data:any) => {
-      console.log(data);
+    
       
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      
+      this.loading = false
     })
     
   }
@@ -61,10 +61,10 @@ export class OrdersStoreComponent implements OnInit {
 
 
 catchRow(e:Order){ // will use it to show order details in model.
-  console.log(e);
+ 
 }
 test(){
-  console.log(this.fakedata); 
+
 }
 
 }
