@@ -74,22 +74,32 @@
 </mat-accordion> -->
 
 
-
-<mat-expansion-panel hideToggle  *ngFor="let item of notifications ,let i=index  " >
-  <mat-expansion-panel-header class="bg my-2 mx-3" >
-    <mat-panel-title class="mx-2" (click)="updateisReaded(item.id)">
-      Message#{{i+1}}
-    </mat-panel-title>
-    <div class="btn  ">
-
+<!-- <mat-expansion-panel class="w-50 first-div position-relative" hideToggle *ngFor="let item of notifications ,let i=index">
+    <mat-expansion-panel-header class="bg my-2 mx-3">
+      <mat-panel-title class="mx-2" (click)="updateisReaded(item.id)">
+        Message#{{i+1}}
+      </mat-panel-title>
+      <div class="btn">
         <mat-icon (click)="delete(item.id)">delete</mat-icon>
-    
+      </div>
+    </mat-expansion-panel-header>
+    <p class=" message my-3 mx-3">{{item.notificationMessage}}</p>
+</mat-expansion-panel> -->
+
+<div class="card w-75 m-auto mt-3 position-relative  shadow-sm" *ngFor="let item of notifications ,let i=index">
+  <mat-icon class="close-icon position-absolute"(click)="delete(item.id)">close</mat-icon>
+  <div class="card__message d-flex">
+    <mat-icon *ngIf="!isShown" class="me-5 mt-3 text-primary icon">notifications_active</mat-icon>
+    <mat-icon *ngIf="isShown" class="me-5 mt-3 icon">notifications</mat-icon>
+
+    <div>
+      <h2>Message# {{i+1}}</h2>
+      <p>{{item.notificationMessage}}</p>
     </div>
-
-  </mat-expansion-panel-header>
-  
-  <p class=" message my-3 mx-3">{{item.notificationMessage}}</p>
-</mat-expansion-panel>
-
+  </div>
+  <div class="form-check position-absolute">
+    <input class="form-check-input" (click)="toggleShow($event)" type="checkbox" value="" id="flexCheckDefault">
+  </div>
+</div>
 
 

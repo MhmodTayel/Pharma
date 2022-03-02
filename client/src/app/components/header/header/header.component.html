@@ -9,7 +9,7 @@
     <div class="row mr-2 ml-auto d-flex">
       <ul class="row m-0 align-items-center">
         <li class="d-flex">
-          <div class="user my-4 mx-5">
+          <div class="user my-4 mx-3 ">
             <a
               mat-list-item
               routerLinkActive="list-item-active"
@@ -29,8 +29,17 @@
               </main>
             </a>
           </div>
+          <div class="my-4 mx-3 ">
+            <button mat-button [matMenuTriggerFor]="menulanguage">
+              <mat-icon>language</mat-icon>
+            </button>
+            <mat-menu #menulanguage="matMenu">
+              <button mat-menu-item>Arabic</button>
+              <button mat-menu-item>English</button>
+            </mat-menu>
+          </div>
           <div>
-            <button mat-button [matMenuTriggerFor]="menu" class="user mt-2">
+            <button mat-button [matMenuTriggerFor]="menu" class="user my-3 mx-3">
               <img
                 src="../../assets/144-1442578_flat-person-icon-download-dummy-man.png"
                 alt=""
@@ -48,16 +57,6 @@
                 <mat-icon>exit_to_app</mat-icon>
                 Logout
               </button>
-            </mat-menu>
-          </div>
-
-          <div>
-            <button mat-button [matMenuTriggerFor]="menulanguage">
-              <mat-icon>language</mat-icon>
-            </button>
-            <mat-menu #menulanguage="matMenu">
-              <button mat-menu-item>Arabic</button>
-              <button mat-menu-item>English</button>
             </mat-menu>
           </div>
         </li>
