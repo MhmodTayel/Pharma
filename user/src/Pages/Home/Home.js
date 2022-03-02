@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Navbar , HomeSlider , PopularMedicine , Categories, Newsletter }  from '../../Components/index'
+import {Navbar , HomeSlider , PopularMedicine , Categories, Newsletter, CountDown }  from '../../Components/index'
 import Footer from '../../Layouts/Footer/Footer'
 import './Home.module.scss'
 import {newProductsContext} from '../../context/newProductsContext'
@@ -14,6 +14,7 @@ export default function Home() {
         <Navbar/>
         <HomeSlider/>
         <PopularMedicine/>
+        <CountDown/>
         <Categories/>
         <Newsletter />
         <Footer/>
