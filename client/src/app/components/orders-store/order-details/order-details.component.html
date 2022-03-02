@@ -16,11 +16,11 @@
           <h4> {{orderDetails?.client.pharmacyName}}</h4>
           <h4> {{orderDetails?.client.pharmacistPhonNumber}}</h4>
 
-          <h4>{{orderDetails?.billing_detail.address.postal_code}} , 
-              {{orderDetails?.billing_detail.address.line1}} - 
-              {{orderDetails?.billing_detail.address.line2}} - 
-              {{orderDetails?.billing_detail.address.city}} -  
-              {{orderDetails?.billing_detail.address.country}}</h4>
+          <h4>{{orderDetails?.billing_detail.address?.postal_code}} , 
+              {{orderDetails?.billing_detail.address?.line1}} - 
+              {{orderDetails?.billing_detail.address?.line2}} - 
+              {{orderDetails?.billing_detail.address?.city}} -  
+              {{orderDetails?.billing_detail.address?.country}}</h4>
         </div>
       </div>
       <div class="row pt-3">
@@ -50,5 +50,4 @@
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close routerLink="/orders">Go to Orders</button>
-    <!-- <button mat-button mat-dialog-close routerLink="{{orderDetails.receipt_url}}">View Invoice</button> -->
   </mat-dialog-actions>

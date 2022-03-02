@@ -14,7 +14,9 @@ import { AddNotificationsComponent } from './add-product-page/add-notifications/
 
 const routes: Routes = [
   {path:'all-products',component:ProductsPageComponent, children:[
-    {path:'addQuantity/:id' }]},
+  {path:'addQuantity/:id' },
+  {path:'details/:id'}
+  ]},
   {path:'add',component:AddProductPageComponent},
   {path:'edit/:id',component:EditProductPageComponent},
   {path:'added-recently',component:AddedTodayComponent},

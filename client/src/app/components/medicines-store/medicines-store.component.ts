@@ -5,11 +5,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MedicineService } from 'src/app/services/medicineService/medicine.service';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-
 import { MatDialog } from '@angular/material/dialog';
 import { AddQuantityComponent } from './add-quantity/add-quantity.component';
 import { SnackBarService } from 'src/app/services/snackBarService/snack-bar.service';
-
+import { MedicineDetailComponent } from './medicine-details/medicine-detail/medicine-detail.component';
 
 @Component({
   selector: 'app-medicines-store',
@@ -18,7 +17,7 @@ import { SnackBarService } from 'src/app/services/snackBarService/snack-bar.serv
 })
 export class MedicinesStoreComponent implements OnInit {
   medArr: any [] = [];
-  displayedColumns: string[] = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'edit', 'delete']; //for table headers
+  displayedColumns: string[] = [];
 
   constructor(private _medService: MedicineService, public dialog: MatDialog,private _mysnackbar: SnackBarService,private _breakpointObserver: BreakpointObserver) { }
 
@@ -27,9 +26,9 @@ export class MedicinesStoreComponent implements OnInit {
     .observe(['(min-width: 650px)'])
     .subscribe((state: BreakpointState) => {
       if (state.matches) {
-        this.displayedColumns = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'edit', 'delete'];
+        this.displayedColumns = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'action','edit', 'delete'];
       } else {
-        this.displayedColumns = ['ID','Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'edit', 'delete'];
+        this.displayedColumns = ['ID','Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate','action', 'edit', 'delete'];
 
       }
     });
@@ -45,13 +44,16 @@ export class MedicinesStoreComponent implements OnInit {
 
   openDialog() { 
     const dialogRef = this.dialog.open(AddQuantityComponent, { disableClose: true });
-
     dialogRef.afterClosed().subscribe(result => {
       // console.log(`Dialog result: ${result}`);
     });
   }
-
-//displayedColumns: string[] = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'edit', 'delete']; //for table headers
+  productDetailsDialog(){
+    console.log("this product")
+    const dialogRef = this.dialog.open(MedicineDetailComponent , {disableClose:true})  
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
 
 dataSource = new MatTableDataSource(this.medArr); 
 
@@ -73,7 +75,6 @@ applyFilter(event: Event) {
 catchRow(e:Medicine){ // will use it to show medicine details in model.
 console.log(e);
 }
-
 
 deleteMedicine(id: any){
   this._medService.deleteMed(id).subscribe((res: any)=>{

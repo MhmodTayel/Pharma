@@ -1,0 +1,47 @@
+::ng-deep .mat-progress-spinner svg{
+    width: 50px !important;
+    height: 50px !important;
+    top: 35% !important;
+    left: 25% !important ;
+}
+::ng-deep .mat-typography h1 ,.mat-typography h2 , .mat-typography h6 ,.mat-typography p {
+    padding: 0px;
+    margin: 0px;
+}
+.details-header h1{
+    font-weight: 700;
+    font-size: 26px;
+}
+span, .details-info h6, p {
+    font-size: 14px !important;
+}
+.details-header p {
+    padding-top: 5px ;
+}
+.details-header span{
+    font-weight: 500px !important;
+}
+.details-prices h2{
+    color: #1ba0f2;
+    font-weight: 600 !important;
+    font-size: 24px !important;
+}
+
+.details-info h6 , .dates p{
+    padding: 2px 0px;
+    color: #505152 !important;
+}
+.details-info span , .dates span{
+    font-weight:600;
+}
+.category{
+    padding: 5px 5px;
+    background-color: #1ba0f25d;
+    color:#0404aa;;
+    border-radius: 2px;
+    font-weight: 500 !important;
+}
+.mat-button{
+    color: #fff;
+    background-image: linear-gradient(135deg , #4340fb, #00BCD4);
+}
