@@ -49,7 +49,7 @@ a{
   }
 }
 .mat-subheader {
-  color: #818cf8;
+
   font-size: 0.6rem;
   font-weight: 100;
   letter-spacing: 1px;
@@ -61,23 +61,3 @@ h4{
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
-::ng-deep .mat-expansion-panel:not([class*=mat-elevation-z]) {
-  box-shadow: none;
-  background-color: transparent;
-  margin: 0px !important;
-}
-
-::ng-deep .mat-expansion-panel-header {
-  padding:  0px !important;
-}
-::ng-deep .mat-expansion-panel-body {
-   padding:0px !important; 
-}
-.expansion-item{
-  padding-left: 35px;
-}
-
-::ng-deep .mat-list-base .mat-list-item .mat-list-item-content, .mat-list-base .mat-list-option .mat-list-item-content {
-  padding: 0px 30px !important;
-}
-

@@ -9,7 +9,9 @@ const {
   login,
   createMessage,
   findNotification,
-  createNotification
+  createNotification,
+  deleteOne,
+  updateone
 } = require("../../controllers/user controllers/userController");
 
 router.post("/user/login", async (req, res, next) => {
@@ -56,5 +58,22 @@ router.get("/notification/all", (req, res, next) => {
   .then((doc) => res.json(doc))
   .catch((e) => next(e));
 });
+
+router.delete("/notification/delete/:id", (req, res, next) => {
+  const notificationId = req.params.id;
+  deleteOne(notificationId)
+    .then((doc) => res.json(doc))
+    .catch((e) => next(e));
+});
+
+
+router.patch("/notification/update/:id", (req, res, next) => {
+  const notificationId = req.params.id;
+  const body = req.body
+  updateone(notificationId,body)
+    .then((doc) => res.json(doc))
+    .catch((e) => next(e));
+});
+
 
 module.exports = router;

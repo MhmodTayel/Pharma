@@ -1,0 +1,95 @@
+<!-- 
+<tbody *ngFor="let item of notifications ,let i=index ">
+  
+  <tr >
+   
+     <td>{{item.notificationMessage}}</td>
+     
+  </tr>
+</tbody> -->
+<!-- <div *ngFor="let item of notifications ,let i=index " class="notification">
+<div class="notice info" ><p>{{item.notificationMessage}} </p>
+<p class="date">{{item.createdAt }} </p>
+<div class="btn">
+<button
+  mat-fab
+  color="white"
+  class="material-icons "
+  (click)="delete(item.id)"
+  aria-label="Example icon button with a delete icon"
+>
+  <mat-icon>delete</mat-icon>
+</button>
+</div>
+</div>
+</div> -->
+<!-- 
+<div *ngFor="let item of notifications ,let i=index  " class="d-flex justify-content-center my-3">
+  <div id="box1" class="box blurred-bg tinted ">
+    <div class="content ">
+      <h2 >New Message</h2>
+      <div class="text">{{item.notificationMessage}}</div>
+
+      <div class="d-flex row">
+        <div class="date col-8 align-self-center  "  ><span class="fw-3">At: </span>{{item.createdAt}}</div>
+
+        <div class="btn col-3 ">
+          <button mat-fab color="white" class="material-icons " (click)="delete(item.id)"
+            aria-label="Example icon button with a delete icon">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div> -->
+
+<!-- <mat-accordion>
+  <mat-expansion-panel 
+   hideToggle 
+   (opened)="panelOpenState = true"
+   (closed)="panelOpenState = false"
+   *ngFor="let item of notifications ,
+    let i=index  " 
+   class="d-flex justify-content-center my-3">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+       New Message
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{item.notificationMessage}}</p>
+  </mat-expansion-panel>
+ <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Self aware panel
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel> 
+</mat-accordion> -->
+
+
+
+<mat-expansion-panel hideToggle  *ngFor="let item of notifications ,let i=index  " >
+  <mat-expansion-panel-header class="bg my-2 mx-3" >
+    <mat-panel-title class="mx-2" (click)="updateisReaded(item.id)">
+      Message#{{i+1}}
+    </mat-panel-title>
+    <div class="btn  ">
+
+        <mat-icon (click)="delete(item.id)">delete</mat-icon>
+    
+    </div>
+
+  </mat-expansion-panel-header>
+  
+  <p class=" message my-3 mx-3">{{item.notificationMessage}}</p>
+</mat-expansion-panel>
+
+
+
