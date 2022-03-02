@@ -142,7 +142,10 @@ const Navbar = () => {
 
           <MenuItem>
             <Typography textAlign="center" sx={{ mr: 3 }}>
-              <ShoppingCartIcon />
+            <Link to='/new-order' className={styles.navBtn}> <ShoppingCartIcon /></Link>
+
+             
+
             </Typography>
           </MenuItem>
 
