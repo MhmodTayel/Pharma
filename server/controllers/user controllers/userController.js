@@ -14,7 +14,7 @@ const createMessage = (message) => Message.create(message);
 const createNotification = (notification) => Notification.create(notification);
 const findNotification = () => Notification.find({});
 const deleteOne = (id) => Notification.deleteOne({ id: id });
-const updateone = (id,body) => Notification.updateOne({id},{body});
+const updateone = (id,body) => Notification.updateOne({id},{...body});
 
 const login = async ({ username, password }, next) => {
   const user = await Pharmacist.findOne({ username });

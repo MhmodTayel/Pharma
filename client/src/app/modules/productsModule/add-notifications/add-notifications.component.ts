@@ -69,8 +69,7 @@ export class AddNotificationsComponent implements OnInit {
   }
 
   updateisReaded(id:any){
-    let notification = new Notification ();
-    notification.isReaded=true
+    let notification = {isReaded:true}
     this.addNotificationService.updateIsReaded(id,notification).subscribe(
       (res)=>{
     

@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
         this.notifications = response;
         console.log(response);
         console.log(this.notifications);
+        this.getLength()
       
            },
       (error) => { 
@@ -46,6 +47,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getLength(){
+    this.length = 0
     this.notifications.forEach(Element=>{
       if(!Element.isReaded){
         this.length++;
