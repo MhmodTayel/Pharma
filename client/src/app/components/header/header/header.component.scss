@@ -38,7 +38,10 @@ mat-toolbar {
     }
   }
   .menu__icon{
-    background-color: #283593;
+    background-color: #1b8ef2;
     border-radius: 50%;
+    ::ng-deep .mat-icon {
+      width: auto;
+    }
   }
   

@@ -35,7 +35,7 @@ export class ProfileDetailsComponent implements OnInit {
       (response:any) => {
         this.adminDetails = response ;
       },
-      (error) => { console.log(error.message) },
+      (error) => { },
     )
     const token: any = localStorage.getItem('token')
     if (token) {
@@ -53,7 +53,7 @@ export class ProfileDetailsComponent implements OnInit {
         this.adminDetails = response ;
         this._mysnackbar.openSnackBar('You data is updated successfully','blue-snackbar', 'Success')
       },
-      (error) => { console.log(error.message) },
+      (error) => { },
       () => { 
         this.adminDetailsForm.disable(); 
    

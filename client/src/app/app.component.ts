@@ -34,12 +34,12 @@ export class AppComponent implements OnInit {
         
       this.addNotificationService.postNotification(notification).subscribe(
         (response:any)=>{
-          console.log(response)
+          
           this.notifications.push(notification);
         },
 
         (error) => { 
-          console.log(error)
+      
         }
       )
       })

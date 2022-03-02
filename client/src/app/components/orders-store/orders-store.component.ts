@@ -30,7 +30,7 @@ export class OrdersStoreComponent implements OnInit {
       });
 
     this.order.getOrders().subscribe((data:any) => {
-      console.log(data);
+    
       
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
@@ -61,10 +61,10 @@ export class OrdersStoreComponent implements OnInit {
 
 
 catchRow(e:Order){ // will use it to show order details in model.
-  console.log(e);
+ 
 }
 test(){
-  console.log(this.fakedata); 
+
 }
 
 }

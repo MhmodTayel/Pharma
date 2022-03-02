@@ -75,7 +75,7 @@ export class AddMedComponent implements OnInit {
         this._mysnackbar.openSnackBar(`${response.name} has been added to store`,'blue-snackbar', 'Success') 
       },
       (error) => { 
-        console.log(error)
+        
       }
     );
 

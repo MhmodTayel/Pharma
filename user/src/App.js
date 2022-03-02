@@ -21,8 +21,6 @@ function App() {
   const [popup, setPopup] = useState("");
   useEffect(() => {
     socket.on("message", (msg) => {
-
-      console.log(msg)
       const obj = new AlertMsg('New medicine', 'success', `${msg.name} has arrived to store`, msg.date)
       setMessage(obj);
     });

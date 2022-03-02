@@ -50,11 +50,10 @@ export class MedicinesStoreComponent implements OnInit {
     const dialogRef = this.dialog.open(AddQuantityComponent, { disableClose: true });
 
     dialogRef.afterClosed().subscribe(result => {
-      // console.log(`Dialog result: ${result}`);
+      
     });
   }
 
-//displayedColumns: string[] = ['ID', 'Image', 'Name','Quantity', 'isAvailable', 'Store Price', 'ExpDate', 'ArrivDate', 'edit', 'delete']; //for table headers
 
 dataSource = new MatTableDataSource(this.medArr); 
 
@@ -74,7 +73,7 @@ applyFilter(event: Event) {
 
 
 catchRow(e:Medicine){ // will use it to show medicine details in model.
-console.log(e);
+
 }
 
 

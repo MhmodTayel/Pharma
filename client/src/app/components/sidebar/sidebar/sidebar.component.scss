@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap");
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 :host {
   .mat-icon {
     vertical-align: middle;
@@ -8,7 +9,7 @@
   }
 }
 .logo {
-  font-family: "Lobster", cursive;
+  font-family: "Poppins", cursive;
   font-size: 30px;
 }
 .menu__fonts {
@@ -31,7 +32,7 @@ a {
   ::ng-deep {
     .mat-list-item-content {
       &:hover {
-        background: #567e99 !important;
+        background: #1ba0f2 !important;
       }
     }
   }
@@ -40,9 +41,9 @@ a {
   color: #f2f5f7 !important;
   ::ng-deep {
     .mat-list-item-content {
-      background: #567e99 !important;
+      background: #1ba0f2 !important;
       &:hover {
-        background: #567e99 !important;
+        background: #1ba0f2 !important;
       }
     }
   }
