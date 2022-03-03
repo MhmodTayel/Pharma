@@ -1,3 +1,4 @@
+@use 'sass:math';
 
 
 
@@ -9,7 +10,7 @@ $blue-light: #ffffff;
 
 //mixins
 @mixin bp($bp, $min-max: min-width) {
-    $em: $bp/16;
+    $em: math.div($bp, 16);
     @media(#{$min-max}: #{$em}em) {
         @content;
     }

@@ -1,10 +1,10 @@
 import axios from "axios";
 const DEV_URL = "http://localhost:5000/users";
-const PROD_URL = "";
+const PROD_URL = "/users";
 const TOKEN = localStorage.getItem("token");
 
 export const axiosInstace = axios.create({
-  baseURL: DEV_URL,
+  baseURL: PROD_URL,
 });
 
 axiosInstace.interceptors.request.use(
