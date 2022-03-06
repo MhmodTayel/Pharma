@@ -9,14 +9,11 @@ const medicineSchema = new mongoose.Schema({
     name:{
         type: String,
         required: true,
-        minlength: 5,
-        maxlength: 50
+        minlength: 3,
+        maxlength: 20
     },
     description:{
         type: String,
-        required: true,
-        minLength: 5,
-        maxlength: 300
 
     },
     quantity:{
@@ -38,6 +35,8 @@ const medicineSchema = new mongoose.Schema({
     companyProvider:{
         type: String,
         required: true,
+        minlength: 3,
+        maxlength: 20
 
     },
     image:{
