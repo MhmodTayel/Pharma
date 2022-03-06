@@ -220,27 +220,7 @@ export class AddMedComponent implements OnInit {
 
   ];
 
-  // addOnBlur = true;
-  // readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  // categories: Categorie[] = [{name: 'Antibiotics'}];
-
-  // add(event: MatChipInputEvent): void {
-  //   const value = (event.value || '').trim();
-
-  //   if (value) {
-  //     this.categories.push({name: value});
-  //   }
-  //   event.chipInput!.clear();
-  // }
-
-  // remove(categorie: Categorie): void {
-  //   const index = this.categories.indexOf(categorie);
-
-  //   if (index >= 0) {
-  //     this.categories.splice(index, 1);
-  //   }
-  // }
-
+  
   clearInput()
    { this.formAddMedicine.reset() }
 
