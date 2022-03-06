@@ -6,7 +6,7 @@ const Notification=require("../../models/notification");
 const { set } = require("mongoose");
 
 const create = (user) => {
-  console.log(user)
+  
   return Pharmacist.create(user)
 };
 
@@ -18,8 +18,7 @@ const updateone = (id,body) => Notification.updateOne({id},{...body});
 
 const login = async ({ username, password }, next) => {
   const user = await Pharmacist.findOne({ username });
-  console.log( user , 'user con')
-  console.log(username)
+ 
   if (!user) {
     next(`wrong username`);
     return;

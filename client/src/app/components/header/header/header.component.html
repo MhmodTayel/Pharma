@@ -9,7 +9,7 @@
     <div class="row mr-2 ml-auto d-flex">
       <ul class="row m-0 align-items-center">
         <li class="d-flex">
-          <div class="user my-4 mx-3 ">
+          <div class="user my-4 mx-3">
             <a
               mat-list-item
               routerLinkActive="list-item-active"
@@ -18,7 +18,7 @@
               <main rel="main">
                 <span class="notification">
                   <mat-icon *ngIf="length > 0">notifications</mat-icon>
-                  <mat-icon  *ngIf="length == 0">notifications_none</mat-icon>
+                  <mat-icon *ngIf="length == 0">notifications_none</mat-icon>
                   <span
                     class="notification--num"
                     (click)="getLength()"
@@ -29,7 +29,7 @@
               </main>
             </a>
           </div>
-          <div class="my-4 mx-3 ">
+          <div class="my-4 mx-3">
             <button mat-button [matMenuTriggerFor]="menulanguage">
               <mat-icon>language</mat-icon>
             </button>
@@ -39,9 +39,13 @@
             </mat-menu>
           </div>
           <div>
-            <button mat-button [matMenuTriggerFor]="menu" class="user my-3 mx-3">
+            <button
+              mat-button
+              [matMenuTriggerFor]="menu"
+              class="user my-3 mx-3"
+            >
               <img
-                src="../../assets/144-1442578_flat-person-icon-download-dummy-man.png"
+                src="../../assets/man.png"
                 alt=""
                 class="user-image mr-1 p-1"
               />

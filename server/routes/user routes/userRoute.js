@@ -16,7 +16,6 @@ const {
 
 router.post("/user/login", async (req, res, next) => {
   const { username, password } = req.body;
-  console.log(req.body, "route");
   const token = await login({ username, password }, next);
   res.json(token);
 });
@@ -34,8 +33,7 @@ router.post("/contactUs", async (req, res, next) => {
   const message = req.body;
   const medArr = await Message.find({});
   message.id = medArr.length + 1;
-  req.io.emit("message", req.body.message);
-  console.log(message);
+  req.io.emit("message",  req.body.message);
   createMessage(message)
     .then((doc) => res.json(doc))
     .catch((e) => next(e));
@@ -48,7 +46,7 @@ router.post("/notification", async (req, res, next) => {
   createNotification(notification)
     .then((doc) => res.json(doc))
     .catch((e) => next(e));
-  console.log(notification);
+  
 });
 
 router.get("/notification/all", (req, res, next) => {

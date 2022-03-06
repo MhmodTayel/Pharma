@@ -9,6 +9,9 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import styles from './productDialog.module.scss'
+import { useDispatch, useSelector } from "react-redux";
+import { addMedOrderAction } from "../../store/actions/orderAction";
+
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -49,6 +52,12 @@ BootstrapDialogTitle.propTypes = {
 };
 
 export default function CustomizedDialogs(props) {
+const dispatch = useDispatch();
+const handleCart = ()=>{
+  const medObj = props.medItem
+  medObj.reqQuantity = 1;
+  dispatch(addMedOrderAction(medObj));
+}
   return (
     <div>
       <BootstrapDialog
@@ -60,10 +69,12 @@ export default function CustomizedDialogs(props) {
         </BootstrapDialogTitle>
         <div className='container'>
           <div className='row pb-3'>
-            <div className='col-md-6'>
-              <img src={props.medItem.image} className='img-fluid w-100' />
+            <div className='col-md-5'>
+              <div className='h-100 d-flex justify-content-center align-items-center' >
+                <img src={props.medItem.image} className='img-fluid w-100' /> 
+              </div>
             </div>
-            <div className='col-md-6'>
+            <div className='col-md-7'>
               <div className='dialogContent'>
                 <h4 className='fw-bolder text-capitalize'>{props.medItem.name} </h4>
                 <h6 className='border-bottom pb-3 text-muted text-capitalize'>From: {props.medItem.companyProvider} </h6>
@@ -90,7 +101,7 @@ export default function CustomizedDialogs(props) {
                       )}
                   </div>
                </div>
-               <Button variant="contained" sx={{ backgroundColor: '#4ebbe9' , width:'100%'}}><ShoppingCartIcon sx={{ mx: 1, fontSize: 20 }} /> Add to cart</Button>
+               <Button variant="contained" onClick={handleCart} className={styles.cardBtn}><ShoppingCartIcon sx={{ mx: 1, fontSize: 20 }} /> Add to cart</Button>
 
               </div>
             </div>

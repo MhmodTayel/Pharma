@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com');
+@import url("https://fonts.gstatic.com");
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+
+a{
+  font-family:'Heebo','sans-serif' !important; 
+}
+.link{
+  color:'#4ebbe9';
+  text-decoration:none;
+  font-weight: 500;
+}
+.navBtn{
+    color:rgba(255, 255, 255, 0.9);
+    text-decoration:none;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  .navBtn:hover{
+    color: #fff;
+    text-shadow:0px 0px 1px #fff;
+  }
+.settingsLink{
+    display: flex;
+    align-items: center;
+    
+}
+.numberBadge{
+    background-image: linear-gradient(to right , #000 ,#010a16d6) !important;;
+    padding: 5px 5px;
+    text-align: center;
+    border-radius: 450%;
+    margin-left: 6px !important;
+    font-size: 12px;
+}

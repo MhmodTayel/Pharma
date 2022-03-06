@@ -1,42 +1,77 @@
-<mat-form-field class="example-full-width p-2" >
-  <input matInput (keyup)="applyFilter($event)" placeholder="Find Medicine!" class="  w-auto " #input />
+<mat-spinner *ngIf="loading" class="loading-spinner"></mat-spinner>
+
+<mat-form-field class="example-full-width p-2" *ngIf="!loading">
+  <input
+    matInput
+    (keyup)="applyFilter($event)"
+    placeholder="Find Medicine!"
+    class="w-auto"
+    #input
+  />
 </mat-form-field>
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8  p-5" (matSortChange)="sortData()">
-    <!-- id Column -->
-    <ng-container matColumnDef="ID">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
-      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-    </ng-container>
-  
-    <!-- client Column -->
-    <ng-container matColumnDef="Image">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
-      <td mat-cell *matCellDef="let element">
-          <img class="med-img" src="{{ element.image }}" alt="">
+<table
+  *ngIf="!loading"
+  mat-table
+  [dataSource]="dataSource"
+  matSort
+  class="mat-elevation-z8"
+  (matSortChange)="sortData()"
+>
+  <!-- id Column -->
+  <ng-container matColumnDef="ID">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="id">ID</th>
+    <td mat-cell *matCellDef="let element" class="id-cell">
+      {{ element.id }}
+    </td>
+  </ng-container>
+
+  <!-- client Column -->
+  <ng-container matColumnDef="Image">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
+    <td mat-cell *matCellDef="let element">
+      <img class="med-img" src="{{ element.image }}" alt="" />
+    </td>
+  </ng-container>
+
+  <!-- date Column -->
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+  </ng-container>
+
+  <!-- status Column -->
+  <ng-container matColumnDef="Quantity">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+    <td class="qnt" mat-cell *matCellDef="let element">
+      <span>{{ element.quantity }}</span>
+      <i
+        routerLink="/products/all-products/addQuantity/{{ element.id }}"
+        (click)="openDialog()"
+        class="material-icons plus"
+        >add</i
+      >
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="isAvailable">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>In Stock</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-stroked-button color="warn" *ngIf="element.quantity <=10">Low</button>
+      <button mat-stroked-button color="primary" *ngIf="element.quantity > 10">High</button>
       </td>
-    </ng-container>
-  
-    <!-- date Column -->
-    <ng-container matColumnDef="Name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-      <td mat-cell *matCellDef="let element">{{ element.name}}</td>
-    </ng-container>
-  
-    <!-- status Column -->
-    <ng-container matColumnDef="Quantity">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
-      <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
-    </ng-container>
-    
-    <ng-container matColumnDef="isAvailable">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>In Stock</th>
-      <td mat-cell *matCellDef="let element">{{ element.isAvailable }}</td>
-    </ng-container>
-    <!-- action Column -->
-    <ng-container matColumnDef="Store Price">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Store Price</th>
-        <td mat-cell *matCellDef="let element">{{ element.storePrice }} L.E</td>
-      </ng-container>
+  </ng-container>
+  <!-- action Column -->
+  <ng-container matColumnDef="Store Price">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Store Price</th>
+    <td mat-cell *matCellDef="let element">{{ element.storePrice }} L.E</td>
+  </ng-container>
+<!-- 
+  <ng-container matColumnDef="ExpDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Expiration Date</th>
+    <td mat-cell class="text-muted" *matCellDef="let element">
+      {{ element.expDate | date: "d/M/yy, h:mm a" }}
+    </td>
+  </ng-container> -->
 
       <ng-container matColumnDef="ExpDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Expiration Date</th>
@@ -48,23 +83,42 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Arrived Date</th>
         <td mat-cell class="text-muted" *matCellDef="let element">{{ element.arriveDate | date: "d/M/yy, h:mm a" }}</td>
       </ng-container>
+
   <!-- action Column -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef yy>View</th>
+    <td mat-cell *matCellDef="let element">
+      <i routerLink="/products/all-products/details/{{element.id}}" (click)="productDetailsDialog()" class="material-icons" >remove_red_eye</i>
+    </td>
+  </ng-container>
+
   <ng-container matColumnDef="edit">
     <th mat-header-cell *matHeaderCellDef yy>Edit</th>
     <td mat-cell *matCellDef="let element">
-      <i routerLink="/products/edit/{{element.id}}" class="material-icons edit-icon" >edit</i>
-    </td>
 
+      <button mat-icon-button  color="primary" routerLink="/products/edit/{{ element.id }}" aria-label="Example icon button with a menu icon">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+    </td>
   </ng-container>
   <ng-container matColumnDef="delete">
     <th mat-header-cell *matHeaderCellDef yy>Delete</th>
     <td mat-cell *matCellDef="let element">
-      <i (click) = "deleteMedicine(element.id)"   class="material-icons px-3 delete-icon" >delete</i>
-    </td>
 
+      <button mat-icon-button  color="warn"  (click)="deleteMedicine(element.id)" aria-label="Example icon button with a menu icon">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+    </td>
   </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
-  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<mat-paginator
+class="hidePaginator"
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+>
+</mat-paginator>

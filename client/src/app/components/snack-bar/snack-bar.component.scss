@@ -7,3 +7,15 @@
     font-weight:500 ;
     font-size: 15px;
 }
+
+::ng-deep .blue-snackbar {
+    background: #2196f3 !important;
+  }
+
+::ng-deep .green-snackbar {
+    background: #21f34f !important;
+  }
+
+::ng-deep .danger-snackbar {
+    background: #e74c3c !important;
+  }

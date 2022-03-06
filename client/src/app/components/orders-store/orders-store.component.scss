@@ -1,22 +1,119 @@
-table {
+::ng-deep table {
   width: 100% !important;
-  .mat-elevation-z8{
+  margin: 5px;
+  .mat-elevation-z8 {
     width: 100% !important;
     background-color: white;
+    font-size: 15px !important;
+  }
+  background-color: revert !important;
+  border-collapse: separate !important;
+  border-radius: 10px !important;
+}
+.forSearch {
+  background-color: rgb(243, 241, 241);
+  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%),
+    0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+}
+.example-full-width {
+  width: 30%;
+}
+i {
+  cursor: pointer;
+  color: rgb(4, 4, 170);
+}
+tr.mat-row,
+tr.mat-footer-row {
+  height: auto;
+}
+td.mat-cell {
+  padding: 12px 0px;
+  font-size: 15px !important;
+}
+
+th.mat-header-cell {
+  font-weight: 700;
+  color: #3e3d3d;
+  padding: 12px 0px;
+}
+.id-cell {
+  position: relative;
+}
+.id-cell::before {
+  content: "";
+  position: absolute !important;
+  background-color: transparent !important;
+  width: 20px !important;
+  top: -1px;
+  bottom: 0px;
+  left: -5px;
+  border-radius: 5px;
+  border-left: 5px orange solid;
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@media (min-width: 0px) and (max-width: 550px) {
+  th.mat-header-cell,
+  td.mat-cell,
+  td.mat-footer-cell {
+    padding: 12px 2px;
+  }
+  td.mat-cell {
+    font-size: 14px !important;
+  }
+  ::ng-deep .mat-column-id {
+    width: 10% !important;
+    text-align: center;
+  }
+  th.mat-header-cell:first-of-type,
+  td.mat-cell:first-of-type,
+  td.mat-footer-cell:first-of-type {
+    padding-left: 0px;
+  }
+  ::ng-deep .mat-sort-header-container {
+    display: flex;
+    cursor: pointer;
+    letter-spacing: normal;
+    outline: 0;
+  }
+  ::ng-deep .id {
+    padding-left: 10px !important;
+  }
+  ::ng-deep .mat-column-action,
+  .mat-column-edit,
+  .mat-column-delete {
+    width: 10% !important;
+    text-align: center;
+  }
+  th.mat-header-cell:last-of-type,
+  td.mat-cell:last-of-type,
+  td.mat-footer-cell:last-of-type {
+    padding-right: 5px;
+  }
+  i {
+    font-size: 18px;
+    transition: all 1s;
   }
 }
 
-
-.forSearch{
-  background-color: rgb(243, 241, 241);
-  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.example-full-width {
-  width: 20%;
+.hidePaginator {
+  animation: animate 4s;
 }
 
-i{
-  cursor: pointer;
-  color: rgb(4, 4, 170);
+@keyframes animate {
+  0% {
+    visibility: hidden;
+  }
+  99% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
 }

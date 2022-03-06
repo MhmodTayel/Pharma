@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ResponsiveSidebarComponent } from './responsive-sidebar.component';
+import { MedicineDetailComponent } from './medicine-detail.component';
 
-describe('ResponsiveSidebarComponent', () => {
-  let component: ResponsiveSidebarComponent;
-  let fixture: ComponentFixture<ResponsiveSidebarComponent>;
+describe('MedicineDetailComponent', () => {
+  let component: MedicineDetailComponent;
+  let fixture: ComponentFixture<MedicineDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResponsiveSidebarComponent ]
+      declarations: [ MedicineDetailComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ResponsiveSidebarComponent);
+    fixture = TestBed.createComponent(MedicineDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

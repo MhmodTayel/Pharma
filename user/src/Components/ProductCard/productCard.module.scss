@@ -1,0 +1,41 @@
+div{
+    padding: 0px;
+    margin: 0px;
+}
+.title {
+   padding: 0px;
+   margin: 0px !important;
+   letter-spacing: 1px !important;
+   text-transform: uppercase;
+   font-weight: 600 !important;
+   color: #323232;
+   font-size: 1.1rem !important;
+}
+.category {
+    color: grey;
+    font-size: 15px;
+}
+.price{
+    color: #1ba0f2 ;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+}
+.imageContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.button{
+    background-image: linear-gradient(to right , #1b8ef2, #38d0f2) !important;
+    transition: all 0.5 ease !important;
+    box-shadow: none !important;
+}
+.button:hover {
+    background-image: linear-gradient(to right , #38d0f2,#1b8ef2 ) !important;
+}
+.icon
+{
+    margin: 5px;
+    font-size: 18px !important;
+}

@@ -1,15 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Login.module.scss'
 import { Button, TextField, FormControlLabel, Checkbox } from '@mui/material';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 import LoginIcon from '@mui/icons-material/Login';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { login } from '../../services/userService';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt';
 import InputAdornment from '@mui/material/InputAdornment';
-import LockIcon from '@mui/icons-material/Lock';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useHistory, Link } from 'react-router-dom';
-
 
 const validationSchema = yup.object({
 
@@ -22,9 +23,16 @@ const validationSchema = yup.object({
 });
 
 export default function Login() {
-  const isAuth = !localStorage.getItem("token");
-  console.log(isAuth);
   const history = useHistory();
+  const [alert, setAlert] = useState(false)
+  React.useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setAlert(false)
+    }, 3000);
+    return () => {
+      window.clearTimeout(timer);
+    };
+  }, [alert]);
 
   const formik = useFormik({
     initialValues: {
@@ -36,19 +44,18 @@ export default function Login() {
       console.log(values, 'values')
       login(values).then(
         (res) => {
-          console.log(res, 'res')
-          localStorage.setItem("token", res.data);
+          if (res.data) {
+            localStorage.setItem("token", res.data);
+            console.log(res.data, '')
+            history.push('/home')
+          }
         },
         (err) => {
           console.log(err, 'err')
+          return setAlert(true);
         }
       )
       actions.resetForm();
-      if (isAuth) {
-        return alert("you have to register");
-      } else {
-        history.push('/')
-      };
     },
   });
   return (
@@ -59,7 +66,6 @@ export default function Login() {
             <div class="row">
               <div class="col-md-6 d-flex justify-content-center align-items-center">
                 <div class={styles.AppFormLeft}>
-
                   <h1 className='my-5'>Login</h1>
                   <div class="form-group position-relative mb-4">
                     <TextField
@@ -76,8 +82,7 @@ export default function Login() {
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
-                            <AccountCircle className='text-primary' />
-                          </InputAdornment>
+                            <PersonAddAltIcon className='text-primary' />                          </InputAdornment>
                         ),
                       }}
                     />
@@ -98,7 +103,7 @@ export default function Login() {
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
-                            <LockIcon className='text-primary' />
+                            <LockOutlinedIcon className='text-primary' />
                           </InputAdornment>
                         ),
                       }}
@@ -141,6 +146,9 @@ export default function Login() {
             </div>
           </div>
         </form>
+        {alert && <Stack sx={{ width: '50%' }} className='my-5' spacing={2}>
+          <Alert variant="filled" severity="error">Error username Not Exist</Alert>
+        </Stack>}
       </div >
     </div >
   )

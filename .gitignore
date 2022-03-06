@@ -4,6 +4,7 @@ server/.env
 
 # compiled output
 client/dist
+user/build
 client/tmp
 client/out-tsc
 # Only exists if Bazel was run

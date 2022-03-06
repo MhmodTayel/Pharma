@@ -1,0 +1,33 @@
+.newsWrapper{
+    width: 80%;
+    margin: 30px auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f8fb;
+    border-radius: 10px;
+}
+.newsInput{
+    width: 100%;
+    padding: 10px;
+    display: inline-block;
+    border: none;
+    outline: none;
+   
+    
+}
+.btnSubscribe{
+    background-color: #578bc5 !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    
+}
+
+p{
+    span{
+        color: #578bc5;
+        font-weight: bold;
+    }
+}

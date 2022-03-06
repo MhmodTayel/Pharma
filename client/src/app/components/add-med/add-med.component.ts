@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
+import { SnackBarService } from 'src/app/services/snackBarService/snack-bar.service';
 
 interface Type {
   value: string;
@@ -38,7 +39,7 @@ export interface Categorie {
 export class AddMedComponent implements OnInit {
   medicines: Medicine[] = [];
   date = new FormControl(new Date());
-  constructor(private _formBuilder: FormBuilder, private _router: Router ,private addMedicineService:MedicineService) { }
+  constructor(private _formBuilder: FormBuilder, private _router: Router ,private addMedicineService:MedicineService,private _mysnackbar: SnackBarService) { }
   formAddMedicine: FormGroup = new FormGroup({});
   serializedDate = new FormControl(new Date().toISOString());
   imagePreview: string = '';
@@ -71,11 +72,10 @@ export class AddMedComponent implements OnInit {
     
     this.addMedicineService.addMedicine(postData).subscribe(
       (response: any) => {
-        console.log(response);
-        // alert(response.message) 
+        this._mysnackbar.openSnackBar(`${response.name} has been added to store`,'blue-snackbar', 'Success') 
       },
       (error) => { 
-        console.log(error)
+        
       }
     );
 
@@ -99,9 +99,9 @@ export class AddMedComponent implements OnInit {
 
   ngOnInit() {
     this.formAddMedicine = this._formBuilder.group({
-      name: ['', [Validators.required ,Validators.minLength(3)]],
+      name: ['', [Validators.required ,Validators.minLength(3),Validators.maxLength(20)]],
       description: [''],
-      companyProvider: ['', [Validators.required ,Validators.minLength(3)]],
+      companyProvider: ['', [Validators.required ,Validators.minLength(3),Validators.maxLength(20)]],
       type: ['', [Validators.required]],
       concentration: ['', [Validators.required]],
       expDate: ['', [Validators.required]],
@@ -111,7 +111,7 @@ export class AddMedComponent implements OnInit {
       storePrice: ['', [Validators.required]],
       discount: ['', [Validators.required]],
       firmPrice: ['', [Validators.required]],
-      brand: ['', [Validators.required,Validators.minLength(3)]],
+      brand: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(20)]],
       size: ['', [Validators.required]],
       limit: ['', [Validators.required]],
       image :[''],
@@ -220,27 +220,7 @@ export class AddMedComponent implements OnInit {
 
   ];
 
-  // addOnBlur = true;
-  // readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  // categories: Categorie[] = [{name: 'Antibiotics'}];
-
-  // add(event: MatChipInputEvent): void {
-  //   const value = (event.value || '').trim();
-
-  //   if (value) {
-  //     this.categories.push({name: value});
-  //   }
-  //   event.chipInput!.clear();
-  // }
-
-  // remove(categorie: Categorie): void {
-  //   const index = this.categories.indexOf(categorie);
-
-  //   if (index >= 0) {
-  //     this.categories.splice(index, 1);
-  //   }
-  // }
-
+  
   clearInput()
    { this.formAddMedicine.reset() }
 

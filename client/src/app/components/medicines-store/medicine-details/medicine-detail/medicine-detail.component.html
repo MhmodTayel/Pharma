@@ -1,0 +1,70 @@
+<div *ngIf="medicineDetails==null" class="w-100 h-100 d-flex justify-content-center">
+    <mat-spinner ></mat-spinner>
+</div>
+  
+<mat-dialog-content *ngIf="medicineDetails!=null" class="mat-typography">
+  <div class="container-fluid"> 
+    <div class="row">
+      <div class="col-md-5"> 
+        <div class="d-flex justify-content-center align-items-center h-100" >
+          <img src="{{medicineDetails.image}}" class="w-75">   
+        </div>
+      </div>  
+      <div class="col-md-7">
+        <div class="details-header"> 
+          <h1>{{medicineDetails.name}}</h1>
+          <p class="text-muted">From {{medicineDetails.companyProvider}}</p>
+          <p class="text-muted">{{medicineDetails.brand}}</p>
+        </div>
+        
+        <div class="row py-3 details-prices"> 
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="col-xs-4"> 
+              <span class="text-muted">Frim Price</span>
+              <h2>EGP {{medicineDetails.firmPrice}}</h2>
+            </div>
+            <div class="col-xs-4"> 
+              <span class="text-muted">Pharmacy Price</span>
+              <h2>EGP {{medicineDetails.pharmPrice}}</h2>
+            </div>
+            <div class="col-xs-4"> 
+              <span class="text-muted">Discount</span>
+              <h2>{{medicineDetails.discount}} %</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="details-info"> 
+          <h6><span>Available Quantity:</span> {{medicineDetails.quantity}}</h6>
+          <h6><span>Customer Limit:</span> {{medicineDetails.limit}}</h6>
+          <h6><span> Concentration: </span> {{medicineDetails.concentration}}</h6>
+          <h6><span> Type: </span> {{medicineDetails.type}}</h6>
+          <h6><span> Size: </span> {{medicineDetails.size}}</h6>
+        </div>
+
+      </div> 
+  </div>
+
+  <div class="row py-1">
+    <div class="col-md-12 dates">
+      <p class="py-3"><span>Description:</span> {{medicineDetails.description}}</p>
+      <span class="me-2 category" *ngFor="let category of medicineDetails.categories"> {{category}}. </span>
+      <div class="row pt-3">
+        <div class="col-md-6">
+          <p><span>Arrive Date:</span> {{medicineDetails.arriveDate}}</p>
+        </div>
+        <div class="col-md-6">
+          <p><span>Expire Date: </span> {{medicineDetails.expDate}}</p>  
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close routerLink="/products/all-products">Go to Products</button>
+</mat-dialog-actions>
+  

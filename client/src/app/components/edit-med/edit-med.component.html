@@ -1,6 +1,6 @@
-<div class="wrap">
-  <section class="question-section ">
-    <form class="container" [formGroup]="formEditMed" *ngIf="formEditMed" (ngSubmit)="onSubmit()">
+<div class="wrap ">
+  <section class="question-section mat-elevation-z1 ">
+    <form class="container " [formGroup]="formEditMed" *ngIf="formEditMed" (ngSubmit)="onSubmit()">
 
 
       <div class="d-flex  ">
@@ -33,7 +33,7 @@
 
 
         <input id="tab-1" type="radio" name="tabs" tabindex="1">
-        <label for="tab-1" class="text-center ">Medicine Details</label>
+        <label for="tab-1" class="text-center d-flex justify-content-center ">Medicine Details 	<mat-icon class="d-flex align-content-end">expand_more</mat-icon> </label>
 
         <div class="question-wrap  d-flex row gap-2  justify-content-center">
           <mat-form-field class="example-half-width   col-4" appearance="fill">
@@ -63,7 +63,7 @@
 
 
           <mat-form-field appearance="fill" class="example-half-width col-4">
-            <mat-label class="fw-bold ">concentration</mat-label>
+            <mat-label class=" ">concentration</mat-label>
             <mat-select formControlName="concentration" type="text">
               <mat-option *ngFor="let concentration of concentrations" value="{{medicines.concentration}}">
                 {{concentration.viewValue}}
@@ -79,7 +79,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="example-half-width col-4">
-            <mat-label class="fw-bold">Size</mat-label>
+            <mat-label class="">Size</mat-label>
             <mat-select formControlName="size" type="text">
               <mat-option *ngFor="let size of sizes" value="{{medicines.size}}">
                 {{size.viewValue}}
@@ -94,7 +94,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="example-half-width col-4">
-            <mat-label class="fw-bold ">Type</mat-label>
+            <mat-label class=" ">Type</mat-label>
             <mat-select formControlName="type" type="text">
               <mat-option *ngFor="let type of types" value="{{medicines.type}}">
                 {{type.viewValue}}
@@ -147,7 +147,7 @@
 
       <div class="cat-2">
         <input id="tab-2" type="radio" name="tabs" tabindex="7">
-        <label for="tab-2" class="text-center">Prices</label>
+        <label for="tab-2" class="text-center d-flex justify-content-center ">Prices <mat-icon class="d-flex align-content-end">expand_more</mat-icon></label>
 
         <div class="question-wrap d-flex row gap-2  justify-content-center">
           <mat-form-field class="example-half-width col-3  " appearance="fill">
@@ -193,12 +193,12 @@
 
       <div class="cat-3">
         <input id="tab-3" type="radio" name="tabs" tabindex="16">
-        <label for="tab-3" class="text-center">Dates</label>
+        <label for="tab-3" class="text-center d-flex justify-content-center ">Dates <mat-icon class="d-flex align-content-end">expand_more</mat-icon> </label>
 
         <div class="question-wrap d-flex row gap-2  justify-content-center">
 
           <mat-form-field class="example-half-width col-5" appearance="fill">
-            <mat-label class="fw-bold">Expiration Date</mat-label>
+            <mat-label class="">Expiration Date</mat-label>
             <input matInput [matDatepicker]="picker2" formControlName="expDate" type="text"
               value="{{medicines.expDate}}">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
@@ -212,7 +212,7 @@
           </mat-form-field>
 
           <mat-form-field appearance="fill" class="example-half-width col-5 ">
-            <mat-label class="fw-bold">Arrive Date</mat-label>
+            <mat-label class="">Arrive Date</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="arriveDate" type="text"
               value="{{medicines.arriveDate}}">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -231,7 +231,7 @@
 
       <div class="cat-4">
         <input id="tab-4" type="radio" name="tabs" tabindex="25">
-        <label for="tab-4" class="text-center">Categories</label>
+        <label for="tab-4" class="text-center d-flex justify-content-center ">Categories <mat-icon class="d-flex align-content-end">expand_more</mat-icon></label>
 
         <div class="question-wrap ">
           <div formArrayName="categories" class="example-full-width my-3">
@@ -252,7 +252,7 @@
       <!------.............................................section 5.................................................-->
       <div class="cat-5">
         <input id="tab-5" type="radio" name="tabs" tabindex="25">
-        <label for="tab-5" class="text-center">Limit & Discount </label>
+        <label for="tab-5" class="text-center d-flex justify-content-center ">Limit & Discount <mat-icon class="d-flex align-content-end">expand_more</mat-icon> </label>
 
         <div class="question-wrap d-flex row gap-2  justify-content-center">
 
@@ -282,10 +282,10 @@
         </div>
       </div>
 
-      <div class="d-flex gap-1  justify-content-center  my-5 ">
-        <button mat-raised-button class="btn col-2 " type="submit">Upadte</button>
-        <button mat-raised-button class="btn col-2 " type="button" (click)="clearInput()">Discard</button>
-        <button mat-raised-button class="btn col-2" type="button" (click)="filePicker.click() "
+      <div class="d-flex gap-1  justify-content-center  my-4 ">
+        <button mat-stroked-button color="primary" class=" col-2 " type="submit">Upadte</button>
+        <button mat-stroked-button color="warn" class=" col-2 " type="button" (click)="clearInput()">Discard</button>
+        <button mat-stroked-button class=" col-2" type="button" (click)="filePicker.click() "
           (click)="toggelCheck(false)">
           Update Image
         </button>

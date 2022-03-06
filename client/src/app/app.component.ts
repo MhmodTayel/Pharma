@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
     
   //   this.addNotificationService.listen('message').subscribe((data)=>{
 
+
   //     let notification = new Notification ();
   //      notification.notificationMessage= `${data}`;
        
@@ -44,6 +45,7 @@ export class AppComponent implements OnInit {
   //   this.addNotificationService.getNotification().subscribe(
   //     (response:any)=>{
   //       this.notifications = response;
+
 
   //       console.log(response);
   //       console.log(this.notifications);

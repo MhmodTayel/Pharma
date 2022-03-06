@@ -1,0 +1,24 @@
+
+<form class="example-form" [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Add Quantity</mat-label>
+      <input matInput type="number" placeholder="Enter quantity" formControlName="quantity"
+      [class.is-invalid]="addForm.controls['quantity'].errors && addForm.controls['quantity'].touched"
+      >
+      
+    </mat-form-field>
+    <div *ngIf="addForm.controls['quantity'].errors" class="invalid">
+      <div *ngIf="addForm.controls['quantity'].errors['required'] &&  addForm.controls['quantity'].touched">Required Quantity
+      </div>
+      <div *ngIf="addForm.controls['quantity'].errors['pattern']">Enter a number</div>
+    </div>
+    <mat-dialog-actions align="end">
+        <button mat-button type="submit" color="primary">Add Quantity</button>
+        <button #cancelBtn mat-button mat-dialog-close routerLink="products/all-products">Cancel</button>
+    </mat-dialog-actions>
+</form>
+
+
+
+
+

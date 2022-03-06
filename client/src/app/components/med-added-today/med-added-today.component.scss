@@ -1,5 +1,5 @@
 ::ng-deep  .mat-card{
-    padding: 2px 16px !important;
+    padding: 2px 14px !important;
   }
 ::ng-deep .mat-card-title {
   font-size: 20px;
@@ -8,43 +8,73 @@
 .price{
   font-size: 18px;
   font-weight: 600;
-  color: #ff5722;
+  color: #4340fb;
   margin-bottom: 0px;
 }
-// .mat-badge {
-//   width: auto;
-//   display: grid;
-//   min-width: 32px;
-//   min-height: 32px;
-//   align-items: center;
-//   font-size: 14px;
-//   background-color: #ff5722;  
-//   box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%);
-//   top: -30% !important;
-//   right:0.5% !important;
-// }
+::ng-deep .mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
+  right: 0px;
+  width: 80px;
+  height: 30px;
+  border-radius: 3px;
+  top: -14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+	background-image: linear-gradient(135deg , #4340fb, #00BCD4);
+
+}
 
 ::ng-deep .mat-card-actions{
   padding: 0px !important;
-  margin: 0px !important;
+  margin:0px !important;
   display: flex !important;
   align-items: end !important;
   justify-content: end !important;
   padding-bottom: 10px !important;
 }
-::ng-deep .mat-card-actions a ,.mat-card-actions button{
+::ng-deep .mat-card-actions a , .mat-card-actions button{
   min-width: 38px;
   line-height: 30px;
-  background-color: #ff5622fb;
   color: #fff;
   padding: 5px 5px !important;
+  margin: 0px 3px !important;
+  background-color: transparent ;
+  box-shadow: 0 6px 12px 0 rgba(152, 160, 180, 10) !important;
+  z-index: 99;
   border-radius: 50%;
-  box-shadow: 0 3px 5px -1px rgb(0 0 0 / 20%), 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%);
-  margin: 0 !important;
+  position: relative;
+	transition: all 0.4s ease;
 }
+
+.fill-button{
+  position: absolute;
+	background-image: linear-gradient(to right, #4340fb, #00BCD4);
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  border-radius: 50%;
+  z-index: -999;
+}
+.mat-card-actions a:hover ,
+.mat-card-actions button:hover {
+  transform: scale(1.2,1.2);
+}
+
 .mat-icon {
   font-size: 20px;
 }
 .edit-icon{
   margin-right: 5px !important;
+}
+.card-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.mat-card-image{
+  height: 200px;
+  width: auto;
 }

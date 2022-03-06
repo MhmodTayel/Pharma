@@ -1,3 +1,8 @@
+// @import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@200&display=swap');
+// body{
+//     margin: 0px;
+//     font-family: 'Roboto Serif', sans-serif !important; 
+// }
 .bgFooter{
     padding:20px;
     background: #222;
@@ -32,15 +37,16 @@
 }
 .lastFooter{
     background-color: #1a1a1a;
-    padding:20px;
+    padding:10px !important;
 }
 .allIcons{
     display: flex;
 }
 .lastFooterP{
     color: white;
-    font-weight:600!important;
-
+    text-align: center;
+    margin-top: 5px;
+    font-size: 14px;
 }
 .iconSpanFac , .iconSpantw , .iconSpanGo , .iconSpanin {
     padding: 5px !important;
@@ -48,7 +54,7 @@
     margin-left: 5px !important;
     cursor: pointer;
 }
-.iconSpanFac:hover{
+.iconSpanFac:hover{ 
     color: rgba(71, 71, 214, 0.767);
     transition: all 1s ease-in;
 }
@@ -64,7 +70,7 @@
 }
 .iconSpanin:hover{
     color: #f14141;
-    transition: all 1s ease-in;
+    transition: all .4s ease-in;
 
 }
 @media only screen and (max-width: 700px) {

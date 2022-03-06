@@ -1,0 +1,13 @@
+.slick-prev:before,
+.slick-next:before {
+  color: #38d0f2 ;
+  position: absolute;
+  top: 30%;
+  // content:"\e876";
+}
+.slick-prev:before{
+    left: 30%;
+}
+.slick-next:before{
+    right: 30%;
+}

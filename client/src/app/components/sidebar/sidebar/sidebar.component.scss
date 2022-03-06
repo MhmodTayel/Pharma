@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap");
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 :host {
   .mat-icon {
     vertical-align: middle;
@@ -7,19 +8,18 @@
     font-size: 20px !important;
   }
 }
-.logo{
-  font-family: 'Lobster', cursive;
+.logo {
+  font-family: "Poppins", cursive;
   font-size: 30px;
 }
-.menu__fonts{
-  font-family: 'Prompt', sans-serif !important;
+.menu__fonts {
+  font-family: "Prompt", sans-serif !important;
 }
 .mat-divider {
   border-top-width: 2px;
   border-color: white !important;
-
 }
-a{
+a {
   color: #f2f5f7 !important;
 }
 .mat-list-item {
@@ -32,7 +32,7 @@ a{
   ::ng-deep {
     .mat-list-item-content {
       &:hover {
-        background: #567e99 !important;
+        background: #1ba0f2 !important;
       }
     }
   }
@@ -41,9 +41,9 @@ a{
   color: #f2f5f7 !important;
   ::ng-deep {
     .mat-list-item-content {
-      background: #567e99 !important;
+      background: #1ba0f2 !important;
       &:hover {
-        background: #567e99 !important;
+        background: #1ba0f2 !important;
       }
     }
   }
@@ -54,10 +54,40 @@ a{
   font-weight: 100;
   letter-spacing: 1px;
 }
-h4{
+h4 {
   color: #f2f5f7 !important ;
   font-size: 1.1rem;
-  margin: 0.5rem  !important;
+  margin: 0.5rem !important;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
+
+::ng-deep .mat-expansion-panel:not([class*="mat-elevation-z"]) {
+  box-shadow: none;
+  background-color: transparent;
+  margin: 0px !important;
+}
+
+::ng-deep .mat-expansion-panel-header {
+  padding: 0px !important;
+}
+::ng-deep .mat-expansion-panel-body {
+  padding: 0px !important;
+}
+.expansion-item {
+  padding-left: 10px;
+}
+
+::ng-deep .mat-list-base .mat-list-item .mat-list-item-content,
+.mat-list-base .mat-list-option .mat-list-item-content {
+  padding: 0px 30px !important;
+}
+
+:host mat-select ::ng-deep .mat-select-arrow {
+  transform: rotate(-90deg);
+}
+
+::ng-deep .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  transform: rotate(0deg);
+}
+

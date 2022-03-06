@@ -1,50 +1,68 @@
-<mat-form-field class="example-full-width p-2">
-  <input matInput (keyup)="applyFilter($event)" placeholder="Find Order!" class="  w-auto " #input />
-</mat-form-field>
-<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8  p-5" (matSortChange)="sortData()">
+<mat-spinner *ngIf="loading" class="loading-spinner"></mat-spinner>
 
+<mat-form-field class="example-full-width p-2" *ngIf="!loading">
+  <input
+    matInput
+    (keyup)="applyFilter($event)"
+    placeholder="Find Order!"
+    class="w-auto"
+    #input
+  />
+</mat-form-field>
+<table
+  *ngIf="!loading"
+  mat-table
+  [dataSource]="dataSource"
+  matSort
+  class="mat-elevation-z8"
+  (matSortChange)="sortData()"
+>
   <!-- id Column -->
   <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Order id</th>
-    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header class="id">ID</th>
+    <td mat-cell *matCellDef="let element" class="id-cell">{{ element.id }}</td>
   </ng-container>
 
   <!-- client Column -->
   <ng-container matColumnDef="client">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Client</th>
-    <td mat-cell *matCellDef="let element">{{ element.client?.pharmacyName }}</td>
+    <td mat-cell *matCellDef="let element">
+      {{ element.client?.pharmacyName }}
+    </td>
   </ng-container>
 
-  <!-- client Column
-  <ng-container matColumnDef="client">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>client</th>
-    <td mat-cell *matCellDef="let element">{{ element.client?.pharmacyName }}</td>
-  </ng-container> -->
+  <!-- client phone Column -->
+  <ng-container matColumnDef="clientPhone" class="hide">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Client Phone</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.client?.pharmacistPhonNumber }}
+    </td>
+  </ng-container>
 
   <!-- date Column -->
   <ng-container matColumnDef="date">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-    <td mat-cell *matCellDef="let element">{{ element.date | date: "d/M/yy, h:mm a" }}</td>
+    <td mat-cell *matCellDef="let element">
+      {{ element.createdAt | date: "d/M/yy, h:mm a" }}
+    </td>
   </ng-container>
 
   <!--cost column-->
   <ng-container matColumnDef="cost">
     <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
-    <td mat-cell *matCellDef="let element">EPG {{ element.cost/1000 }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.cost / 100 }} EGP</td>
   </ng-container>
 
   <!-- status Column -->
   <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>status</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
     <td mat-cell *matCellDef="let element">
       <span *ngIf="element.inProgress">
-        <h5><span class="badge bg-success">in progress</span></h5>
+        <h5> <button mat-stroked-button color="primary">In Progress</button></h5>
       </span>
-
 
       <span *ngIf="element.fulfilled">
         <h5><span class="badge bg-success">fulfilled</span></h5>
-
       </span>
     </td>
   </ng-container>
@@ -53,12 +71,22 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef yy>Order Details</th>
 
-    <td mat-cell *matCellDef="let element"><i routerLink="/orders/details/{{element.id}}" (click)="openDialog()"
-        class="material-icons">remove_red_eye</i></td>
+    <td mat-cell *matCellDef="let element">
+
+      <button mat-icon-button  aria-label="Example icon button with a open in new tab icon" routerLink="/orders/details/{{ element.id }}"
+      (click)="openDialog()">
+        <mat-icon>open_in_new</mat-icon>
+      </button>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
-<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
+<mat-paginator
+  class="hidePaginator"
+  [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+>
 </mat-paginator>

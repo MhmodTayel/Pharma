@@ -4,12 +4,14 @@ const { Client, Repository } = require("redis-om");
 const findOne = (id) => Medicine.findOne({ id: id });
 const findAll = () => Medicine.find();
 
-const getMedicinesByCat = ( cat ) => Medicine.find({ categories: { "$in" : [cat]} } )
+const getMedicinesByCat = ( cat ) => Orders.find({ categories: { "$in" : [cat]} } )
+const getIncomingMed = (date) => Medicine.find({arriveDate: {$gte:date}})
+const getIncomingMedNumber = (date)=> Medicine.countDocuments({arriveDate: {$gte:date}})
+
 
 
 const updateQuantity = (id, newQuantity) =>
-  Medicine.updateOne({ id }, { $inc: { quantity: +("-" + newQuantity) } });
-
+  Medicine.findOneAndUpdate({ id }, { $inc: { quantity: +("-" + newQuantity) } }, {returnDocument: 'after'});
 
 //------------ Search ------------//
 const client = new Client();
@@ -32,5 +34,5 @@ async function searchMeds(q) {
   return meds;
 }
 
-module.exports = { findOne, updateQuantity,searchMeds,findAll,getMedicinesByCat };
+module.exports = { findOne, updateQuantity,searchMeds,findAll,getMedicinesByCat ,getIncomingMed,getIncomingMedNumber};
 

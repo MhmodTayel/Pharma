@@ -8,10 +8,30 @@ import Typography from '@mui/material/Typography';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import ProductDialog from './../PorductDialog/ProductDialog'
-
+import styles from './productCard.module.scss'
+import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import { useDispatch, useSelector } from "react-redux";
+import { addMedOrderAction } from "../../store/actions/orderAction";
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    right: 33,
+    top: 50,
+    width:'50px',
+    height:'50px',
+    textAlign:'center',
+    fontWieght:'400',
+    backgroundImage: 'linear-gradient(to right top, #F2A71B , #ffeb00)',
+    boxShadow: '0 2px 6px 0 rgba(0,0,0,0.4) !important' , 
+    fontSize:'12px',
+    color:'#f5ffff',
+    borderRadius: '50%'
+  },
+}));
 
 export default function ProductItemCard(props) {
   const [openDialog, setOpenDialog] = React.useState(false);
+  const dispatch = useDispatch();
 
   const handleClickOpen = () => {
     setOpenDialog(true);
@@ -20,42 +40,48 @@ export default function ProductItemCard(props) {
     setOpenDialog(false);
   };
 
+  const handleCart = ()=>{
+    const medObj = props.medItem
+    medObj.reqQuantity = 1;
+    dispatch(addMedOrderAction(medObj));
+  }
+
   return (
-    <Card sx={{ maxWidth: 345 , my:2 }}>
-      <CardMedia
-        component="img"
-        alt="Product Image"
-        height="140"
-        image={props.medItem.image}
-      />
-      <CardContent sx={{ pt: 1 , pb:0}}>
-      {props.medItem?.categories?.map((cat, indx) =>
-           <Typography  key={indx} variant="p" color="text.secondary" sx={{textTransform:'uppercase',fontWeight: 'medium'}}>{cat}.</Typography> 
-      )}
+    <StyledBadge badgeContent={`${props.medItem.discount}% OFF`} className={styles.discount}>
+    <Card sx={{ maxWidth: 265 , my:2 , textAlign:'left'}}>
+            <div className={styles.imageContainer} > 
+              <CardMedia 
+                component="img"
+                alt="Product Image"
+                sx={{ maxHeight:200 , width:'auto'}}
+                image={props.medItem.image}
+              />
+            </div>
+        <CardContent sx={{ pt: 1 , pb:0}} >
+          <Typography gutterBottom variant="h6" component="div" className={styles.title}>
+            {props.medItem.name}
+          </Typography>
+          {props.medItem?.categories?.map((cat, indx) =>
+            <Typography  key={indx} variant="p" className={styles.category}>{cat}.</Typography> 
+        )}
+          <Typography gutterBottom variant="h6" component="div" className={styles.price} > 
+            {props.medItem.storePrice} EGP
+          </Typography>
+        </CardContent>
 
-      <Typography variant="p" color="text.secondary" sx={{textTransform:'uppercase',fontWeight: 'medium'}}></Typography>
+        <CardActions sx={{ display: 'flex' ,justifyContent:'space-between' , pb:1}}>
+          <Button variant="contained" size="small" sx={{px:3}} className={styles.button} onClick={handleClickOpen}><VisibilityIcon className={styles.icon}/> 
+          Quick View
+          </Button>
+          <ProductDialog 
+          medItem={props.medItem}
+          open={openDialog}  
+          handleCloseDialog={() => handleClose(false)} 
+          />
+          <Button variant="contained" size="small" onClick={handleCart} className={styles.button}><ShoppingCartIcon className={styles.icon}/></Button>
+        </CardActions>
+      </Card>  
+     </StyledBadge>
 
-        <Typography gutterBottom variant="h6" component="div" sx={{ mb:0 , py:1 }}>
-          {props.medItem.name}
-        </Typography>
-        <Typography gutterBottom variant="h6" component="div" sx={{fontWeight: 'Bold' , color:'#4ebbe9'}}> 
-          EPG {props.medItem.storePrice}
-        </Typography>
-
-      </CardContent>
-      <CardActions sx={{ display: 'flex' ,justifyContent:'space-around' , pb:2}}>
-        <Button variant="contained" size="small" sx={{backgroundColor:'#4ebbe9'}} onClick={handleClickOpen}><VisibilityIcon sx={{mx:1 , fontSize:20 }}  /> 
-        Quick View
-        </Button>
-         <ProductDialog 
-         medItem={props.medItem}
-         open={openDialog}  
-         handleCloseDialog={() => handleClose(false)} 
-         />
-
-        <Button variant="contained" size="small" sx={{backgroundColor:'#4ebbe9'}}><ShoppingCartIcon sx={{mx:1 , fontSize:20}}/> Add to cart</Button>
-      
-      </CardActions>
-    </Card>
   );
 }
