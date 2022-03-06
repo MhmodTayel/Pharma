@@ -11,11 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SidebarComponent } from './components/sidebar/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header/header.component';
 import { SharedModuleModule } from './modules/sharedModule/shared-module/shared-module.module';
-// import { ResponsiveSidebarComponent } from './components/responsive-sidebar/responsive-sidebar.component';
 
-
-
-import { AddNotificationsComponent } from './modules/productsModule/add-product-page/add-notifications/add-notifications.component';
+// import { AddNotificationsComponent } from './modules/productsModule/add-product-page/add-notifications/add-notifications.component';
 
 
 
@@ -27,8 +24,7 @@ import { AddNotificationsComponent } from './modules/productsModule/add-product-
     LoginComponent,
     SidebarComponent,
     HeaderComponent, 
-    // ResponsiveSidebarComponent,
-    AddNotificationsComponent,
+    // AddNotificationsComponent,
    
   ],
   

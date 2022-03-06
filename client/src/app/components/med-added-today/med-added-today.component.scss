@@ -69,10 +69,10 @@
   margin-right: 5px !important;
 }
 .card-image{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  overflow: hidden !important;
 }
 .mat-card-image{
   height: 200px;

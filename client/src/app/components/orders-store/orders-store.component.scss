@@ -50,6 +50,9 @@ th.mat-header-cell {
   border-radius: 5px;
   border-left: 5px orange solid;
 }
+th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+  padding-left: 24px;
+}
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @media (min-width: 0px) and (max-width: 550px) {
   th.mat-header-cell,

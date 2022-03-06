@@ -2,7 +2,9 @@
     <div class="row pt-2 ">
         <div *ngFor="let med of IncomingMedicine; let currentIndex=index" class="col-lg-3 col-md-6 my-3">
             <mat-card class="example-card" matBadge="In Stock: {{med.quantity}}">
-                <img mat-card-image src="{{med.image}}" alt="product image">
+                <div class="card-image">
+                    <img mat-card-image src="{{med.image}}" alt="product image">
+                </div>
                 <mat-card-actions class="action-buttons">
                     <button mat-button class="edit-icon" routerLink="/products/edit/{{med.id}}">
                         <mat-icon>edit</mat-icon> 
