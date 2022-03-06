@@ -4,7 +4,7 @@ const PROD_URL = "/users";
 const TOKEN = localStorage.getItem("token");
 
 export const axiosInstace = axios.create({
-  baseURL: PROD_URL,
+  baseURL: DEV_URL,
 });
 
 axiosInstace.interceptors.request.use(
