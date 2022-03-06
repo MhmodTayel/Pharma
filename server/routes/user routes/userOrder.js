@@ -15,6 +15,7 @@ const SavedOrder = require("../../models/savedOrder");
 router.post("/orders/newOrder", async({body}, res, next)=>{
     const id = await Order.find({}).count();
     body.id = id+1;
+    req.io.emit("message",  req.body.client);
     createOrder(body)
     .then((doc)=>{
         req.io.emit("newOrder",  doc);     
