@@ -99,9 +99,9 @@ export class AddMedComponent implements OnInit {
 
   ngOnInit() {
     this.formAddMedicine = this._formBuilder.group({
-      name: ['', [Validators.required ,Validators.minLength(3)]],
+      name: ['', [Validators.required ,Validators.minLength(3),Validators.maxLength(20)]],
       description: [''],
-      companyProvider: ['', [Validators.required ,Validators.minLength(3)]],
+      companyProvider: ['', [Validators.required ,Validators.minLength(3),Validators.maxLength(20)]],
       type: ['', [Validators.required]],
       concentration: ['', [Validators.required]],
       expDate: ['', [Validators.required]],
@@ -111,7 +111,7 @@ export class AddMedComponent implements OnInit {
       storePrice: ['', [Validators.required]],
       discount: ['', [Validators.required]],
       firmPrice: ['', [Validators.required]],
-      brand: ['', [Validators.required,Validators.minLength(3)]],
+      brand: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(20)]],
       size: ['', [Validators.required]],
       limit: ['', [Validators.required]],
       image :[''],

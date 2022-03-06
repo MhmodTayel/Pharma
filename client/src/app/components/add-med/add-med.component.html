@@ -18,8 +18,9 @@
             >required</mat-hint
           >
           <mat-hint *ngIf="formAddMedicine.controls['name'].errors['minlength']"
-            >minimum length is 3</mat-hint
-          >
+            >minimum length is 3</mat-hint>
+            <mat-hint *ngIf="formAddMedicine.controls['name'].errors['maxlength']"
+            >maximum length is 20</mat-hint>
         </mat-hint>
       </mat-form-field>
 
@@ -56,6 +57,9 @@
             "
             >minimum length is 3
           </mat-hint>
+
+          <mat-hint *ngIf="formAddMedicine.controls['companyProvider'].errors['maxlength']"
+          >maximum length is 20</mat-hint>
         </mat-hint>
       </mat-form-field>
 
@@ -329,6 +333,8 @@
             <mat-hint
             *ngIf="formAddMedicine.controls['categories'].errors['minlength']"
             >minimum length is 3</mat-hint>
+            <mat-hint *ngIf="formAddMedicine.controls['categories'].errors['maxlength']"
+            >maximum length is 20</mat-hint>
           </mat-hint>
         </mat-form-field>
 
