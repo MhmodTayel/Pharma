@@ -81,7 +81,7 @@ const Navbar = () => {
             }}
           >
             <MedicationSharpIcon sx={{ m: 1 }} />
-            PHARMA TECH
+            PHARMA 
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -150,7 +150,7 @@ const Navbar = () => {
             }}
           >
             <MedicationSharpIcon mb={5} />
-            PHARMA TECH
+            PHARMA 
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button

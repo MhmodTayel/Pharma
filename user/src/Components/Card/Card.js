@@ -86,9 +86,13 @@ export default function MedCard({ med }) {
             <span className="text-muted fw-bold">{med.storePrice} EGP</span>
           </Typography>
           <Typography color="#2c456a" fontSize="medium" className="pt-3">
-            Price: <span className="text-muted fw-bold">{med.pharmPrice} EGP</span>
+            Sell Price: <span className="text-muted fw-bold">{med.pharmPrice} EGP</span>
           </Typography>
         </div>
+        <Typography color="#2c456a" fontSize="medium">
+        discount:{" "}
+          <span className="text-muted fw-bold">{med.discount } %</span>
+        </Typography>
         <hr />
         <Typography color="#2c456a" fontSize="medium">
           Total:{" "}

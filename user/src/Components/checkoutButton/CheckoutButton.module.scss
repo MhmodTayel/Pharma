@@ -1,8 +1,10 @@
+
 .checkoutBtn{
-    color:rgba(128, 128, 128, 0.719) !important;
-    background-color: #f4f8fb !important;
-    margin: 0px 5px !important;
-    padding: 8px 25px !important;
+    background-image: linear-gradient(to right , #1b8ef2, #38d0f2) !important;
     font-family: "Heebo", "sans-serif" !important;
     box-shadow: 0px 2px 1px -2px rgb(0 0 0 / 17%), 0px 2px 2px 0px rgb(0 0 0 / 5%), 0px 1px 2px 0px rgb(0 0 0 / 20%)
+    !important;
+    padding: 8px 25px !important;
+    color: #fff !important;
+
 }

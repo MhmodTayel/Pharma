@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material/Send";
+import SaveIcon from '@mui/icons-material/Save';
 import { saveOrder } from "../../services/userService";
 import styles from './SaveButton.module.scss'
 
@@ -25,7 +25,7 @@ export default function SaveOrderButton() {
     <Button
       className={styles.saveBtn}
       variant="contained"
-      endIcon={<SendIcon />}
+      endIcon={<SaveIcon />}
       onClick={handelSaveOrder}
     >
       Save Order

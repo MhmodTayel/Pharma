@@ -4,6 +4,8 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import { checkout } from "../../services/userService";
 import { useStripe } from "@stripe/react-stripe-js";
+
+
 import styles from './CheckoutButton.module.scss'
 
 export default function CheckoutButton({newOrder,savedOrderId}) {
@@ -44,7 +46,7 @@ export default function CheckoutButton({newOrder,savedOrderId}) {
   };
 
   return (
-    <Button className={styles.checkoutBtn}> disabled= {!orderStore.length} onClick={handelCheckout}>
+    <Button className={styles.checkoutBtn} disabled= {!orderStore.length} onClick={handelCheckout} endIcon={<SendIcon />}>
       Checkout
     </Button>
   );

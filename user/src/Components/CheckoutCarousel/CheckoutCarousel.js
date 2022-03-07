@@ -12,7 +12,7 @@ function CheckoutCarousel() {
         {
             infinite: true,
             speed: 500,
-            slidesToShow: 5,
+            slidesToShow: 3,
             nextArrow: <SampleNextArrow />,
             prevArrow: <SamplePrevArrow />,
             responsive: [
