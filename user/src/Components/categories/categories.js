@@ -14,7 +14,7 @@ export default function Categories() {
                     {/* first row  */}
                     <div className="col-md-4 d-flex flex-column">
                         <div className={styles.imgDiv}>
-                            <Link to='#'>
+                            <Link to='/category/cold'>
                                 <div className="position-relative">
                                     <div className="w-100  position-relative">
                                         <img src={require('../../Assets/Images/womwn-care.jpg')} className={styles.imgImg} alt='women-care' />
@@ -26,7 +26,7 @@ export default function Categories() {
                             </Link>
                         </div>
                         <div className={styles.imgDiv}>
-                            <Link to='#'>
+                            <Link to='/category/cold'>
                                 <div className=" position-relative">
                                     <div className="w-100 position-relative">
                                         <img src={require('../../Assets/Images/dermocosmatics-2.jpg')} alt='dermocosmatics' className={styles.imgImg} />
@@ -39,7 +39,7 @@ export default function Categories() {
                             </Link>
                         </div>
                         <div className={styles.imgDiv}>
-                            <Link to=''>
+                            <Link to='/category/cold'>
                                 <div className=" position-relative">
                                     <div className="w-100 position-relative">
                                         <img src={require('../../Assets/Images/men-care-1.jpg')} alt='men-care-1' className={styles.imgImg} />
@@ -53,7 +53,7 @@ export default function Categories() {
                         </div>
 
                         <div className={styles.imgDiv}>
-                            <Link to=''>
+                            <Link to='/category/cold'>
                                 <div className=" position-relative">
                                     <div className="w-100 position-relative">
                                         <img src={require('../../Assets/Images/sexual-wellness.jpg')} alt='sexual-wellness' className={styles.imgImg} />
@@ -70,7 +70,7 @@ export default function Categories() {
                     {/* second row  */}
                     <div className="col-md-4 d-flex flex-column">
                         <div className={styles.imgDiv}>
-                            <Link to=''>
+                            <Link to='/category/cold/Toothache'>
                                 <div className=" position-relative">
                                     <div className=" w-100 position-relative">
                                         <img src={require('../../Assets/Images/beauty-1.jpg')} alt='oral-care' className={styles.imgImg} />
@@ -83,7 +83,7 @@ export default function Categories() {
                         </div>
 
                         <div className={styles.imgDiv}>
-                            <Link to=''>
+                            <Link to='/category/cold/Toothache'>
                                 <div className=" position-relative">
                                     <div className=" w-100 position-relative">
                                         <img src={require('../../Assets/Images/bath-body-1.jpg')} alt='bath-body' className={styles.imgImg} />
@@ -96,7 +96,7 @@ export default function Categories() {
                         </div>
 
                         <div className={styles.imgDiv}>
-                            <Link to=''>
+                            <Link to='/category/cold/Toothache'>
                                 <div className=" position-relative">
                                     <div className=" w-100 position-relative">
                                         <img src={require('../../Assets/Images/oral-care-1.jpg')} alt='oral-care' className={styles.imgImg} />
@@ -110,7 +110,7 @@ export default function Categories() {
                         </div>
 
                         <div className={styles.imgDiv}>
-                            <Link to=''>
+                            <Link to='/category/cold/Toothache'>
                                 <div className=" position-relative">
                                     <div className=" w-100 position-relative">
                                         <img src={require('../../Assets/Images/contact-lenses-1.jpg')} alt='men-care-1' className={styles.imgImg} />
@@ -129,7 +129,7 @@ export default function Categories() {
                     {/* third row */}
                     <div className="col-md-4  col-sm-12 d-flex flex-column">
                         <div className={styles.imgDiv}>
-                            <Link to=''>
+                            <Link to='/category/cold/Headache'>
                                 <div className="position-relative">
                                     <div className=" w-100 position-relative">
                                         <img src={require('../../Assets/Images/baby-1.jpg')} alt='baby' className={styles.imgImg} />
@@ -142,7 +142,7 @@ export default function Categories() {
                             </Link>
                         </div>
                         <div className={styles.imgDiv}>
-                            <Link to="">
+                            <Link to="/category/cold/Headache">
                                 <div className="position-relative">
                                     <div className=" w-100 position-relative">
                                         <img src={require('../../Assets/Images/hair-care.jpg')} alt='hair-care' className={styles.imgImg} />
@@ -155,7 +155,7 @@ export default function Categories() {
                         </div>
 
                         <div className={styles.imgDiv}>
-                            <Link to="">
+                            <Link to="/category/cold/Headache">
                                 <div className="w-100">
                                     <div className=" w-100">
                                         <img src={require('../../Assets/Images/personal-care-1.jpg')} alt='men-care-1' className={styles.imgImg} />
