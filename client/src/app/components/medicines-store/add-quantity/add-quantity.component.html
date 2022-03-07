@@ -5,15 +5,20 @@
       <input matInput type="number" placeholder="Enter quantity" formControlName="quantity"
       [class.is-invalid]="addForm.controls['quantity'].errors && addForm.controls['quantity'].touched"
       >
-      
+      <mat-hint *ngIf="addForm.controls['quantity'].errors">
+        <mat-hint *ngIf="addForm.controls['quantity'].errors['min'] ">Min Quantity is 1
+        </mat-hint>
+        <mat-hint *ngIf="addForm.controls['quantity'].errors['max'] ">Max Quantity is 300
+        </mat-hint>
+      </mat-hint>
+    
+      <!-- <mat-hint *ngIf="addForm.controls['quantity'].errors['pattern']">Enter a number</mat-hint> -->
     </mat-form-field>
-    <div *ngIf="addForm.controls['quantity'].errors" class="invalid">
-      <div *ngIf="addForm.controls['quantity'].errors['required'] &&  addForm.controls['quantity'].touched">Required Quantity
-      </div>
-      <div *ngIf="addForm.controls['quantity'].errors['pattern']">Enter a number</div>
-    </div>
+    <!-- <div *ngIf="addForm.controls['quantity'].errors" class="invalid">
+      
+    </div> -->
     <mat-dialog-actions align="end">
-        <button mat-button type="submit" color="primary">Add Quantity</button>
+        <button mat-button type="submit" color="primary" [mat-dialog-close] = "Addstatus">Add Quantity</button>
         <button #cancelBtn mat-button mat-dialog-close routerLink="products/all-products">Cancel</button>
     </mat-dialog-actions>
 </form>

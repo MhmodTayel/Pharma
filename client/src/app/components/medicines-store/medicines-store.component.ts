@@ -41,7 +41,6 @@ export class MedicinesStoreComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.loading = false
-
     })
   }
 
@@ -49,12 +48,24 @@ export class MedicinesStoreComponent implements OnInit {
   openDialog() { 
     const dialogRef = this.dialog.open(AddQuantityComponent, { disableClose: true });
     dialogRef.afterClosed().subscribe(result => {
-      
+      this._medService.getAllMedicines().subscribe((res: any)=>{
+        this.medArr = res;
+        this.dataSource = new MatTableDataSource(res);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        this.loading = false
+  
+      })
     });
+    dialogRef.backdropClick().subscribe(res=> {
+      
+      dialogRef.close()
+    })
+   
   }
 
   productDetailsDialog(){
-    console.log("this product")
+   
     const dialogRef = this.dialog.open(MedicineDetailComponent , {disableClose:true})  
     dialogRef.afterClosed().subscribe(result => {
     });
