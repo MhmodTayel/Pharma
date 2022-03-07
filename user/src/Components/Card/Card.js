@@ -2,7 +2,6 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-
 import styles from "./Card.module.scss";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
@@ -95,12 +94,12 @@ export default function MedCard({ med }) {
           Total:{" "}
           <span className="text-muted fw-bold">{med.storePrice * count} EGP</span>
         </Typography>
-        <Typography color="#2c456a" fontSize="medium">
+        {/* <Typography color="#2c456a" fontSize="medium">
           Expiration Date:{" "}
           <span className="text-muted fw-bold">
             {moment(med.expDate).format("MMM YYYY")}
           </span>
-        </Typography>
+        </Typography> */}
       </CardContent>
     </Card>
   );

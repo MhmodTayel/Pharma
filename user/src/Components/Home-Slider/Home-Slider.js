@@ -60,8 +60,8 @@ export default function HomeSlider() {
                   <div className={styles.sliderContent}>
                   <h2 className={styles.offerDiscount}>15% OFF ON</h2>
                     <h2 className={styles.offerProducts}>Medicine</h2>
-                    <p className="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                      sed do eiusmod tempor incididunt. </p>
+                    <p className="text-white">Hurry up and catch the offers now! enjoy discouts on every order you make and 
+                    get all the medecal supplies you need. </p>
                       <Button variant="contained" className={styles.sliderButton}>Buy Now</Button>
                   </div>
               </div>
@@ -74,15 +74,14 @@ export default function HomeSlider() {
             <img src={img2} alt="Offer 1" className="img-fluid" />
             <div className={styles.offerDdetails}>
               <div className="container">
-                <div className="col-md-9 col-lg-6">
-                <div className={styles.sliderContent}>
-                <h2 className={styles.offerDiscount}>15% OFF ON</h2>
-                    <h2 className={styles.offerProducts}>Medicine</h2>
-                    <p className="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                      sed do eiusmod tempor incididunt. </p>
+                  <div className="col-md-9 col-lg-6">
+                    <div className={styles.sliderContent}>
+                      <h2 className={styles.offerDiscount}>15% OFF ON</h2>
+                      <h2 className={styles.offerProducts}>Medicine</h2>
+                      <p className="text-white">Hurry up and catch the offers now! enjoy discouts on every order you make and 
+                      get all the medecal supplies you need. </p>
                       <Button variant="contained" className={styles.sliderButton}>Buy Now</Button>
-                </div>
-                  
+                    </div>                  
                   </div>
               </div>
             </div>

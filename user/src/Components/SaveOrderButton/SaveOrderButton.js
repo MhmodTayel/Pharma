@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import { saveOrder } from "../../services/userService";
+import styles from './SaveButton.module.scss'
 
 export default function SaveOrderButton() {
   const orderStore = useSelector((state) => state.order);
@@ -22,6 +23,7 @@ export default function SaveOrderButton() {
   };
   return (
     <Button
+      className={styles.saveBtn}
       variant="contained"
       endIcon={<SendIcon />}
       onClick={handelSaveOrder}

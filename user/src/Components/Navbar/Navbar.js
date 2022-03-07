@@ -174,42 +174,41 @@ const Navbar = () => {
               onClick={handleCloseNavMenu}
               sx={{ my: 2, display: "block" }}
             >
-               <Button onClick={handleOpenUserMenu2} sx={{ p: 0 }}>
-                Order
+              <Button onClick={handleOpenUserMenu2} className={styles.navBtn} sx={{ p: 0 }} >
+                Orders
               </Button>
-          <Menu
-              sx={{ mt: "45px" }}
-              id="tmenu-appbar"
-              anchorEl={anchorElUser2}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser2)}
-              onClose={handleCloseUserMenu2}
-            >
-              <MenuItem onClick={handleCloseUserMenu2}>
-              <Link className={styles.link} to="/saved-orders">
-                  saved orders
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu2}>
-              <Link className={styles.link} to="/new-order">
-                  new orders
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseUserMenu2}>
-              <Link className={styles.link} to="/orders">
-                   orders
-                </Link>
-              </MenuItem>
-             
-            </Menu>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="tmenu-appbar"
+                anchorEl={anchorElUser2}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser2)}
+                onClose={handleCloseUserMenu2}
+              >
+                <MenuItem onClick={handleCloseUserMenu2}>
+                  <Link className={styles.link} to="/new-order">
+                    New Order
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu2}>
+                  <Link className={styles.link} to="/saved-orders">
+                      Saved Orders
+                  </Link>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu2}>
+                  <Link className={styles.link} to="/orders">
+                      Orders
+                  </Link>
+                </MenuItem>   
+              </Menu>
             </Button>
             <Button
               onClick={handleCloseNavMenu}
