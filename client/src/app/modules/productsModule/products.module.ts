@@ -30,6 +30,7 @@ const routes: Routes = [
     AddProductPageComponent,
     EditProductPageComponent,
     AddedTodayComponent,
+    AddNotificationsComponent
   ],
   imports: [
     CommonModule , RouterModule.forChild(routes), SharedModuleModule ,ComponentsModule,MaterialModule

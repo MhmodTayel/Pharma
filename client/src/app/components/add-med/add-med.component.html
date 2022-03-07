@@ -18,8 +18,9 @@
             >required</mat-hint
           >
           <mat-hint *ngIf="formAddMedicine.controls['name'].errors['minlength']"
-            >minimum length is 3</mat-hint
-          >
+            >minimum length is 3</mat-hint>
+            <mat-hint *ngIf="formAddMedicine.controls['name'].errors['maxlength']"
+            >maximum length is 20</mat-hint>
         </mat-hint>
       </mat-form-field>
 
@@ -56,6 +57,9 @@
             "
             >minimum length is 3
           </mat-hint>
+
+          <mat-hint *ngIf="formAddMedicine.controls['companyProvider'].errors['maxlength']"
+          >maximum length is 20</mat-hint>
         </mat-hint>
       </mat-form-field>
 
@@ -305,36 +309,42 @@
         </mat-hint>
       </mat-form-field>
 
-      <!-- 
-        <mat-form-field class="example-full-width " appearance="outline">
-          <mat-label>categories</mat-label>
-          <mat-chip-list #chipList aria-label="Fruit selection">
-            <mat-chip *ngFor="let categorie of categories" (removed)="remove(categorie)">
-              {{categorie.name}}
-              <button matChipRemove>
-                <mat-icon>cancel</mat-icon>
-              </button>
-            </mat-chip>
-            <input placeholder="New categorie..." [matChipInputFor]="chipList"
-              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
-              (matChipInputTokenEnd)="add($event)" type="text" formControlName="categories">
-          </mat-chip-list>
-          <mat-hint *ngIf="formAddMedicine.controls['categories'].errors">
-            <mat-hint *ngIf="
-              formAddMedicine.controls['categories'].errors['required'] &&
-              formAddMedicine.touched
-              ">required</mat-hint>
-            <mat-hint *ngIf="formAddMedicine.controls['categories'].errors['minlength']">minimum length is 3</mat-hint>
-          </mat-hint>
-        </mat-form-field>  -->
 
-      <div formArrayName="categories" class="example-full-width">
-        <div *ngFor="let song of categories.controls; let i = index">
-          <!-- <label> categories: </label> -->
+        <mat-form-field class="example-full-width" appearance="outline" 
+        formArrayName="categories"
+        *ngFor="let categorie of categories.controls; let i = index">
+          <mat-label>categories</mat-label>
+          <input
+            matInput
+            placeholder=""
+            value=""
+            [formControlName]="i" 
+            type="text"
+          
+          />
+          <mat-hint *ngIf="formAddMedicine.controls['categories'].errors">
+            <mat-hint
+              *ngIf="
+                formAddMedicine.controls['categories'].errors['required'] &&
+                formAddMedicine.touched
+              "
+              >required</mat-hint
+            >
+            <mat-hint
+            *ngIf="formAddMedicine.controls['categories'].errors['minlength']"
+            >minimum length is 3</mat-hint>
+            <mat-hint *ngIf="formAddMedicine.controls['categories'].errors['maxlength']"
+            >maximum length is 20</mat-hint>
+          </mat-hint>
+        </mat-form-field>
+
+      <!-- <div formArrayName="categories" class="example-full-width" >
+        <div *ngFor="let categorie of categories.controls; let i = index">
+     
           <mat-label class="mx-2">categories:</mat-label>
           <input type="text" [formControlName]="i" />
         </div>
-        <mat-hint *ngIf="formAddMedicine.controls['categories'].errors">
+        <mat-hint *ngIf="formAddMedicine.controls['categories'].errors" > 
           <mat-hint
             *ngIf="
               formAddMedicine.controls['categories'].errors['required'] &&
@@ -347,7 +357,7 @@
             >minimum length is 3</mat-hint
           >
         </mat-hint>
-      </div>
+      </div> -->
 
 <!-- <<<<<<< tayel_front_snackbars
       <div class="d-flex justify-content-center">

@@ -20,9 +20,11 @@ export class AddNotificationService {
     return new Observable ((subscriber)=>{
 
       this.soket.on(eventname,(data:any)=>{
-
         subscriber.next(data);
-      })
+      }
+
+      
+      )
     })
   }
 
@@ -38,5 +40,13 @@ export class AddNotificationService {
   getNotification( ){
     return this._api. get(`/users/notification/all`)
   }
+  deleteNotification( id:any){
+    return this._api.delete(`/users/notification/delete/${id}`)
+  }
+
+  updateIsReaded( id:any ,body:any){
+    return this._api.patch(`/users/notification/update/${id}`,body)
+  }
+
 
 }

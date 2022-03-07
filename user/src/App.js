@@ -69,6 +69,7 @@ function App() {
           <ProtectedRoute path={"/" } component={Home} />
           <ProtectedRoute path="*" exact component={notFound} />
         </Switch>
+        
       </BrowserRouter>
     </>
   );

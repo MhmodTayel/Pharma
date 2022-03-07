@@ -15,7 +15,7 @@ export class AddQuantityComponent implements OnInit {
   constructor(private fb: FormBuilder, private _medService: MedicineService, private _router: Router) { }
   addForm: any = this.fb.group({
     
-    quantity: [''],
+    quantity: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
   });
   ngOnInit(): void {
     this.id = window.location.href.split('/').pop();

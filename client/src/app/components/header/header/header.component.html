@@ -2,18 +2,47 @@
   <mat-toolbar-row class="justify-content-between">
     <div class="menu__icon">
       <button mat-icon-button (click)="toggleSidebar()">
-        <mat-icon class="h3 m-auto text-white">menu</mat-icon>
+        <mat-icon class="h3 m-auto me-1 text-white">menu</mat-icon>
       </button>
     </div>
 
     <div class="row mr-2 ml-auto d-flex">
       <ul class="row m-0 align-items-center">
         <li class="d-flex">
+          <div class="user my-4 mx-3">
+            <a
+              mat-list-item
+              routerLinkActive="list-item-active"
+              routerLink="/products/Notifications"
+            >
+              <main rel="main">
+                <span class="notification">
+                  <mat-icon *ngIf="length > 0">notifications</mat-icon>
+                  <mat-icon *ngIf="length == 0">notifications_none</mat-icon>
+                  <span
+                    class="notification--num"
+                    (click)="getLength()"
+                    *ngIf="length > 0"
+                    >{{ length }}
+                  </span>
+                </span>
+              </main>
+            </a>
+          </div>
+          <div class="my-4 mx-3">
+            <button mat-button [matMenuTriggerFor]="menulanguage">
+              <mat-icon>language</mat-icon>
+            </button>
+            <mat-menu #menulanguage="matMenu">
+              <button mat-menu-item>Arabic</button>
+              <button mat-menu-item>English</button>
+            </mat-menu>
+          </div>
           <div>
             <button
               mat-button
               [matMenuTriggerFor]="menu"
-              class="user mt-2 d-flex align-items-center"
+              class="user my-3 mx-3"
             >
               <img
                 src="../../assets/man.png"
@@ -32,15 +61,6 @@
                 <mat-icon>exit_to_app</mat-icon>
                 Logout
               </button>
-            </mat-menu>
-          </div>
-          <div class="my-3">
-            <button mat-button [matMenuTriggerFor]="menulanguage">
-              <mat-icon>language</mat-icon>
-            </button>
-            <mat-menu #menulanguage="matMenu">
-              <button mat-menu-item>Arabic</button>
-              <button mat-menu-item>English</button>
             </mat-menu>
           </div>
         </li>
