@@ -104,7 +104,7 @@ export default function CountDown() {
               </Button>
             </div>
           </div>
-          <div>
+          <div className="d-lg-block d-md-none d-xs-none d-sm-none d-none">
             <img src={require("../../Assets/Images/img_1.png")} alt="" />
           </div>
         </div>

@@ -69,7 +69,7 @@ export default function Login() {
                   <h1 className='my-5'>Login</h1>
                   <div class="form-group position-relative mb-4">
                     <TextField
-                      className="logintext-field my-3"
+                      className={styles.TextField}
                       variant="standard"
                       fullWidth
                       id="username"
@@ -89,9 +89,9 @@ export default function Login() {
                   </div>
                   <div class="form-group position-relative mb-4">
                     <TextField
-                      className="logintext-field my-3 h3"
-                      variant="standard"
+                      className={styles.TextField}
                       fullWidth
+                      variant="standard"
                       id="password"
                       name="password"
                       label="Password"
@@ -122,11 +122,11 @@ export default function Login() {
                       <a href="#">Forgot Password?</a>
                     </div>
                   </div>
-
-                  <button class="btn btn-primary btn-block shadow border-0 py-2 text-uppercase" type='submit'>
-                    Login
-                  </button>
-
+                  <div className='d-flex justify-content-center'>
+                    <button class="btn btn-primary btn-block shadow border-0 py-2 text-uppercase" type='submit'>
+                      Login
+                    </button>
+                  </div>
                   <p class="text-center mt-5">
                     Don't have an account?
                     <span className={styles.link}><Link to='/register'> create an account</Link></span>
