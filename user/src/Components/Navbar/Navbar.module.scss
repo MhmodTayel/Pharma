@@ -11,11 +11,11 @@ a{
   font-weight: 500;
 }
 .navBtn{
-    color:rgba(255, 255, 255, 0.9);
+    color:rgba(255, 255, 255, 0.9) !important;
     text-decoration:none;
-    text-transform: capitalize;
-    font-weight: 500;
-    font-size: 1rem;
+    text-transform: capitalize !important;
+    font-weight: 500 !important;
+    font-size: 1rem !important;
   }
   .navBtn:hover{
     color: #fff;

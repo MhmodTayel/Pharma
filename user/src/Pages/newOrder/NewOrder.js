@@ -29,12 +29,6 @@ export default function NewOrder() {
       </div>
       <div>
         <div className="container my-3">
-          {orderStore.length != 0 && (
-            <div className="actions">
-              <CheckoutButton newOrder={orderStore} />
-              <SaveOrderButton />
-            </div>
-          )}
           <div className="row pt-5">
             {orderStore.length==0 ?  
    
@@ -56,13 +50,19 @@ export default function NewOrder() {
             })}
 
           </div>
+          {orderStore.length != 0 && (
+            <div className="actions d-flex justify-content-end" >
+              <CheckoutButton newOrder={orderStore} />
+              <SaveOrderButton />
+            </div>
+          )}
           <div className="row py-5">
             <h3 className={style.heading}><span className='fw-bold py-3 ms-3'>New Arrivals </span></h3>
             <CheckoutCarousel/>
           </div>
         </div>
       </div>
-      {/* <Footer/> */}
+      <Footer/>
     </>
   );
 }
