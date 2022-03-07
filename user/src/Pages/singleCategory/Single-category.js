@@ -14,7 +14,7 @@ export default function SingleCategory() {
     };
 
     React.useEffect(() => {
-        getMedByCat("test").then(
+        getMedByCat(cat).then(
             (res) => {
                 setData(res.data)
                 console.log(res.data)
@@ -28,6 +28,7 @@ export default function SingleCategory() {
     return (
         <div className='container py-3'>
             <div className='row text-center'>
+                <button className="btn btn-outline-danger d-block w-auto" onClick={back}>Back</button>
                 <h3 className='fw-bold py-3'> SingleCategory </h3>
                 {data.map((med, index) => {
                     return (
