@@ -1,6 +1,6 @@
-import { AddNotificationService } from './services/addNotification/add-notification.service';
+// import { AddNotificationService } from './services/addNotification/add-notification.service';
 import { Component, OnInit } from '@angular/core';
-import Swal from 'sweetalert2';
+
 import { Notification } from 'src/app/models/notification';
 
 
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
-  constructor(private addNotificationService: AddNotificationService) { }
+  constructor() { }
 
   ngOnInit(): void {
     

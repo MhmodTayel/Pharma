@@ -1,52 +1,52 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import io from 'socket.io-client';
-import { ApiService } from '../apiServices/api.service';
-import { Notification } from 'src/app/models/notification';
-@Injectable({
-  providedIn: 'root'
-})
-export class AddNotificationService {
-  soket:any;
-  readonly url: string ="ws://localhost:5000";
+// import { Injectable } from '@angular/core';
+// import { Observable } from 'rxjs';
+// import io from 'socket.io-client';
+// import { ApiService } from '../apiServices/api.service';
+// import { Notification } from 'src/app/models/notification';
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class AddNotificationService {
+//   soket:any;
+//   readonly url: string ="ws://localhost";
 
 
-  constructor(private _api:ApiService) { 
+//   constructor(private _api:ApiService) { 
 
-    this.soket=io(this.url)
-  }
+//     this.soket=io(this.url)
+//   }
 
-  listen (eventname:string ){
-    return new Observable ((subscriber)=>{
+//   listen (eventname:string ){
+//     return new Observable ((subscriber)=>{
 
-      this.soket.on(eventname,(data:any)=>{
-        subscriber.next(data);
-      }
+//       this.soket.on(eventname,(data:any)=>{
+//         subscriber.next(data);
+//       }
 
       
-      )
-    })
-  }
+//       )
+//     })
+//   }
 
-  emit (eventname:string , data:any){
-    this.soket.emit(eventname,data)
+//   emit (eventname:string , data:any){
+//     this.soket.emit(eventname,data)
 
-  }
+//   }
 
-  postNotification(notification:Notification ){
-    return this._api.post(`/users/notification`, notification)
-  }
+//   postNotification(notification:Notification ){
+//     return this._api.post(`/users/notification`, notification)
+//   }
 
-  getNotification( ){
-    return this._api. get(`/users/notification/all`)
-  }
-  deleteNotification( id:any){
-    return this._api.delete(`/users/notification/delete/${id}`)
-  }
+//   getNotification( ){
+//     return this._api. get(`/users/notification/all`)
+//   }
+//   deleteNotification( id:any){
+//     return this._api.delete(`/users/notification/delete/${id}`)
+//   }
 
-  updateIsReaded( id:any ,body:any){
-    return this._api.patch(`/users/notification/update/${id}`,body)
-  }
+//   updateIsReaded( id:any ,body:any){
+//     return this._api.patch(`/users/notification/update/${id}`,body)
+//   }
 
 
-}
+// }

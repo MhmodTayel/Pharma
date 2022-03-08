@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { SessionService } from 'src/app/services/sessionServices/session.service';
 import { Router } from '@angular/router';
-import { AddNotificationService } from '../../../services/addNotification/add-notification.service';
+
 import { Notification } from 'src/app/models/notification';
 
 @Component({
@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   notifications :Notification[]=[];
   length :number=0;
 
-  constructor(private _session: SessionService, private _router: Router,private addNotificationService: AddNotificationService) { }
+  constructor(private _session: SessionService, private _router: Router) { }
 
   currentUser: string = "";
   ngOnInit(): void {
@@ -24,19 +24,19 @@ export class HeaderComponent implements OnInit {
     }
 
 
-    this.addNotificationService.getNotification().subscribe(
-      (response:any)=>{
-        this.notifications = response;
-        console.log(response);
-        console.log(this.notifications);
-        this.getLength()
+    // this.addNotificationService.getNotification().subscribe(
+    //   (response:any)=>{
+    //     this.notifications = response;
+    //     console.log(response);
+    //     console.log(this.notifications);
+    //     this.getLength()
       
-           },
-      (error) => { 
-        console.log(error)
-      }
+    //        },
+    //   (error) => { 
+    //     console.log(error)
+    //   }
       
-    )
+    // )
   }
   toggleSidebar() {
     this.toggleSidebarForMe.emit();

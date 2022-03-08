@@ -36,13 +36,11 @@ export class LoginComponent implements OnInit {
     this._adminService.adminLogin(admin).subscribe(
       (response:any) => {
         this.loginResponse = response ;
+        this._router.navigateByUrl('/orders');
+        this._sessionService.login(this.loginResponse);
       },
       (error) => { 
         this._mysnackbar.openSnackBar(`${error.error}`,'danger-snackbar', 'Error') 
-      },
-      () => {
-            this._router.navigateByUrl('/orders');
-            this._sessionService.login(this.loginResponse);
       }
     ) 
 

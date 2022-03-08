@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SessionService {
   loginStatus = new BehaviorSubject<boolean> (this.isLoggedIn())
-  loginKey = 'Token';
+  loginKey = 'token';
   
   constructor() { }
   login(token:string)

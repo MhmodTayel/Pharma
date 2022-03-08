@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AddNotificationService } from '../../../services/addNotification/add-notification.service';
+// import { AddNotificationService } from '../../../services/addNotification/add-notification.service';
 import { Notification } from 'src/app/models/notification';
 import { ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2'
@@ -19,43 +19,43 @@ export class AddNotificationsComponent implements OnInit {
 
 
 
-  constructor(private addNotificationService: AddNotificationService, private _ativatedRoute: ActivatedRoute) {
+  constructor( private _ativatedRoute: ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
 
-    this.addNotificationService.listen('message').subscribe((data) => {
+    // this.addNotificationService.listen('message').subscribe((data) => {
 
-      let notification = new Notification();
-      notification.notificationMessage = `${data}`;
+    //   let notification = new Notification();
+    //   notification.notificationMessage = `${data}`;
 
-      this.addNotificationService.postNotification(notification).subscribe(
-        (response: any) => {
-          console.log(response)
-          this.notifications.push(notification);
-        },
+    //   this.addNotificationService.postNotification(notification).subscribe(
+    //     (response: any) => {
+    //       console.log(response)
+    //       this.notifications.push(notification);
+    //     },
 
-        (error) => {
-          console.log(error)
-        }
-      )
-    })
+    //     (error) => {
+    //       console.log(error)
+    //     }
+    //   )
+    // })
 
 
-    this.addNotificationService.getNotification().subscribe(
-      (response: any) => {
-        this.notifications = response;
-        this.len = this.notifications.length;
-        console.log(response);
-        console.log(this.notifications);
-        console.log(this.len);
-      },
-      (error) => {
-        console.log(error)
-      }
+    // this.addNotificationService.getNotification().subscribe(
+    //   (response: any) => {
+    //     this.notifications = response;
+    //     this.len = this.notifications.length;
+    //     console.log(response);
+    //     console.log(this.notifications);
+    //     console.log(this.len);
+    //   },
+    //   (error) => {
+    //     console.log(error)
+    //   }
 
-    )
+    // )
   }
   isShown = false; 
   toggleShow(event: Event) {
@@ -79,9 +79,9 @@ export class AddNotificationsComponent implements OnInit {
           'Your file has been deleted.',
           'success'
         )
-        this.addNotificationService.deleteNotification(id).subscribe((res) => {
-          this.notifications.splice(this.notifications.findIndex((notification) => notification.id == id), 1)
-        }, () => { })
+        // this.addNotificationService.deleteNotification(id).subscribe((res) => {
+        //   this.notifications.splice(this.notifications.findIndex((notification) => notification.id == id), 1)
+        // }, () => { })
 
       }
     })
@@ -90,11 +90,11 @@ export class AddNotificationsComponent implements OnInit {
 
   updateisReaded(id: any) {
     let notification = { isReaded: true }
-    this.addNotificationService.updateIsReaded(id, notification).subscribe(
-      (res) => {
+    // this.addNotificationService.updateIsReaded(id, notification).subscribe(
+    //   (res) => {
 
-        console.log(res)
-      })
+    //     console.log(res)
+    //   })
 
 
   }
