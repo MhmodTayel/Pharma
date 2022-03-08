@@ -9,7 +9,7 @@ import { ComponentsModule } from 'src/app/components/components.module';
 import { AddedTodayComponent } from './products-added-today-page/added-today/added-today.component';
 import { MaterialModule } from '../angular-material/angular-material.module';
 import { AddQuantityComponent } from 'src/app/components/medicines-store/add-quantity/add-quantity.component';
-import { AddNotificationsComponent } from './add-product-page/add-notifications/add-notifications.component';
+ import { AddNotificationsComponent } from './add-notifications/add-notifications.component';
 
 
 const routes: Routes = [

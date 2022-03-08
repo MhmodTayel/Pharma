@@ -87,10 +87,10 @@
 </mat-expansion-panel> -->
 
 <div class="card w-75 m-auto mt-3 position-relative  shadow-sm" *ngFor="let item of notifications ,let i=index">
-  <mat-icon class="close-icon position-absolute"(click)="delete(item.id)">close</mat-icon>
+  <!-- <mat-icon class="close-icon position-absolute"(click)="delete(item.id)">close</mat-icon> -->
   <div class="card__message d-flex">
     <mat-icon *ngIf="!isShown" class="me-5 mt-3 text-primary icon">notifications_active</mat-icon>
-    <mat-icon *ngIf="isShown" class="me-5 mt-3 icon">notifications</mat-icon>
+    <!-- <mat-icon *ngIf="isShown" class="me-5 mt-3 icon">notifications</mat-icon> -->
 
     <div>
       <h2>Message# {{i+1}}</h2>
