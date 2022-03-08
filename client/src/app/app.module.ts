@@ -12,7 +12,7 @@ import { SidebarComponent } from './components/sidebar/sidebar/sidebar.component
 import { HeaderComponent } from './components/header/header/header.component';
 import { SharedModuleModule } from './modules/sharedModule/shared-module/shared-module.module';
 
-// import { AddNotificationsComponent } from './modules/productsModule/add-product-page/add-notifications/add-notifications.component';
+//import { AddNotificationsComponent } from './modules/productsModule/add-notifications/add-notifications.component';
 
 
 
@@ -24,7 +24,7 @@ import { SharedModuleModule } from './modules/sharedModule/shared-module/shared-
     LoginComponent,
     SidebarComponent,
     HeaderComponent, 
-    // AddNotificationsComponent,
+    //AddNotificationsComponent,
    
   ],
   
