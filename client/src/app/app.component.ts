@@ -2,7 +2,7 @@ import { AddNotificationService } from './services/addNotification/add-notificat
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Notification } from 'src/app/models/notification';
-
+import { ErrorHandler } from '@angular/core';
 
 
 @Component({
@@ -11,10 +11,12 @@ import { Notification } from 'src/app/models/notification';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
   title = 'client';
   sideBarOpen = true;
   notifications :Notification[]=[];
 
+  
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }

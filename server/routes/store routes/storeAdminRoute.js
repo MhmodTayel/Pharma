@@ -20,7 +20,8 @@ router.post("/admin/login", async (req,res, next) => {
 
 router.get("/admin/details", async (req,res, next) => {
     res.json(req.admin);
-  });
+    // console.log(req.admin)
+});
   
 router.patch("/admin/edit-details", async (req,res, next) => {
 update(req.admin._id, req.body)

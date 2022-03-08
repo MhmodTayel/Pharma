@@ -26,7 +26,7 @@ mongoose.connect(process.env.CONNECTION_STRING);
 
 
 
-// app.use(authMiddleware)
+app.use(authMiddleware)
 app.use('/users',[userRoute,userMedicine,userOrder])
 app.use('/store',[storeAdminRoute,storeMedRoute,storeOrderRoute])
 

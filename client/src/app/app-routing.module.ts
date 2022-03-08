@@ -16,16 +16,19 @@ const routes: Routes = [
     },
     {
       path: 'orders', 
-
       loadChildren: () => import('./modules/ordersModule/orders/orders.module').then(m => m.OrdersModule),
+      canActivate : [AuthorizationGuard]
+    },
+    {
+      path: 'notifications', 
+      loadChildren: () => import('./modules/notifications/notifications.module').then(m => m.NotificationsModule),
       canActivate : [AuthorizationGuard]
     },
     {
       path: 'profile', 
       loadChildren: () => import('./modules/profileModule/profile-module.module').then(m => m.ProfileModuleModule),
       canActivate : [AuthorizationGuard]
-    }
-  
+    },
   ]}
  
 ];

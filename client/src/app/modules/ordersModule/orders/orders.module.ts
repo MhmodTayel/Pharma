@@ -8,12 +8,12 @@ import { MaterialModule } from 'src/app/modules/angular-material/angular-materia
 import { OrdersPageComponent } from './orders-page/orders-page.component';
 import { RouterModule , Routes} from '@angular/router';
 import { SharedModuleModule } from '../../sharedModule/shared-module/shared-module.module';
+
 const routes: Routes = [
   {path:'' , component:OrdersStoreComponent,children:[
     {path:'details/:id' }
   ]},
   
-
 ];
 
 @NgModule({

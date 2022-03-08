@@ -44,7 +44,7 @@ export default function CheckoutButton({newOrder,savedOrderId}) {
   };
 
   return (
-    <Button className={styles.checkoutBtn}> disabled= {!orderStore.length} onClick={handelCheckout}>
+    <Button className={styles.checkoutBtn} disabled= {!orderStore.length} onClick={handelCheckout}>
       Checkout
     </Button>
   );

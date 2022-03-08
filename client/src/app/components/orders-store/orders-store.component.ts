@@ -30,7 +30,6 @@ export class OrdersStoreComponent implements OnInit {
       });
 
     this.order.getOrders().subscribe((data:any) => {
-    
       
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;

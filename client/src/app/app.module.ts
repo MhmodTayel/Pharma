@@ -11,11 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SidebarComponent } from './components/sidebar/sidebar/sidebar.component';
 import { HeaderComponent } from './components/header/header/header.component';
 import { SharedModuleModule } from './modules/sharedModule/shared-module/shared-module.module';
-
-//import { AddNotificationsComponent } from './modules/productsModule/add-notifications/add-notifications.component';
-
-
-
+import { ErrorHandler } from '@angular/core';
+// import globalE
 
 @NgModule({
   declarations: [
@@ -23,9 +20,7 @@ import { SharedModuleModule } from './modules/sharedModule/shared-module/shared-
     LayoutComponent,
     LoginComponent,
     SidebarComponent,
-    HeaderComponent, 
-    //AddNotificationsComponent,
-   
+    HeaderComponent,    
   ],
   
   imports: [
@@ -37,8 +32,7 @@ import { SharedModuleModule } from './modules/sharedModule/shared-module/shared-
     ReactiveFormsModule,
     HttpClientModule,
     SharedModuleModule,
-    
-   
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -62,40 +62,40 @@ export class AddNotificationsComponent implements OnInit {
     this.isShown = ! this.isShown;
   }
 
-  delete(id: any) {
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
-        this.addNotificationService.deleteNotification(id).subscribe((res) => {
-          this.notifications.splice(this.notifications.findIndex((notification) => notification.id == id), 1)
-        }, () => { })
+  // delete(id: any) {
+  //   Swal.fire({
+  //     title: 'Are you sure?',
+  //     text: "You won't be able to revert this!",
+  //     icon: 'warning',
+  //     showCancelButton: true,
+  //     confirmButtonColor: '#3085d6',
+  //     cancelButtonColor: '#d33',
+  //     confirmButtonText: 'Yes, delete it!'
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       Swal.fire(
+  //         'Deleted!',
+  //         'Your file has been deleted.',
+  //         'success'
+  //       )
+  //       this.addNotificationService.deleteNotification(id).subscribe((res) => {
+  //         this.notifications.splice(this.notifications.findIndex((notification) => notification.id == id), 1)
+  //       }, () => { })
 
-      }
-    })
+  //     }
+  //   })
    
-  }
+  // }
 
-  updateisReaded(id: any) {
-    let notification = { isReaded: true }
-    this.addNotificationService.updateIsReaded(id, notification).subscribe(
-      (res) => {
+  // updateisReaded(id: any) {
+  //   let notification = { isReaded: true }
+  //   this.addNotificationService.updateIsReaded(id, notification).subscribe(
+  //     (res) => {
 
-        console.log(res)
-      })
+  //       console.log(res)
+  //     })
 
 
-  }
+  // }
 
 }
