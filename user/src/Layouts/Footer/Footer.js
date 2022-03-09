@@ -25,10 +25,12 @@ export default function Footer() {
             </div>
             <div className="row ">
               <div className="col-md-3 text-white">
-                <h4 className="h2 text-primary my-4 ">Pharma </h4>
-                <p className="text-muted"> <HomeIcon className='me-2' />1650 Lombard Street,<br />San Francisco, CA 94123<br />
-                  <LocalPhoneIcon className='me-2' />+1 (415)876-3250
-                  <br /><EmailIcon className='me-2' /> pharma@gmail.com
+                <h5 className="text-primary my-4 text-white">Pharma </h5>
+                <p className="text-muted"> <HomeIcon className='me-2' />9 Abbas Street<br />Cairo - Egypt<br />
+                  <LocalPhoneIcon className='me-2' />+2 (123)456-7890
+                  <br /><EmailIcon className='me-2' /> 
+                  <a href = "mailto: pharma@gmail.com" className='text-decoration-none' style={{color:"gray"}}>pharma@gmail.com</a>
+                  
                 </p>
                 <div className={styles.allIcons}>
                   <div className={styles.iconSpanFac}><FacebookSharpIcon /></div>
