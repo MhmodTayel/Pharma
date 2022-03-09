@@ -129,7 +129,7 @@ export default function Categories() {
                     {/* third row */}
                     <div className="col-md-4  col-sm-12 d-flex flex-column">
                         <div className={styles.imgDiv}>
-                            <Link to='/category/cold/Headache'>
+                            <Link to='/category/Headache'>
                                 <div className="position-relative">
                                     <div className=" w-100 position-relative">
                                         <img src={require('../../Assets/Images/baby-1.jpg')} alt='baby' className={styles.imgImg} />
@@ -142,7 +142,7 @@ export default function Categories() {
                             </Link>
                         </div>
                         <div className={styles.imgDiv}>
-                            <Link to="/category/cold/Headache">
+                            <Link to="/category/Headache">
                                 <div className="position-relative">
                                     <div className=" w-100 position-relative">
                                         <img src={require('../../Assets/Images/hair-care.jpg')} alt='hair-care' className={styles.imgImg} />
@@ -155,7 +155,7 @@ export default function Categories() {
                         </div>
 
                         <div className={styles.imgDiv}>
-                            <Link to="/category/cold/Headache">
+                            <Link to="/category/Headache">
                                 <div className="w-100">
                                     <div className=" w-100">
                                         <img src={require('../../Assets/Images/personal-care-1.jpg')} alt='men-care-1' className={styles.imgImg} />

@@ -3,7 +3,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { getMedByCat } from "../../services/userService";
 import ProductItemCard from '../../Components/ProductCard/ProductCard'
-
+import {
+    Navbar,
+  } from "../../Components";
 
 export default function SingleCategory() {
     const [data, setData] = useState([]);
@@ -26,6 +28,8 @@ export default function SingleCategory() {
     }, [])
 
     return (
+        <>
+        <Navbar />
         <div className='container py-3'>
             <div className='row text-center'>
                 <button className="btn btn-outline-danger d-block w-auto" onClick={back}>Back</button>
@@ -41,5 +45,7 @@ export default function SingleCategory() {
 
             </div>
         </div>
+        </>
+        
     );
 }
