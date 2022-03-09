@@ -131,7 +131,7 @@ export class EditMedComponent implements OnInit {
       discount: ['', [Validators.required]],
       firmPrice: ['', [Validators.required]],
       brand: ['', [Validators.required,Validators.minLength(3)]],
-      size: [''],
+      size: ['',[Validators.required]],
       limit: ['', [Validators.required]],
       image :[''],
       categories: this._formBuilder.array([this._formBuilder.control('', [Validators.required,Validators.minLength(3)])])
