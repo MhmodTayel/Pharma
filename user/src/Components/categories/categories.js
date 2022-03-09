@@ -70,7 +70,7 @@ export default function Categories() {
                     {/* second row  */}
                     <div className="col-md-4 d-flex flex-column">
                         <div className={styles.imgDiv}>
-                            <Link to='/category/cold/Toothache'>
+                            <Link to='/category/Toothache'>
                                 <div className=" position-relative">
                                     <div className=" w-100 position-relative">
                                         <img src={require('../../Assets/Images/beauty-1.jpg')} alt='oral-care' className={styles.imgImg} />
@@ -83,7 +83,7 @@ export default function Categories() {
                         </div>
 
                         <div className={styles.imgDiv}>
-                            <Link to='/category/cold/Toothache'>
+                            <Link to='/category/Toothache'>
                                 <div className=" position-relative">
                                     <div className=" w-100 position-relative">
                                         <img src={require('../../Assets/Images/bath-body-1.jpg')} alt='bath-body' className={styles.imgImg} />
@@ -96,7 +96,7 @@ export default function Categories() {
                         </div>
 
                         <div className={styles.imgDiv}>
-                            <Link to='/category/cold/Toothache'>
+                            <Link to='/category/Toothache'>
                                 <div className=" position-relative">
                                     <div className=" w-100 position-relative">
                                         <img src={require('../../Assets/Images/oral-care-1.jpg')} alt='oral-care' className={styles.imgImg} />
@@ -110,7 +110,7 @@ export default function Categories() {
                         </div>
 
                         <div className={styles.imgDiv}>
-                            <Link to='/category/cold/Toothache'>
+                            <Link to='/category/Toothache'>
                                 <div className=" position-relative">
                                     <div className=" w-100 position-relative">
                                         <img src={require('../../Assets/Images/contact-lenses-1.jpg')} alt='men-care-1' className={styles.imgImg} />
