@@ -86,12 +86,30 @@
     <p class=" message my-3 mx-3">{{item.notificationMessage}}</p>
 </mat-expansion-panel> -->
 
-<div class="card w-75 m-auto mt-3 position-relative  shadow-sm" *ngFor="let item of notifications ,let i=index">
-  <!-- <mat-icon class="close-icon position-absolute"(click)="delete(item.id)">close</mat-icon> -->
+<div class="card shadow-sm w-75 m-auto my-1" *ngFor="let item of notifications ,let i=index">
+  <div class="row"> 
+    <div class="col-1">
+      <mat-icon *ngIf="!isShown" class="me-5 mt-3 text-primary icon">notifications_active</mat-icon>  
+    </div>
+    <div class="col-sm-11"> 
+      <div class="card__message">
+        <h2>Message# {{i+1}}</h2>
+        <p>{{item.notificationMessage}}</p>
+      </div>
+    </div>
+    <div class="col-sm-12 d-flex justify-content-end">
+      <div class="form-check">
+        <input class="form-check-input" (click)="toggleShow($event)" type="checkbox" id="flexCheckDefault">
+      </div>  
+    </div>
+  </div>
+</div>
+
+<!-- <div class="card w-75 m-auto mt-3 position-relative  shadow-sm" *ngFor="let item of notifications ,let i=index">
+  //<mat-icon class="close-icon position-absolute"(click)="delete(item.id)">close</mat-icon>
   <div class="card__message d-flex">
     <mat-icon *ngIf="!isShown" class="me-5 mt-3 text-primary icon">notifications_active</mat-icon>
-    <!-- <mat-icon *ngIf="isShown" class="me-5 mt-3 icon">notifications</mat-icon> -->
-
+    //<mat-icon *ngIf="isShown" class="me-5 mt-3 icon">notifications</mat-icon>
     <div>
       <h2>Message# {{i+1}}</h2>
       <p>{{item.notificationMessage}}</p>
@@ -100,7 +118,7 @@
   <div class="form-check position-absolute">
     <input class="form-check-input" (click)="toggleShow($event)" type="checkbox" value="" id="flexCheckDefault">
   </div>
-</div>
+</div> -->
 
 
 

@@ -6,7 +6,7 @@
          </div>
          <mat-card class="details-form">
             <div class="row">
-               <div class="col-md-8">
+               <div class="col-md-8 py-3">
                   <form [formGroup]="adminDetailsForm" *ngIf="adminDetailsForm" >
                      <div class="example-container">
                         <mat-form-field class="w-100 ">
@@ -49,9 +49,9 @@
                            <!-- <span *ngIf="adminDetailsForm.controls['password'].errors?.['required'] &&  adminDetailsForm.controls['password'].touched">Password required</span>      -->
                       
                         <div class="my-1">   
-                           <button *ngIf="!adminDetailsForm.disabled" mat-raised-button class=" me-2" (click)="Update()">Save</button>
-                           <button *ngIf="!adminDetailsForm.disabled" mat-raised-button class=" me-2"(click)="adminDetailsForm.disable()" color="warn" >Cancel</button>
-                           <button *ngIf="adminDetailsForm.disabled" mat-raised-button class=""  (click)="enableFrom()" color="primary">Edit Details</button>
+                           <button *ngIf="!adminDetailsForm.disabled" mat-raised-button class=" me-2"(click)="adminDetailsForm.disable()">Cancel</button>
+                           <button *ngIf="!adminDetailsForm.disabled" mat-raised-button class="orange-btn me-2" (click)="Update()">Save</button>
+                           <button *ngIf="adminDetailsForm.disabled" mat-raised-button class="edit-btn"  (click)="enableFrom()" color="primary">Edit Details</button>
                         </div>
                      
                      </div>
