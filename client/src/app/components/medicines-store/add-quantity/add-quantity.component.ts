@@ -16,8 +16,7 @@ export class AddQuantityComponent implements OnInit {
   Addstatus: boolean = false
   constructor(private fb: FormBuilder, private _medService: MedicineService, private _router: Router,private _mysnackbar: SnackBarService) { }
   addForm: any = this.fb.group({
-    
-    quantity: ['', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.min(1),Validators.max(300)]],
+    quantity: ['', [Validators.required, Validators.pattern('^[0-9]+$'),Validators.min(0),Validators.max(300)]],
   });
   ngOnInit(): void {
     this.id = window.location.href.split('/').pop();

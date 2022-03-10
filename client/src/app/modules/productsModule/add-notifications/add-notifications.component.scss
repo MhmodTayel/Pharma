@@ -138,19 +138,19 @@ body{
   background-color: #eef7fe !important;
 }
 
-.card{
+.card {
   background: #fff;
   padding: 20px;
   border-radius:20px;
   &__message{
     h2{
-      font-size:20px;
-      color:#22215B;
+      font-size:20px !important;
+      color:#22215B !important;
       font-weight:500;
       margin-bottom: 5px;
     }
     p{
-      font-size:18px;
+      font: size 16px;
       color:rgba(34, 33, 91, 0.6);
     }
   }
@@ -164,7 +164,6 @@ cursor: pointer;
   color: rgb(180, 4, 4);
 }
 .form-check{
-  bottom: 5px;
-  right:40px;
-
+  // bottom: 5px;
+  // right:40px;
 }

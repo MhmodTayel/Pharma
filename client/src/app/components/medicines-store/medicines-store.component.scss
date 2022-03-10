@@ -27,7 +27,7 @@ i
   color: #293692;
 }
 .delete-icon {
-  color: #f44336;
+  color: #f2a71b !important;
 }
 .mat-column-Quantity {
   width: 10% !important;
@@ -40,9 +40,6 @@ td.mat-cell:last-of-type,
 td.mat-footer-cell:last-of-type {
   padding-right: 0px;
 }
-// th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
-//   padding-left: 24px;
-// }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 @media (min-width: 0px) and (max-width: 550px) {
   th.mat-header-cell,
@@ -55,8 +52,10 @@ td.mat-footer-cell:last-of-type {
     text-align: center;
   }
   ::ng-deep .mat-column-Quantity {
-    // width: 10% !important;
-    text-align: center;
+    text-align: center !important;
+  }
+  .qnt{
+    padding-left: 12px;
   }
   .delete-icon {
     padding: 0px !important;
@@ -70,19 +69,14 @@ td.mat-footer-cell:last-of-type {
     padding-right: 0px;
   }
 }
-
-//   color: #f44336;
-//   cursor: pointer;
-// }
 .qnt {
-  position: relative;
+  display: flex;
 }
 .plus {
-  position: absolute;
   cursor: pointer;
   color: #293692;
-  right: 70px;
-  // top: 10%;
+  margin-left: 5px;
+  font-weight: 600;
 }
 .loading-spinner {
   position: absolute;

@@ -48,7 +48,7 @@ th.mat-header-cell {
   bottom: 0px;
   left: -5px;
   border-radius: 5px;
-  border-left: 5px orange solid;
+  border-left: 5px #f2a71b solid;
 }
 th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
   padding-left: 24px;
@@ -96,6 +96,12 @@ th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:
     font-size: 18px;
     transition: all 1s;
   }
+  .mat-stroked-button {
+    // border: 1px solid currentColor;
+    padding: 0px 10px;
+    line-height: 30px;
+    font-size: 14px;
+}
 }
 
 .loading-spinner {

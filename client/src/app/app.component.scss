@@ -12,5 +12,9 @@
   }
   
   mat-drawer {
-    background: #082975;
+    // background: #082975;
   }
+
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #28b0ec !important;
+}
