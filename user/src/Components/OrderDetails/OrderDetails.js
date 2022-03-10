@@ -74,7 +74,10 @@ export default function OrderDetails({ state, order }) {
                       <div className="imgWrapper">
                         <img
                           className="order-details-img"
-                          src={require("../../Assets/Images/wireframe.jpg")}
+                          src={
+                            medicine.image ||
+                            require("../../Assets/Images/wireframe.jpg")
+                          }
                         />
                       </div>
                       <div>{medicine.name}</div>
@@ -113,6 +116,7 @@ export default function OrderDetails({ state, order }) {
               <CheckoutButton
                 newOrder={order.medicines}
                 savedOrderId={order.id}
+                btnStyles={true}
               />
             </>
           )}

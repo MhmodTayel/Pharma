@@ -82,16 +82,15 @@ export default function Register() {
       register(values).then(
         (res) => {
           console.log(res)
-
+          setTimeout(() => {
+            history.push('/login');
+          }, 1000)
+          return setAlert(true);
         },
         (err) => {
-          console.log(err)
+          console.log(err.response)
         })
-      actions.resetForm();
-      setTimeout(() => {
-        history.push('/login');
-      }, 3000)
-      return setAlert(true);
+
     },
   });
   return (

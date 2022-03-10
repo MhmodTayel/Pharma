@@ -28,8 +28,8 @@ async function createStripeCheckoutSession(body) {
     payment_method_types: ["card"],
     line_items: body.line_items,
     metadata: body.metadata,
-    success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${url}/failed`,
+    success_url: `https://pharam.me/success?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `https://pharam.me/new-order`,
   });
 
   return session;

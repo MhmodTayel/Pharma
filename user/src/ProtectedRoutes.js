@@ -3,8 +3,6 @@ import { Redirect, Route } from "react-router-dom";
 
 function ProtectedRoute({ component: Component, ...restOfProps }) {
   const isAuth = localStorage.getItem("token");
-  console.log("this", isAuth);
-
   return (
     <Route
       {...restOfProps}

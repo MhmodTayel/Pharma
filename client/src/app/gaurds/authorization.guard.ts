@@ -10,9 +10,9 @@ export class AuthorizationGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const accessUserToken = localStorage.getItem('Token');
+      const accessUserToken = localStorage.getItem('token');
       if(accessUserToken == null || accessUserToken == '' ){
-        alert("Please Login to start")
+        console.log("Please Login to start")
         this._router.navigate(['/login'])
         return false;
       }

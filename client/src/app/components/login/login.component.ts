@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     this._adminService.adminLogin(admin).subscribe(
       (response:any) => {
         this.loginResponse = response ;
-        this._router.navigateByUrl('/orders');
+        this._router.navigateByUrl('/profile');
         this._sessionService.login(this.loginResponse);
       },
       (error) => { 

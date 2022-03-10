@@ -13,6 +13,7 @@ export class SessionService {
   login(token:string)
 {
   localStorage.setItem(this.loginKey , token)
+  console.log(localStorage,'localStorage')
   this.loginStatus.next(true);
 }
 logout(){

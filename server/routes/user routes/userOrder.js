@@ -15,7 +15,7 @@ const SavedOrder = require("../../models/savedOrder");
 router.post("/orders/newOrder", async({body}, res, next)=>{
     const id = await Order.find({}).count();
     body.id = id+1;
-    req.io.emit("message",  req.body.client);
+    // req.io.emit("message",  req.body.client);
     createOrder(body)
     .then((doc)=>{
         req.io.emit("newOrder",  doc);     
@@ -24,8 +24,12 @@ router.post("/orders/newOrder", async({body}, res, next)=>{
 } );
 router.post("/checkouts/", ({ body }, res, next) => {
   createStripeCheckoutSession(body)
-    .then((doc) => res.json(doc))
-    .catch((err) => next(err));
+    .then((doc) => {
+      console.log(doc)
+      res.json(doc)})
+    .catch((err) => {
+      console.log(err)
+      next(err)});
 });
 
 router.get("/payment/:id", async (req, res, next) => {

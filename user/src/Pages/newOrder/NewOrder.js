@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import {
   Search,
   Card,
@@ -7,19 +7,16 @@ import {
   SaveOrderButton,
   CheckoutCarousel,
 } from "../../Components";
-import Grid from "@mui/material/Grid";
-import { useSelector, useDispatch } from "react-redux";
-import Paper from "@mui/material/Paper";
+import { useSelector } from "react-redux";
 import styles from "./newOrder.module.scss";
-import { styled } from "@mui/material/styles";
 import Footer from "../../Layouts/Footer/Footer";
 import style from "../../index.module.scss";
-import LocalPharmacyIcon from "@mui/icons-material/LocalPharmacy";
 import MedicationIcon from "@mui/icons-material/Medication";
+import swal from "sweetalert";
 
 export default function NewOrder() {
   const orderStore = useSelector((state) => state.order);
-
+ 
   return (
     <>
       <Navbar />

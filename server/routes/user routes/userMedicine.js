@@ -19,9 +19,14 @@ router.get("/medicine/search", (req, res, next) => {
 
 router.get("/medicine/category/:cat", (req, res, next) => {
   const cat = req.params.cat;
+  console.log(cat)
   getMedicinesByCat(cat)
-  .then((doc) => res.json(doc))
-  .catch((e) => next(e));
+  .then((doc) => {
+    console.log(doc,'doc')
+    res.json(doc)})
+  .catch((e) => {
+    console.log(e,'error')
+    next(e)});
 })
 
 router.get("/medicine/all", (req, res, next) => {

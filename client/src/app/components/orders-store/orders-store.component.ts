@@ -51,7 +51,6 @@ export class OrdersStoreComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  ngAfterViewInit() {}
 
   sortData() {}
   applyFilter(event: Event) {

@@ -4,7 +4,7 @@ const { Client, Repository } = require("redis-om");
 const findOne = (id) => Medicine.findOne({ id: id });
 const findAll = () => Medicine.find();
 
-const getMedicinesByCat = ( cat ) => Orders.find({ categories: { "$in" : [cat]} } )
+const getMedicinesByCat = ( cat ) => Medicine.find({ categories: { "$in" : [cat]} } )
 const getIncomingMed = (date) => Medicine.find({arriveDate: {$gte:date}})
 const getIncomingMedNumber = (date)=> Medicine.countDocuments({arriveDate: {$gte:date}})
 

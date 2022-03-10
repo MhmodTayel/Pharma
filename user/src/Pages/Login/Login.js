@@ -47,7 +47,9 @@ export default function Login() {
           if (res.data) {
             localStorage.setItem("token", res.data);
             console.log(res.data, '')
-            history.push('/home')
+            setTimeout(() => {
+              history.push('/home')
+            }, 1000);
           }
         },
         (err) => {
@@ -55,7 +57,6 @@ export default function Login() {
           return setAlert(true);
         }
       )
-      actions.resetForm();
     },
   });
   return (
@@ -109,35 +110,35 @@ export default function Login() {
                       }}
                     />
                   </div>
-                  <div class="row  mt-4 mb-4">
-                    <div class="col-md-6">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-                        <label class="form-check-label" for="defaultCheck1">
+                  <div className="row  mt-4 mb-4">
+                    <div className="col-md-6">
+                      <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+                        <label className="form-check-label" htmlFor="defaultCheck1">
                           Remember me
                         </label>
                       </div>
                     </div>
-                    <div class="col-md-6 text-right">
+                    <div className="col-md-6 text-right">
                       <a href="#">Forgot Password?</a>
                     </div>
                   </div>
                   <div className='d-flex justify-content-center'>
-                    <button class="btn btn-primary btn-block shadow border-0 py-2 text-uppercase" type='submit'>
+                    <button className="btn btn-primary btn-block shadow border-0 py-2 text-uppercase" type='submit'>
                       Login
                     </button>
                   </div>
-                  <p class="text-center mt-5">
+                  <p className="text-center mt-5">
                     Don't have an account?
                     <span className={styles.link}><Link to='/register'> create an account</Link></span>
                   </p>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div className="col-md-6">
                 <div className={styles.imgbg}>
                   <div className={styles.layer}>
-                    <div class="AppFormRight position-relative d-flex justify-content-center flex-column align-items-center text-center p-5 text-white">
-                      <h2 class="position-relative px-4 pb-3 mb-4">Welcome back to PharmaTic</h2>
+                    <div className="AppFormRight position-relative d-flex justify-content-center flex-column align-items-center text-center p-5 text-white">
+                      <h2 className="position-relative px-4 pb-3 mb-4">Welcome back to PharmaTic</h2>
                       <p className='h6'> A place you can order your medicen,start your order now from stores ,start your order now from stores</p>
                     </div>
                   </div>

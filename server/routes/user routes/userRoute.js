@@ -29,10 +29,12 @@ router.post("/user/register", async (req, res, next) => {
   user.id = id + 1;
   create(user)
     .then((doc) => {
-      consol.log(doc , 'doc')
+      console.log(doc , 'doc')
       res.json(doc)
     })
-    .catch((e) => next(e));
+    .catch((e) => {
+      console.log(e)
+      next(e)});
 });
 
 router.post("/contactUs", async (req, res, next) => {

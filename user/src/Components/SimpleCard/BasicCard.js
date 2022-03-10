@@ -6,7 +6,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import moment from "moment";
 import OrderDetails from "../OrderDetails/OrderDetails";
-export default function BasicCard({ order }) {
+import DeleteIcon from "@mui/icons-material/Delete";
+import IconButton from "@mui/material/IconButton";
+import { deleteSavedOrder } from "../../services/userService";
+export default function BasicCard({ order, orders, setOrders }) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -17,14 +20,21 @@ export default function BasicCard({ order }) {
     setOpen(false);
   };
 
+  const handleDelete = () => {
+    const newOrders = orders.filter((ord) => ord._id != order._id);
+
+    deleteSavedOrder(order.id).then((res) => {
+      setOrders(newOrders);
+    });
+  };
+
   return (
     <>
-      {open && <OrderDetails state={{open,handleClose}} order={order}/>}
+      {open && <OrderDetails state={{ open, handleClose }} order={order} />}
       <Card sx={{ minWidth: 360, maxWidth: 650 }}>
         <CardContent>
-          <div className="row">
+          <div className="d-flex justify-content-between align-items-center">
             <Typography
-              className="col"
               variant="h6"
               component="div"
               sx={{ fontSize: 15, color: "#2c456a" }}
@@ -32,13 +42,19 @@ export default function BasicCard({ order }) {
               Order Number
             </Typography>
             <Typography
-              className="col"
               variant="h6"
               component="div"
               sx={{ fontSize: 16, color: "orange" }}
             >
               #{order.id}
             </Typography>
+            {!("inProgress" in order) && (
+              <div>
+                <IconButton aria-label="delete" onClick={handleDelete}>
+                  <DeleteIcon color="error" />
+                </IconButton>
+              </div>
+            )}
           </div>
 
           <hr />
@@ -78,29 +94,29 @@ export default function BasicCard({ order }) {
               {order.numberOfCat}
             </Typography>
           </div>
-          {('inProgress' in order) &&
-                     <div className="row">
-                     <Typography
-                       className="col"
-                       variant="h6"
-                       component="div"
-                       sx={{ fontSize: 15, color: "#2c456a" }}
-                     >
-                       Status
-                     </Typography>
-                     <Typography
-                       className="col"
-                       variant="h6"
-                       component="div"
-                       sx={{
-                         fontSize: 14,
-                         color: order.inProgress ? "#FED653" : "green",
-                       }}
-                     >
-                       {order.inProgress ? "In progress" : "Confirmed"}
-                     </Typography>
-                   </div> 
-          }
+          {"inProgress" in order && (
+            <div className="row">
+              <Typography
+                className="col"
+                variant="h6"
+                component="div"
+                sx={{ fontSize: 15, color: "#2c456a" }}
+              >
+                Status
+              </Typography>
+              <Typography
+                className="col"
+                variant="h6"
+                component="div"
+                sx={{
+                  fontSize: 14,
+                  color: order.inProgress ? "#FED653" : "green",
+                }}
+              >
+                {order.inProgress ? "In progress" : "Confirmed"}
+              </Typography>
+            </div>
+          )}
         </CardContent>
         <CardActions>
           <Button size="small" onClick={handleClickOpen}>

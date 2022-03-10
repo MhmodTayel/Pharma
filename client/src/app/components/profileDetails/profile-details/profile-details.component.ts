@@ -33,9 +33,10 @@ export class ProfileDetailsComponent implements OnInit {
     })
     this._adminService.getDetails().subscribe(
       (response:any) => {
+        console.log(response)
         this.adminDetails = response ;
       },
-      (error) => { },
+      (error) => { console.log(error) },
     )
     const token: any = localStorage.getItem('token')
     if (token) {

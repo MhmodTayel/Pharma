@@ -34,6 +34,7 @@ const Navbar = () => {
   let user = localStorage.getItem("token");
   const history = useHistory();
   function Logout() {
+    console.log('here 11');
     localStorage.clear();
     history.push("/login");
   }

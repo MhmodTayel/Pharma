@@ -29,8 +29,8 @@
   padding: 0px !important;
   margin:0px !important;
   display: flex !important;
-  align-items: end !important;
-  justify-content: end !important;
+  align-items: flex-end !important;
+  justify-content: flex-end !important;
   padding-bottom: 10px !important;
 }
 ::ng-deep .mat-card-actions a , .mat-card-actions button{

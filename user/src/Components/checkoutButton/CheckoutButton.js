@@ -8,7 +8,7 @@ import { useStripe } from "@stripe/react-stripe-js";
 
 import styles from './CheckoutButton.module.scss'
 
-export default function CheckoutButton({newOrder,savedOrderId}) {
+export default function CheckoutButton({newOrder,savedOrderId,btnStyles}) {
   const stripe = useStripe();
   const orderStore =newOrder;
   console.log(newOrder)
@@ -46,7 +46,7 @@ export default function CheckoutButton({newOrder,savedOrderId}) {
   };
 
   return (
-    <Button className={styles.checkoutBtn} disabled= {!orderStore.length} onClick={handelCheckout} endIcon={<SendIcon />}>
+    <Button className={btnStyles?"":styles.checkoutBtn} disabled= {!orderStore.length} onClick={handelCheckout} endIcon={btnStyles?"":<SendIcon />}>
       Checkout
     </Button>
   );
