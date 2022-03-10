@@ -85,8 +85,8 @@ export class EditMedComponent implements OnInit {
       medData.append('categories', this.formEditMed.value.categories);
       medData.append('limit', this.formEditMed.value.limit);
       if(this.formEditMed.value.image){
-      medData.append('image',this.formEditMed.value.image,this.formEditMed.value.title
-      );
+      // medData.append('image',this.formEditMed.value.image,this.formEditMed.value.title
+      // );
       }
 
     this.addMedicineService.update(this.Id,medData).subscribe(
